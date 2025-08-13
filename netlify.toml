@@ -2,6 +2,7 @@
   command = "npm install && npm run build"
   publish = "dist"
   functions = "netlify/functions"
+  environment = { NODE_VERSION = "18" }
 
 [dev]
   command = "npm run dev"
@@ -14,3 +15,8 @@
   to = "/index.html"
   status = 200
   force = true
+
+# Explicitly disable Next.js plugin
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  enabled = false
