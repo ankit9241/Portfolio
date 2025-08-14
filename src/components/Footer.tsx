@@ -1,7 +1,7 @@
 
 'use client';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaTwitter, FaHeart, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaHeart, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   const socialLinks = [
@@ -22,15 +22,6 @@ const Footer = () => {
       hoverBgColor: 'hover:bg-gray-200 dark:hover:bg-gray-700/50',
       iconColor: 'text-gray-700 dark:text-gray-300',
       hoverIconColor: 'group-hover:text-gray-800 dark:group-hover:text-gray-200'
-    },
-    {
-      icon: FaTwitter,
-      name: "Twitter",
-      url: "https://twitter.com/ankitkumar",
-      bgColor: 'bg-sky-100 dark:bg-sky-900/30',
-      hoverBgColor: 'hover:bg-sky-200 dark:hover:bg-sky-800/50',
-      iconColor: 'text-sky-500 dark:text-sky-400',
-      hoverIconColor: 'group-hover:text-sky-600 dark:group-hover:text-sky-300'
     }
   ];
 

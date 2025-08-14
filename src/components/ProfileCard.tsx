@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FiDownload } from 'react-icons/fi';
 
 interface ProfileCardProps {
@@ -210,7 +210,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   <FaGithub size={20} />
                 </a>
                 <a 
-                  href="https://linkedin.com/in/ankitkumar" 
+                  href="https://linkedin.com/in/ankit-kumar-0435b8257" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors"
@@ -218,15 +218,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   <FaLinkedin size={20} />
                 </a>
                 <a 
-                  href="https://twitter.com/ankitkumar" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-cyan-500 dark:text-gray-400 dark:hover:text-cyan-400 transition-colors"
-                >
-                  <FaTwitter size={20} />
-                </a>
-                <a 
-                  href="mailto:contact@ankitkumar.dev" 
+                  href="mailto:ankitkumar.iitp09@gmail.com" 
                   className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
                 >
                   <FaEnvelope size={20} />

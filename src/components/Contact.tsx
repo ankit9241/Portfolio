@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -108,16 +108,6 @@ const Contact = () => {
       iconColor: 'text-gray-700 dark:text-gray-300',
       hoverIconColor: 'group-hover:text-gray-800 dark:group-hover:text-gray-200',
       shadowColor: 'shadow-gray-500/30'
-    },
-    {
-      icon: FaTwitter,
-      name: "Twitter",
-      url: "https://twitter.com/ankit9241",
-      bgColor: 'bg-sky-100 dark:bg-sky-900/30',
-      hoverBgColor: 'hover:bg-sky-200 dark:hover:bg-sky-800/50',
-      iconColor: 'text-sky-500 dark:text-sky-400',
-      hoverIconColor: 'group-hover:text-sky-600 dark:group-hover:text-sky-300',
-      shadowColor: 'shadow-sky-500/30'
     }
   ];
 
