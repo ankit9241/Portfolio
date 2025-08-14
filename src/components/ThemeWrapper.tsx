@@ -1,17 +1,16 @@
-import { ThemeProvider as NextThemesProvider, ThemeProviderProps } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {
+// This wrapper is now simplified since theme handling is done in Navbar
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-base-100 text-base-content">
         <div className="fixed inset-0 flex items-center justify-center">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
         </div>
@@ -19,15 +18,7 @@ export const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {
     );
   }
 
-  return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-      {...props}
-    >
-      {children}
-    </NextThemesProvider>
-  );
-}
+  return <>{children}</>;
+};
+
+export default ThemeProvider;

@@ -3,16 +3,41 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HiSun, HiMoon, HiMenu, HiX } from 'react-icons/hi';
-import { useTheme } from 'next-themes';
-
-// Force dynamic rendering to prevent hydration mismatch
-export const dynamic = 'force-dynamic';
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme, systemTheme } = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Initialize theme
+  useEffect(() => {
+    setMounted(true);
+    
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      setIsDarkMode(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDarkMode(true);
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -73,9 +98,6 @@ const Navbar = () => {
       });
     };
   }, []);
-
-  // Determine the current theme (respecting system preference)
-  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   const sections = [
     { id: 'home', label: 'Home' },
@@ -142,11 +164,11 @@ const Navbar = () => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
-              aria-label={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
-              {currentTheme === 'dark' ? (
+              {isDarkMode ? (
                 <HiSun className="w-5 h-5 text-yellow-400" />
               ) : (
                 <HiMoon className="w-5 h-5 text-gray-700" />
