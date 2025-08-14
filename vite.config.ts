@@ -9,6 +9,9 @@ export default defineConfig({
       '@': resolve(__dirname, './src')
     }
   },
+  css: {
+    postcss: './postcss.config.js'
+  },
   server: {
     port: 5173,
     open: true
