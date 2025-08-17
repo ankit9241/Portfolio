@@ -288,16 +288,6 @@ const Projects = () => {
         "Secure payment gateway integration",
         "Order tracking and history",
         "Admin dashboard with analytics and reporting"
-      ],
-      challenges: [
-        "Implementing secure payment processing",
-        "Managing cart state across sessions",
-        "Creating responsive product catalog"
-      ],
-      learnings: [
-        "E-commerce best practices",
-        "Payment gateway integration",
-        "Data visualization with charts"
       ]
     },
     {
@@ -344,16 +334,6 @@ const Projects = () => {
         "User dashboard for managing bookings",
         "Admin panel for event management",
         "Email notifications and reminders"
-      ],
-      challenges: [
-        "Managing event dates and availability",
-        "Handling concurrent bookings",
-        "Implementing secure payment processing"
-      ],
-      learnings: [
-        "Booking system architecture",
-        "Real-time availability updates",
-        "Email notification systems"
       ]
     },
     {
@@ -400,16 +380,6 @@ const Projects = () => {
         "Order tracking system",
         "Admin dashboard for inventory management",
         "Local delivery scheduling"
-      ],
-      challenges: [
-        "Creating an intuitive user interface",
-        "Managing inventory in real-time",
-        "Implementing local delivery logic"
-      ],
-      learnings: [
-        "E-commerce platform development",
-        "Inventory management systems",
-        "User experience optimization"
       ]
     }
   ];
