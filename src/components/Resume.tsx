@@ -10,15 +10,15 @@ const Resume = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/resume/Resume.pdf';
-    link.download = 'Resume.pdf';
+    link.href = '/resume/Ankit_Kumar_Resume.pdf';
+    link.download = 'Ankit_Kumar_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   const handleView = () => {
-    window.open('/resume/Resume.pdf', '_blank');
+    window.open('/resume/Ankit_Kumar_Resume.pdf', '_blank');
   };
 
   return (
