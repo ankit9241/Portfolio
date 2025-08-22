@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import {
   SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, SiBootstrap,
-  SiNodedotjs, SiExpress, SiMongodb, SiGit, SiGithub, SiPostman, SiVite
+  SiNodedotjs, SiExpress, SiMongodb, SiGit, SiGithub, SiHoppscotch, SiVite
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -101,11 +101,11 @@ const Skills = () => {
       category: 'Tools'
     },
     {
-      name: 'Postman',
-      icon: SiPostman,
-      color: '#FF6C37',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/30',
-      textColor: 'text-orange-600 dark:text-orange-400',
+      name: 'Hoppscotch',
+      icon: SiHoppscotch,
+      color: '#8A4FFF',
+      bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+      textColor: 'text-purple-600 dark:text-purple-400',
       category: 'Tools'
     },
     {
