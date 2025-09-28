@@ -222,7 +222,7 @@ const Projects = () => {
         }
       ],
       image: "/assets/kiran-new.png",
-      github: "https://github.com/ankit9241/mahila-bazaar",
+      github: "https://github.com/ankit9241/KIRAN-Advanced-",
       live: "https://mahila-bazaar.vercel.app",
       isPublished: false,
       features: [
