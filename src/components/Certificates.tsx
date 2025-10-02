@@ -1,8 +1,8 @@
-'use client';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { HiExternalLink } from 'react-icons/hi';
+"use client";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { HiExternalLink } from "react-icons/hi";
 
 const Certificates = () => {
   const ref = useRef(null);
@@ -13,14 +13,19 @@ const Certificates = () => {
       title: "Hack N Tech Hackathon",
       issuer: "IIT Patna",
       date: "May 2025",
-      description: "Successfully participated in the Hack N Tech Hackathon organized by IIT Patna, showcasing problem-solving skills and technical abilities in a competitive environment.",
+      description:
+        "Successfully participated in the Hack N Tech Hackathon organized by IIT Patna, showcasing problem-solving skills and technical abilities in a competitive environment.",
       image: "/assets/Hackathon.png",
-      link: "/assets/Hackathon.png"
-    }
+      link: "/assets/Hackathon.png",
+    },
   ];
 
   return (
-    <section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-800" ref={ref}>
+    <section
+      id="certificates"
+      className="py-20 bg-gray-50 dark:bg-gray-800"
+      ref={ref}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -33,8 +38,8 @@ const Certificates = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
-            Continuous learning and skill development through recognized courses and certifications
-            from leading educational platforms.
+            Continuous learning and skill development through recognized courses
+            and certifications from leading educational platforms.
           </p>
         </motion.div>
 
@@ -45,27 +50,31 @@ const Certificates = () => {
               initial={{
                 opacity: 0,
                 y: 50,
-                rotateX: -15
+                rotateX: -15,
               }}
-              animate={isInView ? {
-                opacity: 1,
-                y: 0,
-                rotateX: 0
-              } : {
-                opacity: 0,
-                y: 50,
-                rotateX: -15
-              }}
+              animate={
+                isInView
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      rotateX: 0,
+                    }
+                  : {
+                      opacity: 0,
+                      y: 50,
+                      rotateX: -15,
+                    }
+              }
               transition={{
                 duration: 0.8,
                 delay: index * 0.1,
                 type: "spring",
-                stiffness: 100
+                stiffness: 100,
               }}
               whileHover={{
                 y: -10,
                 scale: 1.02,
-                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)"
+                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
               }}
               className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
             >
@@ -92,7 +101,9 @@ const Certificates = () => {
                 </div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
                   className="absolute bottom-4 left-4 right-4"
                 >
@@ -105,7 +116,9 @@ const Certificates = () => {
               <div className="p-6">
                 <motion.h3
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
                   className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2"
                 >
@@ -114,7 +127,9 @@ const Certificates = () => {
 
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
                   className="text-blue-600 dark:text-blue-400 font-semibold mb-3"
                 >
@@ -123,7 +138,9 @@ const Certificates = () => {
 
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
                   className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3"
                 >
@@ -132,7 +149,9 @@ const Certificates = () => {
 
                 <motion.a
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -156,7 +175,8 @@ const Certificates = () => {
           className="text-center mt-12"
         >
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Committed to lifelong learning and staying updated with the latest technologies and industry best practices.
+            Committed to lifelong learning and staying updated with the latest
+            technologies and industry best practices.
           </p>
         </motion.div>
       </div>
