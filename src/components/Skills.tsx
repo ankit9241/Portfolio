@@ -3,9 +3,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import {
-  SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, SiBootstrap,
-  SiNodedotjs, SiExpress, SiMongodb, SiGit, SiGithub, SiHoppscotch, SiVite
-} from 'react-icons/si';
+  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiTailwindcss, SiBootstrap,
+  SiNodedotjs, SiExpress, SiMongodb, SiGit, SiGithub, SiHoppscotch, SiVite, SiRender, SiFirebase} from 'react-icons/si';
 
 const Skills = () => {
   const ref = useRef(null);
@@ -34,6 +33,14 @@ const Skills = () => {
       color: '#F7DF1E',
       bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
       textColor: 'text-yellow-600 dark:text-yellow-400',
+      category: 'Frontend'
+    },
+    {
+      name: 'TypeScript',
+      icon: SiTypescript,
+      color: '#007acc',
+      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+      textColor: 'text-blue-600 dark:text-blue-400',
       category: 'Frontend'
     },
     {
@@ -114,6 +121,22 @@ const Skills = () => {
       color: '#646CFF',
       bgColor: 'bg-indigo-100 dark:bg-indigo-900/30',
       textColor: 'text-indigo-600 dark:text-indigo-400',
+      category: 'Tools'
+    },
+    {
+      name: 'Render',
+      icon: SiRender,
+      color: '#FF0000',
+      bgColor: 'bg-red-100 dark:bg-red-900/30',
+      textColor: 'text-red-600 dark:text-red-400',
+      category: 'Tools'
+    },
+    {
+      name: 'Firebase',
+      icon: SiFirebase,
+      color: '#FFC107',
+      bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
+      textColor: 'text-yellow-600 dark:text-yellow-400',
       category: 'Tools'
     }
   ];

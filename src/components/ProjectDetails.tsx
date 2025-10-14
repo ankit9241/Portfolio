@@ -14,7 +14,7 @@ interface Project {
     title: string;
     description: string;
     tech: ProjectTech[];
-    image: string;
+    image: string | string[];
     images?: string[];
     github: string;
     live: string;
@@ -48,13 +48,19 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
 
     // Use selected project data or default to empty arrays
     const {
+        title,
+        image,
+        images: projectImages = [],
+        github,
+        live,
         features = [],
         challenges = [],
-        learnings = [],
-        images = [selectedProject.image],
-        github,
-        live
+        learnings = []
     } = selectedProject;
+
+    // Handle both string and string[] for image
+    const mainImage = Array.isArray(image) ? image[0] : image;
+    const allImages = Array.isArray(image) ? image : [image, ...(projectImages || [])];
 
     return (
         <AnimatePresence>
@@ -92,32 +98,30 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                         <div className="flex-shrink-0 h-[350px] overflow-hidden bg-gray-100 dark:bg-gray-700">
                             <div className="w-full h-full flex items-center justify-center">
                                 <img
-                                    src={selectedProject.image || "/assets/kiran-new.png"}
-                                    alt={selectedProject.title}
+                                    src={mainImage || "/assets/kiran-new.png"}
+                                    alt={title}
                                     className="max-w-full max-h-full object-contain p-4"
                                 />
                             </div>
                         </div>
 
                         {/* Image gallery */}
-                        {images.length > 1 && (
+                        {allImages.length > 1 && (
                             <div className="border-t border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-2">
                                 <div className="flex space-x-2 overflow-x-auto py-2">
-                                    {images.map((img, idx) => (
+                                    {allImages.map((img: string, idx: number) => (
                                         <button
                                             key={img}
-                                            onClick={() => {
-                                                // Update the main image when a thumbnail is clicked
-                                                handleImageClick(img);
-                                            }}
-                                            className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${selectedProject.image === img
+                                            onClick={() => handleImageClick(img)}
+                                            className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${
+                                                mainImage === img
                                                     ? 'border-blue-500 dark:border-blue-400'
                                                     : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600'
-                                                }`}
+                                            }`}
                                         >
                                             <img
                                                 src={img}
-                                                alt={`${project.title} screenshot ${idx + 1}`}
+                                                alt={`${title} screenshot ${idx + 1}`}
                                                 className="w-full h-full object-cover"
                                             />
                                         </button>
