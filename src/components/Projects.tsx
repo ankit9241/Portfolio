@@ -5,22 +5,100 @@ import { useRef, useState } from "react";
 import { HiExternalLink, HiCode } from "react-icons/hi";
 import {
   SiReact,
-  SiMongodb,
-  SiTailwindcss,
   SiJavascript,
-  SiCss3,
+  SiMongodb,
   SiBootstrap,
+  SiNextdotjs,
+  SiTailwindcss,
   SiTypescript,
+  SiCss3,
+  SiVite,
 } from "react-icons/si";
 import ProjectDetails from "./ProjectDetails";
 
 interface ProjectTech {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
-  bgColor: string;
-  textColor: string;
-  borderColor: string;
+  icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
+  bgColor?: string;
+  textColor?: string;
+  borderColor?: string;
 }
+
+const technologies = {
+  react: {
+    name: "React",
+    icon: SiReact,
+    bgColor: "rgba(97, 218, 251, 0.1)",
+    textColor: "#61DAFB",
+    borderColor: "rgba(97, 218, 251, 0.2)",
+  },
+  vite: {
+    name: "Vite",
+    icon: SiVite,
+    bgColor: "rgba(100, 108, 255, 0.1)",
+    textColor: "#646CFF",
+    borderColor: "rgba(100, 108, 255, 0.2)",
+  },
+  mongodb: {
+    name: "MongoDB",
+    icon: SiMongodb,
+    bgColor: "rgba(77, 194, 116, 0.1)",
+    textColor: "#47A248",
+    borderColor: "rgba(77, 194, 116, 0.2)",
+  },
+  javascript: {
+    name: "JavaScript",
+    icon: SiJavascript,
+    bgColor: "rgba(247, 223, 30, 0.1)",
+    textColor: "#F7DF1E",
+    borderColor: "rgba(247, 223, 30, 0.2)",
+  },
+  bootstrap: {
+    name: "Bootstrap",
+    icon: SiBootstrap,
+    bgColor: "rgba(121, 82, 179, 0.1)",
+    textColor: "#7952B3",
+    borderColor: "rgba(121, 82, 179, 0.2)",
+  },
+  tailwind: {
+    name: "Tailwind CSS",
+    icon: SiTailwindcss,
+    bgColor: "rgba(56, 189, 248, 0.1)",
+    textColor: "#38BDF8",
+    borderColor: "rgba(56, 189, 248, 0.2)",
+  },
+  typescript: {
+    name: "TypeScript",
+    icon: SiTypescript,
+    bgColor: "rgba(49, 120, 198, 0.1)",
+    textColor: "#3178C6",
+    borderColor: "rgba(49, 120, 198, 0.2)",
+  },
+  nextjs: {
+    name: "Next.js 14",
+    icon: SiNextdotjs,
+    bgColor: "rgba(0, 0, 0, 0.1)",
+    textColor: "#47a248",
+    borderColor: "rgba(0, 0, 0, 0.2)",
+  },
+  css: {
+    name: "CSS3",
+    icon: SiCss3,
+    bgColor: "rgba(33, 150, 243, 0.1)",
+    textColor: "#2196F3",
+    borderColor: "rgba(33, 150, 243, 0.2)",
+  },
+  reactContext: {
+    name: "React Context",
+    icon: SiReact,
+    bgColor: "rgba(97, 218, 251, 0.1)",
+    textColor: "#61DAFB",
+    borderColor: "rgba(97, 218, 251, 0.2)",
+  },
+} as const;
 
 interface Project {
   title: string;
@@ -37,7 +115,7 @@ interface Project {
 }
 
 const Projects = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,22 +124,6 @@ const Projects = () => {
     setSelectedProject(project);
     setIsModalOpen(true);
     document.body.style.overflow = "hidden";
-
-    // Prevent default click behavior if project is not published
-    if (!project.isPublished) {
-      const liveButton = document.querySelector(".live-demo-button");
-      if (liveButton) {
-        liveButton.addEventListener(
-          "click",
-          (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            alert("This project is not yet published. Coming soon!");
-          },
-          { once: true }
-        );
-      }
-    }
   };
 
   const closeModal = () => {
@@ -69,52 +131,22 @@ const Projects = () => {
     document.body.style.overflow = "auto";
   };
 
-  const projects = [
+  const projects: Project[] = [
     {
       title:
-        "ExamifAI – Secure AI-Based Exam Portal for IIT Patna (Full Stack Project)",
+        "ExamifAI - Secure AI-Based Exam Portal for IIT Patna (Full Stack Project)",
       description:
         "Developed for IIT Patna, ExamifAI is a smart online exam system that uses real-time face recognition to ensure secure, cheat-free assessments. It tracks the student's face throughout the exam, issues warnings for suspicious activity (like missing or multiple faces), and auto-submits after 3 violations. It also blocks tab switching and fullscreen exit to maintain exam integrity.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Vite",
-          icon: SiReact,
-          bgColor: "bg-purple-100 dark:bg-purple-900/30",
-          textColor: "text-purple-600 dark:text-purple-400",
-          borderColor: "border-purple-200 dark:border-purple-800",
-        },
-        {
-          name: "MongoDB",
-          icon: SiMongodb,
-          bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
-          textColor: "text-emerald-600 dark:text-emerald-400",
-          borderColor: "border-emerald-200 dark:border-emerald-800",
-        },
-        {
-          name: "JavaScript",
-          icon: SiJavascript,
-          bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
-          textColor: "text-yellow-600 dark:text-yellow-400",
-          borderColor: "border-yellow-200 dark:border-yellow-800",
-        },
-        {
-          name: "Bootstrap",
-          icon: SiBootstrap,
-          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
-          textColor: "text-indigo-600 dark:text-indigo-400",
-          borderColor: "border-indigo-200 dark:border-indigo-800",
-        },
+        technologies.react,
+        technologies.vite,
+        technologies.mongodb,
+        technologies.javascript,
+        technologies.bootstrap,
       ],
       image: "/assets/examifai.png",
       github: "https://github.com/ankit9241/ExamifAI",
-      live: "https://ankitkumar.vercel.app",
+      live: "#",
       isPublished: false,
       features: [
         "Proctored exam mode with face detection and tracking",
@@ -137,43 +169,13 @@ const Projects = () => {
     {
       title: "KIRAN Mentorship Program (Full Stack Project)",
       description:
-        "KIRAN is a responsive mentorship web platform built with modern technologies for Class 11–12 and dropper students preparing for competitive exams like JEE and NEET. Built with React and Vite for blazing fast performance, it enables students to raise doubts, book 1:1 sessions, and track academic progress. The platform uses MongoDB for efficient data storage and Bootstrap for a responsive, mobile-first design. Mentors can manage students, track progress, and provide personalized feedback through an intuitive dashboard.",
+        "KIRAN is a responsive mentorship web platform built with modern technologies for Class 11-12 and dropper students preparing for competitive exams like JEE and NEET. Built with React and Vite for blazing fast performance, it enables students to raise doubts, book 1:1 sessions, and track academic progress. The platform uses MongoDB for efficient data storage and Bootstrap for a responsive, mobile-first design. Mentors can manage students, track progress, and provide personalized feedback through an intuitive dashboard.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Vite",
-          icon: SiReact,
-          bgColor: "bg-purple-100 dark:bg-purple-900/30",
-          textColor: "text-purple-600 dark:text-purple-400",
-          borderColor: "border-purple-200 dark:border-purple-800",
-        },
-        {
-          name: "MongoDB",
-          icon: SiMongodb,
-          bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
-          textColor: "text-emerald-600 dark:text-emerald-400",
-          borderColor: "border-emerald-200 dark:border-emerald-800",
-        },
-        {
-          name: "JavaScript",
-          icon: SiJavascript,
-          bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
-          textColor: "text-yellow-600 dark:text-yellow-400",
-          borderColor: "border-yellow-200 dark:border-yellow-800",
-        },
-        {
-          name: "Bootstrap",
-          icon: SiBootstrap,
-          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
-          textColor: "text-indigo-600 dark:text-indigo-400",
-          borderColor: "border-indigo-200 dark:border-indigo-800",
-        },
+        technologies.react,
+        technologies.vite,
+        technologies.mongodb,
+        technologies.javascript,
+        technologies.bootstrap,
       ],
       image: "/assets/kiran-old.png",
       github: "https://github.com/ankit9241/KIRAN",
@@ -199,49 +201,19 @@ const Projects = () => {
     },
     {
       title:
-        "KIRAN – Mentorship Platform (Advanced Version) (Full Stack Project)",
+        "KIRAN - Mentorship Platform (Advanced Version) (Full Stack Project)",
       description:
         "This upgraded version of KIRAN offers a fully redesigned frontend and a more robust backend, enabling seamless mentorship at scale. It features dedicated dashboards for students, mentors, and admins; real-time messaging; personal and public resource sharing; meeting scheduling; feedback analytics; and a secure approval system for mentors and materials. Built for efficiency, scalability, and smooth user experience.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Vite",
-          icon: SiReact,
-          bgColor: "bg-purple-100 dark:bg-purple-900/30",
-          textColor: "text-purple-600 dark:text-purple-400",
-          borderColor: "border-purple-200 dark:border-purple-800",
-        },
-        {
-          name: "MongoDB",
-          icon: SiMongodb,
-          bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
-          textColor: "text-emerald-600 dark:text-emerald-400",
-          borderColor: "border-emerald-200 dark:border-emerald-800",
-        },
-        {
-          name: "Tailwind",
-          icon: SiTailwindcss,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "TypeScript",
-          icon: SiTypescript,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
+        technologies.react,
+        technologies.vite,
+        technologies.mongodb,
+        technologies.tailwind,
+        technologies.typescript,
       ],
       image: "/assets/kiran-new.png",
       github: "https://github.com/ankit9241/KIRAN-Advanced-",
-      live: "https://mahila-bazaar.vercel.app",
+      live: "#",
       isPublished: false,
       features: [
         "Student portal for doubt asking and mentor communication",
@@ -267,34 +239,10 @@ const Projects = () => {
       description:
         "A dynamic platform for IIT Patna's student activities, showcasing events, sessions, and activities across three main college wings and their respective subclubs. The platform provides real-time updates and seamless participation options for students.",
       tech: [
-        {
-          name: "Next.js 14",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "TypeScript",
-          icon: SiTypescript,
-          bgColor: "bg-blue-500/10 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Tailwind CSS",
-          icon: SiTailwindcss,
-          bgColor: "bg-cyan-100 dark:bg-cyan-900/30",
-          textColor: "text-cyan-600 dark:text-cyan-400",
-          borderColor: "border-cyan-200 dark:border-cyan-800",
-        },
-        {
-          name: "React Context",
-          icon: SiReact,
-          bgColor: "bg-purple-100 dark:bg-purple-900/30",
-          textColor: "text-purple-600 dark:text-purple-400",
-          borderColor: "border-purple-200 dark:border-purple-800",
-        },
+        technologies.nextjs,
+        technologies.typescript,
+        technologies.tailwind,
+        technologies.react,
       ],
       image: ["/assets/stciitp-1.png", "/assets/stciitp-2.png"],
       github: "https://github.com/ankit9241/stc_website",
@@ -322,38 +270,14 @@ const Projects = () => {
       ],
     },
     {
-      title: "CrazyOne-E-Commerce Website (Frontend)",
+      title: "CrazyOne-E-Commerce Website",
       description:
         "Discover the latest trends in fashion with CrazyOne, your go-to online store for stylish and affordable dresses. From casual wear to party outfits, we’ve got something for every style and occasion. Enjoy a smooth and secure shopping experience, with fast delivery and easy browsing. Behind the scenes, our powerful admin dashboard provides complete analytics to manage store performance, track customer trends, and ensure the best shopping experience for you.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "CSS3",
-          icon: SiCss3,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "JavaScript",
-          icon: SiJavascript,
-          bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
-          textColor: "text-yellow-600 dark:text-yellow-400",
-          borderColor: "border-yellow-200 dark:border-yellow-800",
-        },
-        {
-          name: "Tailwind",
-          icon: SiTailwindcss,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
+        technologies.react,
+        technologies.css,
+        technologies.javascript,
+        technologies.tailwind,
       ],
       image: "/assets/CrazyOne.png",
       github: "https://github.com/ankit9241/CrazyOne",
@@ -369,42 +293,18 @@ const Projects = () => {
       ],
     },
     {
-      title: "PlanIT-Event Management (Frontend)",
+      title: "PlanIT-Event Management",
       description:
         "PlanIT is an online event management system where users can seamlessly book everything needed for a perfect event — from locations and decorations to attire, lighting, and catering. With a smooth user experience and detailed backend analytics, the admin has full control over every booking and insight into event trends to ensure top-quality service.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "CSS3",
-          icon: SiCss3,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "TypeScript",
-          icon: SiTypescript,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Bootstrap",
-          icon: SiBootstrap,
-          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
-          textColor: "text-indigo-600 dark:text-indigo-400",
-          borderColor: "border-indigo-200 dark:border-indigo-800",
-        },
+        technologies.react,
+        technologies.css,
+        technologies.typescript,
+        technologies.bootstrap,
       ],
       image: "/assets/planit.png",
       github: "https://github.com/ankit9241/PlanIT",
-      live: "https://planit-event-management.vercel.app",
+      live: "#",
       isPublished: false,
       features: [
         "Event browsing and search functionality",
@@ -416,43 +316,19 @@ const Projects = () => {
       ],
     },
     {
-      title: "Gokul Bhandar - Online Grocery Store (Frontend)",
+      title: "Gokul Bhandar - Online Grocery Store",
       description:
         "Gokul Bhandar is a local grocery store brought online, offering groceries, stationery, candies, ice cream, and much more. With a clean and simple interface, the website makes it easy for customers to browse, order, and get essentials delivered. The admin panel provides complete store control with analytics to manage inventory, sales, and customer demand.",
       tech: [
-        {
-          name: "React",
-          icon: SiReact,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "CSS3",
-          icon: SiCss3,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "TypeScript",
-          icon: SiTypescript,
-          bgColor: "bg-blue-100 dark:bg-blue-900/30",
-          textColor: "text-blue-600 dark:text-blue-400",
-          borderColor: "border-blue-200 dark:border-blue-800",
-        },
-        {
-          name: "Bootstrap",
-          icon: SiBootstrap,
-          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
-          textColor: "text-indigo-600 dark:text-indigo-400",
-          borderColor: "border-indigo-200 dark:border-indigo-800",
-        },
+        technologies.react,
+        technologies.css,
+        technologies.typescript,
+        technologies.bootstrap,
       ],
       image: "/assets/GokulBhandar.png",
       github: "https://github.com/ankit9241/GokulBhandar",
-      live: "https://gokul-bhandar.vercel.app",
-      isPublished: false,
+      live: "https://gokulbhandar.netlify.app",
+      isPublished: true,
       features: [
         "Online product catalog with categories",
         "User registration and authentication",
@@ -464,12 +340,11 @@ const Projects = () => {
     },
   ];
 
+  const paletteGradient =
+    "linear-gradient(90deg,#49BFC9 0%,#5F8DFF 50%,#9A8DFF 100%)";
+
   return (
-    <section
-      id="projects"
-      className="py-20 bg-white dark:bg-gray-900"
-      ref={ref}
-    >
+    <section id="projects" className="py-20" ref={ref}>
       {selectedProject && (
         <ProjectDetails
           project={selectedProject}
@@ -477,6 +352,7 @@ const Projects = () => {
           onClose={closeModal}
         />
       )}
+
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -484,11 +360,17 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
+            style={{ backgroundImage: paletteGradient }}
+          >
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6">
+          <div
+            className="w-24 h-1 mx-auto rounded-full"
+            style={{ background: paletteGradient }}
+          />
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-6">
             Here are some of my recent projects that showcase my skills in
             full-stack development, UI/UX design, and problem-solving abilities.
           </p>
@@ -500,166 +382,195 @@ const Projects = () => {
               key={project.title}
               initial={{
                 opacity: 0,
-                x: index % 2 === 0 ? -50 : 50,
-                rotateY: index % 2 === 0 ? -15 : 15,
+                x: index % 2 === 0 ? -40 : 40,
+                rotateY: index % 2 === 0 ? -8 : 8,
               }}
               animate={
                 isInView
-                  ? {
-                      opacity: 1,
-                      x: 0,
-                      rotateY: 0,
-                    }
+                  ? { opacity: 1, x: 0, rotateY: 0 }
                   : {
                       opacity: 0,
-                      x: index % 2 === 0 ? -50 : 50,
-                      rotateY: index % 2 === 0 ? -15 : 15,
+                      x: index % 2 === 0 ? -40 : 40,
+                      rotateY: index % 2 === 0 ? -8 : 8,
                     }
               }
               transition={{
-                duration: 0.8,
-                delay: index * 0.2,
+                duration: 0.7,
+                delay: index * 0.12,
                 type: "spring",
-                stiffness: 100,
+                stiffness: 120,
               }}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => openModal(project)}
+              style={{
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(95,141,255,0.04)",
+                boxShadow: "0 8px 30px rgba(7,10,30,0.45)",
+                transition: "transform 160ms ease, box-shadow 160ms ease",
               }}
-              className="group bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
             >
-              <div
-                key={index}
-                className="relative overflow-hidden group cursor-pointer"
-                onClick={() => openModal(project)}
-              >
+              <div className="relative overflow-hidden">
                 <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  src={Array.isArray(project.image) ? project.image[0] : project.image}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.35 }}
+                  src={
+                    Array.isArray(project.image)
+                      ? project.image[0]
+                      : project.image
+                  }
                   alt={project.title}
                   className="w-full h-48 object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-180">
                   <motion.a
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(255, 255, 255, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-black/80 backdrop-blur-sm rounded-full transition-all duration-200 group-hover:bg-black/90"
+                    className="p-2 bg-black/70 backdrop-blur-sm rounded-full transition-all duration-150 z-10"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <HiCode className="w-5 h-5 text-white group-hover:text-white" />
+                    <HiCode className="w-5 h-5 text-white" />
                   </motion.a>
                   <motion.a
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "rgba(255, 255, 255, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-black/80 backdrop-blur-sm rounded-full transition-all duration-200 group-hover:bg-black/90"
+                    className="p-2 bg-black/70 backdrop-blur-sm rounded-full transition-all duration-150 z-10"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <HiExternalLink className="w-5 h-5 text-white group-hover:text-white" />
+                    <HiExternalLink className="w-5 h-5 text-white" />
                   </motion.a>
                 </div>
               </div>
 
               <div className="p-6">
                 <motion.h3
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
                   }
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
-                  className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3"
+                  transition={{ duration: 0.5, delay: index * 0.12 + 0.08 }}
+                  className="text-xl font-semibold text-white mb-2"
                 >
                   {project.title}
                 </motion.h3>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
                   }
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
-                  className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3"
+                  transition={{ duration: 0.5, delay: index * 0.12 + 0.12 }}
+                  className="text-gray-300 mb-4 line-clamp-3"
                 >
                   {project.description}
                 </motion.p>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
                   }
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
+                  transition={{ duration: 0.5, delay: index * 0.12 + 0.16 }}
                   className="flex flex-wrap gap-2 mb-4"
                 >
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className={`flex items-center text-xs font-medium px-2.5 py-1 rounded-full border ${tech.bgColor} ${tech.textColor} ${tech.borderColor}`}
-                    >
-                      <tech.icon className="w-3 h-3 mr-1.5" />
-                      {tech.name}
-                    </span>
-                  ))}
+                  {project.tech.map((tech, i) => {
+                    const Icon = tech.icon;
+                    const textColor = tech.textColor || "#E6F3FF";
+                    const iconStyle = { color: textColor, opacity: 0.9 };
+
+                    return (
+                      <span
+                        key={i}
+                        className="flex items-center text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-200"
+                        style={{
+                          background: tech.bgColor || "rgba(255,255,255,0.05)",
+                          border: `1px solid ${
+                            tech.borderColor || "rgba(255,255,255,0.05)"
+                          }`,
+                          color: textColor,
+                        }}
+                      >
+                        <Icon className="w-3 h-3 mr-1.5" style={iconStyle} />
+                        <span>{tech.name}</span>
+                      </span>
+                    );
+                  })}
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
                   }
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.5 }}
-                  className="flex space-x-4"
+                  transition={{ duration: 0.5, delay: index * 0.12 + 0.2 }}
+                  className="flex flex-wrap gap-3"
                 >
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-4 py-2 bg-gray-800 dark:bg-gray-600 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-500 transition-colors duration-200 whitespace-nowrap"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm"
+                    style={{
+                      background: "rgba(0,0,0,0.6)",
+                      color: "#FFF",
+                      minWidth: 96,
+                      justifyContent: "center",
+                    }}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <HiCode className="w-4 h-4" />
                     <span>Code</span>
                   </motion.a>
+
                   {project.isPublished === false ? (
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
                       onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         alert(
                           "This project is not yet published. Coming soon!"
                         );
                       }}
-                      className="flex items-center space-x-2 px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed whitespace-nowrap"
-                      disabled
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm cursor-not-allowed"
+                      style={{
+                        background: "rgba(255,255,255,0.02)",
+                        color: "#DDD",
+                        minWidth: 96,
+                        justifyContent: "center",
+                      }}
                     >
                       <HiExternalLink className="w-4 h-4" />
                       <span>Coming Soon</span>
                     </motion.button>
                   ) : (
                     <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="live-demo-button flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 whitespace-nowrap"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm"
+                      style={{
+                        backgroundImage: paletteGradient,
+                        color: "#021021",
+                        minWidth: 96,
+                        justifyContent: "center",
+                      }}
                       onClick={(e) => {
                         if (!project.isPublished) {
                           e.preventDefault();
+                          e.stopPropagation();
                           alert(
                             "This project is not yet published. Coming soon!"
                           );

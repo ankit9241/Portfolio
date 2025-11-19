@@ -9,32 +9,43 @@ const About = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-900" ref={ref}>
+    <section id="about" className="py-20" ref={ref}>
       <div className="max-w-6xl mx-auto px-4">
+        
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2
+            className="
+              text-4xl md:text-5xl font-extrabold mb-4
+              bg-gradient-to-r from-[#49BFC9] via-[#5F8DFF] to-[#9A8DFF]
+              bg-clip-text text-transparent
+            "
+          >
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+          <div
+            className="
+              w-28 h-1 rounded-full mx-auto
+              bg-gradient-to-r from-[#49BFC9] via-[#5F8DFF] to-[#9A8DFF]
+            "
+          />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          
+          {/* Profile Card */}
           <ProfileCard
             name="Ankit Kumar"
-            title="Web Developer"
+            title="Full Stack Developer"
             status="Open to new opportunities"
             contactText="Contact Me"
-            avatarUrl="/assets/profile.png"
-            showUserInfo={true}
-            enableTilt={true}
-            enableMobileTilt={false}
+            avatarUrl="/assets/ankit-profile-bgless.png"
             onContactClick={() => {
-              // Open Gmail with pre-filled email
               const recipient = "ankitkumar.iitp09@gmail.com";
               const subject = "Contact from Portfolio";
               const body =
@@ -48,65 +59,44 @@ const About = () => {
             }}
           />
 
+          {/* Clean text-only About */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="space-y-8"
           >
-            <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg backdrop-blur-sm">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                }
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-4"
-              >
-                I'm Ankit Kumar, a 2nd year BSc(CSDA) student at IIT Patna with
-                a passion for full-stack web development. I specialize in
-                creating responsive, sleek, and functional websites using modern
-                technologies like React, Tailwind CSS, JavaScript, and Node.js.
-                My approach combines academic knowledge with practical skills to
-                build projects that are not only visually appealing but also
-                optimized for performance. I believe in writing clean code,
-                maintaining premium design standards, and delivering smooth user
-                experiences.
-              </motion.p>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-white text-lg leading-relaxed"
+            >
+              Hello! I'm <strong>Ankit Kumar</strong>, a second-year BSc (CSDA) student at IIT Patna. I'm a developer who enjoys building clean, practical full-stack applications using React, JavaScript, Tailwind CSS, and Node.js. I like working on products that look good, feel smooth, and solve real problems.
+            </motion.p>
 
-            <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg backdrop-blur-sm">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                }
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-4"
-              >
-                I enjoy taking ideas from concept to launch, whether it’s
-                developing a product from scratch or improving existing systems
-                for better usability. My recent work includes platforms for
-                e-commerce, mentorship programs, and AI-based online
-                examinations-each project built to meet real-world needs.
-              </motion.p>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="text-gray-300 text-lg leading-relaxed"
+            >
+              My work mixes academic problem-solving with hands-on development. I enjoy taking projects from concept to deployment and improving user experience through clean design and reliable functionality.
+            </motion.p>
 
-            <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg backdrop-blur-sm">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                }
-                transition={{ duration: 0.6, delay: 1.0 }}
-                className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
-              >
-                Beyond coding, I'm always exploring new tools, trends, and
-                technologies to stay ahead in the fast-moving tech space. I
-                believe in continuous learning, problem-solving, and building
-                solutions that actually make a difference.
-              </motion.p>
-            </div>
+            {/* Quote */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="pl-4 border-l-4 border-[#6366f1]"
+            >
+              <p className="text-gray-300 italic text-sm">
+                "I believe in writing clean code, learning continuously, and building things that are both useful and reliable."
+              </p>
+              <p className="text-gray-200 text-sm font-medium mt-3">- Ankit Kumar</p>
+            </motion.div>
+
           </motion.div>
         </div>
       </div>

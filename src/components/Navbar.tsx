@@ -1,215 +1,243 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { HiSun, HiMoon, HiMenu, HiX } from 'react-icons/hi';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { TbCertificate } from "react-icons/tb";
+import {
+  FaHome,
+  FaUser,
+  FaCode,
+  FaEnvelope,
+  FaDownload,
+  FaLaptopCode,
+} from "react-icons/fa";
+
+const sections = [
+  { id: "home", label: "Home", icon: <FaHome className="mr-2" /> },
+  { id: "about", label: "About", icon: <FaUser className="mr-2" /> },
+  { id: "skills", label: "Skills", icon: <FaCode className="mr-2" /> },
+  { id: "projects", label: "Projects", icon: <FaLaptopCode className="mr-2" /> },
+  { id: "certificates", label: "Certificates", icon: <TbCertificate className="mr-2" /> },
+  { id: "contact", label: "Contact", icon: <FaEnvelope className="mr-2" /> },
+];
 
 const Navbar = () => {
-  const [mounted, setMounted] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Initialize theme
-  useEffect(() => {
-    setMounted(true);
-    
-    // Check for saved theme preference or use system preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setIsDarkMode(true);
-    }
-  };
+  const headerH = "h-16 md:h-20";
+  const gradient = "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)";
 
   useEffect(() => {
-    setMounted(true);
-
-    // Set up intersection observer to detect active section
-    const observerOptions = {
-      threshold: 0.3, // Trigger when 30% of section is visible
-      rootMargin: '-20% 0px -70% 0px', // Adjust these values to fine-tune when the active state changes
-    };
-
-    let sectionElements: HTMLElement[] = [];
+    const observerOptions = { threshold: 0.3, rootMargin: "-20% 0px -70% 0px" };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
+      entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id));
     }, observerOptions);
 
-    // Observe all sections with a small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       sections.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) {
-          observer.observe(element);
-          sectionElements.push(element);
-        }
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
       });
     }, 100);
 
-    // Also track scroll position for better accuracy
     const handleScroll = () => {
-      const currentPosition = window.scrollY + 100; // Adjust this offset as needed
-
-      for (const section of sectionElements) {
-        if (!section) continue;
-
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (currentPosition >= sectionTop &&
-          currentPosition < sectionTop + sectionHeight) {
-          setActiveSection(section.id);
+      const y = window.scrollY + 120;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (!el) continue;
+        if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) {
+          setActiveSection(s.id);
           break;
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Cleanup
+    window.addEventListener("scroll", handleScroll);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       sections.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) observer.unobserve(element);
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
       });
     };
   }, []);
 
-  const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'certificates', label: 'Certificates' },
-    { id: 'resume', label: 'Resume' },
-    // { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' }
-  ];
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const t = e.target as HTMLElement;
+      if (isMenuOpen && !t.closest(".mobile-menu-container") && !t.closest(".menu-button"))
+        setIsMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
 
-  const scrollToSection = (sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToSection = (id: string) => {
+    setActiveSection(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
-
-
-  if (!mounted) {
-    return (
-      <div className="h-16 bg-white dark:bg-gray-900"></div>
-    );
-  }
-
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-lg transition-all duration-300"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="font-sans text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-          >
-            Ankit Kumar
-          </motion.div>
+    <>
+      <motion.nav
+        initial={{ y: -60 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.28 }}
+        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto bg-gray-900/80 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none`}
+      >
+        <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
+          <div className="flex items-center justify-between w-full">
 
-          <div className="hidden md:flex space-x-8">
-            {sections.map((section) => (
-              <motion.button
-                key={section.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(section.id)}
-                className={`px-3 py-2 rounded-full transition-all duration-300 ${activeSection === section.id
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800'
-                  }`}
-              >
-                {section.label}
-              </motion.button>
-            ))}
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-            >
-              {isDarkMode ? (
-                <HiSun className="w-5 h-5 text-yellow-400" />
-              ) : (
-                <HiMoon className="w-5 h-5 text-gray-700" />
-              )}
-            </motion.button>
-
+            {/* Mobile Portfolio Text */}
             <div className="md:hidden">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              <div
+                className="font-bold text-lg"
+                style={{ background: gradient, WebkitBackgroundClip: "text", color: "transparent" }}
               >
-                {isMenuOpen ? <HiX className="w-5 h-5" /> : <HiMenu className="w-5 h-5" />}
-              </motion.button>
+                Portfolio
+              </div>
             </div>
+
+            {/* Desktop centered capsule */}
+            <div className="hidden md:flex items-center justify-center w-full">
+              <div
+                className="flex items-center rounded-full px-3 py-1"
+                style={{
+                  background: "rgba(14,26,47,0.7)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
+                  transition: "box-shadow 220ms ease, transform 220ms ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow =
+                    "0 10px 40px rgba(73,141,255,0.14), 0 0 40px rgba(93,143,255,0.06)";
+                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 6px 22px rgba(0,0,0,0.45)";
+                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                }}
+              >
+                <div className="flex items-center space-x-2 px-2">
+                  {sections.map((section) => {
+                    const isActive = activeSection === section.id;
+                    return (
+                      <button
+                        key={section.id}
+                        onClick={() => scrollToSection(section.id)}
+                        className="flex items-center px-4 py-2 mx-1 my-1 rounded-full text-sm font-medium transition"
+                        style={
+                          isActive
+                            ? {
+                                background: gradient,
+                                color: "#021021",
+                                boxShadow: "0 8px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.10)",
+                                border: "1px solid rgba(159,185,255,0.12)",
+                                transform: "translateY(-1px)",
+                              }
+                            : { color: "rgb(203,213,225)" }
+                        }
+                      >
+                        <span className="mr-2">{section.icon}</span>
+                        <span>{section.label}</span>
+                      </button>
+                    );
+                  })}
+
+                  <button
+                    onClick={() => window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")}
+                    className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
+                    style={{
+                      background: gradient,
+                      color: "#021021",
+                      boxShadow: "0 10px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.08)",
+                      border: "1px solid rgba(159,185,255,0.12)",
+                      transition: "transform 180ms ease",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)")}
+                  >
+                    <FaDownload className="mr-2" />
+                    Resume
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile hamburger */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+                className={`menu-button p-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#5F8DFF] ${
+                  isMenuOpen ? "bg-[rgba(79,141,255,0.12)]" : "bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)]"
+                }`}
+              >
+                <svg className="h-6 w-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {isMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+
           </div>
         </div>
-      </div>
+      </motion.nav>
 
+      {/* Spacer */}
+      <div className="w-full h-16 md:h-20" />
+
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
-        >
-          <div className="px-4 py-2 space-y-2">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="block w-full text-left px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800"
-              >
-                {section.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+        <>
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40" onClick={() => setIsMenuOpen(false)} />
+
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.18 }}
+            className="mobile-menu-container fixed right-4 top-20 z-50 w-[calc(100%-2rem)] max-w-xs md:hidden"
+          >
+            <div className="bg-[#071026cc] backdrop-blur-lg rounded-xl border border-[rgba(95,141,255,0.06)] overflow-hidden shadow-2xl">
+              <div className="p-3 space-y-1">
+                {sections.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className={`flex items-center w-full px-5 py-3 rounded-xl text-base font-medium transition ${
+                      activeSection === section.id ? "text-white" : "text-gray-300 hover:bg-[rgba(255,255,255,0.03)]"
+                    }`}
+                    style={activeSection === section.id ? { background: gradient } : undefined}
+                  >
+                    <span className="text-lg mr-3">{section.icon}</span>
+                    <span>{section.label}</span>
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => {
+                    window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank");
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center w-full px-5 py-3 rounded-xl text-base font-medium"
+                  style={{ background: gradient, color: "#021021" }}
+                >
+                  <FaDownload className="mr-3 text-lg" />
+                  Download Resume
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </>
       )}
-    </motion.nav>
+    </>
   );
 };
 
