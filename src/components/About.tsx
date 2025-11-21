@@ -11,7 +11,6 @@ const About = () => {
   return (
     <section id="about" className="py-20" ref={ref}>
       <div className="max-w-6xl mx-auto px-4">
-        
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -37,7 +36,6 @@ const About = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
           {/* Profile Card */}
           <ProfileCard
             name="Ankit Kumar"
@@ -72,7 +70,11 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-white text-lg leading-relaxed"
             >
-              Hello! I'm <strong>Ankit Kumar</strong>, a second-year BSc (CSDA) student at IIT Patna. I'm a developer who enjoys building clean, practical full-stack applications using React, JavaScript, Tailwind CSS, and Node.js. I like working on products that look good, feel smooth, and solve real problems.
+              Hello! I'm <strong>Ankit Kumar</strong>, a second-year BSc (CSDA)
+              student at IIT Patna. I'm a developer who enjoys building clean,
+              practical full-stack applications using React, JavaScript,
+              Tailwind CSS, and Node.js. I like working on products that look
+              good, feel smooth, and solve real problems.
             </motion.p>
 
             <motion.p
@@ -81,7 +83,9 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.55 }}
               className="text-gray-300 text-lg leading-relaxed"
             >
-              My work mixes academic problem-solving with hands-on development. I enjoy taking projects from concept to deployment and improving user experience through clean design and reliable functionality.
+              My work mixes academic problem-solving with hands-on development.
+              I enjoy taking projects from concept to deployment and improving
+              user experience through clean design and reliable functionality.
             </motion.p>
 
             {/* Quote */}
@@ -92,11 +96,13 @@ const About = () => {
               className="pl-4 border-l-4 border-[#6366f1]"
             >
               <p className="text-gray-300 italic text-sm">
-                "I believe in writing clean code, learning continuously, and building things that are both useful and reliable."
+                "I believe in writing clean code, learning continuously, and
+                building things that are both useful and reliable."
               </p>
-              <p className="text-gray-200 text-sm font-medium mt-3">- Ankit Kumar</p>
+              <p className="text-gray-200 text-sm font-medium mt-3">
+                - Ankit Kumar
+              </p>
             </motion.div>
-
           </motion.div>
         </div>
       </div>

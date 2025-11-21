@@ -16,10 +16,36 @@ const sections = [
   { id: "home", label: "Home", icon: <FaHome className="mr-2" /> },
   { id: "about", label: "About", icon: <FaUser className="mr-2" /> },
   { id: "skills", label: "Skills", icon: <FaCode className="mr-2" /> },
-  { id: "projects", label: "Projects", icon: <FaLaptopCode className="mr-2" /> },
-  { id: "certificates", label: "Certificates", icon: <TbCertificate className="mr-2" /> },
+  {
+    id: "projects",
+    label: "Projects",
+    icon: <FaLaptopCode className="mr-2" />,
+  },
+  {
+    id: "certificates",
+    label: "Certificates",
+    icon: <TbCertificate className="mr-2" />,
+  },
   { id: "contact", label: "Contact", icon: <FaEnvelope className="mr-2" /> },
 ];
+
+// ✨ animation variants (added)
+const fadeDown = {
+  hidden: { opacity: 0, y: -22 },
+  show: { opacity: 1, y: 0 },
+};
+
+const staggerFade = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+  },
+};
+
+const itemFade = {
+  hidden: { opacity: 0, y: -8 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -28,10 +54,13 @@ const Navbar = () => {
   const headerH = "h-16 md:h-20";
   const gradient = "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)";
 
+  // ---- Scroll & section tracking logic (unchanged) ----
   useEffect(() => {
     const observerOptions = { threshold: 0.3, rootMargin: "-20% 0px -70% 0px" };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id));
+      entries.forEach(
+        (entry) => entry.isIntersecting && setActiveSection(entry.target.id)
+      );
     }, observerOptions);
 
     const timer = setTimeout(() => {
@@ -67,7 +96,11 @@ const Navbar = () => {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (isMenuOpen && !t.closest(".mobile-menu-container") && !t.closest(".menu-button"))
+      if (
+        isMenuOpen &&
+        !t.closest(".mobile-menu-container") &&
+        !t.closest(".menu-button")
+      )
         setIsMenuOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -82,28 +115,40 @@ const Navbar = () => {
 
   return (
     <>
+      {/* ===== NAVBAR MAIN ===== */}
+
       <motion.nav
-        initial={{ y: -60 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.28 }}
+        variants={fadeDown} // ✨ Added
+        initial="hidden"
+        animate="show"
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto bg-gray-900/80 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none`}
       >
         <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
           <div className="flex items-center justify-between w-full">
-
-            {/* Mobile Portfolio Text */}
-            <div className="md:hidden">
+            {/* Mobile Brand */}
+            <motion.div variants={itemFade} className="md:hidden">
               <div
                 className="font-bold text-lg"
-                style={{ background: gradient, WebkitBackgroundClip: "text", color: "transparent" }}
+                style={{
+                  background: gradient,
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
               >
                 Portfolio
               </div>
-            </div>
+            </motion.div>
 
-            {/* Desktop centered capsule */}
-            <div className="hidden md:flex items-center justify-center w-full">
-              <div
+            {/* Desktop Navigation */}
+            <motion.div
+              className="hidden md:flex items-center justify-center w-full"
+              variants={staggerFade} // ✨ Added
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div
+                variants={itemFade} // ✨ Added
                 className="flex items-center rounded-full px-3 py-1"
                 style={{
                   background: "rgba(14,26,47,0.7)",
@@ -112,22 +157,15 @@ const Navbar = () => {
                   boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
                   transition: "box-shadow 220ms ease, transform 220ms ease",
                 }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow =
-                    "0 10px 40px rgba(73,141,255,0.14), 0 0 40px rgba(93,143,255,0.06)";
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 6px 22px rgba(0,0,0,0.45)";
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                }}
               >
                 <div className="flex items-center space-x-2 px-2">
                   {sections.map((section) => {
                     const isActive = activeSection === section.id;
+
                     return (
-                      <button
+                      <motion.button
                         key={section.id}
+                        variants={itemFade} // ✨ Added
                         onClick={() => scrollToSection(section.id)}
                         className="flex items-center px-4 py-2 mx-1 my-1 rounded-full text-sm font-medium transition"
                         style={
@@ -135,7 +173,8 @@ const Navbar = () => {
                             ? {
                                 background: gradient,
                                 color: "#021021",
-                                boxShadow: "0 8px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.10)",
+                                boxShadow:
+                                  "0 8px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.10)",
                                 border: "1px solid rgba(159,185,255,0.12)",
                                 transform: "translateY(-1px)",
                               }
@@ -144,49 +183,60 @@ const Navbar = () => {
                       >
                         <span className="mr-2">{section.icon}</span>
                         <span>{section.label}</span>
-                      </button>
+                      </motion.button>
                     );
                   })}
 
-                  <button
-                    onClick={() => window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")}
+                  {/* Resume Button */}
+                  <motion.button
+                    variants={itemFade} // ✨ Added
+                    onClick={() =>
+                      window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")
+                    }
                     className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
                     style={{
                       background: gradient,
                       color: "#021021",
-                      boxShadow: "0 10px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.08)",
-                      border: "1px solid rgba(159,185,255,0.12)",
-                      transition: "transform 180ms ease",
+                      boxShadow:
+                        "0 10px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.08)",
                     }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)")}
                   >
                     <FaDownload className="mr-2" />
                     Resume
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Mobile hamburger */}
-            <div className="md:hidden">
+            {/* Mobile Hamburger */}
+            <motion.div variants={itemFade} className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-                className={`menu-button p-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#5F8DFF] ${
-                  isMenuOpen ? "bg-[rgba(79,141,255,0.12)]" : "bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)]"
-                }`}
+                className="menu-button p-2 rounded-full"
               >
-                <svg className="h-6 w-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  className="h-6 w-6 text-gray-200"
+                  fill="none"
+                  stroke="currentColor"
+                >
                   {isMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   )}
                 </svg>
               </button>
-            </div>
-
+            </motion.div>
           </div>
         </div>
       </motion.nav>
@@ -194,46 +244,61 @@ const Navbar = () => {
       {/* Spacer */}
       <div className="w-full h-16 md:h-20" />
 
-      {/* Mobile Menu */}
+      {/* ===== MOBILE MENU ===== */}
       {isMenuOpen && (
         <>
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40" onClick={() => setIsMenuOpen(false)} />
+          <div
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+            onClick={() => setIsMenuOpen(false)}
+          />
 
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            initial={{ opacity: 0, y: -10, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
             className="mobile-menu-container fixed right-4 top-20 z-50 w-[calc(100%-2rem)] max-w-xs md:hidden"
           >
-            <div className="bg-[#071026cc] backdrop-blur-lg rounded-xl border border-[rgba(95,141,255,0.06)] overflow-hidden shadow-2xl">
+            <motion.div
+              variants={staggerFade} // ✨ Added
+              initial="hidden"
+              animate="show"
+              className="bg-[#071026cc] backdrop-blur-lg rounded-xl border border-[rgba(95,141,255,0.06)] overflow-hidden shadow-2xl"
+            >
               <div className="p-3 space-y-1">
                 {sections.map((section) => (
-                  <button
+                  <motion.button
+                    variants={itemFade} // ✨ Added
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
                     className={`flex items-center w-full px-5 py-3 rounded-xl text-base font-medium transition ${
-                      activeSection === section.id ? "text-white" : "text-gray-300 hover:bg-[rgba(255,255,255,0.03)]"
+                      activeSection === section.id
+                        ? "text-white"
+                        : "text-gray-300 hover:bg-[rgba(255,255,255,0.03)]"
                     }`}
-                    style={activeSection === section.id ? { background: gradient } : undefined}
+                    style={
+                      activeSection === section.id
+                        ? { background: gradient }
+                        : undefined
+                    }
                   >
                     <span className="text-lg mr-3">{section.icon}</span>
                     <span>{section.label}</span>
-                  </button>
+                  </motion.button>
                 ))}
 
-                <button
-                  onClick={() => {
-                    window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank");
-                    setIsMenuOpen(false);
-                  }}
+                <motion.button
+                  variants={itemFade} // ✨ Added
+                  onClick={() =>
+                    window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")
+                  }
                   className="flex items-center justify-center w-full px-5 py-3 rounded-xl text-base font-medium"
                   style={{ background: gradient, color: "#021021" }}
                 >
                   <FaDownload className="mr-3 text-lg" />
                   Download Resume
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </>
       )}

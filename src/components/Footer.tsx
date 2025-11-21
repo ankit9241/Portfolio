@@ -1,6 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaHeart, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaHeart,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const Footer = () => {
   const gradient = "linear-gradient(90deg,#49BFC9 0%,#5F8DFF 50%,#9A8DFF 100%)";
@@ -32,7 +38,7 @@ const Footer = () => {
   return (
     <footer className="bg-transparent text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,14 +47,18 @@ const Footer = () => {
           >
             <div
               className="font-sans text-3xl font-bold mb-4"
-              style={{ background: gradient, WebkitBackgroundClip: "text", color: "transparent" }}
+              style={{
+                background: gradient,
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
             >
               Ankit
             </div>
 
             <p className="text-gray-400 mb-4 max-w-xs">
-              Full-Stack Web Developer passionate about creating amazing digital experiences
-              and solving real-world problems through technology.
+              Full-Stack Web Developer passionate about creating amazing digital
+              experiences and solving real-world problems through technology.
             </p>
 
             <div className="flex space-x-4">
@@ -65,7 +75,12 @@ const Footer = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     whileHover={{ scale: 1.12 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.18, delay: index * 0.06, type: "spring", stiffness: 220 }}
+                    transition={{
+                      duration: 0.18,
+                      delay: index * 0.06,
+                      type: "spring",
+                      stiffness: 220,
+                    }}
                     viewport={{ once: true }}
                     className={`${social.bgClass} ${social.hoverBgClass} rounded-lg flex items-center justify-center w-10 h-10 transition-transform duration-100`}
                     style={{
@@ -83,39 +98,9 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-xl font-bold mb-4" style={{ color: "#E6F3FF" }}>
-              Quick Links
-            </h3>
-            <nav className="grid grid-cols-2 gap-2">
-              {[
-                { name: "Home", id: "home" },
-                { name: "About", id: "about" },
-                { name: "Skills", id: "skills" },
-                { name: "Projects", id: "projects" },
-                { name: "Certificates", id: "certificates" },
-                { name: "Resume", id: "resume" },
-                { name: "Contact", id: "contact" },
-              ].map((link) => (
-                <motion.button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  whileHover={{ x: 5 }}
-                  className="block w-full text-left text-gray-400 hover:text-[rgb(79,141,255)] transition-colors duration-100 cursor-pointer"
-                >
-                  {link.name}
-                </motion.button>
-              ))}
-            </nav>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
+            className="md:flex md:flex-col md:items-end"
           >
             <h3 className="text-xl font-bold mb-4" style={{ color: "#E6F3FF" }}>
               Get In Touch
@@ -160,8 +145,15 @@ const Footer = () => {
           <div className="flex items-center space-x-1 text-gray-400 text-sm">
             <span>Made with</span>
             <motion.div
-              animate={{ scale: [1, 1.16, 1], color: ["#ef4444", "#ec4899", "#ef4444"] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              animate={{
+                scale: [1, 1.16, 1],
+                color: ["#ef4444", "#ec4899", "#ef4444"],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
               <FaHeart className="w-4 h-4 text-[rgba(239,68,68,1)]" />
             </motion.div>

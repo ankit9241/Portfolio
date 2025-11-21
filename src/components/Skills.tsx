@@ -1,4 +1,5 @@
 "use client";
+
 import {
   SiHtml5,
   SiCss3,
@@ -21,6 +22,7 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import RotatingTechStack from "./RotatingTechStack";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const skills = [
@@ -80,10 +82,35 @@ const Skills = () => {
     { name: "Netlify", icon: SiNetlify, color: "#00C7B7", category: "Tools" },
   ];
 
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.12 },
+    },
+  };
+
+  const itemFade = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  };
+
   return (
     <section id="skills" className="py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
+        {/* Heading */}
+        <motion.div
+          className="text-center mb-10"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
             style={{
@@ -103,44 +130,48 @@ const Skills = () => {
           <p className="text-gray-200">
             Here are the technologies and tools I work with
           </p>
-        </div>
+        </motion.div>
 
-        <RotatingTechStack />
+        {/* Rotating Tech Stack */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <RotatingTechStack />
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        {/* Cards */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
           {[
             "Frontend Development",
             "Backend Development",
             "Tools & Platforms",
           ].map((category) => (
-            <div
+            <motion.div
               key={category}
+              variants={fadeUp}
               className="
-    w-full 
-    md:max-w-[420px]
-    lg:max-w-[500px]
-    bg-[#0b1224]/70 
-    backdrop-blur-md 
-    rounded-2xl 
-    p-8 
-    transition-all 
-    duration-300
-  "
+                w-full 
+                md:max-w-[420px]
+                lg:max-w-[500px]
+                bg-[#0b1224]/70 
+                backdrop-blur-md 
+                rounded-2xl 
+                p-8 
+                transition-all 
+                duration-300
+              "
               style={{
                 border: "1px solid rgba(95,141,255,0.10)",
                 boxShadow: "0 0 22px rgba(95,141,255,0.10)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.border =
-                  "1px solid rgba(95,141,255,0.35)";
-                e.currentTarget.style.boxShadow =
-                  "0 0 40px rgba(95,141,255,0.35), 0 0 60px rgba(154,141,255,0.25)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.border =
-                  "1px solid rgba(95,141,255,0.10)";
-                e.currentTarget.style.boxShadow =
-                  "0 0 22px rgba(95,141,255,0.10)";
               }}
             >
               <h3
@@ -155,12 +186,17 @@ const Skills = () => {
                 style={{ background: "rgba(95,141,255,0.15)" }}
               />
 
-              <div className="grid grid-cols-2 gap-4">
+              {/* Skill Items */}
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                variants={staggerContainer}
+              >
                 {skills
                   .filter((skill) => skill.category === category.split(" ")[0])
                   .map((skill) => (
-                    <div
+                    <motion.div
                       key={skill.name}
+                      variants={itemFade}
                       className="flex items-center gap-3 px-3 py-1 rounded-xl transition-all"
                     >
                       <div
@@ -176,12 +212,12 @@ const Skills = () => {
                       <span className="text-gray-100 text-sm font-medium">
                         {skill.name}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

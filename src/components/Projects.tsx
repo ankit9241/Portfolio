@@ -167,6 +167,42 @@ const Projects = () => {
       ],
     },
     {
+      title: "STC IIT Patna - Official Student Technical Council Platform",
+      description:
+        "A dynamic platform for IIT Patna's student activities, showcasing events, sessions, and activities across three main college wings and their respective subclubs. The platform provides real-time updates and seamless participation options for students.",
+      tech: [
+        technologies.nextjs,
+        technologies.mongodb,
+        technologies.typescript,
+        technologies.tailwind,
+        technologies.react,
+      ],
+      image: ["/assets/stciitp-1.png", "/assets/stciitp-2.png"],
+      github: "https://github.com/ankit9241/stc_website",
+      live: "https://stciitphybrid.in",
+      isPublished: true,
+      features: [
+        "Centralized Event Hub: View all events across college wings and subclubs",
+        "Real-time Notifications: Instant updates for events and announcements",
+        "Responsive Design: Optimized for all devices with mobile-first approach",
+        "Admin Dashboard: Intuitive content management for club administrators",
+        "Event Participation: Easy registration and RSVP system for students",
+      ],
+      challenges: [
+        "Implementing responsive design across multiple device breakpoints",
+        "Managing complex state for real-time event updates",
+        "Optimizing performance for large datasets of events and users",
+        "Ensuring cross-browser compatibility and accessibility",
+      ],
+      learnings: [
+        "Advanced Git workflows and team collaboration strategies",
+        "Performance optimization techniques for React applications",
+        "Mobile-first responsive design patterns with Tailwind CSS",
+        "Effective state management with React Context API",
+        "Server-side rendering and static site generation with Next.js",
+      ],
+    },
+    {
       title: "KIRAN Mentorship Program (Full Stack Project)",
       description:
         "KIRAN is a responsive mentorship web platform built with modern technologies for Class 11-12 and dropper students preparing for competitive exams like JEE and NEET. Built with React and Vite for blazing fast performance, it enables students to raise doubts, book 1:1 sessions, and track academic progress. The platform uses MongoDB for efficient data storage and Bootstrap for a responsive, mobile-first design. Mentors can manage students, track progress, and provide personalized feedback through an intuitive dashboard.",
@@ -232,41 +268,6 @@ const Projects = () => {
         "Effective MongoDB database design",
         "WebSocket implementation for real-time features",
         "Complex state management in large applications",
-      ],
-    },
-    {
-      title: "STC IIT Patna - Student Technical Council Platform",
-      description:
-        "A dynamic platform for IIT Patna's student activities, showcasing events, sessions, and activities across three main college wings and their respective subclubs. The platform provides real-time updates and seamless participation options for students.",
-      tech: [
-        technologies.nextjs,
-        technologies.typescript,
-        technologies.tailwind,
-        technologies.react,
-      ],
-      image: ["/assets/stciitp-1.png", "/assets/stciitp-2.png"],
-      github: "https://github.com/ankit9241/stc_website",
-      live: "https://stciitphybrid.in",
-      isPublished: true,
-      features: [
-        "Centralized Event Hub: View all events across college wings and subclubs",
-        "Real-time Notifications: Instant updates for events and announcements",
-        "Responsive Design: Optimized for all devices with mobile-first approach",
-        "Admin Dashboard: Intuitive content management for club administrators",
-        "Event Participation: Easy registration and RSVP system for students",
-      ],
-      challenges: [
-        "Implementing responsive design across multiple device breakpoints",
-        "Managing complex state for real-time event updates",
-        "Optimizing performance for large datasets of events and users",
-        "Ensuring cross-browser compatibility and accessibility",
-      ],
-      learnings: [
-        "Advanced Git workflows and team collaboration strategies",
-        "Performance optimization techniques for React applications",
-        "Mobile-first responsive design patterns with Tailwind CSS",
-        "Effective state management with React Context API",
-        "Server-side rendering and static site generation with Next.js",
       ],
     },
     {
