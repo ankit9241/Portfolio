@@ -146,8 +146,8 @@ const Projects = () => {
       ],
       image: "/assets/examifai.png",
       github: "https://github.com/ankit9241/ExamifAI",
-      live: "#",
-      isPublished: false,
+      live: "https://examifai.netlify.app/",
+      isPublished: true,
       features: [
         "Proctored exam mode with face detection and tracking",
         "3-strike violation system for exam integrity",
