@@ -134,7 +134,7 @@ const Projects = () => {
   const projects: Project[] = [
     {
       title:
-        "ExamifAI - Secure AI-Based Exam Portal for IIT Patna (Full Stack Project)",
+        "ExamifAI - Secure AI-Based Exam Portal for IIT Patna (Full Stack Project) *ONLY FOR DESKTOP*",
       description:
         "Developed for IIT Patna, ExamifAI is a smart online exam system that uses real-time face recognition to ensure secure, cheat-free assessments. It tracks the student's face throughout the exam, issues warnings for suspicious activity (like missing or multiple faces), and auto-submits after 3 violations. It also blocks tab switching and fullscreen exit to maintain exam integrity.",
       tech: [
