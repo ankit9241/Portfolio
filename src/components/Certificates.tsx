@@ -81,17 +81,19 @@ const Certificates = () => {
                   }}
                 />
 
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <motion.a
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.96 }}
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-2 bg-[rgba(9,12,24,0.6)] backdrop-blur-sm rounded-full text-white hover:bg-[rgba(9,12,24,0.75)] transition"
+                    className="w-8 h-8 bg-[rgba(9,12,24,0.6)] rounded-full text-white hover:bg-[rgba(9,12,24,0.75)] transition"
                     aria-label={`Open ${cert.title}`}
                   >
-                    <HiExternalLink className="w-5 h-5" />
+                    <div className="flex items-center justify-center w-full h-full">
+                      <HiExternalLink className="w-6 h-6" />
+                    </div>
                   </motion.a>
                 </div>
 

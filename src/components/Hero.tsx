@@ -32,7 +32,7 @@ const Hero = () => {
     <section
       id="home"
       ref={ref}
-      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden bg-gradient-to-b from-[#050613] to-[#071026] px-6"
+      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden px-6"
     >
       {/* Decorative background blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -134,7 +134,7 @@ const Hero = () => {
               className="text-sm md:text-base text-gray-300 max-w-xl"
             >
               CS & Data Analytics Student | Full Stack Web Developer | AI
-              Enthusiast | Sub-Coordinator @Pixelerate IITP CEP UG | Trainee
+              Enthusiast | Sub-Coordinator <b>@Pixelerate IITP CEP UG</b> | Trainee
               @VEDSEEN TECHNOLOGIES
             </motion.p>
 

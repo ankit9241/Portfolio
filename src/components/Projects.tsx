@@ -3,17 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { HiExternalLink, HiCode } from "react-icons/hi";
-import {
-  SiReact,
-  SiJavascript,
-  SiMongodb,
-  SiBootstrap,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiTypescript,
-  SiCss3,
-  SiVite,
-} from "react-icons/si";
+import { technologies } from "../utils/technologies";
 import ProjectDetails from "./ProjectDetails";
 
 interface ProjectTech {
@@ -26,79 +16,6 @@ interface ProjectTech {
   textColor?: string;
   borderColor?: string;
 }
-
-const technologies = {
-  react: {
-    name: "React",
-    icon: SiReact,
-    bgColor: "rgba(97, 218, 251, 0.1)",
-    textColor: "#61DAFB",
-    borderColor: "rgba(97, 218, 251, 0.2)",
-  },
-  vite: {
-    name: "Vite",
-    icon: SiVite,
-    bgColor: "rgba(100, 108, 255, 0.1)",
-    textColor: "#646CFF",
-    borderColor: "rgba(100, 108, 255, 0.2)",
-  },
-  mongodb: {
-    name: "MongoDB",
-    icon: SiMongodb,
-    bgColor: "rgba(77, 194, 116, 0.1)",
-    textColor: "#47A248",
-    borderColor: "rgba(77, 194, 116, 0.2)",
-  },
-  javascript: {
-    name: "JavaScript",
-    icon: SiJavascript,
-    bgColor: "rgba(247, 223, 30, 0.1)",
-    textColor: "#F7DF1E",
-    borderColor: "rgba(247, 223, 30, 0.2)",
-  },
-  bootstrap: {
-    name: "Bootstrap",
-    icon: SiBootstrap,
-    bgColor: "rgba(121, 82, 179, 0.1)",
-    textColor: "#7952B3",
-    borderColor: "rgba(121, 82, 179, 0.2)",
-  },
-  tailwind: {
-    name: "Tailwind CSS",
-    icon: SiTailwindcss,
-    bgColor: "rgba(56, 189, 248, 0.1)",
-    textColor: "#38BDF8",
-    borderColor: "rgba(56, 189, 248, 0.2)",
-  },
-  typescript: {
-    name: "TypeScript",
-    icon: SiTypescript,
-    bgColor: "rgba(49, 120, 198, 0.1)",
-    textColor: "#3178C6",
-    borderColor: "rgba(49, 120, 198, 0.2)",
-  },
-  nextjs: {
-    name: "Next.js 14",
-    icon: SiNextdotjs,
-    bgColor: "rgba(0, 0, 0, 0.1)",
-    textColor: "#47a248",
-    borderColor: "rgba(0, 0, 0, 0.2)",
-  },
-  css: {
-    name: "CSS3",
-    icon: SiCss3,
-    bgColor: "rgba(33, 150, 243, 0.1)",
-    textColor: "#2196F3",
-    borderColor: "rgba(33, 150, 243, 0.2)",
-  },
-  reactContext: {
-    name: "React Context",
-    icon: SiReact,
-    bgColor: "rgba(97, 218, 251, 0.1)",
-    textColor: "#61DAFB",
-    borderColor: "rgba(97, 218, 251, 0.2)",
-  },
-} as const;
 
 interface Project {
   title: string;

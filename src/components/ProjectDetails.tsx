@@ -8,6 +8,7 @@ import {
   HiLightBulb,
   HiShieldCheck,
 } from 'react-icons/hi';
+import { technologies, TechnologyKey } from '../utils/technologies';
 
 interface ProjectTech {
   name: string;
@@ -196,15 +197,22 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                 {/* Tech chips */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {selectedProject.tech.map((tech, i) => {
-                    const Icon = tech.icon;
+                    const techKey = tech.name.toLowerCase() as TechnologyKey;
+                    const techData = technologies[techKey] || {
+                      icon: tech.icon,
+                      bgColor: 'rgba(255,255,255,0.05)',
+                      textColor: '#E6F3FF',
+                      borderColor: 'rgba(255,255,255,0.1)'
+                    };
+                    const Icon = techData.icon || tech.icon;
                     return (
                       <span
                         key={i}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm"
                         style={{
-                          background: 'rgba(255,255,255,0.02)',
-                          color: '#E6F3FF',
-                          border: '1px solid rgba(255,255,255,0.03)',
+                          background: techData.bgColor,
+                          color: techData.textColor,
+                          border: `1px solid ${techData.borderColor || 'transparent'}`,
                         }}
                       >
                         <Icon className="w-4 h-4 opacity-90" />
