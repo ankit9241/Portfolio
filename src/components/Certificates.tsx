@@ -13,6 +13,17 @@ const Certificates = () => {
 
   const certificates = [
     {
+      title: "Hack N Tech 2.0 Hackathon",
+      issuer: "IIT Patna",
+      date: "Dec 2025",
+      description:
+        "Successfully participated in the Hack N Tech 2.0 Hackathon, organized by IIT Patna as part of the Xenith. Showcased problem-solving skills and technical abilities in a competitive environment.",
+      image: "/assets/Hackathon2.0.jpeg",
+      link: "/assets/Hackathon2.0.jpeg",
+      verified: true,
+      skills: ["React", "Node.js", "MongoDB"],
+    },
+    {
       title: "Hack N Tech Hackathon",
       issuer: "IIT Patna",
       date: "May 2025",
@@ -46,11 +57,14 @@ const Certificates = () => {
 
           <div
             className="w-24 h-1 mx-auto rounded-full"
-            style={{ background: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)" }}
+            style={{
+              background: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+            }}
           />
 
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
-            Continuous learning and skill development through recognized courses and certifications.
+            Continuous learning and skill development through recognized courses
+            and certifications.
           </p>
         </motion.div>
 
@@ -59,9 +73,22 @@ const Certificates = () => {
             <motion.div
               key={cert.title}
               initial={{ opacity: 0, y: 50, rotateX: -10 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 50, rotateX: -10 }}
-              transition={{ duration: 0.8, delay: index * 0.08, type: "spring", stiffness: 100 }}
-              whileHover={{ y: -8, scale: 1.02, boxShadow: "0 25px 50px rgba(7,16,38,0.6)" }}
+              animate={
+                isInView
+                  ? { opacity: 1, y: 0, rotateX: 0 }
+                  : { opacity: 0, y: 50, rotateX: -10 }
+              }
+              transition={{
+                duration: 0.8,
+                delay: index * 0.08,
+                type: "spring",
+                stiffness: 100,
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                boxShadow: "0 25px 50px rgba(7,16,38,0.6)",
+              }}
               className="group bg-[#071026] rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(8,12,32,0.45)] transition-all duration-300"
               style={{ border: "1px solid rgba(95,141,255,0.06)" }}
             >
@@ -77,7 +104,8 @@ const Certificates = () => {
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: "linear-gradient(180deg, rgba(7,10,20,0) 0%, rgba(7,16,38,0.56) 60%)",
+                    background:
+                      "linear-gradient(180deg, rgba(7,10,20,0) 0%, rgba(7,16,38,0.56) 60%)",
                   }}
                 />
 
@@ -99,13 +127,18 @@ const Certificates = () => {
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.25 }}
                   className="absolute bottom-4 left-4 right-4 flex items-center justify-between"
                 >
                   <span
                     className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{ background: "linear-gradient(90deg,#49BFC9,#5F8DFF)", color: "#061026" }}
+                    style={{
+                      background: "linear-gradient(90deg,#49BFC9,#5F8DFF)",
+                      color: "#061026",
+                    }}
                   >
                     {cert.date}
                   </span>
@@ -122,7 +155,9 @@ const Certificates = () => {
               <div className="p-6">
                 <motion.h3
                   initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.18 }}
                   className="text-xl font-semibold text-white mb-2"
                 >
@@ -131,7 +166,9 @@ const Certificates = () => {
 
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.28 }}
                   className="text-[#9FB8FF] font-semibold mb-3"
                 >
@@ -140,7 +177,9 @@ const Certificates = () => {
 
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.38 }}
                   className="text-gray-300 text-sm mb-4"
                 >
@@ -150,37 +189,48 @@ const Certificates = () => {
                 {/* Skills / Icon row */}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.46 }}
                   className="flex items-center gap-3 mb-4"
                 >
                   {cert.skills.includes("React") && (
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <FaReact className="w-4 h-4" style={{
-                        backgroundColor: "rgba(97, 218, 251, 0.1)",
-                        color: "#61DAFB",
-                        borderColor: "rgba(97, 218, 251, 0.2)",
-                      }} />
+                      <FaReact
+                        className="w-4 h-4"
+                        style={{
+                          backgroundColor: "rgba(97, 218, 251, 0.1)",
+                          color: "#61DAFB",
+                          borderColor: "rgba(97, 218, 251, 0.2)",
+                        }}
+                      />
                       React
                     </div>
                   )}
                   {cert.skills.includes("Node.js") && (
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <FaNodeJs className="w-4 h-4" style={{
-                        backgroundColor: "rgba(0, 0, 0, 0.1)",
-                        color: "#47a248",
-                        borderColor: "rgba(0, 0, 0, 0.2)",
-                      }} />
+                      <FaNodeJs
+                        className="w-4 h-4"
+                        style={{
+                          backgroundColor: "rgba(0, 0, 0, 0.1)",
+                          color: "#47a248",
+                          borderColor: "rgba(0, 0, 0, 0.2)",
+                        }}
+                      />
                       Node.js
                     </div>
                   )}
                   {cert.skills.includes("MongoDB") && (
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <SiMongodb className="w-4 h-4" style={{
-                        backgroundColor: "rgba(77, 194, 116, 0.1)",
-                        color: "#47A248",
-                        borderColor: "rgba(77, 194, 116, 0.2)",
-                      }} />
+                      <SiMongodb
+                        className="w-4 h-4"
+                        style={{
+                          backgroundColor: "rgba(77, 194, 116, 0.1)",
+                          color: "#47A248",
+                          borderColor: "rgba(77, 194, 116, 0.2)",
+                        }}
+                      />
                       MongoDB
                     </div>
                   )}
@@ -188,7 +238,9 @@ const Certificates = () => {
 
                 <motion.a
                   initial={{ opacity: 0, y: 8 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
+                  }
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.56 }}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
