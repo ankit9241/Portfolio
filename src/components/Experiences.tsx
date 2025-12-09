@@ -103,12 +103,12 @@ export default function Experiences() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="h-full rounded-xl p-px overflow-hidden transition-all duration-300 group relative bg-gradient-to-br from-[#5F8DFF30] via-[#9A8DFF30] to-[#5F8DFF30] hover:from-[#5F8DFF40] hover:via-[#9A8DFF40] hover:to-[#5F8DFF40] before:absolute before:inset-0 before:rounded-xl before:bg-gray-900 before:z-0 before:transition-opacity before:duration-300 before:opacity-0 group-hover:before:opacity-100">
+              <div className="w-full rounded-xl p-px overflow-hidden transition-all duration-500 group relative bg-gradient-to-br from-[#5F8DFF30] via-[#9A8DFF30] to-[#5F8DFF30] hover:from-[#5F8DFF40] hover:via-[#9A8DFF40] hover:to-[#5F8DFF40] shadow-[0_4px_20px_rgba(95,141,255,0.1)] hover:shadow-[0_8px_40px_rgba(154,141,255,0.3)] hover:-translate-y-1 hover:scale-[1.01] transform-gpu will-change-transform before:absolute before:inset-0 before:rounded-xl before:bg-gray-900 before:z-0 before:transition-all before:duration-500 before:opacity-0 group-hover:before:opacity-100">
                 {/* Enhanced Glow effect */}
                 <div className="absolute inset-0 overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(95,141,255,0.2)_0%,_rgba(154,141,255,0.1)_50%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(95,141,255,0.1)_0%,_rgba(154,141,255,0.05)_40%,_transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" style={{
-                    animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(95,141,255,0.25)_0%,_rgba(154,141,255,0.15)_50%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(95,141,255,0.15)_0%,_rgba(154,141,255,0.08)_40%,_transparent_60%)] opacity-0 group-hover:opacity-100 transition-all duration-500" style={{
+                    animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                   }}></div>
                 </div>
                 <style>{`
@@ -119,33 +119,32 @@ export default function Experiences() {
                 `}</style>
                 
                 {/* Content wrapper */}
-                <div className="p-7 relative z-10 h-full flex flex-col bg-gray-900/90 rounded-[11px] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#5F8DFF]/10 group-hover:to-[#5F8DFF]/5">
-                  <div className="flex items-start justify-between mb-4">
-                    {/* Left side with icon */}
-                    <div className="flex items-start space-x-4">
-                      <div className={`p-3 rounded-xl flex-shrink-0 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 group-hover:border-[#5F8DFF]/30 ${exp.iconBg} bg-opacity-20 transition-colors duration-300`}>
-                        <exp.icon className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-extrabold text-white mb-1">
+                <div className="p-4 sm:p-6 relative z-10 h-full flex flex-col bg-gray-900/90 rounded-[11px] transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#5F8DFF]/10 group-hover:to-[#5F8DFF]/5 backdrop-blur-[1px] group-hover:backdrop-blur-sm">
+                  <div className="flex items-start space-x-3 sm:space-x-4 mb-3">
+                    <div className={`p-2 sm:p-3 rounded-xl flex-shrink-0 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 group-hover:border-[#5F8DFF]/30 group-hover:scale-105 ${exp.iconBg} bg-opacity-20 transition-all duration-300 transform-gpu`}>
+                      <exp.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-baseline justify-between">
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-tight">
                           {exp.role}
                         </h3>
-                        <p className="text-[#5F8DFF] text-base font-medium">{exp.company}</p>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
+                        <p className="text-[#5F8DFF] text-sm sm:text-base font-medium">{exp.company}</p>
+                        <span className="text-xs text-gray-400 font-medium sm:text-gray-300 sm:bg-gray-800/90 sm:px-3 sm:py-1 sm:rounded-full sm:border sm:border-gray-700/50 sm:group-hover:border-[#5F8DFF]/50 sm:transition-colors sm:duration-300 sm:whitespace-nowrap">
+                          {exp.period}
+                        </span>
                       </div>
                     </div>
-                    
-                    {/* Period */}
-                    <span className="text-xs font-medium text-gray-300 bg-gray-800/90 px-3 py-1.5 rounded-full border border-gray-700/50 group-hover:border-[#5F8DFF]/50 transition-colors duration-300">
-                      {exp.period}
-                    </span>
                   </div>
 
                   {/* Skills */}
-                  <div className="mt-4 flex flex-wrap gap-1.5 mb-5">
+                  <div className="mt-2 flex flex-wrap gap-2 mb-4">
                     {exp.skills.map((skill, i) => (
                       <span 
                         key={i} 
-                        className="text-xs font-medium px-3 py-1 rounded-full bg-gray-800/60 text-gray-200 border border-gray-700/50 group-hover:border-[#5F8DFF]/40 group-hover:bg-gray-800/80 transition-all duration-300"
+                        className="text-xs sm:text-sm font-medium px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gray-800/60 text-gray-200 border border-gray-700/50 group-hover:border-[#5F8DFF]/40 group-hover:bg-gray-800/80 transition-all duration-300"
                       >
                         {skill}
                       </span>
