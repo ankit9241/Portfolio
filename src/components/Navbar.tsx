@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { TbCertificate } from "react-icons/tb";
 import {
   FaHome,
-  FaUser,
+  FaBriefcase,
   FaCode,
   FaEnvelope,
   FaDownload,
@@ -14,8 +14,13 @@ import {
 
 const sections = [
   { id: "home", label: "Home", icon: <FaHome className="mr-2" /> },
-  { id: "about", label: "About", icon: <FaUser className="mr-2" /> },
   { id: "skills", label: "Skills", icon: <FaCode className="mr-2" /> },
+  {
+    id: "experience",
+    label: "Experience",
+    icon: <FaBriefcase className="mr-2" />,
+  },
+
   {
     id: "projects",
     label: "Projects",
