@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useRef } from "react";
 
 const StarBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [bgColor, setBgColor] = useState("#0F172A"); // Default to dark theme
+  const bgColor = "#0F172A";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,29 +14,23 @@ const StarBackground = () => {
     if (!ctx) return;
 
     const stars: any[] = [];
-    const density = 120;
+    const density = 100;
 
     const colorsDark = [
-      "#ffffff",    
-      "#c7d2fe",    
-      "#a5b4fc",    
-      "#93c5fd",    
-      "#99f6e4",    
-      "#fecaca",    
+      "#ffffff",
+      "#c7d2fe",
+      "#a5b4fc",
+      "#93c5fd",
+      "#99f6e4",
+      "#fecaca",
+      "#f0abfc",
+      "#a78bfa",
+      "#67e8f9"
     ];
 
-    const colorsLight = [
-      "#e2e8f0",              
-      "#c7d2fe",    
-      "#bfdbfe",    
-      "#d1fae5",    
-      "#fde68a",    
-    ];
+    const starColors = colorsDark;
     
-
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const starColors = isDark ? colorsDark : colorsLight;
-    setBgColor(isDark ? "#0F172A" : "#F8FAFC");
+    let time = 0;
 
     const resizeCanvas = () => {
       if (!canvas) return;
@@ -47,21 +40,24 @@ const StarBackground = () => {
 
     resizeCanvas();
 
-    // Create stars
     const createStars = () => {
       if (!canvas) return;
-      
-      stars.length = 0; // Clear existing stars
+
+      stars.length = 0;
       for (let i = 0; i < density; i++) {
+        const size = Math.random() * 2 + 0.5;
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 1.2 + 0.4,
-          alpha: Math.random() * 0.8 + 0.2,
+          size: size,
+          baseSize: size,
+          alpha: Math.random() * 0.7 + 0.3,
           color: starColors[Math.floor(Math.random() * starColors.length)],
-          twinkleSpeed: Math.random() * 0.015 + 0.005,
-          driftX: (Math.random() - 0.5) * 0.05,
-          driftY: (Math.random() - 0.5) * 0.05,
+          twinkleSpeed: Math.random() * 0.02 + 0.01,
+          driftX: (Math.random() - 0.5) * 0.5,
+          driftY: (Math.random() - 0.5) * 0.5,
+          pulseSpeed: Math.random() * 0.01 + 0.005,
+          pulseSize: Math.random() * 0.5 + 0.5
         });
       }
     };
@@ -71,29 +67,45 @@ const StarBackground = () => {
     function animate() {
       if (!canvas || !ctx) return;
 
-      // Use the current bgColor from state
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      stars.forEach((star) => {
-        // twinkle
-        star.alpha += (Math.random() - 0.5) * star.twinkleSpeed;
-        star.alpha = Math.min(Math.max(star.alpha, 0.2), 1);
+      time += 0.01;
 
-        // drift
+      stars.forEach((star) => {
+        const pulse = Math.sin(time * star.pulseSpeed) * star.pulseSize * 0.5 + 1;
+        star.size = star.baseSize * pulse;
+
+        star.alpha += (Math.random() - 0.5) * star.twinkleSpeed;
+        star.alpha = Math.min(Math.max(star.alpha, 0.3), 1);
+
         star.x += star.driftX;
         star.y += star.driftY;
 
-        // wrap around screen edges
-        if (star.x < 0) star.x = canvas?.width || 0;
-        if (canvas && star.x > canvas.width) star.x = 0;
-        if (star.y < 0) star.y = canvas?.height || 0;
-        if (canvas && star.y > canvas.height) star.y = 0;
+        if (star.x < -10) star.x = (canvas?.width || 0) + 10;
+        if (canvas && star.x > canvas.width + 10) star.x = -10;
+        if (star.y < -10) star.y = (canvas?.height || 0) + 10;
+        if (canvas && star.y > canvas.height + 10) star.y = -10;
 
+        ctx.globalAlpha = star.alpha * 0.7;
+        ctx.fillStyle = star.color;
+        
+        const gradient = ctx.createRadialGradient(
+          star.x, star.y, 0,
+          star.x, star.y, star.size * 2
+        );
+        gradient.addColorStop(0, star.color);
+        gradient.addColorStop(1, 'rgba(15, 23, 42, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 2, 0, Math.PI * 2);
+        ctx.fill();
+        
         ctx.globalAlpha = star.alpha;
         ctx.fillStyle = star.color;
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.arc(star.x, star.y, star.size * 0.7, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -102,32 +114,19 @@ const StarBackground = () => {
 
     const animationId = requestAnimationFrame(animate);
 
-    // Handle system color scheme changes
-    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleColorSchemeChange = (e: MediaQueryListEvent) => {
-      const isNowDark = e.matches;
-      setBgColor(isNowDark ? "#0F172A" : "#F8FAFC");
-      // Recreate stars with new colors
-      createStars();
-    };
 
-    colorSchemeQuery.addEventListener('change', handleColorSchemeChange);
-
-    // Handle window resize
     const handleResize = () => {
       resizeCanvas();
       createStars();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationId);
-      colorSchemeQuery.removeEventListener('change', handleColorSchemeChange);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [bgColor]);
+  }, []);
 
   return (
     <canvas
