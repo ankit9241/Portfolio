@@ -5,13 +5,24 @@ import { useRef } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiMongodb } from "react-icons/si";
+import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
 
 const Certificates = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const certificates = [
+    {
+      title: "Web Development - STC IIT Patna",
+      issuer: "STC, IIT Patna",
+      date: "Dec 2025",
+      description:
+        "Awarded during the Xenith event for contributing to the development and maintenance of the official website of the Student Technical Council (STC), IIT Patna, recognizing technical expertise and impactful contribution.",
+      image: "/assets/iitp-certificate.png",
+      link: "/assets/iitp-certificate.png",
+      verified: true,
+      skills: ["Nextjs", "TypeScript", "React"],
+    },
     {
       title: "Hack N Tech 2.0 Hackathon",
       issuer: "IIT Patna",
@@ -186,54 +197,31 @@ const Certificates = () => {
                   {cert.description}
                 </motion.p>
 
-                {/* Skills / Icon row */}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
-                  }
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                   transition={{ duration: 0.6, delay: index * 0.08 + 0.46 }}
-                  className="flex items-center gap-3 mb-4"
+                  className="mt-4 mb-6 flex flex-wrap gap-2"
                 >
-                  {cert.skills.includes("React") && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <FaReact
-                        className="w-4 h-4"
-                        style={{
-                          backgroundColor: "rgba(97, 218, 251, 0.1)",
-                          color: "#61DAFB",
-                          borderColor: "rgba(97, 218, 251, 0.2)",
-                        }}
-                      />
-                      React
-                    </div>
-                  )}
-                  {cert.skills.includes("Node.js") && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <FaNodeJs
-                        className="w-4 h-4"
-                        style={{
-                          backgroundColor: "rgba(0, 0, 0, 0.1)",
-                          color: "#47a248",
-                          borderColor: "rgba(0, 0, 0, 0.2)",
-                        }}
-                      />
-                      Node.js
-                    </div>
-                  )}
-                  {cert.skills.includes("MongoDB") && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[rgba(95,141,255,0.06)] text-[#C7D6FF] text-xs">
-                      <SiMongodb
-                        className="w-4 h-4"
-                        style={{
-                          backgroundColor: "rgba(77, 194, 116, 0.1)",
-                          color: "#47A248",
-                          borderColor: "rgba(77, 194, 116, 0.2)",
-                        }}
-                      />
-                      MongoDB
-                    </div>
-                  )}
+                  {cert.skills.map((skill, skillIndex) => {
+                    const skillIcons: { [key: string]: JSX.Element } = {
+                      'React': <FaReact className="w-4 h-4 text-[#61DAFB]" />,
+                      'Nextjs': <SiNextdotjs className="w-4 h-4" />,
+                      'Node.js': <FaNodeJs className="w-4 h-4 text-[#68A063]" />,
+                      'MongoDB': <SiMongodb className="w-4 h-4 text-[#47A248]" />,
+                      'TypeScript': <SiTypescript className="w-4 h-4 text-[#3178C6]" />
+                    };
+
+                    return (
+                      <span 
+                        key={skillIndex}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#0f172a] text-blue-300 border border-blue-900/50 hover:bg-[#1e293b] transition-colors duration-200"
+                      >
+                        {skillIcons[skill] || null}
+                        {skill === 'Nextjs' ? 'Next.js' : skill}
+                      </span>
+                    );
+                  })}
                 </motion.div>
 
                 <motion.a
