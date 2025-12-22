@@ -120,6 +120,43 @@ const Projects = () => {
       ],
     },
     {
+      title: "TrackFlow – Habit Tracking Application (Full Stack Project)",
+      description:
+        "TrackFlow is a full-stack habit tracking application designed to help users build and maintain consistent daily routines. It provides an intuitive interface for managing habits and visualizing progress through data-driven analytics and streak tracking.",
+      tech: [
+        technologies.react,
+        technologies.tailwind,
+        technologies.mongodb,
+        technologies.nodejs,
+        technologies.express,
+      ],
+      image: ["assets/trackflow1.png", "assets/trackflow2.png"],
+      github: "https://github.com/ankit9241/TrackFlow",
+      live: "https://track-flow1.netlify.app/",
+      isPublished: true,
+      features: [
+        "User authentication with protected routes using JWT",
+        "Create and manage multiple daily habits",
+        "Daily habit check-in system with automatic streak tracking",
+        "Interactive analytics dashboard with visual charts",
+        "Fully responsive design for all device sizes",
+      ],
+      challenges: [
+        "Saving habit completion data correctly when a user marks a habit",
+        "Handling date-based habit data without duplication",
+        "Applying conditions for accurate streak calculation",
+        "Preparing backend data for analytics and charts",
+        "Handling missed days while showing correct progress",
+      ],
+      learnings: [
+        "Hands-on experience with full-stack MERN architecture",
+        "Secure authentication and authorization using JWT",
+        "State management using React Context API",
+        "Data visualization using Recharts",
+        "Building responsive and maintainable UI with Tailwind CSS",
+      ],
+    },
+    {
       title: "KIRAN Mentorship Program (Full Stack Project)",
       description:
         "KIRAN is a responsive mentorship web platform built with modern technologies for Class 11-12 and dropper students preparing for competitive exams like JEE and NEET. Built with React and Vite for blazing fast performance, it enables students to raise doubts, book 1:1 sessions, and track academic progress. The platform uses MongoDB for efficient data storage and Bootstrap for a responsive, mobile-first design. Mentors can manage students, track progress, and provide personalized feedback through an intuitive dashboard.",
