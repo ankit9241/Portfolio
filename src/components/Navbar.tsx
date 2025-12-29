@@ -196,7 +196,7 @@ const Navbar = () => {
                   <motion.button
                     variants={itemFade} // ✨ Added
                     onClick={() =>
-                      window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")
+                      window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank")
                     }
                     className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
                     style={{

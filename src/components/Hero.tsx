@@ -134,8 +134,8 @@ const Hero = () => {
               className="text-sm md:text-base text-gray-300 max-w-xl"
             >
               CS & Data Analytics Student | Full Stack Web Developer | AI
-              Enthusiast | Sub-Coordinator <b>@Pixelerate IITP CEP UG</b> | Trainee
-              @VEDSEEN TECHNOLOGIES
+              Enthusiast | Sub-Coordinator <b>@Pixelerate IITP CEP UG</b> |
+              Trainee @VEDSEEN TECHNOLOGIES
             </motion.p>
 
             {/* CTA buttons */}
@@ -153,7 +153,7 @@ const Hero = () => {
                 </button>
 
                 <a
-                  href="/resume/Resume_Ankit_Kumar.pdf"
+                  href="/resume/Ankit_Kumar_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 px-6 py-3 rounded-2xl transition font-semibold text-center"
