@@ -321,10 +321,6 @@ const Projects = () => {
           >
             Featured Projects
           </h2>
-          <div
-            className="w-24 h-1 mx-auto rounded-full"
-            style={{ background: paletteGradient }}
-          />
           <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-6">
             Here are some of my recent projects that showcase my skills in
             full-stack development, UI/UX design, and problem-solving abilities.

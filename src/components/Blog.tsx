@@ -60,10 +60,7 @@ const Blog = () => {
               style={{ backgroundImage: 'linear-gradient(90deg, #49BFC9 0%, #5F8DFF 50%, #9A8DFF 100%)' }}>
             Latest Blog Posts
           </h2>
-          <div
-            className="w-28 h-1 mx-auto rounded-full"
-            style={{ background: 'linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)' }}
-          />
+          
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
             Sharing thoughts, experiences, and practical guides on web development,
             tools, and my learning journey.

@@ -120,13 +120,6 @@ const Skills = () => {
             My Skills & Technologies
           </h2>
 
-          <div
-            className="w-16 h-1 mx-auto mb-6 rounded-full"
-            style={{
-              backgroundImage: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
-            }}
-          />
-
           <p className="text-gray-200">
             Here are the technologies and tools I work with
           </p>

@@ -66,13 +66,6 @@ const Certificates = () => {
             Certificates & Achievements
           </h2>
 
-          <div
-            className="w-24 h-1 mx-auto rounded-full"
-            style={{
-              background: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
-            }}
-          />
-
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
             Continuous learning and skill development through recognized courses
             and certifications.

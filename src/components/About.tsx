@@ -27,12 +27,7 @@ const About = () => {
           >
             About Me
           </h2>
-          <div
-            className="
-              w-28 h-1 rounded-full mx-auto
-              bg-gradient-to-r from-[#49BFC9] via-[#5F8DFF] to-[#9A8DFF]
-            "
-          />
+          
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
