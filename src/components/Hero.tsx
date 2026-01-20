@@ -134,8 +134,7 @@ const Hero = () => {
               className="text-sm md:text-base text-gray-300 max-w-xl"
             >
               CS & Data Analytics Student | Full Stack Web Developer | AI
-              Enthusiast | Sub-Coordinator <b>@Pixelerate IITP CEP UG</b> |
-              Trainee @VEDSEEN TECHNOLOGIES
+              Enthusiast | Sub-Coordinator <b>@Pixelerate IITP CEP UG</b>
             </motion.p>
 
             {/* CTA buttons */}
