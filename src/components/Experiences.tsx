@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaLaptopCode, FaUsers, FaRobot } from "react-icons/fa";
+import { FaLaptopCode, FaUsers } from "react-icons/fa";
 
 interface ExperienceItem {
   id: number;
@@ -16,23 +16,23 @@ interface ExperienceItem {
 }
 
 const experiences: ExperienceItem[] = [
+  // {
+  //   id: 1,
+  //   role: "AI Developer Trainee",
+  //   company: "VEDSEEM TECHNOLOGIES",
+  //   period: "Dec 2025 – Present",
+  //   skills: ["AI Development", "Machine Learning", "Problem Solving"],
+  //   highlights: [
+  //     "Currently undergoing onboarding and familiarizing with the company's AI development workflows.",
+  //     "Learning and exploring tools and technologies used in internal AI/ML projects.",
+  //     "Preparing to contribute to upcoming AI-driven solutions and product features.",
+  //     "Building foundational understanding of model development, testing, and deployment processes.",
+  //   ],
+  //   icon: FaRobot,
+  //   iconBg: "text-green-500",
+  // },
   {
     id: 1,
-    role: "AI Developer Trainee",
-    company: "VEDSEEM TECHNOLOGIES",
-    period: "Dec 2025 – Present",
-    skills: ["AI Development", "Machine Learning", "Problem Solving"],
-    highlights: [
-      "Currently undergoing onboarding and familiarizing with the company's AI development workflows.",
-      "Learning and exploring tools and technologies used in internal AI/ML projects.",
-      "Preparing to contribute to upcoming AI-driven solutions and product features.",
-      "Building foundational understanding of model development, testing, and deployment processes.",
-    ],
-    icon: FaRobot,
-    iconBg: "text-green-500",
-  },
-  {
-    id: 2,
     role: "Web Developer",
     company: "IIT Patna Web Development Team",
     period: "Sep 2025 – Present",
@@ -47,7 +47,7 @@ const experiences: ExperienceItem[] = [
     iconBg: "text-blue-500",
   },
   {
-    id: 3,
+    id: 2,
     role: "Sub-Coordinator",
     company: "Pixelerate (STC)",
     period: "Aug 2025 – Present",
