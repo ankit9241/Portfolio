@@ -15,7 +15,25 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        'sans': ['Outfit', 'sans-serif'],
+      },
       colors: {
+        // Custom Dark Theme Colors
+        'dark-base': '#111111',
+        'surface-dark': '#1A1A1A',
+        'elevated-surface': '#222222',
+        'card-bg': '#1E1E1E',
+        'text-primary': '#FFFFFF',
+        'text-secondary': '#BDBDBD',
+        'text-subtle': '#EAEAEA',
+        'border-light': '#2A2A2A',
+        'border-input': '#333333',
+        'accent': '#3A86FF',
+        'accent-hover': '#6DA8FF',
+        'accent-glow': 'rgba(58, 134, 255, 0.4)',
+        'gradient-blob': 'rgba(58, 134, 255, 0.15)',
+        
         text: {
           light: 'hsl(var(--foreground))',
           dark: 'hsl(var(--foreground))',

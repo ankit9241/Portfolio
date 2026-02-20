@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  HiExternalLink,
-  HiCode,
-  HiX,
-  HiCheckCircle,
-  HiLightBulb,
-  HiShieldCheck,
-} from 'react-icons/hi';
+  ExternalLink,
+  Code,
+  X,
+  CheckCircle,
+  Lightbulb,
+  ShieldCheck,
+} from "lucide-react";
 import { technologies, TechnologyKey } from '../utils/technologies';
 
 interface ProjectTech {
@@ -38,7 +38,7 @@ interface ProjectDetailsProps {
   onClose: () => void;
 }
 
-const PALETTE = 'linear-gradient(90deg,#49BFC9 0%,#5F8DFF 50%,#9A8DFF 100%)';
+const PALETTE = 'linear-gradient(90deg, #FFFFFF, #BDBDBD)';
 
 const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
   const [selectedProject, setSelectedProject] = useState<Project>(project);
@@ -94,28 +94,31 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
           >
             {/* Header (title + close) */}
             <div className="flex items-start justify-between gap-4 p-5 border-b border-gray-800">
-              <div className="flex-1">
+              <div className="flex items-center gap-2 flex-1">
                 <h2
                   className="text-2xl md:text-3xl font-bold text-white leading-tight"
                   style={{ background: PALETTE, WebkitBackgroundClip: 'text', color: 'transparent' }}
                 >
                   {title}
                 </h2>
-                <p className="mt-1 text-sm text-gray-300 max-w-2xl">
-                  {selectedProject.description?.slice(0, 140)}
-                  {selectedProject.description && selectedProject.description.length > 140 ? ' …' : ''}
-                </p>
+                <button
+                  onClick={onClose}
+                  aria-label="Close project details"
+                  className="md:hidden p-2 rounded-full bg-gray-700/80 text-white hover:bg-gray-600 transition"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-3">
                 <a
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-2 px-3 py-2 bg-black/70 border border-gray-700 rounded-md text-sm text-gray-200 hover:bg-black/80 transition"
+                  className="inline-flex items-center gap-2 px-2 py-1 bg-black/70 border border-accent rounded-3xl text-base text-gray-200 hover:bg-black/80 transition"
                 >
-                  <HiCode className="w-4 h-4" />
+                  <Code className="w-5 h-5" />
                   Code
                 </a>
 
@@ -125,14 +128,14 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold"
+                    className="inline-flex items-center gap-2 px-2 py-1 rounded-3xl text-base font-semibold"
                     style={{
-                      backgroundImage: PALETTE,
-                      color: '#021021',
-                      border: '1px solid rgba(159,185,255,0.08)',
+                      background: "#F5F5F5",
+                      color: "#000000",
+                      border: "1px solid #2A2A2A",
                     }}
                   >
-                    <HiExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-5 h-5" />
                     Live
                   </a>
                 ) : (
@@ -141,20 +144,12 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                       e.preventDefault();
                       alert('This project is not yet published. Coming soon!');
                     }}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm bg-gray-800 text-gray-300 border border-gray-700"
+                    className="inline-flex items-center gap-2 px-3 py-2 rounded-3xl text-base bg-gray-800 text-gray-300 border border-gray-700"
                   >
-                    <HiExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-5 h-5" />
                     Coming Soon
                   </button>
                 )}
-
-                <button
-                  onClick={onClose}
-                  aria-label="Close project details"
-                  className="ml-2 p-2 rounded-full bg-gray-700/80 text-white hover:bg-gray-600 transition"
-                >
-                  <HiX className="w-5 h-5" />
-                </button>
               </div>
             </div>
 
@@ -231,7 +226,7 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                 {features.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                      <HiCheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       Key features
                     </h3>
                     <ul className="list-none space-y-2 pl-0">
@@ -249,7 +244,7 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                 {challenges.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                      <HiShieldCheck className="w-5 h-5 text-yellow-400" />
+                      <ShieldCheck className="w-5 h-5 text-yellow-400" />
                       Challenges and solutions
                     </h3>
                     <ul className="list-none space-y-2 pl-0">
@@ -267,7 +262,7 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                 {learnings.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                      <HiLightBulb className="w-5 h-5 text-blue-400" />
+                      <Lightbulb className="w-5 h-5 text-blue-400" />
                       Key learnings
                     </h3>
                     <ul className="list-none space-y-2 pl-0">
@@ -282,15 +277,15 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                 )}
 
                 {/* Actions */}
-                <div className="mt-4 pt-4 border-t border-gray-800 flex flex-wrap gap-3">
+                <div className="mt-4 pt-4 border-t border-gray-800 flex gap-3 md:hidden">
                   {github && (
                     <a
                       href={github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gray-800 text-gray-200 border border-gray-700 hover:bg-gray-700 transition"
+                      className="inline-flex items-center gap-2 px-2 py-1 rounded-3xl bg-gray-800 text-gray-200 border border-gray-700 hover:bg-gray-700 transition"
                     >
-                      <HiCode className="w-4 h-4" />
+                      <Code className="w-4 h-4" />
                       View on GitHub
                     </a>
                   )}
@@ -301,23 +296,23 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                         href={live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl font-semibold"
                         style={{
-                          backgroundImage: PALETTE,
-                          color: '#021021',
-                          border: '1px solid rgba(159,185,255,0.08)',
+                          background: "#F5F5F5",
+                          color: "#000000",
+                          border: "1px solid #2A2A2A",
                         }}
                       >
-                        <HiExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4" />
                         Visit live site
                       </a>
                     ) : (
                       <button
                         onClick={() => alert('This project is not yet published. Coming soon!')}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gray-800 text-gray-400 border border-gray-700 cursor-not-allowed"
+                        className="inline-flex items-center gap-2 px-2 py-1 rounded-3xl bg-gray-800 text-gray-400 border border-gray-700 cursor-not-allowed"
                         disabled
                       >
-                        <HiExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4" />
                         Coming soon
                       </button>
                     )

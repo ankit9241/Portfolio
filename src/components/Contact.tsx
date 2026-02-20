@@ -1,10 +1,10 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { HiMail } from "react-icons/hi";
+import { CheckCircle, XCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-const gradient = "linear-gradient(90deg,#49BFC9 0%,#5F8DFF 50%,#9A8DFF 100%)";
+const gradient = "linear-gradient(90deg, #FFFFFF, #BDBDBD)";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -18,7 +18,7 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState("");
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,14 +38,12 @@ const Contact = () => {
       setTimeout(() => setSubmitStatus(""), 3000);
       return;
     }
-
     setIsSubmitting(true);
     try {
       // Keep your EmailJS values or replace with real ones
       const serviceId = "service_c4bz07r";
       const templateId = "template_yr9gqb3";
       const publicKey = "GAyorinfHSZ0EIyrB";
-
       await emailjs.send(
         serviceId,
         templateId,
@@ -55,9 +53,8 @@ const Contact = () => {
           message: formData.message,
           to_email: "ankitkumar.iitp09@gmail.com",
         },
-        publicKey
+        publicKey,
       );
-
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
@@ -82,12 +79,7 @@ const Contact = () => {
             className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left"
           >
             <h2
-              className="
-    font-extrabold leading-tight 
-    text-center lg:text-left
-    whitespace-nowrap          /* mobile: force single line */
-    lg:whitespace-normal       /* desktop: allow wrapping */
-  "
+              className="font-extrabold leading-tight text-center lg:text-left whitespace-nowrap lg:whitespace-normal"
               style={{
                 fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
                 background: gradient,
@@ -103,11 +95,10 @@ const Contact = () => {
               Touch
             </h2>
 
-            <p className="mt-6 text-lg text-gray-300 max-w-lg text-center lg:text-left">
+            <p className="mt-6 text-lg text-text-secondary max-w-lg text-center lg:text-left">
               Ready to collaborate? Let's create something amazing together.
             </p>
           </motion.div>
-
           {/* RIGHT: Form card only (location removed) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -119,30 +110,20 @@ const Contact = () => {
               className="rounded-2xl p-6 md:p-8"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))",
-                border: "1px solid rgba(95,141,255,0.04)",
-                boxShadow: "0 12px 40px rgba(7,10,20,0.55)",
+                  "linear-gradient(180deg, rgba(17,17,17,0.02), rgba(17,17,17,0.01))",
+                border: "1px solid #2A2A2A",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.4)",
               }}
             >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center"
-                    style={{
-                      background: "linear-gradient(90deg,#9A8DFF,#5F8DFF)",
-                      boxShadow: "0 6px 22px rgba(95,141,255,0.12)",
-                    }}
-                  >
-                    <HiMail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">
-                      Send a message
-                    </h4>
-                    <p className="text-sm text-gray-400">
-                      I'll reply as soon as I can.
-                    </p>
-                  </div>
+              <div className="flex items-center justify-center mb-6">
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold text-text-primary">
+                    Send a message
+                  </h4>
+
+                  <p className="text-sm text-text-secondary">
+                    I'll reply as soon as I can.
+                  </p>
                 </div>
               </div>
 
@@ -158,15 +139,17 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Full name"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none"
+                    className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none"
                     style={{
-                      background: "#0b1224c9", // visible panel background
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "rgba(17,17,17,0.8)",
+
+                      border: "1px solid #2A2A2A",
+
                       transition: "box-shadow 100ms ease, transform 100ms ease",
                     }}
                     onFocus={(e) =>
                       (e.currentTarget.style.boxShadow =
-                        "0 8px 30px rgba(95,141,255,0.09)")
+                        "0 8px 30px rgba(255, 255, 255, 0.09)")
                     }
                     onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
                   />
@@ -178,15 +161,17 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Email address"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none"
+                    className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none"
                     style={{
-                      background: "#0b1224c9",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "rgba(17,17,17,0.8)",
+
+                      border: "1px solid #2A2A2A",
+
                       transition: "box-shadow 100ms ease, transform 100ms ease",
                     }}
                     onFocus={(e) =>
                       (e.currentTarget.style.boxShadow =
-                        "0 8px 30px rgba(95,141,255,0.09)")
+                        "0 8px 30px rgba(255, 255, 255, 0.09)")
                     }
                     onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
                   />
@@ -200,37 +185,50 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your message"
                   required
-                  className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none resize-none"
+                  className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none resize-none"
                   style={{
-                    background: "#0b1224c9",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(17,17,17,0.8)",
+
+                    border: "1px solid #2A2A2A",
+
                     transition: "box-shadow 100ms ease, transform 100ms ease",
                   }}
                   onFocus={(e) =>
                     (e.currentTarget.style.boxShadow =
-                      "0 8px 30px rgba(95,141,255,0.09)")
+                      "0 8px 30px rgba(58, 134, 255, 0.09)")
                   }
                   onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
                 />
 
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-center gap-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 rounded-lg font-semibold text-[#021021]"
+                    className="px-6 py-3 rounded-lg font-semibold text-black"
                     style={
                       isSubmitting
                         ? {
-                            background: "rgba(255,255,255,0.04)",
+                            background: "rgba(255, 255, 255, 0.1)",
+
                             cursor: "not-allowed",
                           }
-                        : { background: gradient }
+                        : submitStatus === "success"
+                          ? {
+                              background: "rgba(34, 197, 94, 0.2)",
+
+                              cursor: "default",
+                            }
+                          : { background: gradient }
                     }
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting
+                      ? "Sending..."
+                      : submitStatus === "success"
+                        ? "Message Sent!"
+                        : "Send Message"}
                   </button>
 
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-text-secondary">
                     <div>{formData.message.length}/500</div>
                   </div>
                 </div>
@@ -246,17 +244,28 @@ const Contact = () => {
                     style={{
                       background:
                         submitStatus === "success"
-                          ? "linear-gradient(90deg, rgba(73,191,201,0.03), rgba(95,141,255,0.02))"
-                          : "linear-gradient(90deg, rgba(255,80,80,0.03), rgba(255,80,80,0.02))",
+                          ? "linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02))"
+                          : "linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02))",
+
                       border:
                         submitStatus === "success"
-                          ? "1px solid rgba(73,191,201,0.06)"
-                          : "1px solid rgba(255,80,80,0.06)",
+                          ? "1px solid rgba(255,255,255,0.06)"
+                          : "1px solid rgba(255,255,255,0.06)",
                     }}
                   >
-                    {submitStatus === "success"
-                      ? "✅ Message sent — thanks!"
-                      : "❌ Failed to send. Try again."}
+                    {submitStatus === "success" ? (
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4" />
+
+                        <span>Message sent - Thanks!</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <XCircle className="w-4 h-4" />
+
+                        <span>Failed to send. Try again.</span>
+                      </div>
+                    )}
                   </div>
                 )}
               </form>

@@ -7,7 +7,6 @@ import ProfileCard from "./ProfileCard";
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-
   return (
     <section id="about" className="py-20" ref={ref}>
       <div className="max-w-6xl mx-auto px-4">
@@ -21,37 +20,33 @@ const About = () => {
           <h2
             className="
               text-4xl md:text-5xl font-extrabold mb-4
-              bg-gradient-to-r from-[#49BFC9] via-[#5F8DFF] to-[#9A8DFF]
               bg-clip-text text-transparent
             "
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
+            }}
           >
-            About Me
+            <span className="inline-block">
+              <span style={{ color: "#E5E5E5" }}>A</span>
+              <span style={{ color: "#D5D5D5" }}>b</span>
+              <span style={{ color: "#BDBDBD" }}>o</span>
+              <span style={{ color: "#ADADAD" }}>u</span>
+              <span style={{ color: "#9D9D9D" }}>t</span>
+              <span style={{ color: "#FFFFFF" }}> </span>
+              <span style={{ color: "#E5E5E5" }}>M</span>
+              <span style={{ color: "#D5D5D5" }}>e</span>
+            </span>
           </h2>
-          
         </motion.div>
-
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Profile Card */}
           <ProfileCard
             name="Ankit Kumar"
             title="Full Stack Developer"
             status="Open to new opportunities"
-            contactText="Contact Me"
             avatarUrl="/assets/ankit-profile-bgless.png"
-            onContactClick={() => {
-              const recipient = "ankitkumar.iitp09@gmail.com";
-              const subject = "Contact from Portfolio";
-              const body =
-                "Hello Ankit,%0D%0A%0D%0AI came across your portfolio and would like to get in touch.%0D%0A%0D%0ABest regards,%0D%0A[Your Name]";
-              window.open(
-                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-                  recipient
-                )}&su=${encodeURIComponent(subject)}&body=${body}`,
-                "_blank"
-              );
-            }}
           />
-
           {/* Clean text-only About */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -63,7 +58,8 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-white text-lg leading-relaxed"
+              className="text-text-primary text-lg leading-relaxed"
+              style={{ color: "#E5E5E5" }}
             >
               Hello! I'm <strong>Ankit Kumar</strong>, a second-year BSc (CSDA)
               student at IIT Patna. I'm a developer who enjoys building clean,
@@ -71,12 +67,12 @@ const About = () => {
               Tailwind CSS, and Node.js. I like working on products that look
               good, feel smooth, and solve real problems.
             </motion.p>
-
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.55 }}
-              className="text-gray-300 text-lg leading-relaxed"
+              className="text-text-secondary text-lg leading-relaxed"
+              style={{ color: "#D5D5D5" }}
             >
               My work mixes academic problem-solving with hands-on development.
               I enjoy taking projects from concept to deployment and improving
@@ -88,13 +84,16 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="pl-4 border-l-4 border-[#6366f1]"
+              className="pl-4 border-l-4 border-accent"
+              style={{ borderLeftColor: "#BDBDBD" }}
             >
-              <p className="text-gray-300 italic text-sm">
+              <p className="text-text-secondary italic text-sm"
+                style={{ color: "#ADADAD" }}>
                 "I believe in writing clean code, learning continuously, and
                 building things that are both useful and reliable."
               </p>
-              <p className="text-gray-200 text-sm font-medium mt-3">
+              <p className="text-text-subtle text-sm font-medium mt-3"
+                style={{ color: "#9D9D9D" }}>
                 - Ankit Kumar
               </p>
             </motion.div>

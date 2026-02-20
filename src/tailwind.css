@@ -1,4 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,6 +37,7 @@
   /* Set default text color for dark mode */
   html {
     @apply text-gray-100;
+    font-family: 'Outfit', sans-serif;
   }
   
   /* Override for specific elements */

@@ -11,9 +11,9 @@ import {
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiGit,
+  // SiGit,
   SiGithub,
-  SiHoppscotch,
+  // SiHoppscotch,
   SiVite,
   SiRender,
   SiFirebase,
@@ -26,60 +26,62 @@ import { motion } from "framer-motion";
 
 const Skills = () => {
   const skills = [
-    { name: "HTML5", icon: SiHtml5, color: "#E34F26", category: "Frontend" },
-    { name: "CSS3", icon: SiCss3, color: "#1572B6", category: "Frontend" },
-    {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "#F7DF1E",
-      category: "Backend",
-    },
-    {
-      name: "TypeScript",
-      icon: SiTypescript,
-      color: "#007acc",
-      category: "Frontend",
-    },
-    { name: "React", icon: SiReact, color: "#61DAFB", category: "Frontend" },
+    { name: "HTML5", icon: SiHtml5, color: "#E5E5E5", category: "Frontend" },
+    { name: "CSS3", icon: SiCss3, color: "#D5D5D5", category: "Frontend" },
+    { name: "React", icon: SiReact, color: "#D5D5D5", category: "Frontend" },
     {
       name: "Tailwind CSS",
       icon: SiTailwindcss,
-      color: "#06B6D4",
+      color: "#BDBDBD",
       category: "Frontend",
     },
     {
       name: "Bootstrap CSS",
       icon: SiBootstrap,
-      color: "#7952B3",
+      color: "#ADADAD",
       category: "Frontend",
     },
+    { name: "Vite", icon: SiVite, color: "#BDBDBD", category: "Frontend" },
+
     {
       name: "Node.js",
       icon: SiNodedotjs,
-      color: "#339933",
+      color: "#E5E5E5",
       category: "Backend",
     },
     {
       name: "Express.js",
       icon: SiExpress,
-      color: "#ffffff",
+      color: "#FFFFFF",
       category: "Backend",
     },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248", category: "Backend" },
-    { name: "Python", icon: SiPython, color: "#3776AB", category: "Backend" },
-    { name: "Git", icon: SiGit, color: "#F05032", category: "Tools" },
-    { name: "GitHub", icon: SiGithub, color: "#ffffff", category: "Tools" },
+    { name: "MongoDB", icon: SiMongodb, color: "#D5D5D5", category: "Backend" },
+    { name: "Firebase", icon: SiFirebase, color: "#E5E5E5", category: "Backend" },
+    { name: "Python", icon: SiPython, color: "#BDBDBD", category: "Backend" },
+
     {
-      name: "Hoppscotch",
-      icon: SiHoppscotch,
-      color: "#8A4FFF",
-      category: "Tools",
+      name: "JavaScript",
+      icon: SiJavascript,
+      color: "#BDBDBD",
+      category: "Languages",
     },
-    { name: "Vite", icon: SiVite, color: "#646CFF", category: "Tools" },
-    { name: "Render", icon: SiRender, color: "#FF0000", category: "Tools" },
-    { name: "Firebase", icon: SiFirebase, color: "#FFC107", category: "Tools" },
-    { name: "VS Code", icon: VscVscode, color: "#007ACC", category: "Tools" },
-    { name: "Netlify", icon: SiNetlify, color: "#00C7B7", category: "Tools" },
+    {
+      name: "TypeScript",
+      icon: SiTypescript,
+      color: "#E5E5E5",
+      category: "Languages",
+    },
+    // { name: "Git", icon: SiGit, color: "#E5E5E5", category: "Tools" },
+    { name: "GitHub", icon: SiGithub, color: "#FFFFFF", category: "Tools" },
+    // {
+    //   name: "Hoppscotch",
+    //   icon: SiHoppscotch,
+    //   color: "#D5D5D5",
+    //   category: "Tools",
+    // },
+    { name: "Render", icon: SiRender, color: "#ADADAD", category: "Tools" },
+    { name: "VS Code", icon: VscVscode, color: "#D5D5D5", category: "Tools" },
+    { name: "Netlify", icon: SiNetlify, color: "#BDBDBD", category: "Tools" },
   ];
 
   // Animation variants
@@ -111,16 +113,36 @@ const Skills = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
-            }}
-          >
-            My Skills & Technologies
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="inline-block">
+              <span style={{ color: "#E5E5E5" }}>M</span>
+              <span style={{ color: "#D5D5D5" }}>y</span>
+              <span style={{ color: "#FFFFFF" }}> </span>
+              <span style={{ color: "#E5E5E5" }}>S</span>
+              <span style={{ color: "#D5D5D5" }}>k</span>
+              <span style={{ color: "#BDBDBD" }}>i</span>
+              <span style={{ color: "#ADADAD" }}>l</span>
+              <span style={{ color: "#9D9D9D" }}>l</span>
+              <span style={{ color: "#ADADAD" }}>s</span>
+              <span style={{ color: "#FFFFFF" }}> </span>
+              <span style={{ color: "#E5E5E5" }}>&</span>
+              <span style={{ color: "#FFFFFF" }}> </span>
+              <span style={{ color: "#E5E5E5" }}>T</span>
+              <span style={{ color: "#D5D5D5" }}>e</span>
+              <span style={{ color: "#BDBDBD" }}>c</span>
+              <span style={{ color: "#ADADAD" }}>h</span>
+              <span style={{ color: "#9D9D9D" }}>n</span>
+              <span style={{ color: "#ADADAD" }}>o</span>
+              <span style={{ color: "#BDBDBD" }}>l</span>
+              <span style={{ color: "#D5D5D5" }}>o</span>
+              <span style={{ color: "#E5E5E5" }}>g</span>
+              <span style={{ color: "#D5D5D5" }}>i</span>
+              <span style={{ color: "#BDBDBD" }}>e</span>
+              <span style={{ color: "#ADADAD" }}>s</span>
+            </span>
           </h2>
 
-          <p className="text-gray-200">
+          <p className="text-text-secondary">
             Here are the technologies and tools I work with
           </p>
         </motion.div>
@@ -146,7 +168,7 @@ const Skills = () => {
           {[
             "Frontend Development",
             "Backend Development",
-            "Tools & Platforms",
+            "Languages & Tools",
           ].map((category) => (
             <motion.div
               key={category}
@@ -155,7 +177,7 @@ const Skills = () => {
                 w-full 
                 md:max-w-[420px]
                 lg:max-w-[500px]
-                bg-[#0b1224]/70 
+                bg-card-bg 
                 backdrop-blur-md 
                 rounded-2xl 
                 p-8 
@@ -163,20 +185,85 @@ const Skills = () => {
                 duration-300
               "
               style={{
-                border: "1px solid rgba(95,141,255,0.10)",
-                boxShadow: "0 0 22px rgba(95,141,255,0.10)",
+                border: "none",
+                boxShadow:
+                  "0 20px 60px rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.4)",
               }}
             >
-              <h3
-                className="text-2xl font-bold text-center"
-                style={{ color: "#8FB7FF" }}
-              >
-                {category}
+              <h3 className="text-2xl font-bold text-center">
+                {category === "Frontend Development" && (
+                  <span className="inline-block">
+                    <span style={{ color: "#E5E5E5" }}>F</span>
+                    <span style={{ color: "#D5D5D5" }}>r</span>
+                    <span style={{ color: "#BDBDBD" }}>o</span>
+                    <span style={{ color: "#ADADAD" }}>n</span>
+                    <span style={{ color: "#9D9D9D" }}>t</span>
+                    <span style={{ color: "#ADADAD" }}>e</span>
+                    <span style={{ color: "#BDBDBD" }}>n</span>
+                    <span style={{ color: "#D5D5D5" }}>d</span>
+                    <span style={{ color: "#FFFFFF" }}> </span>
+                    <span style={{ color: "#E5E5E5" }}>D</span>
+                    <span style={{ color: "#D5D5D5" }}>e</span>
+                    <span style={{ color: "#BDBDBD" }}>v</span>
+                    <span style={{ color: "#ADADAD" }}>e</span>
+                    <span style={{ color: "#9D9D9D" }}>l</span>
+                    <span style={{ color: "#ADADAD" }}>o</span>
+                    <span style={{ color: "#BDBDBD" }}>p</span>
+                    <span style={{ color: "#D5D5D5" }}>m</span>
+                    <span style={{ color: "#E5E5E5" }}>e</span>
+                    <span style={{ color: "#D5D5D5" }}>n</span>
+                    <span style={{ color: "#BDBDBD" }}>t</span>
+                  </span>
+                )}
+                {category === "Backend Development" && (
+                  <span className="inline-block">
+                    <span style={{ color: "#E5E5E5" }}>B</span>
+                    <span style={{ color: "#D5D5D5" }}>a</span>
+                    <span style={{ color: "#BDBDBD" }}>c</span>
+                    <span style={{ color: "#ADADAD" }}>k</span>
+                    <span style={{ color: "#9D9D9D" }}>e</span>
+                    <span style={{ color: "#ADADAD" }}>n</span>
+                    <span style={{ color: "#BDBDBD" }}>d</span>
+                    <span style={{ color: "#FFFFFF" }}> </span>
+                    <span style={{ color: "#E5E5E5" }}>D</span>
+                    <span style={{ color: "#D5D5D5" }}>e</span>
+                    <span style={{ color: "#BDBDBD" }}>v</span>
+                    <span style={{ color: "#ADADAD" }}>e</span>
+                    <span style={{ color: "#9D9D9D" }}>l</span>
+                    <span style={{ color: "#ADADAD" }}>o</span>
+                    <span style={{ color: "#BDBDBD" }}>p</span>
+                    <span style={{ color: "#D5D5D5" }}>m</span>
+                    <span style={{ color: "#E5E5E5" }}>e</span>
+                    <span style={{ color: "#D5D5D5" }}>n</span>
+                    <span style={{ color: "#BDBDBD" }}>t</span>
+                  </span>
+                )}
+                {category === "Languages & Tools" && (
+                  <span className="inline-block">
+                    <span style={{ color: "#E5E5E5" }}>L</span>
+                    <span style={{ color: "#D5D5D5" }}>a</span>
+                    <span style={{ color: "#BDBDBD" }}>n</span>
+                    <span style={{ color: "#ADADAD" }}>g</span>
+                    <span style={{ color: "#9D9D9D" }}>u</span>
+                    <span style={{ color: "#ADADAD" }}>a</span>
+                    <span style={{ color: "#BDBDBD" }}>g</span>
+                    <span style={{ color: "#D5D5D5" }}>e</span>
+                    <span style={{ color: "#E5E5E5" }}>s</span>
+                    <span style={{ color: "#FFFFFF" }}> </span>
+                    <span style={{ color: "#E5E5E5" }}>&</span>
+                    <span style={{ color: "#FFFFFF" }}> </span>
+                    <span style={{ color: "#E5E5E5" }}>T</span>
+                    <span style={{ color: "#D5D5D5" }}>o</span>
+                    <span style={{ color: "#BDBDBD" }}>o</span>
+                    <span style={{ color: "#ADADAD" }}>l</span>
+                    <span style={{ color: "#9D9D9D" }}>s</span>
+                  </span>
+                )}
               </h3>
 
               <div
                 className="w-full h-[2px] mt-3 mb-6 rounded-full"
-                style={{ background: "rgba(95,141,255,0.15)" }}
+                style={{ background: "#2A2A2A" }}
               />
 
               {/* Skill Items */}
@@ -185,16 +272,23 @@ const Skills = () => {
                 variants={staggerContainer}
               >
                 {skills
-                  .filter((skill) => skill.category === category.split(" ")[0])
+                  .filter((skill) => 
+                    category === "Languages & Tools" 
+                      ? skill.category === "Languages" || skill.category === "Tools"
+                      : skill.category === category.split(" ")[0]
+                  )
                   .map((skill) => (
                     <motion.div
                       key={skill.name}
                       variants={itemFade}
-                      className="flex items-center gap-3 px-3 py-1 rounded-xl transition-all"
+                      className="flex items-center gap-3 px-3 py-1 rounded-xl transition-all hover:bg-elevated-surface"
                     >
                       <div
                         className="w-10 h-10 flex items-center justify-center rounded-full"
-                        style={{ backgroundColor: `${skill.color}22` }}
+                        style={{
+                          backgroundColor: `${skill.color}22`,
+                          border: "1px solid #2A2A2A",
+                        }}
                       >
                         <skill.icon
                           className="w-6 h-6"
@@ -202,7 +296,10 @@ const Skills = () => {
                         />
                       </div>
 
-                      <span className="text-gray-100 text-sm font-medium">
+                      <span
+                        className="text-sm font-medium"
+                        style={{ color: "#E5E5E5" }}
+                      >
                         {skill.name}
                       </span>
                     </motion.div>

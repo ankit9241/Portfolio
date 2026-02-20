@@ -1,15 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
+import { Mail, MapPin } from "lucide-react";
 const Footer = () => {
   return (
     <footer
-      className="bg-transparent text-white py-8"
+      className="bg-[#1a1a1a] text-text-primary py-8"
       style={{
         borderTop: "none",
         backgroundImage:
-          "linear-gradient(90deg, rgba(73,191,201,0) 0%, rgba(73,191,201,0.45) 12%, #5F8DFF 50%, rgba(154,141,255,0.45) 88%, rgba(154,141,255,0) 100%)",
+          "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 12%, #FFFFFF 50%, rgba(189, 189, 189, 0.45) 88%, rgba(189, 189, 189, 0) 100%)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "top center",
         backgroundSize: "72% 1px",
@@ -21,17 +20,19 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-center md:space-x-3 space-y-1 md:space-y-0 text-sm text-gray-300"
+          className="flex flex-col md:flex-row items-center justify-center md:space-x-3 space-y-1 md:space-y-0 text-sm text-text-secondary"
         >
           <span className="flex items-center space-x-2">
-            <FaEnvelope className="text-[rgba(95,141,255,1)]" />
+            <Mail className="w-4 h-4 text-white" />
+
             <span>ankitkumar.iitp09@gmail.com</span>
           </span>
 
-          <span className="hidden md:inline-block text-gray-500">•</span>
+          <span className="hidden md:inline-block text-text-secondary">•</span>
 
           <span className="flex items-center space-x-2">
-            <FaMapMarkerAlt className="text-[rgba(154,141,255,1)]" />
+            <MapPin className="w-4 h-4 text-white" />
+
             <span>Jamshedpur, Jharkhand, India</span>
           </span>
         </motion.div>

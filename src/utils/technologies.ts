@@ -11,9 +11,9 @@ export const technologies = {
   nextjs: {
     name: "Next.js",
     icon: SiNextdotjs,
-    bgColor: "rgba(0, 0, 0, 0.1)",
-    textColor: "#000000",
-    borderColor: "rgba(0, 0, 0, 0.3)",
+    bgColor: "rgba(255, 255, 255, 0.1)",
+    textColor: "#FFFFFF",
+    borderColor: "rgba(255, 255, 255, 0.3)",
   },
   nodejs: {
     name: "Node.js",

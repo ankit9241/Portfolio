@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { HiExternalLink, HiCode } from "react-icons/hi";
+import { ExternalLink, Code } from "lucide-react";
 import { technologies } from "../utils/technologies";
 import ProjectDetails from "./ProjectDetails";
 
@@ -16,7 +16,6 @@ interface ProjectTech {
   textColor?: string;
   borderColor?: string;
 }
-
 interface Project {
   title: string;
   description: string;
@@ -36,18 +35,15 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openModal = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
     document.body.style.overflow = "hidden";
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
     document.body.style.overflow = "auto";
   };
-
   const projects: Project[] = [
     {
       title:
@@ -293,21 +289,18 @@ const Projects = () => {
         "Local delivery scheduling",
       ],
     },
-  ];
-
-  const paletteGradient =
-    "linear-gradient(90deg,#49BFC9 0%,#5F8DFF 50%,#9A8DFF 100%)";
+ ];
 
   return (
     <section id="projects" className="py-20" ref={ref}>
-      {selectedProject && (
-        <ProjectDetails
-          project={selectedProject}
-          isOpen={isModalOpen}
-          onClose={closeModal}
-        />
-      )}
 
+          {selectedProject && (
+            <ProjectDetails
+              project={selectedProject}
+              isOpen={isModalOpen}
+              onClose={closeModal}
+            />
+          )}
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -317,11 +310,32 @@ const Projects = () => {
         >
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{ backgroundImage: paletteGradient }}
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
+            }}
           >
-            Featured Projects
+            <span className="inline-block">
+              <span style={{ color: "#E5E5E5" }}>F</span>
+              <span style={{ color: "#D5D5D5" }}>e</span>
+              <span style={{ color: "#BDBDBD" }}>a</span>
+              <span style={{ color: "#ADADAD" }}>t</span>
+              <span style={{ color: "#9D9D9D" }}>u</span>
+              <span style={{ color: "#8D8D8D" }}>r</span>
+              <span style={{ color: "#7D7D7D" }}>e</span>
+              <span style={{ color: "#6D6D6D" }}>d</span>
+              <span style={{ color: "#5D5D5D" }}> </span>
+              <span style={{ color: "#E5E5E5" }}>P</span>
+              <span style={{ color: "#D5D5D5" }}>r</span>
+              <span style={{ color: "#BDBDBD" }}>o</span>
+              <span style={{ color: "#ADADAD" }}>j</span>
+              <span style={{ color: "#9D9D9D" }}>e</span>
+              <span style={{ color: "#8D8D8D" }}>c</span>
+              <span style={{ color: "#7D7D7D" }}>t</span>
+              <span style={{ color: "#6D6D6D" }}>s</span>
+            </span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-6">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6">
             Here are some of my recent projects that showcase my skills in
             full-stack development, UI/UX design, and problem-solving abilities.
           </p>
@@ -329,42 +343,26 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+           <motion.div
               key={project.title}
-              initial={{
-                opacity: 0,
-                x: index % 2 === 0 ? -40 : 40,
-                rotateY: index % 2 === 0 ? -8 : 8,
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94]
               }}
-              animate={
-                isInView
-                  ? { opacity: 1, x: 0, rotateY: 0 }
-                  : {
-                      opacity: 0,
-                      x: index % 2 === 0 ? -40 : 40,
-                      rotateY: index % 2 === 0 ? -8 : 8,
-                    }
-              }
-              transition={{
-                duration: 0.7,
-                delay: index * 0.12,
-                type: "spring",
-                stiffness: 120,
-              }}
-              whileHover={{ y: -6, scale: 1.01 }}
               className="group rounded-2xl overflow-hidden cursor-pointer"
-              onClick={() => openModal(project)}
               style={{
-                background: "rgba(255,255,255,0.02)",
-                border: "1px solid rgba(95,141,255,0.04)",
-                boxShadow: "0 8px 30px rgba(7,10,30,0.45)",
+                background: "rgba(17,17,17,0.8)",
+                border: "1px solid #2A2A2A",
                 transition: "transform 160ms ease, box-shadow 160ms ease",
               }}
+              onClick={() => openModal(project)}
             >
               <div className="relative overflow-hidden">
-                <motion.img
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.35 }}
+                <img
                   src={
                     Array.isArray(project.image)
                       ? project.image[0]
@@ -373,64 +371,38 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-180">
-                  <motion.a
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.95 }}
+                  <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-black/70 backdrop-blur-sm rounded-full transition-all duration-150 z-10"
+                    className="p-2 bg-card-bg/90 backdrop-blur-sm rounded-full transition-all duration-150 z-10 border border-border-light"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <HiCode className="w-5 h-5 text-white" />
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.95 }}
+                    <Code className="w-5 h-5 text-text-secondary" />
+                  </a>
+                  <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-black/70 backdrop-blur-sm rounded-full transition-all duration-150 z-10"
+                    className="p-2 bg-card-bg/90 backdrop-blur-sm rounded-full transition-all duration-150 z-10 border border-border-light"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <HiExternalLink className="w-5 h-5 text-white" />
-                  </motion.a>
+                    <ExternalLink className="w-5 h-5 text-text-secondary" />
+                  </a>
                 </div>
               </div>
-
               <div className="p-6">
-                <motion.h3
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.12 + 0.08 }}
-                  className="text-xl font-semibold text-white mb-2"
-                >
+                <h3 className="text-xl font-semibold text-text-primary mb-2">
                   {project.title}
-                </motion.h3>
+                </h3>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.12 + 0.12 }}
-                  className="text-gray-300 mb-4 line-clamp-3"
-                >
+                <p className="text-text-secondary mb-4 line-clamp-3">
                   {project.description}
-                </motion.p>
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.12 + 0.16 }}
-                  className="flex flex-wrap gap-2 mb-4"
-                >
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, i) => {
                     const Icon = tech.icon;
                     const textColor = tech.textColor || "#E6F3FF";
@@ -441,9 +413,9 @@ const Projects = () => {
                         key={i}
                         className="flex items-center text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-200"
                         style={{
-                          background: tech.bgColor || "rgba(255,255,255,0.05)",
+                          background: tech.bgColor || "rgba(58, 134, 255, 0.1)",
                           border: `1px solid ${
-                            tech.borderColor || "rgba(255,255,255,0.05)"
+                            tech.borderColor || "#2A2A2A"
                           }`,
                           color: textColor,
                         }}
@@ -453,39 +425,29 @@ const Projects = () => {
                       </span>
                     );
                   })}
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }
-                  }
-                  transition={{ duration: 0.5, delay: index * 0.12 + 0.2 }}
-                  className="flex flex-wrap gap-3"
-                >
-                  <motion.a
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.96 }}
+                <div className="flex flex-wrap gap-3">
+                  <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-3xl text-sm"
                     style={{
-                      background: "rgba(0,0,0,0.6)",
-                      color: "#FFF",
+                      background: "rgba(58, 134, 255, 0.1)",
+                      color: "#FFFFFF",
                       minWidth: 96,
                       justifyContent: "center",
+                      border: "1px solid #4A4A4A",
                     }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <HiCode className="w-4 h-4" />
+                    <Code className="w-4 h-4" />
                     <span>Code</span>
-                  </motion.a>
+                  </a>
 
                   {project.isPublished === false ? (
-                    <motion.button
-                      whileHover={{ scale: 1.04 }}
-                      whileTap={{ scale: 0.96 }}
+                    <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -493,48 +455,36 @@ const Projects = () => {
                           "This project is not yet published. Coming soon!"
                         );
                       }}
-                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm cursor-not-allowed"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-3xl text-sm"
                       style={{
-                        background: "rgba(255,255,255,0.02)",
-                        color: "#DDD",
+                        background: "#FFFFFF",
+                        color: "#000000",
                         minWidth: 96,
                         justifyContent: "center",
+                        border: "1px solid #2A2A2A",
                       }}
                     >
-                      <HiExternalLink className="w-4 h-4" />
-                      <span>Coming Soon</span>
-                    </motion.button>
+                      <span style={{ color: "#000000" }}>Coming Soon</span>
+                    </button>
                   ) : (
-                    <motion.a
-                      whileHover={{ scale: 1.04 }}
-                      whileTap={{ scale: 0.96 }}
+                    <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-3xl text-sm"
                       style={{
-                        backgroundImage: paletteGradient,
-                        color: "#021021",
+                        background: "#FFFFFF",
+                        color: "#000000",
                         minWidth: 96,
                         justifyContent: "center",
-                      }}
-                      onClick={(e) => {
-                        if (!project.isPublished) {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          alert(
-                            "This project is not yet published. Coming soon!"
-                          );
-                        }
+                        border: "1px solid #2A2A2A",
                       }}
                     >
-                      <HiExternalLink className="w-4 h-4" />
-                      <span>
-                        {project.isPublished ? "Live Demo" : "Coming Soon"}
-                      </span>
-                    </motion.a>
+                      <span style={{ color: "#000000" }}>Live Demo</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
                   )}
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -545,3 +495,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

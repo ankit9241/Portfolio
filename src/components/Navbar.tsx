@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { TbCertificate } from "react-icons/tb";
+import { Download } from "lucide-react";
 import {
   FaHome,
   FaBriefcase,
   FaCode,
   FaEnvelope,
-  FaDownload,
   FaLaptopCode,
 } from "react-icons/fa";
 
@@ -34,7 +34,6 @@ const sections = [
   { id: "contact", label: "Contact", icon: <FaEnvelope className="mr-2" /> },
 ];
 
-// ✨ animation variants (added)
 const fadeDown = {
   hidden: { opacity: 0, y: -22 },
   show: { opacity: 1, y: 0 },
@@ -57,14 +56,12 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const headerH = "h-16 md:h-20";
-  const gradient = "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)";
 
-  // ---- Scroll & section tracking logic (unchanged) ----
   useEffect(() => {
     const observerOptions = { threshold: 0.3, rootMargin: "-20% 0px -70% 0px" };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(
-        (entry) => entry.isIntersecting && setActiveSection(entry.target.id)
+        (entry) => entry.isIntersecting && setActiveSection(entry.target.id),
       );
     }, observerOptions);
 
@@ -123,22 +120,23 @@ const Navbar = () => {
       {/* ===== NAVBAR MAIN ===== */}
 
       <motion.nav
-        variants={fadeDown} // ✨ Added
+        variants={fadeDown}
         initial="hidden"
         animate="show"
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto bg-gray-900/80 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none`}
+        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto`}
+        style={{ backgroundColor: "#111111" }}
       >
         <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
           <div className="flex items-center justify-between w-full">
             {/* Mobile Brand */}
             <motion.div variants={itemFade} className="md:hidden">
               <div
-                className="font-bold text-lg"
+                className="font-bold text-lg px-3 py-2 rounded-lg"
                 style={{
-                  background: gradient,
+                  background: "#111111",
                   WebkitBackgroundClip: "text",
-                  color: "transparent",
+                  color: "#F5F5F5",
                 }}
               >
                 Portfolio
@@ -148,81 +146,76 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <motion.div
               className="hidden md:flex items-center justify-center w-full"
-              variants={staggerFade} // ✨ Added
+              variants={staggerFade}
               initial="hidden"
               animate="show"
             >
-              <motion.div
-                variants={itemFade} // ✨ Added
-                className="flex items-center rounded-full px-3 py-1"
-                style={{
-                  background: "rgba(14,26,47,0.7)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  boxShadow: "0 6px 22px rgba(0,0,0,0.45)",
-                  transition: "box-shadow 220ms ease, transform 220ms ease",
-                }}
-              >
-                <div className="flex items-center space-x-2 px-2">
-                  {sections.map((section) => {
-                    const isActive = activeSection === section.id;
+              <div className="flex items-center space-x-2 px-2">
+                {sections.map((section) => {
+                  const isActive = activeSection === section.id;
 
-                    return (
-                      <motion.button
-                        key={section.id}
-                        variants={itemFade} // ✨ Added
-                        onClick={() => scrollToSection(section.id)}
-                        className="flex items-center px-4 py-2 mx-1 my-1 rounded-full text-sm font-medium transition"
-                        style={
-                          isActive
-                            ? {
-                                background: gradient,
-                                color: "#021021",
-                                boxShadow:
-                                  "0 8px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.10)",
-                                border: "1px solid rgba(159,185,255,0.12)",
-                                transform: "translateY(-1px)",
-                              }
-                            : { color: "rgb(203,213,225)" }
-                        }
-                      >
-                        <span className="mr-2">{section.icon}</span>
-                        <span>{section.label}</span>
-                      </motion.button>
-                    );
-                  })}
+                  return (
+                    <motion.button
+                      key={section.id}
+                      variants={itemFade}
+                      onClick={() => scrollToSection(section.id)}
+                      className="flex items-center px-4 py-2 mx-1 my-1 text-sm font-medium transition relative"
+                      style={
+                        isActive
+                          ? {
+                              color: "#3A86FF",
+                              position: "relative",
+                            }
+                          : { color: "#BDBDBD" }
+                      }
+                    >
+                      <span>{section.label}</span>
+                      {isActive && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent"
+                          initial={{ width: 0 }}
+                          animate={{ width: ["0%", "100%"] }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          style={{ transformOrigin: "left" }}
+                        />
+                      )}
+                    </motion.button>
+                  );
+                })}
 
-                  {/* Resume Button */}
-                  <motion.button
-                    variants={itemFade} // ✨ Added
-                    onClick={() =>
-                      window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank")
-                    }
-                    className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
-                    style={{
-                      background: gradient,
-                      color: "#021021",
-                      boxShadow:
-                        "0 10px 30px rgba(79,141,255,0.18), 0 0 18px rgba(95,141,255,0.08)",
-                    }}
-                  >
-                    <FaDownload className="mr-2" />
-                    Resume
-                  </motion.button>
-                </div>
-              </motion.div>
+                {/* Resume Button */}
+                <motion.button
+                  variants={itemFade}
+                  onClick={() =>
+                    window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank")
+                  }
+                  className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
+                  style={{
+                    background: "#F5F5F5",
+                    color: "#111111",
+                    boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <Download className="mr-2 w-4 h-4" />
+                  Resume
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Mobile Hamburger */}
             <motion.div variants={itemFade} className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="menu-button p-2 rounded-full"
+                className="menu-button p-2 transition-all duration-200"
+                style={{
+                  backgroundColor: "transparent"
+                }}
               >
                 <svg
-                  className="h-6 w-6 text-gray-200"
+                  className="h-6 w-6 transition-colors duration-200"
                   fill="none"
                   stroke="currentColor"
+                  style={{ color: isMenuOpen ? "#FFFFFF" : "#BDBDBD" }}
                 >
                   {isMenuOpen ? (
                     <path
@@ -232,12 +225,26 @@ const Navbar = () => {
                       d="M6 18L18 6M6 6l12 12"
                     />
                   ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
+                    <>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h16"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 12h16"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 18h8"
+                      />
+                    </>
                   )}
                 </svg>
               </button>
@@ -250,63 +257,110 @@ const Navbar = () => {
       <div className="w-full h-16 md:h-20" />
 
       {/* ===== MOBILE MENU ===== */}
-      {isMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
-            onClick={() => setIsMenuOpen(false)}
-          />
-
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            className="mobile-menu-container fixed right-4 top-20 z-50 w-[calc(100%-2rem)] max-w-xs md:hidden"
-          >
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Overlay */}
             <motion.div
-              variants={staggerFade} // ✨ Added
-              initial="hidden"
-              animate="show"
-              className="bg-[#071026cc] backdrop-blur-lg rounded-xl border border-[rgba(95,141,255,0.06)] overflow-hidden shadow-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            {/* Dropdown */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ 
+                duration: 0.2,
+                ease: "easeOut"
+              }}
+              className="fixed right-4 top-20 z-50 w-52 md:hidden"
+              style={{
+                backgroundColor: "#111111",
+                border: "1px solid #333333",
+                borderRadius: "10px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.4)",
+              }}
             >
-              <div className="p-3 space-y-1">
-                {sections.map((section) => (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.2 }}
+                className="p-3 space-y-1"
+              >
+                {sections.map((section, index) => (
                   <motion.button
-                    variants={itemFade} // ✨ Added
                     key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    className={`flex items-center w-full px-5 py-3 rounded-xl text-base font-medium transition ${
-                      activeSection === section.id
-                        ? "text-white"
-                        : "text-gray-300 hover:bg-[rgba(255,255,255,0.03)]"
-                    }`}
-                    style={
-                      activeSection === section.id
-                        ? { background: gradient }
-                        : undefined
-                    }
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + index * 0.03, duration: 0.2 }}
+                    onClick={() => {
+                      scrollToSection(section.id);
+                      setIsMenuOpen(false);
+                    }}
+                    className="flex items-center justify-end w-full px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200"
+                    style={{
+                      color: activeSection === section.id ? "#FFFFFF" : "#BDBDBD",
+                      backgroundColor: "transparent"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#1A1A1A";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }}
                   >
-                    <span className="text-lg mr-3">{section.icon}</span>
-                    <span>{section.label}</span>
+                    {section.label}
                   </motion.button>
                 ))}
 
+                {/* Divider */}
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ delay: 0.2, duration: 0.2 }}
+                  style={{
+                    height: "1px",
+                    backgroundColor: "#333333",
+                    margin: "8px 0",
+                    transformOrigin: "right"
+                  }}
+                />
+
+                {/* Resume Button */}
                 <motion.button
-                  variants={itemFade} // ✨ Added
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25, duration: 0.2 }}
                   onClick={() =>
                     window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")
                   }
-                  className="flex items-center justify-center w-full px-5 py-3 rounded-xl text-base font-medium"
-                  style={{ background: gradient, color: "#021021" }}
+                  className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-all duration-200"
+                  style={{
+                    backgroundColor: "#F5F5F5",
+                    color: "#111111",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = "0.9";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = "1";
+                  }}
                 >
-                  <FaDownload className="mr-3 text-lg" />
+                  <Download className="mr-2 text-sm" />
                   Download Resume
                 </motion.button>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </>
-      )}
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

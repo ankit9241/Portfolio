@@ -1,8 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiOutlineDownload } from "react-icons/hi";
+import { Mail, Github, Linkedin, Download, Star } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -41,7 +40,7 @@ const Hero = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute top-16 left-6 w-36 h-36 rounded-full opacity-10 blur-2xl"
           style={{
-            background: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 60%)",
           }}
         />
 
@@ -50,7 +49,7 @@ const Hero = () => {
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-20 right-6 w-44 h-44 rounded-full opacity-10 blur-2xl"
           style={{
-            background: "linear-gradient(90deg,#5F8DFF,#9A8DFF,#49BFC9)",
+            background: "radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 60%)",
           }}
         />
       </div>
@@ -68,18 +67,13 @@ const Hero = () => {
             <motion.div variants={fadeUp}>
               <div className="flex items-center gap-3">
                 <span
-                  className="inline-flex items-center gap-2 text-white text-sm font-medium px-3 py-1 rounded-full shadow-sm"
+                  className="inline-flex items-center gap-2 text-sm font-medium px-3 py-1 rounded-full shadow-sm"
                   style={{
-                    background:
-                      "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+                    background: "#F5F5F5",
+                    color: "#000000"
                   }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path
-                      fill="currentColor"
-                      d="M12 2L15 8l6 .5-4.5 3 1.5 6L12 15l-6 3.5L7 11 2.5 8.5 8 8 12 2z"
-                    />
-                  </svg>
+                  <Star className="w-3.5 h-3.5" />
                   Let's build something great
                 </span>
               </div>
@@ -89,24 +83,36 @@ const Hero = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.6 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white"
+              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-text-primary"
             >
-              Hello 👋, I'm{" "}
+              Hello, I'm{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{
                   backgroundImage:
-                    "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+                    "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
                 }}
               >
-                Ankit Kumar
+                <span className="inline-block">
+                  <span style={{ color: "#E5E5E5" }}>A</span>
+                  <span style={{ color: "#D5D5D5" }}>n</span>
+                  <span style={{ color: "#BDBDBD" }}>k</span>
+                  <span style={{ color: "#ADADAD" }}>i</span>
+                  <span style={{ color: "#9D9D9D" }}>t</span>
+                  <span style={{ color: "#FFFFFF" }}> </span>
+                  <span style={{ color: "#E5E5E5" }}>K</span>
+                  <span style={{ color: "#D5D5D5" }}>u</span>
+                  <span style={{ color: "#BDBDBD" }}>m</span>
+                  <span style={{ color: "#ADADAD" }}>a</span>
+                  <span style={{ color: "#9D9D9D" }}>r</span>
+                </span>
               </span>
             </motion.h1>
 
             {/* Typewriter */}
             <motion.div variants={fadeUp}>
               <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-3">
-                <div className="text-2xl md:text-3xl font-semibold text-gray-100">
+                <div className="text-2xl md:text-3xl font-semibold text-text-subtle">
                   <div className="h-10 md:h-12">
                     <Typewriter
                       options={{
@@ -131,7 +137,7 @@ const Hero = () => {
             {/* Paragraph */}
             <motion.p
               variants={fadeUp}
-              className="text-sm md:text-base text-gray-300 max-w-xl"
+              className="text-sm md:text-base text-text-secondary max-w-xl"
             >
               CS & Data Analytics Student | Full Stack Web Developer |{" "}
               Sub-Coordinator <b>@Pixelerate IITP CEP UG</b>
@@ -142,10 +148,9 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
                   onClick={scrollToProjects}
-                  className="px-6 py-3 border-2 border-2xl rounded-2xl font-semibold text-white shadow-lg transition"
+                  className="px-6 py-3 border-2 border-2xl border-accent rounded-3xl font-semibold text-text-primary shadow-lg transition hover:bg-elevated-surface"
                   style={{
-                    borderColor: "#5F8DFF",
-                    color: "#9AB9FF",
+                    color: "#FFFFFF"
                   }}
                 >
                   View Projects
@@ -155,13 +160,13 @@ const Hero = () => {
                   href="/resume/Ankit_Kumar_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-2xl transition font-semibold text-center"
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-3xl transition font-semibold text-center"
                   style={{
-                    background:
-                      "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+                    background: "#F5F5F5",
+                    color: "#000000"
                   }}
                 >
-                  <HiOutlineDownload className="w-5 h-5" />
+                  <Download className="w-5 h-5" />
                   Get Resume
                 </a>
               </div>
@@ -173,25 +178,25 @@ const Hero = () => {
                 <a
                   href="https://github.com/ankit9241"
                   target="_blank"
-                  className="p-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-xl"
+                  className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
-                  <FaGithub />
+                  <Github />
                 </a>
 
                 <a
                   href="https://www.linkedin.com/in/ankit-kumar-0435b8257/"
                   target="_blank"
-                  className="p-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-xl"
+                  className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
-                  <FaLinkedin />
+                  <Linkedin />
                 </a>
 
                 <a
                   href="mailto:ankitkumar.iitp09@gmail.com"
                   target="_blank"
-                  className="p-3 rounded-lg bg-white/10 hover:bg-white/20 transition text-xl"
+                  className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
-                  <FaEnvelope />
+                  <Mail />
                 </a>
               </div>
             </motion.div>
@@ -214,11 +219,11 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "linear-gradient(90deg,#49BFC9,#5F8DFF,#9A8DFF)",
+                  background: "radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 60%)",
                 }}
               />
 
-              <div className="absolute inset-4 rounded-full bg-gray-800 overflow-hidden border-4 border-white/10">
+              <div className="absolute inset-4 rounded-full bg-surface-dark overflow-hidden border-4 border-border-light">
                 <motion.img
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,18 +9,12 @@ import Experiences from "./components/Experiences";
 // import Blog from './components/Blog'
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import StarBackground from "./components/StarBackground";
 
-const StarBackground = lazy(() => import("./components/StarBackground"));
 function App() {
   return (
     <div className="relative min-h-screen">
-      <div className="fixed inset-0 -z-10">
-        <Suspense fallback={<div className="w-full h-full bg-gray-900" />}>
-          <StarBackground />
-        </Suspense>
-      </div>
-
-      {/* Content Container with semi-transparent background */}
+      <StarBackground />
       <div className="relative overflow-x-hidden ">
         <Navbar />
         <main>
@@ -38,5 +32,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

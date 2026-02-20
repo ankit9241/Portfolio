@@ -24,19 +24,19 @@ interface SkillIcon {
 }
 
 const rotatingSkills: SkillIcon[] = [
-  { icon: SiHtml5, color: "#E34F26" },
-  { icon: SiCss3, color: "#1572B6" },
-  { icon: SiJavascript, color: "#F7DF1E" },
-  { icon: SiTypescript, color: "#007acc" },
-  { icon: SiReact, color: "#61DAFB" },
-  { icon: SiTailwindcss, color: "#06B6D4" },
-  { icon: SiBootstrap, color: "#7952B3" },
-  { icon: SiNodedotjs, color: "#339933" },
-  { icon: SiExpress, color: "#ffffff" },
-  { icon: SiMongodb, color: "#47A248" },
-  { icon: SiPython, color: "#3776AB" },
-  { icon: SiGithub, color: "#ffffff" },
-  { icon: SiVite, color: "#646CFF" },
+  { icon: SiHtml5, color: "#E5E5E5" },
+  { icon: SiCss3, color: "#D5D5D5" },
+  { icon: SiJavascript, color: "#BDBDBD" },
+  { icon: SiTypescript, color: "#E5E5E5" },
+  { icon: SiReact, color: "#D5D5D5" },
+  { icon: SiTailwindcss, color: "#BDBDBD" },
+  { icon: SiBootstrap, color: "#ADADAD" },
+  { icon: SiNodedotjs, color: "#E5E5E5" },
+  { icon: SiExpress, color: "#FFFFFF" },
+  { icon: SiMongodb, color: "#D5D5D5" },
+  { icon: SiPython, color: "#BDBDBD" },
+  { icon: SiGithub, color: "#FFFFFF" },
+  { icon: SiVite, color: "#BDBDBD" },
 ];
 
 const RotatingTechStack: FC = () => {
@@ -56,14 +56,14 @@ const RotatingTechStack: FC = () => {
 
   useEffect(() => {
     animate(rotation, 360, {
-      duration: 20,
+      duration: 10,
       repeat: Infinity,
       ease: "linear",
     });
   }, []);
 
   return (
-    <section className="py-12 sm:py-20 w-full overflow-hidden px-4">
+    <section className="py-6 sm:py-10 w-full overflow-hidden px-4">
       <div className="relative w-full max-w-[90vw] sm:max-w-[480px] h-[250px] sm:h-[400px] md:h-[480px] mx-auto flex items-center justify-center">
         {/* Rotating Icons Ring */}
         <motion.div
@@ -122,12 +122,12 @@ const RotatingTechStack: FC = () => {
           className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full flex items-center justify-center relative overflow-hidden group"
           initial={{
             background:
-              "linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.15))",
+              "linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))",
           }}
           whileHover={{
             background:
-              "linear-gradient(135deg, rgba(37,99,235,0.25), rgba(124,58,237,0.25))",
-            boxShadow: "0 0 30px rgba(124,58,237,0.3)",
+              "linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08))",
+            boxShadow: "0 0 30px rgba(255,255,255,0.2)",
             scale: 1.03,
             transition: { duration: 0.3 },
           }}
