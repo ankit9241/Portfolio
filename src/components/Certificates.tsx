@@ -4,7 +4,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
-import { ExternalLink } from "lucide-react";
 const Certificates = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -124,20 +123,6 @@ const Certificates = () => {
                   }}
                 />
 
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 bg-card-bg/90 backdrop-blur-sm rounded-full text-text-secondary hover:bg-card-bg transition border border-border-light"
-                    aria-label={`Open ${cert.title}`}
-                  >
-                    <div className="flex items-center justify-center w-full h-full">
-                      <ExternalLink className="w-6 h-6" />
-                    </div>
-                  </a>
-                </div>
-
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <span
                     className="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full"
@@ -201,7 +186,6 @@ const Certificates = () => {
                   }}
                 >
                   <span className="text-black">View Certificate</span>
-                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>

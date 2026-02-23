@@ -116,7 +116,12 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-2 px-2 py-1 bg-black/70 border border-accent rounded-3xl text-base text-gray-200 hover:bg-black/80 transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl text-lg font-semibold transition backdrop-blur-lg"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%)",
+                    color: "#FFFFFF",
+                    border: "1px solid rgba(59, 130, 246, 0.3)"
+                  }}
                 >
                   <Code className="w-5 h-5" />
                   Code
@@ -128,7 +133,7 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-2 py-1 rounded-3xl text-base font-semibold"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl text-lg font-semibold"
                     style={{
                       background: "#F5F5F5",
                       color: "#000000",
@@ -144,7 +149,7 @@ const ProjectDetails = ({ project, isOpen, onClose }: ProjectDetailsProps) => {
                       e.preventDefault();
                       alert('This project is not yet published. Coming soon!');
                     }}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-3xl text-base bg-gray-800 text-gray-300 border border-gray-700"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-3xl text-lg bg-gray-800 text-gray-300 border border-gray-700"
                   >
                     <ExternalLink className="w-5 h-5" />
                     Coming Soon

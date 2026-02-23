@@ -148,9 +148,11 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
                   onClick={scrollToProjects}
-                  className="px-6 py-3 border-2 border-2xl border-accent rounded-3xl font-semibold text-text-primary shadow-lg transition hover:bg-elevated-surface"
+                  className="px-6 py-3 border-2 border-2xl border-accent rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
                   style={{
-                    color: "#FFFFFF"
+                    background: "linear-gradient(135deg, rgba(200,200,200,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(200,200,200,0.05) 100%)",
+                    color: "#FFFFFF",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
                   }}
                 >
                   View Projects
