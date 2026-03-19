@@ -110,18 +110,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
               <div className="flex-1 min-w-0 text-center sm:text-left">
                 <h2 className="text-2xl font-bold text-text-primary">
-                  <span className="inline-block">
-                    <span style={{ color: "#E5E5E5" }}>A</span>
-                    <span style={{ color: "#D5D5D5" }}>n</span>
-                    <span style={{ color: "#BDBDBD" }}>k</span>
-                    <span style={{ color: "#ADADAD" }}>i</span>
-                    <span style={{ color: "#9D9D9D" }}>t</span>
-                    <span style={{ color: "#FFFFFF" }}> </span>
-                    <span style={{ color: "#E5E5E5" }}>K</span>
-                    <span style={{ color: "#D5D5D5" }}>u</span>
-                    <span style={{ color: "#BDBDBD" }}>m</span>
-                    <span style={{ color: "#ADADAD" }}>a</span>
-                    <span style={{ color: "#9D9D9D" }}>r</span>
+                  <span 
+                    className="inline-block"
+                    style={{
+                      background: "linear-gradient(135deg, #E5E5E5 0%, #9D9D9D 50%, #E5E5E5 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text"
+                    }}
+                  >
+                    Ankit Kumar
                   </span>
                 </h2>
 

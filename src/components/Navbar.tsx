@@ -2,35 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TbCertificate } from "react-icons/tb";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Download } from "lucide-react";
 import {
   FaHome,
-  FaBriefcase,
-  FaCode,
   FaEnvelope,
   FaLaptopCode,
 } from "react-icons/fa";
 
 const sections = [
   { id: "home", label: "Home", icon: <FaHome className="mr-2" /> },
-  { id: "skills", label: "Skills", icon: <FaCode className="mr-2" /> },
-  {
-    id: "experience",
-    label: "Experience",
-    icon: <FaBriefcase className="mr-2" />,
-  },
-
-  {
-    id: "projects",
-    label: "Projects",
-    icon: <FaLaptopCode className="mr-2" />,
-  },
-  {
-    id: "certificates",
-    label: "Certificates",
-    icon: <TbCertificate className="mr-2" />,
-  },
+  { id: "projects", label: "Projects", icon: <FaLaptopCode className="mr-2" /> },
   { id: "contact", label: "Contact", icon: <FaEnvelope className="mr-2" /> },
 ];
 
@@ -54,15 +36,38 @@ const itemFade = {
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const headerH = "h-16 md:h-20";
 
   useEffect(() => {
+    // Set active section based on current route
+    if (location.pathname === "/projects") {
+      setActiveSection("projects");
+    } else if (location.pathname === "/") {
+      // Check if there's a hash for contact
+      if (location.hash === "#contact") {
+        setActiveSection("contact");
+      } else {
+        setActiveSection("home");
+      }
+    } else if (location.pathname.startsWith("/projects/")) {
+      setActiveSection("projects");
+    } else {
+      setActiveSection("home");
+    }
+
+    // Only run scroll observer on home page and exclude projects section from active tracking
+    if (location.pathname !== "/" && !location.pathname.startsWith("/projects/")) return;
+
     const observerOptions = { threshold: 0.3, rootMargin: "-20% 0px -70% 0px" };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(
-        (entry) => entry.isIntersecting && setActiveSection(entry.target.id),
-      );
+      entries.forEach((entry) => {
+        // Don't set projects as active when scrolling on home page
+        if (entry.target.id === "projects") return;
+        entry.isIntersecting && setActiveSection(entry.target.id);
+      });
     }, observerOptions);
 
     const timer = setTimeout(() => {
@@ -75,6 +80,9 @@ const Navbar = () => {
     const handleScroll = () => {
       const y = window.scrollY + 120;
       for (const s of sections) {
+        // Don't track projects section on home page
+        if (s.id === "projects") continue;
+        
         const el = document.getElementById(s.id);
         if (!el) continue;
         if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) {
@@ -93,7 +101,7 @@ const Navbar = () => {
         if (el) observer.unobserve(el);
       });
     };
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -110,22 +118,43 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const scrollToSection = (id: string) => {
-    setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (id === "home") {
+      if (location.pathname === "/") {
+        // If already on home page, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // If on other page, navigate to home
+        navigate("/");
+      }
+    } else if (id === "projects") {
+      navigate("/projects");
+    } else if (id === "contact") {
+      if (location.pathname === "/") {
+        // If already on home page, scroll to contact section
+        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // If on other page, navigate to home with contact hash and scroll
+        navigate("/#contact");
+        setTimeout(() => {
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    } else {
+      setActiveSection(id);
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
     setIsMenuOpen(false);
   };
 
   return (
     <>
-      {/* ===== NAVBAR MAIN ===== */}
 
       <motion.nav
         variants={fadeDown}
         initial="hidden"
         animate="show"
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto`}
-        style={{ backgroundColor: "#111111" }}
+        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto backdrop-blur-md bg-black/20`}
       >
         <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
           <div className="flex items-center justify-between w-full">

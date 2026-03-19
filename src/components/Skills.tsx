@@ -113,33 +113,12 @@ const Skills = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="inline-block">
-              <span style={{ color: "#E5E5E5" }}>M</span>
-              <span style={{ color: "#D5D5D5" }}>y</span>
-              <span style={{ color: "#FFFFFF" }}> </span>
-              <span style={{ color: "#E5E5E5" }}>S</span>
-              <span style={{ color: "#D5D5D5" }}>k</span>
-              <span style={{ color: "#BDBDBD" }}>i</span>
-              <span style={{ color: "#ADADAD" }}>l</span>
-              <span style={{ color: "#9D9D9D" }}>l</span>
-              <span style={{ color: "#ADADAD" }}>s</span>
-              <span style={{ color: "#FFFFFF" }}> </span>
-              <span style={{ color: "#E5E5E5" }}>&</span>
-              <span style={{ color: "#FFFFFF" }}> </span>
-              <span style={{ color: "#E5E5E5" }}>T</span>
-              <span style={{ color: "#D5D5D5" }}>e</span>
-              <span style={{ color: "#BDBDBD" }}>c</span>
-              <span style={{ color: "#ADADAD" }}>h</span>
-              <span style={{ color: "#9D9D9D" }}>n</span>
-              <span style={{ color: "#ADADAD" }}>o</span>
-              <span style={{ color: "#BDBDBD" }}>l</span>
-              <span style={{ color: "#D5D5D5" }}>o</span>
-              <span style={{ color: "#E5E5E5" }}>g</span>
-              <span style={{ color: "#D5D5D5" }}>i</span>
-              <span style={{ color: "#BDBDBD" }}>e</span>
-              <span style={{ color: "#ADADAD" }}>s</span>
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
+            }}
+          >
+            My Skills & Technologies
           </h2>
 
           <p className="text-text-secondary">
@@ -190,75 +169,12 @@ const Skills = () => {
                   "0 20px 60px rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.4)",
               }}
             >
-              <h3 className="text-2xl font-bold text-center">
-                {category === "Frontend Development" && (
-                  <span className="inline-block">
-                    <span style={{ color: "#E5E5E5" }}>F</span>
-                    <span style={{ color: "#D5D5D5" }}>r</span>
-                    <span style={{ color: "#BDBDBD" }}>o</span>
-                    <span style={{ color: "#ADADAD" }}>n</span>
-                    <span style={{ color: "#9D9D9D" }}>t</span>
-                    <span style={{ color: "#ADADAD" }}>e</span>
-                    <span style={{ color: "#BDBDBD" }}>n</span>
-                    <span style={{ color: "#D5D5D5" }}>d</span>
-                    <span style={{ color: "#FFFFFF" }}> </span>
-                    <span style={{ color: "#E5E5E5" }}>D</span>
-                    <span style={{ color: "#D5D5D5" }}>e</span>
-                    <span style={{ color: "#BDBDBD" }}>v</span>
-                    <span style={{ color: "#ADADAD" }}>e</span>
-                    <span style={{ color: "#9D9D9D" }}>l</span>
-                    <span style={{ color: "#ADADAD" }}>o</span>
-                    <span style={{ color: "#BDBDBD" }}>p</span>
-                    <span style={{ color: "#D5D5D5" }}>m</span>
-                    <span style={{ color: "#E5E5E5" }}>e</span>
-                    <span style={{ color: "#D5D5D5" }}>n</span>
-                    <span style={{ color: "#BDBDBD" }}>t</span>
-                  </span>
-                )}
-                {category === "Backend Development" && (
-                  <span className="inline-block">
-                    <span style={{ color: "#E5E5E5" }}>B</span>
-                    <span style={{ color: "#D5D5D5" }}>a</span>
-                    <span style={{ color: "#BDBDBD" }}>c</span>
-                    <span style={{ color: "#ADADAD" }}>k</span>
-                    <span style={{ color: "#9D9D9D" }}>e</span>
-                    <span style={{ color: "#ADADAD" }}>n</span>
-                    <span style={{ color: "#BDBDBD" }}>d</span>
-                    <span style={{ color: "#FFFFFF" }}> </span>
-                    <span style={{ color: "#E5E5E5" }}>D</span>
-                    <span style={{ color: "#D5D5D5" }}>e</span>
-                    <span style={{ color: "#BDBDBD" }}>v</span>
-                    <span style={{ color: "#ADADAD" }}>e</span>
-                    <span style={{ color: "#9D9D9D" }}>l</span>
-                    <span style={{ color: "#ADADAD" }}>o</span>
-                    <span style={{ color: "#BDBDBD" }}>p</span>
-                    <span style={{ color: "#D5D5D5" }}>m</span>
-                    <span style={{ color: "#E5E5E5" }}>e</span>
-                    <span style={{ color: "#D5D5D5" }}>n</span>
-                    <span style={{ color: "#BDBDBD" }}>t</span>
-                  </span>
-                )}
-                {category === "Languages & Tools" && (
-                  <span className="inline-block">
-                    <span style={{ color: "#E5E5E5" }}>L</span>
-                    <span style={{ color: "#D5D5D5" }}>a</span>
-                    <span style={{ color: "#BDBDBD" }}>n</span>
-                    <span style={{ color: "#ADADAD" }}>g</span>
-                    <span style={{ color: "#9D9D9D" }}>u</span>
-                    <span style={{ color: "#ADADAD" }}>a</span>
-                    <span style={{ color: "#BDBDBD" }}>g</span>
-                    <span style={{ color: "#D5D5D5" }}>e</span>
-                    <span style={{ color: "#E5E5E5" }}>s</span>
-                    <span style={{ color: "#FFFFFF" }}> </span>
-                    <span style={{ color: "#E5E5E5" }}>&</span>
-                    <span style={{ color: "#FFFFFF" }}> </span>
-                    <span style={{ color: "#E5E5E5" }}>T</span>
-                    <span style={{ color: "#D5D5D5" }}>o</span>
-                    <span style={{ color: "#BDBDBD" }}>o</span>
-                    <span style={{ color: "#ADADAD" }}>l</span>
-                    <span style={{ color: "#9D9D9D" }}>s</span>
-                  </span>
-                )}
+              <h3 className="text-2xl font-bold text-center bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
+                }}
+              >
+                {category}
               </h3>
 
               <div
@@ -272,8 +188,8 @@ const Skills = () => {
                 variants={staggerContainer}
               >
                 {skills
-                  .filter((skill) => 
-                    category === "Languages & Tools" 
+                  .filter((skill) =>
+                    category === "Languages & Tools"
                       ? skill.category === "Languages" || skill.category === "Tools"
                       : skill.category === category.split(" ")[0]
                   )

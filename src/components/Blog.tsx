@@ -57,7 +57,7 @@ const Blog = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #49BFC9 0%, #5F8DFF 50%, #9A8DFF 100%)' }}>
+              style={{ backgroundImage: 'linear-gradient(90deg, #FFFFFF, #888888)' }}>
             Latest Blog Posts
           </h2>
           

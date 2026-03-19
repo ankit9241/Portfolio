@@ -24,19 +24,10 @@ const About = () => {
             "
             style={{
               backgroundImage:
-                "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
+                "linear-gradient(90deg, #FFFFFF, #888888)",
             }}
           >
-            <span className="inline-block">
-              <span style={{ color: "#E5E5E5" }}>A</span>
-              <span style={{ color: "#D5D5D5" }}>b</span>
-              <span style={{ color: "#BDBDBD" }}>o</span>
-              <span style={{ color: "#ADADAD" }}>u</span>
-              <span style={{ color: "#9D9D9D" }}>t</span>
-              <span style={{ color: "#FFFFFF" }}> </span>
-              <span style={{ color: "#E5E5E5" }}>M</span>
-              <span style={{ color: "#D5D5D5" }}>e</span>
-            </span>
+            About Me
           </h2>
         </motion.div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -45,7 +36,7 @@ const About = () => {
             name="Ankit Kumar"
             title="Full Stack Developer"
             status="Open to new opportunities"
-            avatarUrl="/assets/ankit-profile-bgless.png"
+            avatarUrl="/assets/profile-ankit.png"
           />
           {/* Clean text-only About */}
           <motion.div

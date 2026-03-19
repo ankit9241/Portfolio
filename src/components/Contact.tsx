@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-const gradient = "linear-gradient(90deg, #FFFFFF, #BDBDBD)";
+const gradient = "linear-gradient(90deg, #FFFFFF, #888888)";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -107,7 +107,7 @@ const Contact = () => {
             className="space-y-6"
           >
             <div
-              className="rounded-2xl p-6 md:p-8"
+              className="rounded-3xl p-6 md:p-8"
               style={{
                 background:
                   "linear-gradient(180deg, rgba(17,17,17,0.02), rgba(17,17,17,0.01))",
@@ -139,7 +139,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Full name"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none"
+                    className="w-full px-4 py-3 rounded-3xl text-text-primary placeholder-text-secondary focus:outline-none"
                     style={{
                       background: "rgba(17,17,17,0.8)",
 
@@ -161,7 +161,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Email address"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none"
+                    className="w-full px-4 py-3 rounded-3xl text-text-primary placeholder-text-secondary focus:outline-none"
                     style={{
                       background: "rgba(17,17,17,0.8)",
 
@@ -185,7 +185,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your message"
                   required
-                  className="w-full px-4 py-3 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none resize-none"
+                  className="w-full px-4 py-3 rounded-3xl text-text-primary placeholder-text-secondary focus:outline-none resize-none"
                   style={{
                     background: "rgba(17,17,17,0.8)",
 
@@ -204,7 +204,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 rounded-lg font-semibold text-black"
+                    className="px-6 py-3 rounded-3xl font-semibold text-black"
                     style={
                       isSubmitting
                         ? {

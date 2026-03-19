@@ -61,7 +61,7 @@ const Hero = () => {
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
         >
-          {/* Left text */}
+          {/* Left Content - Separate Container */}
           <div className="md:col-span-7 lg:col-span-7 space-y-6">
             {/* Badge */}
             <motion.div variants={fadeUp}>
@@ -148,12 +148,12 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
                   onClick={scrollToProjects}
-                  className="px-6 py-3 border-2 border-2xl border-accent rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
+                  className="px-6 py-3 rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
                   style={{
-                    background: "linear-gradient(135deg, rgba(200,200,200,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(200,200,200,0.05) 100%)",
-                    color: "#FFFFFF",
-                    border: "1px solid rgba(255, 255, 255, 0.2)"
-                  }}
+                      background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
+                      color: "#FFFFFF",
+                      border: "1px solid #4A4A4A",
+                    }}
                 >
                   View Projects
                 </button>
@@ -204,7 +204,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right avatar */}
+          {/* Right Image - Separate Container */}
           <motion.div
             variants={fadeUp}
             className="hidden sm:flex md:col-span-5 lg:col-span-5 justify-end"
@@ -213,7 +213,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.92, y: 30 }}
               animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2"
+              className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full p-2"
             >
               <motion.div
                 initial={{ opacity: 0, filter: "blur(15px)" }}
@@ -225,15 +225,20 @@ const Hero = () => {
                 }}
               />
 
-              <div className="absolute inset-4 rounded-full bg-surface-dark overflow-hidden border-4 border-border-light">
+              <div className="absolute inset-x-0 inset-y-0 rounded-2xl bg-surface-dark overflow-hidden">
                 <motion.img
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.4 }}
-                  src="/assets/ankit-profile-bgless.png"
+                  src="/assets/profile-ankit.png"
                   alt="Ankit Kumar"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover scale-110"
                 />
+                {/* Four-side gradient overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#111111] via-[#111111]/30 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#111111] via-[#111111]/30 to-transparent" />
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#111111] via-[#111111]/30 to-transparent" />
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#111111] via-[#111111]/30 to-transparent" />
               </div>
             </motion.div>
           </motion.div>
