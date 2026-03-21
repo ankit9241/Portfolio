@@ -1,40 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Primary Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ankit Kumar</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Ankit Kumar - Full Stack Developer | Portfolio</title>
     <meta
       name="description"
-      content="Ankit Kumar — Software developer. Portfolio showcasing projects, skills, certificates, and contact details."
+      content="Ankit Kumar - Passionate Full Stack Developer specializing in React, TypeScript, and modern web technologies. Explore my portfolio featuring innovative projects, technical skills, and professional experience."
     />
     <meta
       name="keywords"
-      content="Ankit Kumar, portfolio, software developer, projects, React, TypeScript, web developer"
+      content="Ankit Kumar, full stack developer, web developer, React, TypeScript, JavaScript, Next.js, Node.js, portfolio, software engineer, frontend developer, backend developer"
     />
     <meta name="author" content="Ankit Kumar" />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="/" />
-
-    <!-- Theme / browser color -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ankitkumar1109.netlify.app/" />
+    
+    <!-- Language and Region -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="IN" />
+    
+    <!-- Theme and Appearance -->
     <meta name="theme-color" content="#5F8DFF" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="/assets/profile-ankit.png" />
-    <link rel="apple-touch-icon" href="/assets/profile-ankit.png" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Ankit Kumar — Portfolio" />
+    <meta name="msapplication-TileColor" content="#5F8DFF" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/profile-ankit.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/profile-ankit.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/profile-ankit.png" />
+    <link rel="shortcut icon" href="/assets/profile-ankit.png" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ankitkumar1109.netlify.app/" />
+    <meta property="og:title" content="Ankit Kumar - Full Stack Developer | Portfolio" />
     <meta
       property="og:description"
-      content="Software developer. Portfolio showcasing projects, skills, certificates, and contact details."
+      content="Passionate Full Stack Developer specializing in React, TypeScript, and modern web technologies. Explore my portfolio featuring innovative projects and technical expertise."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="/" />
     <meta property="og:image" content="/assets/profile-ankit.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Ankit Kumar Portfolio" />
+    
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ankitkumar1109.netlify.app/" />
+    <meta property="twitter:title" content="Ankit Kumar - Full Stack Developer | Portfolio" />
+    <meta
+      property="twitter:description"
+      content="Passionate Full Stack Developer specializing in React, TypeScript, and modern web technologies. Explore my portfolio featuring innovative projects and technical expertise."
+    />
+    <meta property="twitter:image" content="/assets/profile-ankit.png" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Ankit Kumar" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:;" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ankit Kumar",
+      "url": "https://ankitkumar1109.netlify.app/",
+      "jobTitle": "Full Stack Developer",
+      "description": "Passionate Full Stack Developer specializing in React, TypeScript, and modern web technologies.",
+      "image": "/assets/profile-ankit.png",
+      "sameAs": [
+        "https://github.com/ankit9241",
+        "https://linkedin.com/in/ankitkumar1109"
+      ],
+      "knowsAbout": ["React", "TypeScript", "JavaScript", "Node.js", "Web Development", "Full Stack Development"]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Main React Application -->
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration (if needed) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
