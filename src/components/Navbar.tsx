@@ -192,7 +192,7 @@ const Navbar = () => {
                       style={
                         isActive
                           ? {
-                              color: "#3A86FF",
+                              color: "#FFFFFF",
                               position: "relative",
                             }
                           : { color: "#BDBDBD" }

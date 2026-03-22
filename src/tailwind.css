@@ -1,14 +1,6 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer utilities {
-  .text-foreground {
-    @apply text-gray-900 dark:text-white;
-  }
-}
 
 @layer base {
   :root {
@@ -34,17 +26,6 @@
     --radius: 0.5rem;
   }
 
-  /* Set default text color for dark mode */
-  html {
-    @apply text-gray-100;
-    font-family: 'Outfit', sans-serif;
-  }
-  
-  /* Override for specific elements */
-  p, span, div, h1, h2, h3, h4, h5, h6 {
-    @apply text-gray-100;
-  }
- 
   /* Dark mode is now the default */
   .dark {
     --background: 222.2 84% 4.9%;
@@ -70,9 +51,6 @@
 }
 
 @layer base {
-  * {
-    @apply border-border-light dark:border-border-dark;
-  }
   body {
     @apply bg-background-light text-foreground dark:bg-background-dark dark:text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;

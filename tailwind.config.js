@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'sans': ['Outfit', 'sans-serif'],
+        'sans': ['Outfit', 'system-ui', 'sans-serif'],
       },
       colors: {
         // Custom Dark Theme Colors
