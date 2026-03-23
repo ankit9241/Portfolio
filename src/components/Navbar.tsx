@@ -154,7 +154,7 @@ const Navbar = () => {
         initial="hidden"
         animate="show"
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto backdrop-blur-md bg-black/20`}
+        className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto backdrop-blur-lg bg-gray-900/20 border-b border-gray-700/30`}
       >
         <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
           <div className="flex items-center justify-between w-full">
@@ -309,12 +309,10 @@ const Navbar = () => {
                 duration: 0.2,
                 ease: "easeOut"
               }}
-              className="fixed right-4 top-20 z-50 w-52 md:hidden"
+              className="fixed right-4 top-20 z-50 w-52 md:hidden backdrop-blur-lg bg-gray-900/20 border border-gray-700/30"
               style={{
-                backgroundColor: "#111111",
-                border: "1px solid #333333",
-                borderRadius: "10px",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.4)",
+                borderRadius: "12px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.05)",
               }}
             >
               <motion.div 

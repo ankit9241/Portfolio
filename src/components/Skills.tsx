@@ -156,18 +156,12 @@ const Skills = () => {
                 w-full 
                 md:max-w-[420px]
                 lg:max-w-[500px]
-                bg-card-bg 
-                backdrop-blur-md 
                 rounded-2xl 
                 p-8 
                 transition-all 
                 duration-300
+                glass-premium
               "
-              style={{
-                border: "none",
-                boxShadow:
-                  "0 20px 60px rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.4)",
-              }}
             >
               <h3 className="text-2xl font-bold text-center bg-clip-text text-transparent"
                 style={{
