@@ -6,6 +6,7 @@ import { Globe, Github, Undo2, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "../components/StatusBadge";
+import OptimizedImage from "../components/OptimizedImage";
 
 const AllProjects = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -74,15 +75,17 @@ const AllProjects = () => {
                 transition: "transform 160ms ease, box-shadow 160ms ease",
               }}
             >
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative overflow-hidden aspect-[16/10]">
+                <OptimizedImage
                   src={
                     Array.isArray(project.coverImage)
                       ? project.coverImage[0]
                       : project.coverImage
                   }
                   alt={project.title}
-                  className="w-full h-auto object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%231a1a1a'/%3E%3C/svg%3E"
                 />
               </div>
               <div className="p-6">

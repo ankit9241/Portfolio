@@ -4,6 +4,7 @@ import Typewriter from "typewriter-effect";
 import { Mail, Github, Linkedin, Download, Star } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import OptimizedImage from "./OptimizedImage";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -221,18 +222,19 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 60%)",
+                  background: "linear-gradient(135deg, rgba(137, 170, 204, 0.2), rgba(78, 133, 191, 0.3))",
                 }}
               />
 
               <div className="absolute inset-x-0 inset-y-0 rounded-2xl bg-surface-dark overflow-hidden">
-                <motion.img
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
+                <OptimizedImage
                   src="/assets/ankit-profile.svg"
                   alt="Ankit Kumar"
-                  className="w-full h-full object-cover scale-110"
+                  priority={true}
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 180px, 220px"
+                  className="scale-110"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Crect width='220' height='220' fill='%231a1a1a'/%3E%3C/svg%3E"
                 />
                 {/* Four-side gradient overlay */}
                 <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#111111] via-[#111111]/30 to-transparent" />

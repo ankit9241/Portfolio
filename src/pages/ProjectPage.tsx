@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Globe, Github, Undo2 } from "lucide-react";
 import { projects } from "../utils/projectsData";
+import OptimizedImage from "../components/OptimizedImage";
 
 const ProjectPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -100,14 +101,13 @@ const ProjectPage = () => {
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
               >
-                <motion.img
+                <OptimizedImage
                   key={currentImageIndex}
                   src={projectImages[currentImageIndex]}
                   alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-auto object-cover"
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%231a1a1a'/%3E%3C/svg%3E"
                 />
                 
                 {/* Gradient Overlay */}
