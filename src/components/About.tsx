@@ -36,7 +36,7 @@ const About = () => {
             name="Ankit Kumar"
             title="Full Stack Developer"
             status="Open to new opportunities"
-            avatarUrl="/assets/profile-ankit.png"
+            avatarUrl="/assets/ankit-profile.svg"
           />
           {/* Clean text-only About */}
           <motion.div

@@ -92,9 +92,9 @@ export const projects: Project[] = [
     description:
       "ExamifAI is a full-stack AI-powered online examination platform developed as a Capstone Project during my second semester. It was designed to reduce cheating in remote exams by combining face recognition, browser behavior monitoring, and automated exam enforcement into a single proctored workflow.",
 
-    coverImage: "/assets/projects/examifai/examifai.png",
+    coverImage: "/assets/projects/examifai/examifai.svg",
 
-    gallery: ["/assets/projects/examifai/examifai.png"],
+    gallery: ["/assets/projects/examifai/examifai.svg"],
 
     github: "https://github.com/ankit9241/ExamifAI",
     live: "https://examifai.netlify.app/",
@@ -299,9 +299,9 @@ export const projects: Project[] = [
     description:
       "STC IIT Patna is the official digital platform for the Student Technical Council of IIT Patna. It was built to centralize technical clubs, event discovery, announcements, and student registrations into one production-ready system used by real students and council teams.",
 
-    coverImage: ["/assets/projects/stc/stc-1.png", "/assets/projects/stc/stc-2.png"],
+    coverImage: ["/assets/projects/stc/stc-1.svg", "/assets/projects/stc/stc-2.svg"],
 
-    gallery: ["/assets/projects/stc/stc-1.png", "/assets/projects/stc/stc-2.png"],
+    gallery: ["/assets/projects/stc/stc-1.svg", "/assets/projects/stc/stc-2.svg"],
 
     github: "https://github.com/ankit9241/stc_website",
     live: "https://stciitphybrid.in",
@@ -486,13 +486,13 @@ export const projects: Project[] = [
       "TrackFlow is a full-stack habit tracking and productivity analytics platform designed to help users build consistent daily routines. It allows users to create habits, mark daily completion, monitor streaks, and visualize productivity through chart-based insights.",
 
     coverImage: [
-      "/assets/projects/trackflow/trackflow-1.png",
-      "/assets/projects/trackflow/trackflow-2.png",
+      "/assets/projects/trackflow/trackflow-1.svg",
+      "/assets/projects/trackflow/trackflow-2.svg",
     ],
 
     gallery: [
-      "/assets/projects/trackflow/trackflow-1.png",
-      "/assets/projects/trackflow/trackflow-2.png",
+      "/assets/projects/trackflow/trackflow-1.svg",
+      "/assets/projects/trackflow/trackflow-2.svg",
     ],
 
     github: "https://github.com/ankit9241/TrackFlow",
@@ -676,9 +676,9 @@ export const projects: Project[] = [
     description:
       "KIRAN v1 is a full-stack mentorship and doubt resolution platform built to connect students with mentors in a structured academic support system. It supports students, mentors, and admins through dedicated role-based workflows, doubt handling, resource sharing, announcements, and feedback mechanisms.",
 
-    coverImage: "/assets/projects/kiran/kiran-v1.png",
+    coverImage: "/assets/projects/kiran/kiran-v1.svg",
 
-    gallery: ["/assets/projects/kiran/kiran-v1.png"],
+    gallery: ["/assets/projects/kiran/kiran-v1.svg"],
 
     github: "https://github.com/ankit9241/KIRAN",
     live: "https://kiran-mentorship.netlify.app/",
@@ -883,9 +883,9 @@ export const projects: Project[] = [
     description:
       "KIRAN v2 is the next iteration of the original KIRAN mentorship platform, built to improve the overall user experience, system architecture, and communication workflow between students, mentors, and admins. Instead of being a simple visual refresh, this version rethinks the platform structure with cleaner dashboards, a more scalable schema, better role separation, and real-time chat support.",
 
-    coverImage: "/assets/projects/kiran/kiran-v2-1.png",
+    coverImage: "/assets/projects/kiran/kiran-v2.svg",
 
-    gallery: ["/assets/projects/kiran/kiran-v2-1.png"],
+    gallery: ["/assets/projects/kiran/kiran-v2.svg"],
 
     github: "https://github.com/ankit9241/KIRAN-Advance",
     live: "#",
@@ -1080,9 +1080,9 @@ export const projects: Project[] = [
     description:
       "CrazyOne is a frontend e-commerce storefront project designed to simulate a complete shopping experience. It allows users to browse products, view product details, manage a shopping cart, and move through a checkout-style user flow, while also including an admin-oriented dashboard interface for store overview and order-related UI.",
 
-    coverImage: "/assets/projects/crazyone/crazy-one.png",
+    coverImage: "/assets/projects/crazyone/crazy-one.svg",
 
-    gallery: ["/assets/projects/crazyone/crazy-one.png"],
+    gallery: ["/assets/projects/crazyone/crazy-one.svg"],
 
     github: "https://github.com/ankit9241/CrazyOne",
     live: "https://crazy-one.netlify.app/",
@@ -1214,9 +1214,9 @@ export const projects: Project[] = [
     description:
       "PlanIT is a frontend event planning and booking platform designed to simulate how users could explore and select different services required for organizing an event. It focuses on service discovery, package-style planning, selection flow, and responsive UI design for a booking-oriented experience.",
 
-    coverImage: "/assets/projects/planit/planit.png",
+    coverImage: "/assets/projects/planit/planit.svg",
 
-    gallery: ["/assets/projects/planit/planit.png"],
+    gallery: ["/assets/projects/planit/planit.svg"],
 
     github: "https://github.com/ankit9241/PlanIT",
     live: "https://plan-itt.netlify.app/",
@@ -1349,13 +1349,13 @@ export const projects: Project[] = [
       "Gokul Bhandar is a frontend grocery shopping platform designed to simulate how a local store could be presented online through a clean browsing and ordering interface. The project includes product discovery, dedicated product pages, cart handling, and a simplified order flow, along with a frontend admin-style dashboard view.",
 
     coverImage: [
-      "/assets/projects/gokulbhandar/gokul-bhandar-1.png",
-      "/assets/projects/gokulbhandar/gokul-bhandar-2.png",
+      "/assets/projects/gokulbhandar/gokul-bhandar-1.svg",
+      "/assets/projects/gokulbhandar/gokul-bhandar-2.svg",
     ],
 
     gallery: [
-      "/assets/projects/gokulbhandar/gokul-bhandar-1.png",
-      "/assets/projects/gokulbhandar/gokul-bhandar-2.png",
+      "/assets/projects/gokulbhandar/gokul-bhandar-1.svg",
+      "/assets/projects/gokulbhandar/gokul-bhandar-2.svg",
     ],
 
     github: "https://github.com/ankit9241/GokulBhandar",

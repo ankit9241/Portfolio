@@ -230,7 +230,7 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.4 }}
-                  src="/assets/profile-ankit.png"
+                  src="/assets/ankit-profile.svg"
                   alt="Ankit Kumar"
                   className="w-full h-full object-cover scale-110"
                 />
