@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Globe, Github, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +7,6 @@ import StatusBadge from "./StatusBadge";
 
 const Projects = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true });
   const navigate = useNavigate();
 
   const handleShowMore = () => {
@@ -23,12 +20,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20" ref={ref}>
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
             style={{
@@ -41,7 +33,7 @@ const Projects = () => {
             Here are some of my recent projects that showcase my skills in
             full-stack development, UI/UX design, and problem-solving abilities.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.slice(0, 4).map((project) => (

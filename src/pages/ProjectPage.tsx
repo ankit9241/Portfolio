@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Globe, Github, Undo2 } from "lucide-react";
 import { projects } from "../utils/projectsData";
@@ -75,22 +74,15 @@ const ProjectPage = () => {
         
         {/* VISUAL SHOWCASE */}
         <section className="px-0 py-12 lg:px-8">
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <button
             onClick={() => navigate("/projects")}
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12"
           >
             <Undo2 size={18} />
             Back to Projects
-          </motion.button>
+          </button>
           
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             {/* Image Carousel */}
             <div className="relative">
               {/* Main Image Container */}
@@ -150,19 +142,14 @@ const ProjectPage = () => {
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* HERO SECTION */}
         <section className="px-0 py-0 lg:px-8">
 
           {/* Title & Tagline */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
               {project.title}
             </h1>
@@ -178,13 +165,10 @@ const ProjectPage = () => {
                 {project.shortDescription}
               </p>
             )}
-          </motion.div>
+          </div>
 
           {/* Meta Info & Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <div
             className="space-y-8"
           >
             {/* Compact Meta Row */}
@@ -249,7 +233,7 @@ const ProjectPage = () => {
                 </a>
               )}
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* CONTENT SECTIONS */}
@@ -258,10 +242,7 @@ const ProjectPage = () => {
             
             {/* Overview */}
             {project.overview && project.overview.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+              <div
                 className="max-w-5xl pt-8"
               >
                 <h2 className="text-3xl font-bold mb-8">Overview</h2>
@@ -270,15 +251,12 @@ const ProjectPage = () => {
                     <p key={index}>{paragraph}</p>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Context */}
             {project.context && project.context.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Context</h2>
@@ -287,16 +265,13 @@ const ProjectPage = () => {
                     <p key={index}>{paragraph}</p>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Why I Built This */}
             {project.whyBuilt && project.whyBuilt.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="max-w-5xl"
+              <div
+                                className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Why I Built This</h2>
                 <div className="space-y-6 text-gray-300 leading-relaxed">
@@ -304,16 +279,13 @@ const ProjectPage = () => {
                     <p key={index}>{paragraph}</p>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Tech Stack */}
             {project.techStack && project.techStack.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
+              <div
+                              >
                 <h2 className="text-3xl font-bold mb-8">Tech Stack</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {project.techStack.map((group, index) => (
@@ -332,16 +304,13 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Features */}
             {project.features && project.features.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-              >
+              <div
+                              >
                 <h2 className="text-3xl font-bold mb-8">Key Features</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.features.map((feature, index) => (
@@ -362,16 +331,13 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Technical Details */}
             {project.technicalDetails && project.technicalDetails.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.0 }}
-              >
+              <div
+                              >
                 <h2 className="text-3xl font-bold mb-8">Technical Details</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.technicalDetails.map((detail, index) => (
@@ -392,15 +358,12 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Challenges */}
             {project.challenges && project.challenges.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Challenges</h2>
@@ -421,15 +384,12 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Results */}
             {project.results && project.results.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Results</h2>
@@ -441,15 +401,12 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Learnings */}
             {project.learnings && project.learnings.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.3 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">What I Learned</h2>
@@ -461,15 +418,12 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Future Scope */}
             {project.futureScope && project.futureScope.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Future Scope</h2>
@@ -481,15 +435,12 @@ const ProjectPage = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Status Note */}
             {project.statusNote && project.statusNote.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.5 }}
+              <div
                 className="max-w-5xl"
               >
                 <h2 className="text-3xl font-bold mb-8">Status Note</h2>
@@ -498,7 +449,7 @@ const ProjectPage = () => {
                     <p key={index} className="text-gray-500 text-sm leading-relaxed">{note}</p>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         </section>
@@ -506,11 +457,8 @@ const ProjectPage = () => {
         {/* RELATED PROJECTS */}
         {project.relatedProjects && project.relatedProjects.length > 0 && (
           <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.6 }}
-            >
+            <div
+                          >
               <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {project.relatedProjects.map((relatedSlug, index) => {
@@ -533,16 +481,13 @@ const ProjectPage = () => {
                   );
                 })}
               </div>
-            </motion.div>
+            </div>
           </section>
         )}
 
         {/* NAVIGATION FOOTER */}
         <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.7 }}
+          <div
             className="grid md:grid-cols-2 gap-8 py-16"
           >
             {prevProject && (
@@ -577,7 +522,7 @@ const ProjectPage = () => {
                 </div>
               </button>
             )}
-          </motion.div>
+          </div>
         </section>
       </div>
     </div>

@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Globe, Github, Undo2, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +8,6 @@ import OptimizedImage from "../components/OptimizedImage";
 
 const AllProjects = () => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true });
   const navigate = useNavigate();
   
   const handleBack = () => {
@@ -26,25 +23,16 @@ const AllProjects = () => {
       
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Back Button */}
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+        <button
           onClick={handleBack}
           className="flex items-center space-x-2 mb-8 text-gray-400 hover:text-white transition-colors"
         >
           <Undo2 className="w-5 h-5" />
           <span>Back to Home</span>
-        </motion.button>
+        </button>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-          ref={ref}
-        >
+        <div className="text-center mb-16" ref={ref}>
           <h1
             className="text-5xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent"
             style={{
@@ -58,16 +46,13 @@ const AllProjects = () => {
             Explore my complete portfolio of projects showcasing full-stack development, 
             UI/UX design, and problem-solving abilities.
           </p>
-        </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group rounded-2xl overflow-hidden"
               style={{
                 background: "rgba(17,17,17,0.8)",
@@ -166,7 +151,7 @@ const AllProjects = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

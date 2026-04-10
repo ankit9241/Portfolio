@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
@@ -8,7 +6,6 @@ import { certificates } from "../utils/certificatesData";
 
 const Certificates = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   const getSkillIcon = (skillName: string): React.ReactNode => {
     const skillIcons: { [key: string]: React.ReactNode } = {
@@ -26,12 +23,7 @@ const Certificates = () => {
   return (
     <section id="certificates" className="py-20" ref={ref}>
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
             style={{
@@ -45,7 +37,7 @@ const Certificates = () => {
             Continuous learning and skill development through recognized courses
             and certifications.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certificates.map((cert) => (

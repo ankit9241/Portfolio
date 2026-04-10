@@ -299,9 +299,15 @@ export const projects: Project[] = [
     description:
       "STC IIT Patna is the official digital platform for the Student Technical Council of IIT Patna. It was built to centralize technical clubs, event discovery, announcements, and student registrations into one production-ready system used by real students and council teams.",
 
-    coverImage: ["/assets/projects/stc/stc-1.svg", "/assets/projects/stc/stc-2.svg"],
+    coverImage: [
+      "/assets/projects/stc/stc-1.svg",
+      "/assets/projects/stc/stc-2.svg",
+    ],
 
-    gallery: ["/assets/projects/stc/stc-1.svg", "/assets/projects/stc/stc-2.svg"],
+    gallery: [
+      "/assets/projects/stc/stc-1.svg",
+      "/assets/projects/stc/stc-2.svg",
+    ],
 
     github: "https://github.com/ankit9241/stc_website",
     live: "https://stciitphybrid.in",
@@ -327,7 +333,10 @@ export const projects: Project[] = [
 
     links: [
       { label: "Live Demo", href: "https://stciitphybrid.in" },
-      { label: "Source Code", href: "https://github.com/ankit9241/stc_website" },
+      {
+        label: "Source Code",
+        href: "https://github.com/ankit9241/stc_website",
+      },
     ],
 
     overview: [
@@ -353,7 +362,12 @@ export const projects: Project[] = [
       },
       {
         category: "Backend",
-        items: ["Node.js-based backend", "API integration", "Nodemailer", "Resend (Email Integration)"],
+        items: [
+          "Node.js-based backend",
+          "API integration",
+          "Nodemailer",
+          "Resend (Email Integration)",
+        ],
       },
       {
         category: "Database",
@@ -471,6 +485,216 @@ export const projects: Project[] = [
     statusNote: [
       "Some platform content is still partly static, and the admin/user experience can be improved further.",
       "The platform is actively being enhanced with broader redesign work and more structured role-based workflows for future administrative expansion.",
+    ],
+  },
+
+  {
+    title: "Envora",
+    slug: "envora",
+    tagline: "Secure Developer Vault for Environment Variables & Secrets",
+
+    shortDescription:
+      "A full-stack developer tool to securely manage environment variables, credentials, and project configuration with a structured, hierarchical system across projects.",
+
+    description:
+      "Envora is a full-stack developer-focused vault built to eliminate the chaos of managing environment variables and sensitive configuration across multiple projects. It provides a secure, structured system where developers can organize, access, and manage secrets efficiently across devices. Store your .env files privately with encrypted storage and secure access.",
+
+    coverImage: ["/assets/projects/envora/envora-2.svg", "/assets/projects/envora/envora-1.svg"],
+
+    gallery: ["/assets/projects/envora/envora-2.svg", "/assets/projects/envora/envora-1.svg"],
+
+    github: "https://github.com/ankit9241/Envora",
+    live: "https://envora.netlify.app/",
+    isPublished: true,
+
+    tech: [
+      technologies.react,
+      technologies.vite,
+      technologies.typescript,
+      technologies.tailwind,
+      technologies.nodejs,
+      technologies.express,
+      technologies.mongodb,
+    ],
+
+    meta: [
+      { label: "Timeline", value: "2-3 Weeks" },
+      { label: "Role", value: "Full Stack Developer" },
+      { label: "Team", value: "Solo" },
+      { label: "Status", value: "Completed" },
+      {
+        label: "Project Type",
+        value: "Developer Tool / Full Stack Application",
+      },
+      { label: "Deployment", value: "Netlify (Frontend) + Render (Backend)" },
+    ],
+
+    links: [
+      { label: "Live Demo", href: "https://envora.netlify.app/" },
+      { label: "Source Code", href: "https://github.com/ankit9241/Envora" },
+    ],
+
+    overview: [
+      "Envora is a developer-centric vault designed to securely manage environment variables, API keys, credentials, and configuration data across multiple projects.",
+      "It replaces scattered .env files and insecure storage practices with a structured system where everything is organized under projects and sections.",
+      "The platform ensures secure storage while enabling fast and seamless access across devices.",
+    ],
+
+    context: [
+      "Managing environment variables becomes chaotic when working across multiple projects and devices.",
+      "Sensitive data often ends up scattered across local files, notes, and dashboards, creating both security risks and inefficiencies.",
+      "Envora centralizes this entire workflow into a single structured system.",
+    ],
+
+    whyBuilt: [
+      "I built Envora to solve a real problem I faced while managing multiple projects - constantly switching between .env files and insecurely storing credentials.",
+      "The goal was to create a system where configuration is structured, secure, and easily accessible from anywhere.",
+    ],
+
+    techStack: [
+      {
+        category: "Frontend",
+        items: ["React", "Vite", "Tailwind CSS", "React Router", "Axios"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Express.js"],
+      },
+      {
+        category: "Database",
+        items: ["MongoDB", "Mongoose"],
+      },
+      {
+        category: "Authentication & Security",
+        items: ["JWT Authentication", "bcrypt", "Google OAuth"],
+      },
+      {
+        category: "Deployment",
+        items: ["Netlify (Frontend)", "Render (Backend)"],
+      },
+    ],
+
+    features: [
+      {
+        title: "Store Your .env Files Privately",
+        description:
+          "Upload and manage your .env files in a secure vault instead of keeping them scattered across projects. All your environment variables are stored in one encrypted, private location.",
+      },
+      {
+        title: "End-to-End Encryption",
+        description:
+          "All sensitive data including environment variables, API keys, and credentials are encrypted with military-grade encryption. Your secrets remain private and secure even in transit.",
+      },
+      {
+        title: "Hierarchical Project Structure",
+        description:
+          "Organize environment variables using a structured hierarchy (Projects → Sections → Variables), making it easier to manage complex architectures.",
+      },
+      {
+        title: "Private & Secure Storage",
+        description:
+          "Store API keys, SSH keys, and login credentials with structured metadata. Your data is encrypted and accessible only to you - no third-party access.",
+      },
+      {
+        title: "Cross-Device Access",
+        description:
+          "Access all your .env files and project configurations from any device through a centralized dashboard while maintaining full privacy.",
+      },
+      {
+        title: "Import / Export .env Files",
+        description:
+          "Import existing .env files directly and export configurations easily for migration and reuse. No more manual copying of environment variables.",
+      },
+      {
+        title: "Developer Notes",
+        description:
+          "Attach contextual notes directly to projects and sections to keep documentation alongside your .env files and configurations.",
+      },
+      {
+        title: "Fast Copy & Reveal Workflow",
+        description:
+          "Masked values with quick reveal and copy functionality for efficient usage while keeping sensitive data hidden by default.",
+      },
+    ],
+
+    technicalDetails: [
+      {
+        title: "User-Isolated Data Architecture",
+        description:
+          "All data is linked to userId, ensuring strict data isolation between users.",
+      },
+      {
+        title: "JWT-Based Authentication",
+        description:
+          "Session management is handled using JWT tokens with expiry and automatic logout handling.",
+      },
+      {
+        title: "Hierarchical Database Design",
+        description:
+          "Projects contain sections, which contain environment variables, creating a scalable and structured data model.",
+      },
+      {
+        title: "Axios Interceptors for Secure Requests",
+        description:
+          "Authentication tokens are automatically attached to API requests using Axios interceptors.",
+      },
+      {
+        title: "Responsive Dashboard System",
+        description:
+          "UI adapts across devices with conditional rendering for complex components.",
+      },
+    ],
+
+    challenges: [
+      {
+        title: "Deployment Configuration Issues",
+        problem:
+          "Initial deployment failed due to incorrect asset paths causing runtime errors.",
+        solution:
+          "Resolved by configuring Vite base paths and fixing Netlify build settings.",
+      },
+      {
+        title: "Authentication State Handling",
+        problem:
+          "Managing session persistence and auto logout across sessions was complex.",
+        solution:
+          "Implemented localStorage-based session tracking with timers and global auth context.",
+      },
+      {
+        title: "Designing Scalable Data Structure",
+        problem:
+          "Structuring environment variables for multiple projects without losing clarity.",
+        solution:
+          "Designed a hierarchical system (Projects → Sections → Variables) for flexibility and scalability.",
+      },
+    ],
+
+    metrics: [
+      { label: "Usage", value: "Actively used across personal projects" },
+      {
+        label: "Data Type",
+        value: "Environment variables, credentials, notes",
+      },
+      { label: "Access", value: "Cross-device centralized access" },
+      { label: "Security", value: "Encrypted storage with user isolation" },
+    ],
+
+    results: [
+      "Actively used to manage environment variables across multiple personal projects.",
+      "Eliminated dependency on scattered .env files and insecure storage methods.",
+      "Successfully deployed a secure full-stack developer tool.",
+      "Improved workflow efficiency for managing project configuration.",
+    ],
+
+    learnings: [
+      "Designing scalable data structures is more critical than UI in developer tools.",
+      "Security must be integrated at every layer of the system.",
+      "Deployment issues often come from configuration rather than code logic.",
+      "Developer tools should prioritize workflow efficiency over feature count.",
+    ],
+
+    statusNote: [
+      "The platform is fully functional and actively used, with future improvements focused on UI refinement and advanced collaboration features.",
     ],
   },
 
@@ -708,7 +932,7 @@ export const projects: Project[] = [
 
     overview: [
       "KIRAN v1 is a mentorship platform designed to help students connect with mentors for academic support, doubt solving, and access to structured study resources.",
-      "The system supports three core roles — Students, Mentors, and Admins — each with their own dashboard and responsibilities, turning the platform into more than a simple Q&A portal.",
+      "The system supports three core roles - Students, Mentors, and Admins - each with their own dashboard and responsibilities, turning the platform into more than a simple Q&A portal.",
       "Students can submit doubts in multiple formats, mentors can pick and solve doubts, and admins can manage users, publish announcements, and oversee the overall platform activity.",
     ],
 
@@ -905,10 +1129,18 @@ export const projects: Project[] = [
       { label: "Team", value: "Solo" },
       { label: "Status", value: "Building" },
       { label: "Project Type", value: "Platform Redesign / Next Iteration" },
-      { label: "Deployment", value: "Netlify (Frontend) + Render (Backend - In Progress)" },
+      {
+        label: "Deployment",
+        value: "Netlify (Frontend) + Render (Backend - In Progress)",
+      },
     ],
 
-    links: [{ label: "Source Code", href: "https://github.com/ankit9241/KIRAN-Advance" }],
+    links: [
+      {
+        label: "Source Code",
+        href: "https://github.com/ankit9241/KIRAN-Advance",
+      },
+    ],
 
     overview: [
       "KIRAN v2 is an improved and redesigned version of the original KIRAN mentorship platform. While the first version established the core mentorship workflow, this version focuses on making the platform cleaner, more scalable, and more practical for long-term use.",
@@ -1249,7 +1481,7 @@ export const projects: Project[] = [
     ],
 
     context: [
-      "Service-based platforms require a different UI approach from product stores because users are not just buying items — they are combining multiple service choices into one booking journey.",
+      "Service-based platforms require a different UI approach from product stores because users are not just buying items - they are combining multiple service choices into one booking journey.",
       "PlanIT was built to explore that kind of interface through frontend-only design and interaction logic.",
     ],
 
@@ -1379,7 +1611,10 @@ export const projects: Project[] = [
 
     links: [
       { label: "Live Demo", href: "https://gokulbhandar.netlify.app" },
-      { label: "Source Code", href: "https://github.com/ankit9241/GokulBhandar" },
+      {
+        label: "Source Code",
+        href: "https://github.com/ankit9241/GokulBhandar",
+      },
     ],
 
     overview: [
