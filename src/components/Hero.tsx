@@ -141,7 +141,8 @@ const Hero = () => {
               className="text-sm md:text-base text-text-secondary max-w-xl"
             >
               CS & Data Analytics Student | Full Stack Web Developer |{" "}
-              Sub-Coordinator <b>@Pixelerate IITP CEP UG</b>
+              Member <b>@WebWiser IITP CEP UG</b> |{" "}
+              Ex - Sub-Coordinator <b>@Pixelerate IITP CEP UG</b>
             </motion.p>
 
             {/* CTA buttons */}
