@@ -41,7 +41,8 @@ const Hero = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute top-16 left-6 w-36 h-36 rounded-full opacity-10 blur-2xl"
           style={{
-            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 60%)",
+            background:
+              "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 60%)",
           }}
         />
 
@@ -50,7 +51,8 @@ const Hero = () => {
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-20 right-6 w-44 h-44 rounded-full opacity-10 blur-2xl"
           style={{
-            background: "radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 60%)",
+            background:
+              "radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 60%)",
           }}
         />
       </div>
@@ -71,7 +73,7 @@ const Hero = () => {
                   className="inline-flex items-center gap-2 text-sm font-medium px-3 py-1 rounded-full shadow-sm"
                   style={{
                     background: "#F5F5F5",
-                    color: "#000000"
+                    color: "#000000",
                   }}
                 >
                   <Star className="w-3.5 h-3.5" />
@@ -90,8 +92,7 @@ const Hero = () => {
               <span
                 className="bg-clip-text text-transparent"
                 style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
+                  backgroundImage: "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
                 }}
               >
                 <span className="inline-block">
@@ -140,9 +141,9 @@ const Hero = () => {
               variants={fadeUp}
               className="text-sm md:text-base text-text-secondary max-w-xl"
             >
-              CS & Data Analytics Student | Full Stack Web Developer |{" "}
-              Member <b>@WebWiser IITP CEP UG</b> |{" "}
-              Ex - Sub-Coordinator <b>@Pixelerate IITP CEP UG</b>
+              CS & Data Analytics Student | Full Stack Web Developer | MERN
+              Stack | Passionate about crafting seamless user experiences and
+              building scalable web applications.
             </motion.p>
 
             {/* CTA buttons */}
@@ -152,10 +153,10 @@ const Hero = () => {
                   onClick={scrollToProjects}
                   className="px-6 py-3 rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
                   style={{
-                      background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
-                      color: "#FFFFFF",
-                      border: "1px solid #4A4A4A",
-                    }}
+                    background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
+                    color: "#FFFFFF",
+                    border: "1px solid #4A4A4A",
+                  }}
                 >
                   View Projects
                 </button>
@@ -167,7 +168,7 @@ const Hero = () => {
                   className="flex items-center justify-center gap-2 px-6 py-3 rounded-3xl transition font-semibold text-center"
                   style={{
                     background: "#F5F5F5",
-                    color: "#000000"
+                    color: "#000000",
                   }}
                 >
                   <Download className="w-5 h-5" />
@@ -223,7 +224,8 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "linear-gradient(135deg, rgba(137, 170, 204, 0.2), rgba(78, 133, 191, 0.3))",
+                  background:
+                    "linear-gradient(135deg, rgba(137, 170, 204, 0.2), rgba(78, 133, 191, 0.3))",
                 }}
               />
 
