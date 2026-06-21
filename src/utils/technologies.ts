@@ -1,4 +1,4 @@
-import { SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiTailwindcss, SiTypescript, SiJavascript, SiPython, SiDjango, SiGit, SiGithub, SiFigma, SiAdobephotoshop, SiAdobeillustrator, SiC, SiCplusplus, SiHtml5, SiCss3, SiRedux, SiFirebase, SiPostman, SiVite, SiVercel, SiNetlify, SiHeroku, SiDocker, SiAmazon, SiGooglecloud, SiBootstrap, SiFastapi, SiPrisma, SiStripe, SiModal, SiFfmpeg, SiOpenai, SiGooglegemini } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiTailwindcss, SiTypescript, SiJavascript, SiPython, SiDjango, SiGit, SiGithub, SiFigma, SiAdobephotoshop, SiAdobeillustrator, SiC, SiCplusplus, SiHtml5, SiCss3, SiRedux, SiFirebase, SiPostman, SiVite, SiVercel, SiNetlify, SiHeroku, SiDocker, SiGooglecloud, SiBootstrap, SiFastapi, SiPrisma, SiStripe, SiModal, SiFfmpeg, SiOpenai, SiGooglegemini } from "react-icons/si";
 import { LuWorkflow } from "react-icons/lu";
 import { FaAws } from "react-icons/fa";
 
