@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
+import { FaReact, FaNodeJs, FaPython, FaAws, FaJava } from "react-icons/fa";
+import { SiMongodb, SiTypescript, SiNextdotjs, SiCplusplus, SiTailwindcss, SiPostgresql, SiFastapi, SiPrisma, SiStripe, SiModal } from "react-icons/si";
 import { certificates } from "../utils/certificatesData";
 
 const Certificates = () => {
@@ -16,6 +16,16 @@ const Certificates = () => {
       TypeScript: (
         <SiTypescript className="w-5 h-5" style={{ color: "#3178C6" }} />
       ),
+      "C++": <SiCplusplus className="w-5 h-5" style={{ color: "#00599C" }} />,
+      Python: <FaPython className="w-5 h-5" style={{ color: "#3776AB" }} />,
+      AWS: <FaAws className="w-5 h-5" style={{ color: "#FF9900" }} />,
+      "Tailwind CSS": <SiTailwindcss className="w-5 h-5" style={{ color: "#06B6D4" }} />,
+      PostgreSQL: <SiPostgresql className="w-5 h-5" style={{ color: "#4169E1" }} />,
+      Java: <FaJava className="w-5 h-5" style={{ color: "#ED8B00" }} />,
+      FastAPI: <SiFastapi className="w-5 h-5" style={{ color: "#009688" }} />,
+      Prisma: <SiPrisma className="w-5 h-5" style={{ color: "#5A67D8" }} />,
+      Stripe: <SiStripe className="w-5 h-5" style={{ color: "#635BFF" }} />,
+      Modal: <SiModal className="w-5 h-5" style={{ color: "#FFFFFF" }} />,
     };
     return skillIcons[skillName] || null;
   };
@@ -43,7 +53,7 @@ const Certificates = () => {
           {certificates.map((cert) => (
             <div
               key={cert.title}
-              className="group rounded-3xl overflow-hidden transition-all duration-300"
+              className="group rounded-3xl overflow-hidden transition-all duration-300 flex flex-col h-full"
               style={{
                 background: "transparent",
                 border: "1px solid #2A2A2A",
@@ -77,7 +87,7 @@ const Certificates = () => {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-text-primary mb-2">
                   {cert.title}
                 </h3>
@@ -90,37 +100,40 @@ const Certificates = () => {
                   {cert.description}
                 </p>
 
-                <div className="mt-4 mb-6 flex flex-wrap gap-2">
-                  {cert.skills.map((skill, skillIndex) => {
-                    const Icon = getSkillIcon(skill);
-                    return Icon ? (
-                      <div key={skillIndex} className="relative">
-                        <div className="w-6 h-6 flex items-center justify-center peer">
-                          {Icon}
+                {/* Bottom container containing skills and button, pushed to bottom via mt-auto */}
+                <div className="mt-auto pt-4">
+                  <div className="mb-6 flex flex-wrap gap-2 min-h-[24px]">
+                    {cert.skills.map((skill, skillIndex) => {
+                      const Icon = getSkillIcon(skill);
+                      return Icon ? (
+                        <div key={skillIndex} className="relative">
+                          <div className="w-6 h-6 flex items-center justify-center peer">
+                            {Icon}
+                          </div>
+                          {/* Custom Tooltip */}
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
+                            {skill}
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
+                          </div>
                         </div>
-                        {/* Custom Tooltip */}
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
-                          {skill}
-                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
-                        </div>
-                      </div>
-                    ) : null;
-                  })}
-                </div>
+                      ) : null;
+                    })}
+                  </div>
 
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-3xl font-medium"
-                  style={{
-                    background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
-                    color: "#FFFFFF",
-                    border: "1px solid #4A4A4A",
-                  }}
-                >
-                  <span className="text-white">View Certificate</span>
-                </a>
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 px-4 py-2 rounded-3xl font-medium"
+                    style={{
+                      background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
+                      color: "#FFFFFF",
+                      border: "1px solid #4A4A4A",
+                    }}
+                  >
+                    <span className="text-white">View Certificate</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}

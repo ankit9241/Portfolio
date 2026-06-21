@@ -9,13 +9,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import StarBackground from "./components/StarBackground";
 import AppWrapper from "./components/AppWrapper";
-import GlassCursor from "./components/GlassCursor";
-import "./styles/glassCursor.css";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   return (
     <AppWrapper>
-      <GlassCursor />
+      <CustomCursor />
       <Router>
         <ScrollToTop />
         <div className="relative min-h-screen">

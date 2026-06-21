@@ -1,4 +1,6 @@
-import { SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiTailwindcss, SiTypescript, SiJavascript, SiPython, SiDjango, SiGit, SiGithub, SiFigma, SiAdobephotoshop, SiAdobeillustrator, SiC, SiCplusplus, SiHtml5, SiCss3, SiRedux, SiFirebase, SiPostman, SiVite, SiVercel, SiNetlify, SiHeroku, SiDocker, SiAmazon, SiGooglecloud, SiBootstrap } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiTailwindcss, SiTypescript, SiJavascript, SiPython, SiDjango, SiGit, SiGithub, SiFigma, SiAdobephotoshop, SiAdobeillustrator, SiC, SiCplusplus, SiHtml5, SiCss3, SiRedux, SiFirebase, SiPostman, SiVite, SiVercel, SiNetlify, SiHeroku, SiDocker, SiAmazon, SiGooglecloud, SiBootstrap, SiFastapi, SiPrisma, SiStripe, SiModal, SiFfmpeg, SiOpenai, SiGooglegemini } from "react-icons/si";
+import { LuWorkflow } from "react-icons/lu";
+import { FaAws } from "react-icons/fa";
 
 export const technologies = {
   react: {
@@ -199,7 +201,7 @@ export const technologies = {
   },
   aws: {
     name: "AWS",
-    icon: SiAmazon,
+    icon: FaAws,
     bgColor: "rgba(255, 153, 0, 0.1)",
     textColor: "#FF9900",
     borderColor: "rgba(255, 153, 0, 0.3)",
@@ -217,6 +219,62 @@ export const technologies = {
     bgColor: "rgba(121, 82, 179, 0.1)",
     textColor: "#7952B3",
     borderColor: "rgba(121, 82, 179, 0.3)",
+  },
+  fastapi: {
+    name: "FastAPI",
+    icon: SiFastapi,
+    bgColor: "rgba(0, 150, 136, 0.1)",
+    textColor: "#009688",
+    borderColor: "rgba(0, 150, 136, 0.3)",
+  },
+  prisma: {
+    name: "Prisma",
+    icon: SiPrisma,
+    bgColor: "rgba(90, 103, 216, 0.1)",
+    textColor: "#5A67D8",
+    borderColor: "rgba(90, 103, 216, 0.3)",
+  },
+  stripe: {
+    name: "Stripe",
+    icon: SiStripe,
+    bgColor: "rgba(99, 91, 255, 0.1)",
+    textColor: "#635BFF",
+    borderColor: "rgba(99, 91, 255, 0.3)",
+  },
+  modal: {
+    name: "Modal",
+    icon: SiModal,
+    bgColor: "rgba(255, 255, 255, 0.1)",
+    textColor: "#FFFFFF",
+    borderColor: "rgba(255, 255, 255, 0.3)",
+  },
+  inngest: {
+    name: "Inngest",
+    icon: LuWorkflow,
+    bgColor: "rgba(249, 115, 22, 0.1)",
+    textColor: "#F97316",
+    borderColor: "rgba(249, 115, 22, 0.3)",
+  },
+  ffmpeg: {
+    name: "FFmpeg",
+    icon: SiFfmpeg,
+    bgColor: "rgba(0, 172, 71, 0.1)",
+    textColor: "#00AC47",
+    borderColor: "rgba(0, 172, 71, 0.3)",
+  },
+  whisper: {
+    name: "Whisper",
+    icon: SiOpenai,
+    bgColor: "rgba(16, 163, 127, 0.1)",
+    textColor: "#10A37F",
+    borderColor: "rgba(16, 163, 127, 0.3)",
+  },
+  gemini: {
+    name: "Gemini",
+    icon: SiGooglegemini,
+    bgColor: "rgba(91, 150, 244, 0.1)",
+    textColor: "#5B96F4",
+    borderColor: "rgba(91, 150, 244, 0.3)",
   },
 } as const;
 

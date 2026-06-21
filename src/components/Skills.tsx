@@ -19,8 +19,16 @@ import {
   SiFirebase,
   SiPython,
   SiNetlify,
+  SiNextdotjs,
+  SiFastapi,
+  SiPostgresql,
+  SiPrisma,
+  SiAmazon,
+  SiStripe,
+  SiModal,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import { LuWorkflow } from "react-icons/lu";
 import RotatingTechStack from "./RotatingTechStack";
 import { motion } from "framer-motion";
 
@@ -29,6 +37,7 @@ const Skills = () => {
     { name: "HTML5", icon: SiHtml5, color: "#E5E5E5", category: "Frontend" },
     { name: "CSS3", icon: SiCss3, color: "#D5D5D5", category: "Frontend" },
     { name: "React", icon: SiReact, color: "#D5D5D5", category: "Frontend" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", category: "Frontend" },
     {
       name: "Tailwind CSS",
       icon: SiTailwindcss,
@@ -55,7 +64,10 @@ const Skills = () => {
       color: "#FFFFFF",
       category: "Backend",
     },
+    { name: "FastAPI", icon: SiFastapi, color: "#BDBDBD", category: "Backend" },
     { name: "MongoDB", icon: SiMongodb, color: "#D5D5D5", category: "Backend" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#D5D5D5", category: "Backend" },
+    { name: "Prisma", icon: SiPrisma, color: "#E5E5E5", category: "Backend" },
     { name: "Firebase", icon: SiFirebase, color: "#E5E5E5", category: "Backend" },
     { name: "Python", icon: SiPython, color: "#BDBDBD", category: "Backend" },
 
@@ -79,6 +91,10 @@ const Skills = () => {
     //   color: "#D5D5D5",
     //   category: "Tools",
     // },
+    { name: "AWS", icon: SiAmazon, color: "#BDBDBD", category: "Tools" },
+    { name: "Stripe", icon: SiStripe, color: "#D5D5D5", category: "Tools" },
+    { name: "Modal", icon: SiModal, color: "#FFFFFF", category: "Tools" },
+    { name: "Inngest", icon: LuWorkflow, color: "#E5E5E5", category: "Tools" },
     { name: "Render", icon: SiRender, color: "#ADADAD", category: "Tools" },
     { name: "VS Code", icon: VscVscode, color: "#D5D5D5", category: "Tools" },
     { name: "Netlify", icon: SiNetlify, color: "#BDBDBD", category: "Tools" },

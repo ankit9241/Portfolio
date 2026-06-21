@@ -82,6 +82,240 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "PodSnap",
+    slug: "podsnap",
+    tagline: "AI-Powered Podcast Repurposing Platform",
+
+    shortDescription:
+      "An AI-powered platform that transforms long-form podcasts into engaging short-form vertical clips with intelligent moment detection, active speaker tracking, and dynamic subtitles.",
+
+    description:
+      "PodSnap is an AI-powered SaaS platform that automates the process of converting long-form podcasts into social media-ready short clips. By combining speech recognition, LLM-powered highlight detection, active speaker tracking, dynamic video cropping, and subtitle generation, the platform eliminates hours of manual editing and produces ready-to-publish vertical videos in minutes.",
+
+    coverImage: "/assets/projects/podsnap/podsnap-1.png",
+
+    gallery: [
+      "/assets/projects/podsnap/podsnap-1.png",
+      "/assets/projects/podsnap/podsnap-2.png",
+      "/assets/projects/podsnap/podsnap-3.png",
+      "/assets/projects/podsnap/podsnap-4.png",
+    ],
+
+    github: "https://github.com/ankit9241/PodSnap",
+    live: "#",
+    isPublished: false,
+
+    tech: [
+      technologies.nextjs,
+      technologies.react,
+      technologies.typescript,
+      technologies.tailwind,
+      technologies.python,
+      technologies.fastapi,
+      technologies.postgresql,
+      technologies.prisma,
+      technologies.aws,
+      technologies.stripe,
+      technologies.modal,
+      technologies.inngest,
+      technologies.ffmpeg,
+      technologies.whisper,
+    ],
+
+    meta: [
+      { label: "Timeline", value: "June 2026" },
+      { label: "Role", value: "Backend Developer" },
+      { label: "Team", value: "Hackathon Team (4 Members)" },
+      { label: "Status", value: "Completed (Deployment in Progress)" },
+      { label: "Project Type", value: "AI SaaS Platform" },
+      { label: "Processing Time", value: "~9–10 min for a 90 min podcast" },
+    ],
+
+    links: [
+      { label: "Live Demo", href: "#" },
+      { label: "Source Code", href: "https://github.com/ankit9241/PodSnap" },
+    ],
+
+    overview: [
+      "PodSnap is an AI-powered podcast repurposing platform that automatically converts long-form podcast videos into engaging short-form vertical clips optimized for Instagram Reels, TikTok, and YouTube Shorts.",
+      "Instead of manually finding highlights, reframing speakers, and designing subtitles, users simply upload an MP4 file or paste a YouTube video link. The platform handles the entire editing pipeline automatically.",
+      "The application combines speech recognition, LLM-based highlight extraction, active speaker detection, intelligent video cropping, and subtitle rendering into one seamless workflow.",
+      "I primarily contributed to the backend architecture, AI workflow integration, Stripe billing system, and AWS storage integration while also assisting with frontend development.",
+    ],
+
+    context: [
+      "Creating viral short-form clips from long podcasts is extremely time-consuming and usually requires hours of manual editing.",
+      "Editors need to watch entire podcasts, identify engaging moments, crop videos vertically, track speakers manually, and add subtitles before publishing.",
+      "PodSnap automates this entire workflow using AI, reducing hours of editing into a single automated pipeline.",
+    ],
+
+    whyBuilt: [
+      "The project was developed during a hackathon to solve the growing demand for automatically repurposing long-form content into short-form videos.",
+      "Our goal was to build an end-to-end AI pipeline capable of generating professional-quality clips with minimal user interaction.",
+    ],
+
+    techStack: [
+      {
+        category: "Frontend",
+        items: [
+          "Next.js 15",
+          "React 19",
+          "TypeScript",
+          "Tailwind CSS",
+          "Shadcn UI",
+        ],
+      },
+      {
+        category: "Backend",
+        items: ["Python", "FastAPI", "Node.js", "Inngest"],
+      },
+      {
+        category: "Database",
+        items: ["PostgreSQL", "Prisma ORM"],
+      },
+      {
+        category: "AI & Processing",
+        items: [
+          "WhisperX",
+          "Google Gemini 2.5 Flash",
+          "Columbia Active Speaker Detection",
+          "FFmpeg",
+          "OpenCV",
+        ],
+      },
+      {
+        category: "Cloud & Infrastructure",
+        items: ["AWS S3", "Modal GPU", "Stripe"],
+      },
+    ],
+
+    features: [
+      {
+        title: "AI Highlight Detection",
+        description:
+          "Google Gemini analyzes complete podcast transcripts and automatically identifies the most engaging 30–60 second moments suitable for social media.",
+      },
+      {
+        title: "Speech Transcription",
+        description:
+          "WhisperX generates highly accurate speech-to-text transcripts with precise word-level timestamp alignment for subtitle rendering.",
+      },
+      {
+        title: "Active Speaker Tracking",
+        description:
+          "Integrated Columbia Active Speaker Detection tracks who is speaking in real time, allowing videos to remain centered on the active speaker throughout the clip.",
+      },
+      {
+        title: "Automatic Vertical Video Generation",
+        description:
+          "Converts horizontal podcast videos into professional 9:16 vertical clips with intelligent face-centered cropping.",
+      },
+      {
+        title: "Stylized Subtitle Rendering",
+        description:
+          "Automatically generates and burns professionally styled subtitles directly into the exported videos using FFmpeg.",
+      },
+      {
+        title: "YouTube & MP4 Support",
+        description:
+          "Users can either upload local MP4 files or simply paste a YouTube link to begin clip generation.",
+      },
+      {
+        title: "Credit-Based Processing",
+        description:
+          "Each generated clip consumes one processing credit. New users receive free credits, while additional credits can be purchased securely through Stripe.",
+      },
+      {
+        title: "Secure File Storage",
+        description:
+          "Large videos are uploaded directly to AWS S3 using pre-signed URLs, supporting uploads up to 500 MB without overloading the application server.",
+      },
+    ],
+
+    technicalDetails: [
+      {
+        title: "Distributed AI Architecture",
+        description:
+          "The web application handles authentication, uploads, billing, and dashboard functionality, while GPU-intensive AI processing runs independently on Modal serverless infrastructure.",
+      },
+      {
+        title: "Background Processing Pipeline",
+        description:
+          "Long-running AI tasks are orchestrated using Inngest, allowing video generation without blocking frontend requests or exceeding server execution limits.",
+      },
+      {
+        title: "Direct-to-S3 Upload Workflow",
+        description:
+          "Videos are uploaded directly from the browser to AWS S3 using secure pre-signed URLs, avoiding server upload bottlenecks.",
+      },
+      {
+        title: "Scalable Database Design",
+        description:
+          "PostgreSQL with Prisma stores users, uploaded videos, generated clips, processing status, Stripe customers, and user credits using relational data models.",
+      },
+      {
+        title: "Secure Billing Integration",
+        description:
+          "Stripe Checkout and webhook verification automatically synchronize user credit balances after successful purchases.",
+      },
+    ],
+
+    challenges: [
+      {
+        title: "Building Reliable AI Workflows",
+        problem:
+          "Video processing required multiple AI models and services to execute sequentially without breaking the pipeline.",
+        solution:
+          "Implemented an event-driven workflow using Inngest to coordinate every processing stage reliably.",
+      },
+      {
+        title: "Modal Deployment Issues",
+        problem:
+          "Although videos uploaded successfully to AWS S3, processing repeatedly failed inside Modal GPU workers during development.",
+        solution:
+          "Debugged deployment configuration, environment variables, and GPU execution flow until the processing pipeline became stable.",
+      },
+      {
+        title: "Integrating Multiple AI Services",
+        problem:
+          "Combining WhisperX, Gemini, Active Speaker Detection, FFmpeg, AWS S3, and Stripe into a single workflow introduced several integration challenges.",
+        solution:
+          "Designed a modular backend architecture where each service performs a dedicated responsibility within the overall pipeline.",
+      },
+    ],
+
+    metrics: [
+      {
+        label: "Processing Speed",
+        value: "~9-10 minutes for a 90-minute podcast",
+      },
+      { label: "Input Support", value: "MP4 Upload & YouTube URL" },
+      { label: "Upload Limit", value: "Up to 500 MB" },
+      { label: "Output", value: "~5 AI-generated clips per podcast" },
+      { label: "Languages Tested", value: "English & Hindi" },
+      { label: "Billing Model", value: "1 Credit = 1 Generated Clip" },
+    ],
+
+    results: [
+      "Successfully generated hundreds of test clips across English and Hindi podcast videos during development.",
+      "Automatically creates approximately five high-quality clips from a typical long-form podcast.",
+      "Reduced manual editing workflows into a fully automated AI pipeline.",
+      "Built a scalable backend capable of combining multiple AI services into a production-ready architecture.",
+    ],
+
+    learnings: [
+      "Learned how to design scalable event-driven AI workflows using Inngest.",
+      "Gained hands-on experience with AWS S3 for secure file uploads and cloud storage.",
+      "Worked with Modal serverless GPUs to execute heavy AI workloads efficiently.",
+      "Integrated Stripe payment workflows including secure webhook verification and credit management.",
+      "Understood how modern AI products combine LLMs, speech recognition, computer vision, and video processing into a unified system.",
+    ],
+
+    statusNote: [
+      "The core platform has been completed successfully. Deployment is currently in progress, and future versions will expand YouTube integration, improve clip generation capabilities, and introduce additional AI-powered content optimization features.",
+    ],
+  },
+  {
     title: "ExamifAI",
     slug: "examifai",
     tagline: "AI-Based Secure Online Examination System",
@@ -499,9 +733,15 @@ export const projects: Project[] = [
     description:
       "Envora is a full-stack developer-focused vault built to eliminate the chaos of managing environment variables and sensitive configuration across multiple projects. It provides a secure, structured system where developers can organize, access, and manage secrets efficiently across devices. Store your .env files privately with encrypted storage and secure access.",
 
-    coverImage: ["/assets/projects/envora/envora-2.svg", "/assets/projects/envora/envora-1.svg"],
+    coverImage: [
+      "/assets/projects/envora/envora-2.svg",
+      "/assets/projects/envora/envora-1.svg",
+    ],
 
-    gallery: ["/assets/projects/envora/envora-2.svg", "/assets/projects/envora/envora-1.svg"],
+    gallery: [
+      "/assets/projects/envora/envora-2.svg",
+      "/assets/projects/envora/envora-1.svg",
+    ],
 
     github: "https://github.com/ankit9241/Envora",
     live: "https://envora.netlify.app/",
