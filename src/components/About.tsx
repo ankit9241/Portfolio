@@ -8,8 +8,8 @@ const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
-    <section id="about" className="py-20" ref={ref}>
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="about" className="py-20 px-6 md:px-12" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

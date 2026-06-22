@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { Mail, Github, Linkedin, Download, Star } from "lucide-react";
+import { Mail, Github, Linkedin, Download } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import OptimizedImage from "./OptimizedImage";
+import { playClickSound } from "../utils/audio";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -24,15 +25,14 @@ const Hero = () => {
   const isInView = useInView(ref, { once: true });
 
   const scrollToProjects = () => {
-    const el = document.getElementById("projects");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    window.location.href = "/projects";
   };
 
   return (
     <section
       id="home"
       ref={ref}
-      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden px-6"
+      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden px-6 md:px-12"
     >
       {/* Decorative background blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -57,7 +57,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full">
+      <div className="relative z-10 max-w-5xl mx-auto w-full">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start"
           variants={staggerParent}
@@ -66,21 +66,6 @@ const Hero = () => {
         >
           {/* Left Content - Separate Container */}
           <div className="md:col-span-7 lg:col-span-7 space-y-6">
-            {/* Badge */}
-            <motion.div variants={fadeUp}>
-              <div className="flex items-center gap-3">
-                <span
-                  className="inline-flex items-center gap-2 text-sm font-medium px-3 py-1 rounded-full shadow-sm"
-                  style={{
-                    background: "#F5F5F5",
-                    color: "#000000",
-                  }}
-                >
-                  <Star className="w-3.5 h-3.5" />
-                  Let's build something great
-                </span>
-              </div>
-            </motion.div>
 
             {/* Name */}
             <motion.h1
@@ -95,18 +80,8 @@ const Hero = () => {
                   backgroundImage: "linear-gradient(90deg, #FFFFFF, #BDBDBD)",
                 }}
               >
-                <span className="inline-block">
-                  <span style={{ color: "#E5E5E5" }}>A</span>
-                  <span style={{ color: "#D5D5D5" }}>n</span>
-                  <span style={{ color: "#BDBDBD" }}>k</span>
-                  <span style={{ color: "#ADADAD" }}>i</span>
-                  <span style={{ color: "#9D9D9D" }}>t</span>
-                  <span style={{ color: "#FFFFFF" }}> </span>
-                  <span style={{ color: "#E5E5E5" }}>K</span>
-                  <span style={{ color: "#D5D5D5" }}>u</span>
-                  <span style={{ color: "#BDBDBD" }}>m</span>
-                  <span style={{ color: "#ADADAD" }}>a</span>
-                  <span style={{ color: "#9D9D9D" }}>r</span>
+                <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                  Ankit Kumar
                 </span>
               </span>
             </motion.h1>
@@ -120,7 +95,7 @@ const Hero = () => {
                       options={{
                         strings: [
                           "Full-Stack Web Developer",
-                          "React Enthusiast",
+                          "Software Engineer",
                           "Problem Solver",
                           "UI/UX Designer",
                         ],
@@ -150,7 +125,7 @@ const Hero = () => {
             <motion.div variants={fadeUp}>
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
-                  onClick={scrollToProjects}
+                  onClick={() => { playClickSound(); scrollToProjects(); }}
                   className="px-6 py-3 rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
                   style={{
                     background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
@@ -165,6 +140,7 @@ const Hero = () => {
                   href="/resume/Ankit_Kumar_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => playClickSound()}
                   className="flex items-center justify-center gap-2 px-6 py-3 rounded-3xl transition font-semibold text-center"
                   style={{
                     background: "#F5F5F5",
@@ -172,7 +148,7 @@ const Hero = () => {
                   }}
                 >
                   <Download className="w-5 h-5" />
-                  Get Resume
+                  Resume
                 </a>
               </div>
             </motion.div>
@@ -183,6 +159,7 @@ const Hero = () => {
                 <a
                   href="https://github.com/ankit9241"
                   target="_blank"
+                  onClick={() => playClickSound()}
                   className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
                   <Github />
@@ -191,6 +168,7 @@ const Hero = () => {
                 <a
                   href="https://www.linkedin.com/in/ankitkumar1109/"
                   target="_blank"
+                  onClick={() => playClickSound()}
                   className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
                   <Linkedin />
@@ -199,6 +177,7 @@ const Hero = () => {
                 <a
                   href="mailto:ankitkumar.iitp09@gmail.com"
                   target="_blank"
+                  onClick={() => playClickSound()}
                   className="p-2 rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-lg text-text-secondary hover:text-text-primary"
                 >
                   <Mail />
@@ -239,11 +218,13 @@ const Hero = () => {
                   className="scale-110"
                   blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Crect width='220' height='220' fill='%231a1a1a'/%3E%3C/svg%3E"
                 />
-                {/* Four-side gradient overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#111111] via-[#111111]/30 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#111111] via-[#111111]/30 to-transparent" />
-                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#111111] via-[#111111]/30 to-transparent" />
-                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#111111] via-[#111111]/30 to-transparent" />
+                {/* Smooth inwards gradient overlay from all 4 sides */}
+                <div
+                  className="absolute inset-0 pointer-events-none rounded-2xl"
+                  style={{
+                    boxShadow: "inset 0 0 100px 50px #111111, inset 0 -80px 120px 40px #111111"
+                  }}
+                />
               </div>
             </motion.div>
           </motion.div>

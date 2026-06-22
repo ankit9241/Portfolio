@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "../components/StatusBadge";
 import OptimizedImage from "../components/OptimizedImage";
+import { playClickSound } from "../utils/audio";
 
 const AllProjects = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -24,7 +25,7 @@ const AllProjects = () => {
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Back Button */}
         <button
-          onClick={handleBack}
+          onClick={() => { playClickSound(); handleBack(); }}
           className="flex items-center space-x-2 mb-8 text-gray-400 hover:text-white transition-colors"
         >
           <Undo2 className="w-5 h-5" />
@@ -85,7 +86,7 @@ const AllProjects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-white transition-colors"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                       >
                         <Globe className="w-5 h-5" />
                       </a>
@@ -95,7 +96,7 @@ const AllProjects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                     >
                       <Github className="w-5 h-5" />
                     </a>
@@ -136,12 +137,12 @@ const AllProjects = () => {
                   })}
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4">
                   {project.meta && project.meta.find(item => item.label === 'Status') && (
                     <StatusBadge status={project.meta.find(item => item.label === 'Status')?.value || ''} />
                   )}
-                  <div className="flex items-center gap-1 cursor-pointer group"
-                     onClick={() => handleProjectClick(project)}>
+                  <div className="flex items-center gap-1 cursor-pointer group shrink-0 whitespace-nowrap"
+                     onClick={() => { playClickSound(); handleProjectClick(project); }}>
                     <span 
                       className="text-sm text-gray-400 group-hover:text-white transition-colors"
                     >

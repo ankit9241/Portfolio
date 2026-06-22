@@ -67,8 +67,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="contact" className="py-20 px-6 md:px-12" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* LEFT: Heading + paragraph + email */}
           <motion.div

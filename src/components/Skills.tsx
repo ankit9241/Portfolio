@@ -11,9 +11,7 @@ import {
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  // SiGit,
   SiGithub,
-  // SiHoppscotch,
   SiVite,
   SiRender,
   SiFirebase,
@@ -23,217 +21,173 @@ import {
   SiFastapi,
   SiPostgresql,
   SiPrisma,
-  SiAmazon,
-  SiStripe,
-  SiModal,
+  SiFigma,
+  SiGit,
+  SiGooglegemini,
+  SiMysql,
+  SiRadixui,
+  SiFramer,
+  SiAmazonwebservices,
+  SiCanva,
+  SiPandas,
+  SiNumpy,
+  SiPlotly,
+  SiScipy,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { LuWorkflow } from "react-icons/lu";
-import RotatingTechStack from "./RotatingTechStack";
-import { motion } from "framer-motion";
+import { MdAnimation } from "react-icons/md";
+// import RotatingTechStack from "./RotatingTechStack";
+
+const CursorIcon = (props: any) => (
+  <img
+    src="https://img.icons8.com/?size=512&id=DiGZkjCzyZXn&format=png&color=FFFFFF"
+    alt="Cursor AI"
+    className={props.className}
+  />
+);
 
 const Skills = () => {
-  const skills = [
-    { name: "HTML5", icon: SiHtml5, color: "#E5E5E5", category: "Frontend" },
-    { name: "CSS3", icon: SiCss3, color: "#D5D5D5", category: "Frontend" },
-    { name: "React", icon: SiReact, color: "#D5D5D5", category: "Frontend" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", category: "Frontend" },
-    {
-      name: "Tailwind CSS",
-      icon: SiTailwindcss,
-      color: "#BDBDBD",
-      category: "Frontend",
-    },
-    {
-      name: "Bootstrap CSS",
-      icon: SiBootstrap,
-      color: "#ADADAD",
-      category: "Frontend",
-    },
-    { name: "Vite", icon: SiVite, color: "#BDBDBD", category: "Frontend" },
+  // Animation variants
+  // const fadeUp = {
+  //   hidden: { opacity: 0, y: 30 },
+  //   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  // };
 
+  const stackCategories = [
     {
-      name: "Node.js",
-      icon: SiNodedotjs,
-      color: "#E5E5E5",
-      category: "Backend",
+      id: "01",
+      name: "Languages",
+      skills: [
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "JavaScript", icon: SiJavascript },
+        { name: "Python", icon: SiPython },
+        { name: "HTML5", icon: SiHtml5 },
+        { name: "CSS3", icon: SiCss3 },
+      ],
     },
     {
-      name: "Express.js",
-      icon: SiExpress,
-      color: "#FFFFFF",
-      category: "Backend",
-    },
-    { name: "FastAPI", icon: SiFastapi, color: "#BDBDBD", category: "Backend" },
-    { name: "MongoDB", icon: SiMongodb, color: "#D5D5D5", category: "Backend" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "#D5D5D5", category: "Backend" },
-    { name: "Prisma", icon: SiPrisma, color: "#E5E5E5", category: "Backend" },
-    { name: "Firebase", icon: SiFirebase, color: "#E5E5E5", category: "Backend" },
-    { name: "Python", icon: SiPython, color: "#BDBDBD", category: "Backend" },
-
-    {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "#BDBDBD",
-      category: "Languages",
+      id: "02",
+      name: "Frontend Development",
+      skills: [
+        { name: "React", icon: SiReact },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+        { name: "Bootstrap CSS", icon: SiBootstrap },
+        { name: "Radix UI", icon: SiRadixui },
+        { name: "Framer Motion", icon: SiFramer },
+        { name: "Lottie", icon: MdAnimation },
+        { name: "Vite", icon: SiVite },
+      ],
     },
     {
-      name: "TypeScript",
-      icon: SiTypescript,
-      color: "#E5E5E5",
-      category: "Languages",
+      id: "03",
+      name: "Backend & APIs",
+      skills: [
+        { name: "Node.js", icon: SiNodedotjs },
+        { name: "Express.js", icon: SiExpress },
+        { name: "FastAPI", icon: SiFastapi },
+        { name: "Firebase", icon: SiFirebase },
+      ],
     },
-    // { name: "Git", icon: SiGit, color: "#E5E5E5", category: "Tools" },
-    { name: "GitHub", icon: SiGithub, color: "#FFFFFF", category: "Tools" },
-    // {
-    //   name: "Hoppscotch",
-    //   icon: SiHoppscotch,
-    //   color: "#D5D5D5",
-    //   category: "Tools",
-    // },
-    { name: "AWS", icon: SiAmazon, color: "#BDBDBD", category: "Tools" },
-    { name: "Stripe", icon: SiStripe, color: "#D5D5D5", category: "Tools" },
-    { name: "Modal", icon: SiModal, color: "#FFFFFF", category: "Tools" },
-    { name: "Inngest", icon: LuWorkflow, color: "#E5E5E5", category: "Tools" },
-    { name: "Render", icon: SiRender, color: "#ADADAD", category: "Tools" },
-    { name: "VS Code", icon: VscVscode, color: "#D5D5D5", category: "Tools" },
-    { name: "Netlify", icon: SiNetlify, color: "#BDBDBD", category: "Tools" },
+    {
+      id: "04",
+      name: "Databases & Data Layer",
+      skills: [
+        { name: "PostgreSQL", icon: SiPostgresql },
+        { name: "MySQL", icon: SiMysql },
+        { name: "MongoDB", icon: SiMongodb },
+        { name: "Prisma", icon: SiPrisma },
+      ],
+    },
+    {
+      id: "05",
+      name: "Cloud, DevOps & Deployment",
+      skills: [
+        { name: "AWS S3", icon: SiAmazonwebservices },
+        { name: "Render", icon: SiRender },
+        { name: "Netlify", icon: SiNetlify },
+        { name: "Inngest", icon: LuWorkflow },
+        { name: "Git", icon: SiGit },
+        { name: "GitHub", icon: SiGithub },
+      ],
+    },
+    {
+      id: "06",
+      name: "AI & Data Science",
+      skills: [
+        { name: "Gemini", icon: SiGooglegemini },
+        { name: "Pandas", icon: SiPandas },
+        { name: "NumPy", icon: SiNumpy },
+        { name: "Matplotlib", icon: SiPlotly },
+        { name: "Seaborn", icon: SiScipy },
+      ],
+    },
+    {
+      id: "07",
+      name: "Design & Developer Tools",
+      skills: [
+        { name: "VS Code", icon: VscVscode },
+        { name: "Cursor", icon: CursorIcon },
+        { name: "Figma", icon: SiFigma },
+        { name: "Canva", icon: SiCanva },
+      ],
+    },
   ];
 
-  // Animation variants
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const staggerContainer = {
-    hidden: {},
-    show: {
-      transition: { staggerChildren: 0.12 },
-    },
-  };
-
-  const itemFade = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-  };
-
   return (
-    <section id="skills" className="py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
-        <motion.div
-          className="text-center mb-10"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
-            }}
-          >
-            My Skills & Technologies
-          </h2>
+    <section id="skills" className="py-10 md:py-16 px-6 md:px-12">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl md:text-5xl text-center font-extrabold text-text-primary mb-10">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Stack</span>
+        </h2>
 
-          <p className="text-text-secondary">
-            Here are the technologies and tools I work with
-          </p>
-        </motion.div>
-
-        {/* Rotating Tech Stack */}
-        <motion.div
+        {/* <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
           <RotatingTechStack />
-        </motion.div>
+        </motion.div> */}
 
-        {/* Cards */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          {[
-            "Frontend Development",
-            "Backend Development",
-            "Languages & Tools",
-          ].map((category) => (
-            <motion.div
-              key={category}
-              variants={fadeUp}
-              className="
-                w-full 
-                md:max-w-[420px]
-                lg:max-w-[500px]
-                rounded-2xl 
-                p-8 
-                transition-all 
-                duration-300
-                glass-premium
-              "
+        {/* Table Container */}
+        <div className="border-t border-[#2A2A2A] w-full">
+          {stackCategories.map((category) => (
+            <div
+              key={category.id}
+              className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-[#2a2a2a] py-4 items-center gap-4 md:gap-6"
             >
-              <h3 className="text-2xl font-bold text-center bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
-                }}
-              >
-                {category}
-              </h3>
+              {/* Left Column: Number + Category Name */}
+              <div className="flex items-center gap-3 text-base font-semibold">
+                <span className="text-[#666666] font-mono tracking-wider">
+                  {category.id}
+                </span>
+                <span className="text-[#BDBDBD]">
+                  {category.name}
+                </span>
+              </div>
 
-              <div
-                className="w-full h-[2px] mt-3 mb-6 rounded-full"
-                style={{ background: "#2A2A2A" }}
-              />
-
-              {/* Skill Items */}
-              <motion.div
-                className="grid grid-cols-2 gap-4"
-                variants={staggerContainer}
-              >
-                {skills
-                  .filter((skill) =>
-                    category === "Languages & Tools"
-                      ? skill.category === "Languages" || skill.category === "Tools"
-                      : skill.category === category.split(" ")[0]
-                  )
-                  .map((skill) => (
-                    <motion.div
+              {/* Right Column: Skill Pills */}
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div
                       key={skill.name}
-                      variants={itemFade}
-                      className="flex items-center gap-3 px-3 py-1 rounded-xl transition-all hover:bg-elevated-surface"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#111111] border border-[#2A2A2A] hover:border-neutral-600 hover:text-white text-white text-xs md:text-sm font-medium transition-all duration-200"
                     >
-                      <div
-                        className="w-10 h-10 flex items-center justify-center rounded-full"
-                        style={{
-                          backgroundColor: `${skill.color}22`,
-                          border: "1px solid #2A2A2A",
-                        }}
-                      >
-                        <skill.icon
-                          className="w-6 h-6"
-                          style={{ color: skill.color }}
-                        />
-                      </div>
-
-                      <span
-                        className="text-sm font-medium"
-                        style={{ color: "#E5E5E5" }}
-                      >
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
-              </motion.div>
-            </motion.div>
+                      <Icon
+                        className="w-4 h-4 md:w-[18px] md:h-[18px] flex-shrink-0"
+                      />
+                      <span>{skill.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

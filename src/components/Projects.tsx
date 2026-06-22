@@ -4,6 +4,7 @@ import { Globe, Github, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "./StatusBadge";
+import { playClickSound } from "../utils/audio";
 
 const Projects = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,8 +19,8 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="projects" className="py-20 px-6 md:px-12" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
@@ -69,7 +70,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-white transition-colors relative"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                       >
                         <Globe className="w-5 h-5 peer" />
                         {/* Custom Tooltip */}
@@ -84,7 +85,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white transition-colors relative"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                     >
                       <Github className="w-5 h-5 peer" />
                       {/* Custom Tooltip */}
@@ -127,12 +128,12 @@ const Projects = () => {
                   })}
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4">
                   {project.meta && project.meta.find(item => item.label === 'Status') && (
                     <StatusBadge status={project.meta.find(item => item.label === 'Status')?.value || ''} />
                   )}
-                  <div className="flex items-center gap-1 cursor-pointer group"
-                     onClick={() => handleProjectClick(project)}>
+                  <div className="flex items-center gap-1 cursor-pointer group shrink-0 whitespace-nowrap"
+                     onClick={() => { playClickSound(); handleProjectClick(project); }}>
                     <span 
                       className="text-sm text-gray-400 group-hover:text-white transition-colors"
                     >
@@ -149,7 +150,7 @@ const Projects = () => {
         {projects.length > 4 && (
           <div className="flex justify-center mt-12">
             <button
-              onClick={handleShowMore}
+              onClick={() => { playClickSound(); handleShowMore(); }}
               className="flex items-center space-x-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
               style={{
                 background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",

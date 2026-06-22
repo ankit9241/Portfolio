@@ -4,28 +4,17 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Download } from "lucide-react";
-import {
-  FaHome,
-  FaEnvelope,
-  FaLaptopCode,
-} from "react-icons/fa";
+import { playClickSound } from "../utils/audio";
 
 const sections = [
-  { id: "home", label: "Home", icon: <FaHome className="mr-2" /> },
-  { id: "projects", label: "Projects", icon: <FaLaptopCode className="mr-2" /> },
-  { id: "contact", label: "Contact", icon: <FaEnvelope className="mr-2" /> },
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ];
 
 const fadeDown = {
   hidden: { opacity: 0, y: -22 },
   show: { opacity: 1, y: 0 },
-};
-
-const staggerFade = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
-  },
 };
 
 const itemFade = {
@@ -82,7 +71,7 @@ const Navbar = () => {
       for (const s of sections) {
         // Don't track projects section on home page
         if (s.id === "projects") continue;
-        
+
         const el = document.getElementById(s.id);
         if (!el) continue;
         if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) {
@@ -156,12 +145,12 @@ const Navbar = () => {
         transition={{ duration: 0.4, ease: "easeOut" }}
         className={`fixed inset-x-0 top-0 z-50 ${headerH} flex items-center pointer-events-auto backdrop-blur-lg bg-gray-900/20 border-b border-gray-700/30`}
       >
-        <div className="w-full px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="w-full px-6 md:px-12 max-w-5xl mx-auto">
           <div className="flex items-center justify-between w-full">
-            {/* Mobile Brand */}
-            <motion.div variants={itemFade} className="md:hidden">
+            {/* Brand Logo */}
+            <motion.div variants={itemFade}>
               <div
-                className="font-bold text-lg px-3 py-2 rounded-lg"
+                className="font-bold text-lg px-3 py-2 rounded-lg select-none"
                 style={{
                   background: "#111111",
                   WebkitBackgroundClip: "text",
@@ -172,69 +161,28 @@ const Navbar = () => {
               </div>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <motion.div
-              className="hidden md:flex items-center justify-center w-full"
-              variants={staggerFade}
-              initial="hidden"
-              animate="show"
-            >
-              <div className="flex items-center space-x-2 px-2">
-                {sections.map((section) => {
-                  const isActive = activeSection === section.id;
-
-                  return (
-                    <motion.button
-                      key={section.id}
-                      variants={itemFade}
-                      onClick={() => scrollToSection(section.id)}
-                      className="flex items-center px-4 py-2 mx-1 my-1 text-sm font-medium transition relative"
-                      style={
-                        isActive
-                          ? {
-                              color: "#FFFFFF",
-                              position: "relative",
-                            }
-                          : { color: "#BDBDBD" }
-                      }
-                    >
-                      <span>{section.label}</span>
-                      {isActive && (
-                        <motion.div
-                          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent"
-                          initial={{ width: 0 }}
-                          animate={{ width: ["0%", "100%"] }}
-                          transition={{ duration: 0.5, ease: "easeInOut" }}
-                          style={{ transformOrigin: "left" }}
-                        />
-                      )}
-                    </motion.button>
-                  );
-                })}
-
-                {/* Resume Button */}
-                <motion.button
-                  variants={itemFade}
-                  onClick={() =>
-                    window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank")
-                  }
-                  className="flex items-center ml-2 px-4 py-2 rounded-full text-sm font-medium shadow-md"
-                  style={{
-                    background: "#F5F5F5",
-                    color: "#111111",
-                    boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-                  }}
-                >
-                  <Download className="mr-2 w-4 h-4" />
-                  Resume
-                </motion.button>
-              </div>
+            {/* Desktop Resume Button (Right aligned) */}
+            <motion.div variants={itemFade} className="hidden md:block">
+              <motion.button
+                onClick={() => {
+                  playClickSound();
+                  window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank");
+                }}
+                className="flex items-center px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:scale-105 active:scale-95"
+                style={{
+                  background: "#F5F5F5",
+                  color: "#111111",
+                }}
+              >
+                <Download className="mr-2 w-4 h-4" />
+                Resume
+              </motion.button>
             </motion.div>
 
             {/* Mobile Hamburger */}
             <motion.div variants={itemFade} className="md:hidden">
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={() => { playClickSound(); setIsMenuOpen(!isMenuOpen); }}
                 className="menu-button p-2 transition-all duration-200"
                 style={{
                   backgroundColor: "transparent"
@@ -295,95 +243,73 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs"
               onClick={() => setIsMenuOpen(false)}
             />
 
-            {/* Dropdown */}
+            {/* Dropdown Popover */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -10 }}
+              initial={{ opacity: 0, scale: 0.95, y: -12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -10 }}
-              transition={{ 
-                duration: 0.2,
-                ease: "easeOut"
+              exit={{ opacity: 0, scale: 0.95, y: -12 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 28
               }}
-              className="fixed right-4 top-20 z-50 w-52 md:hidden backdrop-blur-lg bg-gray-900/20 border border-gray-700/30"
-              style={{
-                borderRadius: "12px",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.05)",
-              }}
+              className="fixed right-4 top-20 z-50 w-60 md:hidden backdrop-blur-2xl bg-black/60 border border-white/[0.08] shadow-[0_16px_40px_rgba(0,0,0,0.6),_inset_0_1px_0_rgba(255,255,255,0.1)] rounded-2xl overflow-hidden"
             >
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.2 }}
-                className="p-3 space-y-1"
-              >
-                {sections.map((section, index) => (
-                  <motion.button
-                    key={section.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 + index * 0.03, duration: 0.2 }}
-                    onClick={() => {
-                      scrollToSection(section.id);
-                      setIsMenuOpen(false);
-                    }}
-                    className="flex items-center justify-end w-full px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200"
-                    style={{
-                      color: activeSection === section.id ? "#FFFFFF" : "#BDBDBD",
-                      backgroundColor: "transparent"
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "#1A1A1A";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
-                    }}
-                  >
-                    {section.label}
-                  </motion.button>
-                ))}
+              <div className="p-3 space-y-1.5">
+                {sections.map((section) => {
+                  const isActive = activeSection === section.id;
+                  return (
+                    <motion.button
+                      key={section.id}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => {
+                        playClickSound();
+                        scrollToSection(section.id);
+                        setIsMenuOpen(false);
+                      }}
+                      className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-left"
+                      style={{
+                        color: isActive ? "#FFFFFF" : "#BDBDBD",
+                        background: isActive ? "rgba(255, 255, 255, 0.06)" : "transparent",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.03)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) e.currentTarget.style.backgroundColor = "transparent";
+                      }}
+                    >
+                      <span>{section.label}</span>
+                    </motion.button>
+                  );
+                })}
 
                 {/* Divider */}
-                <motion.div
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  animate={{ opacity: 1, scaleX: 1 }}
-                  transition={{ delay: 0.2, duration: 0.2 }}
+                <div
                   style={{
                     height: "1px",
-                    backgroundColor: "#333333",
-                    margin: "8px 0",
-                    transformOrigin: "right"
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    margin: "8px 4px",
                   }}
                 />
 
                 {/* Resume Button */}
                 <motion.button
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25, duration: 0.2 }}
-                  onClick={() =>
-                    window.open("/resume/Resume_Ankit_Kumar.pdf", "_blank")
-                  }
-                  className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-all duration-200"
-                  style={{
-                    backgroundColor: "#F5F5F5",
-                    color: "#111111",
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => {
+                    playClickSound();
+                    window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank");
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = "0.9";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = "1";
-                  }}
+                  className="flex items-center justify-center w-full h-11 px-4 py-2 text-sm font-semibold rounded-xl text-black transition-all duration-200 bg-white hover:bg-neutral-100 active:scale-[0.98] shadow-[0_4px_12px_rgba(255,255,255,0.08)]"
                 >
-                  <Download className="mr-2 text-sm" />
+                  <Download className="mr-2 w-4 h-4 shrink-0" />
                   Download Resume
                 </motion.button>
-              </motion.div>
+              </div>
             </motion.div>
           </>
         )}

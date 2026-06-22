@@ -110,7 +110,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
               <div className="flex-1 min-w-0 text-center sm:text-left">
                 <h2 className="text-2xl font-bold text-text-primary">
-                  <span 
+                  <span
                     className="inline-block"
                     style={{
                       background: "linear-gradient(135deg, #E5E5E5 0%, #9D9D9D 50%, #E5E5E5 100%)",
@@ -147,7 +147,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                       color: "#BDBDBD",
                     }}
                   >
-                    1+ years experience
+                    1.5+ years experience
                   </span>
                 </div>
               </div>

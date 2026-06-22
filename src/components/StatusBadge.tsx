@@ -6,38 +6,38 @@ interface StatusBadgeProps {
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   const getStatusStyle = (status: string) => {
-    switch (status?.toLowerCase()) {
-      case 'completed':
-        return {
-          backgroundColor: '#15291d',
-          textColor: '#ffffff',
-          dotColor: '#22c55e',
-        };
-      case 'building':
-        return {
-          backgroundColor: '#2e191a',
-          textColor: '#ffffff',
-          dotColor: '#f91616',
-        };
-      default:
-        return {
-          backgroundColor: '#6b7280',
-          textColor: '#ffffff',
-          dotColor: '#22c55e',
-        };
+    const s = status?.toLowerCase() || '';
+    if (s.includes('completed')) {
+      return {
+        backgroundColor: '#15291d',
+        textColor: '#ffffff',
+        dotColor: '#22c55e',
+      };
     }
+    if (s.includes('building') || s.includes('progress')) {
+      return {
+        backgroundColor: '#2e191a',
+        textColor: '#ffffff',
+        dotColor: '#f91616',
+      };
+    }
+    return {
+      backgroundColor: '#2A2A2A',
+      textColor: '#ffffff',
+      dotColor: '#22c55e',
+    };
   };
 
   const style = getStatusStyle(status);
 
   return (
     <span
-      className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium"
+      className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold whitespace-nowrap tracking-wide"
       style={{ backgroundColor: style.backgroundColor, color: style.textColor }}
     >
       {status && (
         <span
-          className="w-2 h-2 rounded-full mr-1"
+          className="w-1.5 h-1.5 rounded-full mr-1.5 shrink-0"
           style={{ backgroundColor: style.dotColor }}
         ></span>
       )}

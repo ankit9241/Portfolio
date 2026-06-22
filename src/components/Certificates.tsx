@@ -31,8 +31,8 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="certificates" className="py-20 px-6 md:px-12" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"

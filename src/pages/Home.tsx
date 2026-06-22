@@ -4,7 +4,8 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Certificates from "../components/Certificates";
-// import Experiences from "../components/Experiences";
+import Experiences from "../components/Experiences";
+import GithubStats from "../components/GithubStats";
 // import Blog from '../components/Blog'
 import Contact from "../components/Contact";
 
@@ -14,8 +15,9 @@ const Home = () => {
       <Hero />
       <About />
       <Skills />
-      {/* <Experiences /> */}
+      <Experiences />
       <Projects />
+      <GithubStats />
       <Certificates />
       {/* <Blog /> */}
       <Contact />
