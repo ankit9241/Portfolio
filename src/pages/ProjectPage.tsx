@@ -70,7 +70,7 @@ const ProjectPage = () => {
   }
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
       <div className="container mx-auto px-8 py-0 max-w-6xl">
 
         {/* VISUAL SHOWCASE */}
@@ -146,8 +146,8 @@ const ProjectPage = () => {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`relative aspect-video w-16 sm:w-20 md:w-24 rounded-lg overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${index === currentImageIndex
-                          ? "border-white scale-105 shadow-lg shadow-white/10 opacity-100"
-                          : "border-transparent opacity-50 hover:opacity-80"
+                        ? "border-white scale-105 shadow-lg shadow-white/10 opacity-100"
+                        : "border-transparent opacity-50 hover:opacity-80"
                         }`}
                       aria-label={`Go to image ${index + 1}`}
                     >

@@ -8,7 +8,7 @@ const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
-    <section id="about" className="py-20 px-6 md:px-12" ref={ref}>
+    <section id="about" className="py-20 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56" ref={ref}>
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -52,7 +52,7 @@ const About = () => {
               className="text-text-primary text-lg leading-relaxed"
               style={{ color: "#E5E5E5" }}
             >
-              Hello! I'm <strong>Ankit Kumar</strong>, a second-year BSc (CSDA)
+              Hello! I'm <strong>Ankit Kumar</strong>, a third-year BSc (CSDA)
               student at IIT Patna. I'm a developer who enjoys building clean,
               practical full-stack applications using React, JavaScript,
               Tailwind CSS, and Node.js. I like working on products that look

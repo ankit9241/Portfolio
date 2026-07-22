@@ -20,46 +20,49 @@ const AllProjects = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
       
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        {/* Back Button */}
-        <button
-          onClick={() => { playClickSound(); handleBack(); }}
-          className="flex items-center space-x-2 mb-8 text-gray-400 hover:text-white transition-colors"
-        >
-          <Undo2 className="w-5 h-5" />
-          <span>Back to Home</span>
-        </button>
+      <div className="max-w-5xl mx-auto px-6 py-10">
+        {/* Header Section with Back Button on the same level */}
+        <div className="relative flex flex-col md:flex-row md:items-center md:justify-center mb-6" ref={ref}>
+          {/* Back Button */}
+          <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 mb-4 md:mb-0">
+            <button
+              onClick={() => { playClickSound(); handleBack(); }}
+              className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <Undo2 className="w-5 h-5" />
+              <span>Back to Home</span>
+            </button>
+          </div>
 
-        {/* Header */}
-        <div className="text-center mb-16" ref={ref}>
-          <h1
-            className="text-5xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #FFFFFF, #888888)",
-            }}
-          >
-            All Projects
-          </h1>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6">
-            Explore my complete portfolio of projects showcasing full-stack development, 
-            UI/UX design, and problem-solving abilities.
-          </p>
+          {/* Heading */}
+          <div className="text-center">
+            <h1
+              className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FFFFFF, #888888)",
+              }}
+            >
+              All Projects
+            </h1>
+          </div>
         </div>
 
+        {/* Subtitle */}
+        <p className="text-center text-lg text-text-secondary max-w-2xl mx-auto mb-16">
+          Explore my complete portfolio of projects showcasing full-stack development, 
+          UI/UX design, and problem-solving abilities.
+        </p>
+
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group rounded-2xl overflow-hidden"
-              style={{
-                background: "rgba(17,17,17,0.8)",
-                border: "1px solid #2A2A2A",
-                transition: "transform 160ms ease, box-shadow 160ms ease",
-              }}
+              className="group rounded-2xl overflow-hidden backdrop-blur-md bg-white/[0.02] border border-white/[0.08] hover:border-accent/40 shadow-lg hover:shadow-[0_12px_30px_rgba(58,134,255,0.08)] transition-all duration-300 flex flex-col h-full cursor-pointer"
+              onClick={() => { playClickSound(); handleProjectClick(project); }}
             >
               <div className="relative overflow-hidden aspect-[16/10]">
                 <OptimizedImage
@@ -74,7 +77,7 @@ const AllProjects = () => {
                   blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%231a1a1a'/%3E%3C/svg%3E"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xl font-semibold text-text-primary">
                     {project.title}
@@ -107,7 +110,7 @@ const AllProjects = () => {
                   {project.shortDescription || project.description}
                 </p>
 
-                <p className="text-sm text-gray-secondary mb-3 font-medium tracking-wider">
+                <p className="text-sm text-gray-secondary mb-3 font-medium tracking-wider mt-auto">
                   Technologies
                 </p>
 
@@ -141,8 +144,7 @@ const AllProjects = () => {
                   {project.meta && project.meta.find(item => item.label === 'Status') && (
                     <StatusBadge status={project.meta.find(item => item.label === 'Status')?.value || ''} />
                   )}
-                  <div className="flex items-center gap-1 cursor-pointer group shrink-0 whitespace-nowrap"
-                     onClick={() => { playClickSound(); handleProjectClick(project); }}>
+                  <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
                     <span 
                       className="text-sm text-gray-400 group-hover:text-white transition-colors"
                     >

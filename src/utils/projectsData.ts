@@ -126,7 +126,7 @@ export const projects: Project[] = [
       { label: "Timeline", value: "June 2026" },
       { label: "Role", value: "Backend Developer" },
       { label: "Team", value: "Hackathon Team (4 Members)" },
-      { label: "Status", value: "Completed (Deployment in Progress)" },
+      { label: "Status", value: "Completed" },
       { label: "Project Type", value: "AI SaaS Platform" },
       { label: "Processing Time", value: "~9–10 min for a 90 min podcast" },
     ],

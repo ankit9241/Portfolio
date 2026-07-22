@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 /* Premium Glassmorphism Base Styles */
+html body,
+html.dark body,
 body {
-  background: radial-gradient(ellipse at top, rgba(58, 134, 255, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, rgba(109, 168, 255, 0.06) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom left, rgba(58, 134, 255, 0.04) 0%, transparent 50%),
-              linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  background: #101011 !important;
 }
 
 /* Glassmorphism utility classes */
@@ -16,8 +15,8 @@ body {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-              0 2px 8px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-card {
@@ -25,8 +24,8 @@ body {
   backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-              0 8px 16px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .glass-premium {
@@ -34,9 +33,9 @@ body {
   backdrop-filter: blur(32px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5),
-              0 16px 32px rgba(0, 0, 0, 0.4),
-              0 8px 16px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 16px 32px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 @layer base {
@@ -96,8 +95,7 @@ body {
 
 /* Smooth theme transition */
 html {
-  @apply transition-colors duration-75
-;
+  @apply transition-colors duration-75;
 }
 
 /* Custom scrollbar - Premium dark minimal */
@@ -124,16 +122,20 @@ html {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Hide all scrollbars inside the GitHub calendar wrapper */
 #github .react-activity-calendar ::-webkit-scrollbar {
   display: none;
 }
+
 #github .react-activity-calendar {
   scrollbar-width: none;
   -ms-overflow-style: none;

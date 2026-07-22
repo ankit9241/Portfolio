@@ -35,7 +35,7 @@ export default function Experiences() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative w-full overflow-hidden px-6 md:px-12 py-16 text-white"
+      className="relative overflow-hidden px-6 md:px-12 py-16 text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56"
     >
       <div className="pointer-events-none absolute inset-0 opacity-40" />
 
@@ -44,10 +44,7 @@ export default function Experiences() {
           <button
             type="button"
             onClick={copySectionLink}
-            style={{
-              cursor: "none",
-            }}
-            className="group inline-flex items-center justify-center gap-3 text-center focus:outline-hidden"
+            className="group inline-flex items-center justify-center gap-3 text-center focus:outline-hidden cursor-pointer"
             aria-label="Copy experience section link"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold text-center text-text-primary">
@@ -84,7 +81,7 @@ export default function Experiences() {
                     <div className="flex-1 min-w-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-lg font-bold leading-tight tracking-tight text-white truncate">
+                          <h3 className="text-lg font-bold leading-tight tracking-tight text-white">
                             {exp.company}
                           </h3>
                         </div>

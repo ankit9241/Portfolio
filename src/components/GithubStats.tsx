@@ -2,6 +2,8 @@
 import React from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
+import { Tooltip } from "react-tooltip";
+
 import { Github } from "lucide-react";
 
 export default function GithubStats() {
@@ -20,7 +22,7 @@ export default function GithubStats() {
   };
 
   return (
-    <section id="github" className="py-20 px-6 md:px-12 text-white">
+    <section id="github" className="py-20 px-6 md:px-12 text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-5xl text-center font-extrabold text-text-primary mb-12">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
@@ -56,6 +58,26 @@ export default function GithubStats() {
                 showTotalCount={false}
                 showColorLegend={false}
                 transformData={handleTransformData}
+                renderBlock={(block, activity) => {
+                  return React.cloneElement(block, {
+                    "data-tooltip-id": "github-tooltip",
+                    "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
+                  });
+                }}
+              />
+              <Tooltip
+                id="github-tooltip"
+                style={{
+                  backgroundColor: "#111111",
+                  color: "#ffffff",
+                  border: "1px solid #2A2A2A",
+                  borderRadius: "8px",
+                  padding: "6px 12px",
+                  fontSize: "12px",
+                  fontFamily: "Outfit, sans-serif",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
+                  zIndex: 999,
+                }}
               />
             </div>
           </div>
@@ -75,7 +97,7 @@ export default function GithubStats() {
           </div>
         </div>
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <div className="bg-[#111111] border border-[#2A2A2A] rounded-2xl p-4 flex justify-center items-center shadow-[0_4px_12px_rgba(0,0,0,0.5)] overflow-hidden">
             <img
               src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=tokyonight&hide_border=true&background=111111&stroke=4A4A4A&ring=FFFFFF&fire=FF8A00&currStreakNum=FFFFFF&sideNums=BDBDBD&sideLabels=666666&dates=666666`}
@@ -84,14 +106,14 @@ export default function GithubStats() {
             />
           </div>
 
-          {/* <div className="bg-[#111111] border border-[#2A2A2A] rounded-2xl p-4 flex justify-center items-center shadow-[0_4px_12px_rgba(0,0,0,0.5)] overflow-hidden">
+          <div className="bg-[#111111] border border-[#2A2A2A] rounded-2xl p-4 flex justify-center items-center shadow-[0_4px_12px_rgba(0,0,0,0.5)] overflow-hidden">
             <img
               src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=111111&title_color=FFFFFF&text_color=BDBDBD&icon_color=FFFFFF`}
               alt="GitHub Core Stats"
               className="w-full max-w-[450px]"
             />
-          </div> */}
-        </div>
+          </div>
+        </div> */}
       </div>
     </section>
   );

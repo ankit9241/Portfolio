@@ -27,6 +27,11 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
      const navigate = useNavigate();
 
      useEffect(() => {
+          if (location.pathname !== "/") {
+               setIsVisible(false);
+               return;
+          }
+
           const toggleVisibility = () => {
                if (window.scrollY > 120) {
                     setIsVisible(true);
@@ -39,7 +44,7 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
           toggleVisibility();
 
           return () => window.removeEventListener("scroll", toggleVisibility);
-     }, []);
+     }, [location.pathname]);
 
      useEffect(() => {
           if (location.pathname === "/") {
@@ -135,7 +140,7 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                          animate={{ opacity: 1, x: 0, y: "-50%" }}
                          exit={{ opacity: 0, x: 20, y: "-50%" }}
                          transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-                         className="fixed right-6 xl:right-auto xl:left-[calc(50%+536px)] top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-1 p-1.5 rounded-full"
+                         className="fixed right-20 xl:right-32 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-1 p-1.5 rounded-full"
                          style={{
                               background: containerBg,
                               border: containerBorder,

@@ -19,7 +19,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-6 md:px-12" ref={ref}>
+    <section id="projects" className="py-20 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2
@@ -40,12 +40,8 @@ const Projects = () => {
           {projects.slice(0, 4).map((project) => (
             <div
               key={project.title}
-              className="group rounded-2xl overflow-hidden"
-              style={{
-                background: "rgba(17,17,17,0.8)",
-                border: "1px solid #2A2A2A",
-                transition: "transform 160ms ease, box-shadow 160ms ease",
-              }}
+              className="group rounded-2xl overflow-hidden backdrop-blur-md bg-white/[0.02] border border-white/[0.08] hover:border-accent/40 shadow-lg hover:shadow-[0_12px_30px_rgba(58,134,255,0.08)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full cursor-pointer"
+              onClick={() => { playClickSound(); handleProjectClick(project); }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -58,7 +54,7 @@ const Projects = () => {
                   className="w-full h-auto object-cover object-top"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xl font-semibold text-text-primary">
                     {project.title}
@@ -101,7 +97,7 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                <p className="text-xs text-gray-secondary mb-3 font-medium tracking-wider">
+                <p className="text-xs text-gray-secondary mb-3 font-medium tracking-wider mt-auto">
                   Technologies
                 </p>
 
@@ -132,9 +128,8 @@ const Projects = () => {
                   {project.meta && project.meta.find(item => item.label === 'Status') && (
                     <StatusBadge status={project.meta.find(item => item.label === 'Status')?.value || ''} />
                   )}
-                  <div className="flex items-center gap-1 cursor-pointer group shrink-0 whitespace-nowrap"
-                     onClick={() => { playClickSound(); handleProjectClick(project); }}>
-                    <span 
+                  <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
+                    <span
                       className="text-sm text-gray-400 group-hover:text-white transition-colors"
                     >
                       View Details

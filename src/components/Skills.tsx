@@ -136,7 +136,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-10 md:py-16 px-6 md:px-12">
+    <section id="skills" className="py-10 md:py-16 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-5xl text-center font-extrabold text-text-primary mb-10">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Stack</span>

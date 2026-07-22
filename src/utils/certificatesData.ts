@@ -72,7 +72,7 @@ export const certificates: Certificate[] = [
     skills: ["React", "Node.js", "MongoDB"],
   },
   {
-    title: "Hack N Tech Hackathon",
+    title: "Hack N Tech 1.0 Hackathon",
     issuer: "IIT Patna",
     date: "May 2025",
     description:

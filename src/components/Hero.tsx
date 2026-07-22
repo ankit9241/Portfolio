@@ -32,7 +32,7 @@ const Hero = () => {
     <section
       id="home"
       ref={ref}
-      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden px-6 md:px-12"
+      className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] flex items-start pt-16 md:pt-20 relative overflow-hidden px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56"
     >
       {/* Decorative background blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -126,12 +126,7 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button
                   onClick={() => { playClickSound(); scrollToProjects(); }}
-                  className="px-6 py-3 rounded-3xl font-semibold text-text-primary shadow-lg transition backdrop-blur-lg"
-                  style={{
-                    background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
-                    color: "#FFFFFF",
-                    border: "1px solid #4A4A4A",
-                  }}
+                  className="px-6 py-3 font-semibold shadow-lg btn-liquid"
                 >
                   View Projects
                 </button>
@@ -141,11 +136,7 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => playClickSound()}
-                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-3xl transition font-semibold text-center"
-                  style={{
-                    background: "#F5F5F5",
-                    color: "#000000",
-                  }}
+                  className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-center btn-liquid"
                 >
                   <Download className="w-5 h-5" />
                   Resume
@@ -197,17 +188,6 @@ const Hero = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full p-2"
             >
-              <motion.div
-                initial={{ opacity: 0, filter: "blur(15px)" }}
-                animate={{ opacity: 0.4, filter: "blur(8px)" }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(137, 170, 204, 0.2), rgba(78, 133, 191, 0.3))",
-                }}
-              />
-
               <div className="absolute inset-x-0 inset-y-0 rounded-2xl bg-surface-dark overflow-hidden">
                 <OptimizedImage
                   src="/assets/ankit-profile.svg"
