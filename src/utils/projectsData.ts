@@ -732,13 +732,13 @@ export const projects: Project[] = [
       "Envora is a full-stack developer-focused vault built to eliminate the chaos of managing environment variables and sensitive configuration across multiple projects. It provides a secure, structured system where developers can organize, access, and manage secrets efficiently across devices. Store your .env files privately with encrypted storage and secure access.",
 
     coverImage: [
-      "/assets/projects/envora/envora-2.svg",
-      "/assets/projects/envora/envora-1.svg",
+      "/assets/projects/envora/envora-1.png",
+      "/assets/projects/envora/envora-2.png",
     ],
 
     gallery: [
-      "/assets/projects/envora/envora-2.svg",
-      "/assets/projects/envora/envora-1.svg",
+      "/assets/projects/envora/envora-1.png",
+      "/assets/projects/envora/envora-2.png",
     ],
 
     github: "https://github.com/ankit9241/Envora",
