@@ -81,6 +81,162 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+
+  {
+    title: "CVPilot",
+    slug: "cvpilot",
+    tagline: "AI-Powered Resume Intelligence Platform",
+
+    shortDescription:
+      "An AI-powered platform currently being built to help users create, optimize, and manage resumes tailored to specific job descriptions.",
+
+    description:
+      "CVPilot is an AI-first resume platform currently under development. The goal is to simplify the resume-building process by combining AI-assisted content generation, ATS optimization, resume management, and intelligent job-specific customization into a single platform.",
+
+    coverImage: "/assets/projects/cvpilot/cvpilot-1.png",
+
+    gallery: ["/assets/projects/cvpilot/cvpilot-1.png"],
+
+    github: "https://github.com/ankit9241/cvpilot",
+    live: "#",
+    isPublished: false,
+
+    tech: [
+      technologies.nextjs,
+      technologies.react,
+      technologies.typescript,
+      technologies.tailwind,
+      technologies.postgresql,
+      technologies.prisma,
+      technologies.aws,
+    ],
+
+    meta: [
+      { label: "Timeline", value: "Ongoing" },
+      { label: "Role", value: "Full Stack Developer" },
+      { label: "Team", value: "Solo" },
+      { label: "Status", value: "Building" },
+      { label: "Project Type", value: "AI SaaS Platform" },
+    ],
+
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/ankit9241/cvpilot",
+      },
+    ],
+
+    overview: [
+      "CVPilot is an AI-powered resume platform being built to streamline the resume creation process.",
+      "Instead of manually editing resumes for every application, users will be able to maintain a structured profile while AI generates resumes tailored to different job descriptions.",
+      "The platform is focused on combining resume generation, ATS optimization, and resume management into a single workflow.",
+    ],
+
+    context: [
+      "Job seekers often spend hours customizing resumes for different applications while trying to improve ATS compatibility.",
+      "CVPilot aims to reduce this repetitive work by using AI to automate resume generation and optimization.",
+    ],
+
+    whyBuilt: [
+      "I started building CVPilot to solve the repetitive process of tailoring resumes for different job applications.",
+      "The vision is to build an AI assistant that helps users create stronger resumes with significantly less manual effort.",
+    ],
+
+    techStack: [
+      {
+        category: "Frontend",
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Server Actions"],
+      },
+      {
+        category: "Database",
+        items: ["PostgreSQL", "Prisma"],
+      },
+      {
+        category: "Storage",
+        items: ["AWS S3"],
+      },
+      {
+        category: "AI",
+        items: ["OpenAI", "LangGraph"],
+      },
+    ],
+
+    features: [
+      {
+        title: "AI Resume Generation",
+        description:
+          "Generate professional resumes tailored to specific job descriptions.",
+      },
+      {
+        title: "Resume Vault",
+        description:
+          "Manage multiple resumes from a centralized dashboard.",
+      },
+      {
+        title: "ATS Optimization",
+        description:
+          "Analyze resumes and suggest improvements for better ATS compatibility.",
+      },
+      {
+        title: "Job-Specific Customization",
+        description:
+          "Select the most relevant skills, projects, and experiences for each application.",
+      },
+    ],
+
+    technicalDetails: [
+      {
+        title: "AI Workflow",
+        description:
+          "Building a modular AI workflow that analyzes user profiles and job descriptions before generating customized resumes.",
+      },
+      {
+        title: "Structured Resume Data",
+        description:
+          "Resume information is stored as structured data instead of static documents, enabling AI-powered customization.",
+      },
+      {
+        title: "Scalable Architecture",
+        description:
+          "Designed with a modular architecture to support future AI features as the platform evolves.",
+      },
+    ],
+
+    // challenges: [
+    //   {
+    //     title: "Designing an AI-First Architecture",
+    //     problem:
+    //       "Building a scalable workflow capable of generating consistent, job-specific resumes.",
+    //     solution:
+    //       "Using modular AI orchestration and structured data models to keep the system flexible as new features are added.",
+    //   },
+    // ],
+
+    metrics: [
+      { label: "Status", value: "Under Active Development" },
+      { label: "Developer", value: "Solo Project" },
+      { label: "Architecture", value: "AI-First Modular Design" },
+    ],
+
+    // results: [
+    //   "Core architecture has been established.",
+    //   "Key AI workflows are currently being implemented.",
+    //   "The platform continues to evolve with new features and improvements.",
+    // ],
+
+    // learnings: [
+    //   "Building AI products requires thoughtful system design beyond prompt engineering.",
+    //   "Designing modular architecture early makes future feature development significantly easier.",
+    // ],
+
+    statusNote: [
+      "CVPilot is currently under active development. The initial release will focus on AI-powered resume generation, ATS optimization, and intelligent resume management before expanding into additional career tools.",
+    ],
+  },
   {
     title: "PodSnap",
     slug: "podsnap",
