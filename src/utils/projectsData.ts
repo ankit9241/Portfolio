@@ -97,13 +97,11 @@ export const projects: Project[] = [
     gallery: [
       "/assets/projects/podsnap/podsnap-1.png",
       "/assets/projects/podsnap/podsnap-2.png",
-      "/assets/projects/podsnap/podsnap-3.png",
-      "/assets/projects/podsnap/podsnap-4.png",
     ],
 
     github: "https://github.com/ankit9241/PodSnap",
-    live: "#",
-    isPublished: false,
+    live: "https://pod-snap.netlify.app/",
+    isPublished: true,
 
     tech: [
       technologies.nextjs,
@@ -132,7 +130,7 @@ export const projects: Project[] = [
     ],
 
     links: [
-      { label: "Live Demo", href: "#" },
+      { label: "Live Demo", href: "https://pod-snap.netlify.app/" },
       { label: "Source Code", href: "https://github.com/ankit9241/PodSnap" },
     ],
 
