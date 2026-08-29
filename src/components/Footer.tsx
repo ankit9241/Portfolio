@@ -31,14 +31,20 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#07070a] text-text-primary pt-20 pb-0 overflow-hidden border-t border-white/[0.03]">
-      {/* Soft Top Border Light */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[72%] h-[1px] bg-gradient-to-r from-transparent via-white/[0.15] to-transparent" />
+    <footer className="relative bg-black text-text-primary pt-20 pb-0 overflow-hidden border-t border-white/[0.03]">
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-45 z-0 pointer-events-none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src="/videos/footer_bg.mp4"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/85 z-10 pointer-events-none" />
 
-      {/* Main Content Grid */}
-      <div className="max-w-6xl mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-16">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[72%] h-[1px] bg-gradient-to-r from-transparent via-white/[0.15] to-transparent z-20" />
 
-        {/* Brand Info */}
+      <div className="max-w-6xl mx-auto px-6 relative z-20 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-16">
         <div className="md:col-span-5 flex flex-col space-y-4">
           <div className="flex items-center space-x-2">
             <span className="font-bold text-xl tracking-wider uppercase text-white">
@@ -77,7 +83,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Explore Links */}
         <div className="md:col-span-2 flex flex-col space-y-4">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">Explore</h4>
           <ul className="space-y-2.5 text-sm text-text-secondary font-medium">
@@ -116,7 +121,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Projects Links */}
         <div className="md:col-span-2 flex flex-col space-y-4">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">Projects</h4>
           <ul className="space-y-2.5 text-sm text-text-secondary font-medium">
@@ -147,7 +151,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div className="md:col-span-3 flex flex-col space-y-4">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">Office</h4>
           <ul className="space-y-2.5 text-sm text-text-secondary font-medium">
@@ -180,16 +183,13 @@ const Footer = () => {
             backgroundImage: "linear-gradient(to top, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            fontFamily: "'Outfit', sans-serif",
+            fontFamily: "'Instrument Sans', sans-serif",
           }}
         >
           Ankit
         </h1>
 
-        {/* Light shade from bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-white/[0.06] via-white/[0.02] to-transparent pointer-events-none z-10" />
-
-        {/* Soft bottom edge light border line */}
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.12] to-transparent z-20" />
       </div>
     </footer>

@@ -356,7 +356,6 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
                               }}
                               onKeyDown={handleKeyDown}
                          >
-                              {/* Search input */}
                               <div
                                    className="flex items-center gap-3 px-4 py-3.5"
                                    style={{ borderBottom: `1px solid ${panelBorder}` }}
@@ -380,7 +379,6 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                    </kbd>
                               </div>
 
-                              {/* Results */}
                               <div
                                    ref={listRef}
                                    className="max-h-[360px] overflow-y-auto px-2 py-2"
@@ -450,7 +448,6 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                    )}
                               </div>
 
-                              {/* Footer */}
                               <div
                                    className="flex items-center justify-between px-4 py-2.5 text-[0.7rem]"
                                    style={{

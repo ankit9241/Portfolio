@@ -89,10 +89,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       className={`relative overflow-hidden ${className}`}
       style={containerStyle}
     >
-      {/* Placeholder */}
       <div style={placeholderStyle} />
       
-      {/* Actual Image */}
       {isInView && (
         <motion.img
           ref={imgRef}

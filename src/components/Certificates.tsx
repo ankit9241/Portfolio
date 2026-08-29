@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaPython, FaAws, FaJava } from "react-icons/fa";
 import { SiMongodb, SiTypescript, SiNextdotjs, SiCplusplus, SiTailwindcss, SiPostgresql, SiFastapi, SiPrisma, SiStripe, SiModal } from "react-icons/si";
 import { certificates } from "../utils/certificatesData";
@@ -31,33 +32,36 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56" ref={ref}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
-            }}
-          >
-            Certificates & Achievements
+    <section id="certificates" className="w-full py-24 px-6 md:px-12 bg-black border-t border-white/5 relative overflow-hidden" ref={ref}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4">
+            <span className="font-sans">Licenses &amp; </span>
+            <span className="font-serif italic font-normal text-[#E1E0CC]">Certifications</span>
           </h2>
 
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6 font-sans">
             Continuous learning and skill development through recognized courses
             and certifications.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificates.map((cert) => (
-            <div
+          {certificates.map((cert, index) => (
+            <motion.div
               key={cert.title}
-              className="group rounded-3xl overflow-hidden transition-all duration-300 flex flex-col h-full"
-              style={{
-                background: "transparent",
-                border: "1px solid #2A2A2A",
-              }}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.06 }}
+              className="group rounded-3xl overflow-hidden flex flex-col h-full bg-white/[0.02] border border-white/10 hover:border-[#E1E0CC]/40 shadow-lg hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)] transition-colors duration-300 will-change-transform"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -100,7 +104,6 @@ const Certificates = () => {
                   {cert.description}
                 </p>
 
-                {/* Bottom container containing skills and button, pushed to bottom via mt-auto */}
                 <div className="mt-auto pt-4">
                   <div className="mb-6 flex flex-wrap gap-2 min-h-[24px]">
                     {cert.skills.map((skill, skillIndex) => {
@@ -110,7 +113,6 @@ const Certificates = () => {
                           <div className="w-6 h-6 flex items-center justify-center peer">
                             {Icon}
                           </div>
-                          {/* Custom Tooltip */}
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
                             {skill}
                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
@@ -135,7 +137,7 @@ const Certificates = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -6,7 +6,6 @@ import Projects from "../components/Projects";
 import Certificates from "../components/Certificates";
 import Experiences from "../components/Experiences";
 import GithubStats from "../components/GithubStats";
-// import Blog from '../components/Blog'
 import Contact from "../components/Contact";
 
 const Home = () => {
@@ -19,7 +18,6 @@ const Home = () => {
       <Projects />
       <GithubStats />
       <Certificates />
-      {/* <Blog /> */}
       <Contact />
     </>
   );

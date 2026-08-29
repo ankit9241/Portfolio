@@ -48,20 +48,21 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog" className="py-20" ref={ref}>
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="blog" className="w-full py-24 px-6 md:px-12 bg-black border-t border-white/5 relative overflow-hidden" ref={ref}>
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #FFFFFF, #888888)' }}>
-            Latest Blog Posts
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4">
+            <span className="font-sans">Latest </span>
+            <span className="font-serif italic font-normal text-[#E1E0CC]">Articles</span>
           </h2>
           
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6 font-sans">
             Sharing thoughts, experiences, and practical guides on web development,
             tools, and my learning journey.
           </p>
@@ -71,12 +72,11 @@ const Blog = () => {
           {blogPosts.map((post, index) => (
             <motion.article
               key={post.title}
-              initial={{ opacity: 0, y: 50, scale: 0.98 }}
-              animate={
-                isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.98 }
-              }
-              transition={{ duration: 0.7, delay: index * 0.15, type: "spring", stiffness: 120 }}
-              whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px rgba(10,12,30,0.6)" }}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               className="group bg-[#071026] rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(30,30,60,0.25)] transition-all duration-300 border"
               style={{ borderColor: "rgba(95,141,255,0.08)" }}
             >

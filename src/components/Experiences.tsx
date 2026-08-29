@@ -35,35 +35,43 @@ export default function Experiences() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative overflow-hidden px-6 md:px-12 py-16 text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56"
+      className="w-full relative overflow-hidden px-6 md:px-12 py-24 text-white bg-black border-t border-white/5"
     >
       <div className="pointer-events-none absolute inset-0 opacity-40" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="relative pb-4 mb-10 flex justify-center w-full">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative pb-4 mb-12 flex justify-center w-full"
+        >
           <button
             type="button"
             onClick={copySectionLink}
             className="group inline-flex items-center justify-center gap-3 text-center focus:outline-hidden cursor-pointer"
             aria-label="Copy experience section link"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-center text-text-primary">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                Experience
-              </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white text-center">
+              <span className="font-sans">Work </span>
+              <span className="font-serif italic font-normal text-[#E1E0CC]">Experience</span>
             </h2>
           </button>
-        </div>
+        </motion.div>
 
-        {/* Timeline Items */}
         <div className="w-full space-y-4">
           {visibleTimeline.map((exp, index) => {
             const isOpen = expandedIndex === index;
             return (
-              <div
+              <motion.div
                 key={exp.id}
                 id={`exp-${exp.id}`}
-                className="rounded-2xl border border-[#2A2A2A] bg-[#111111] p-5 shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-all duration-200 hover:border-neutral-700"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.06 }}
+                className="rounded-2xl border border-[#2A2A2A] bg-[#111111] p-5 shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:border-neutral-600"
               >
                 <button
                   type="button"
@@ -72,12 +80,10 @@ export default function Experiences() {
                   aria-expanded={isOpen}
                 >
                   <div className="flex flex-row items-center gap-4 sm:gap-5 w-full">
-                    {/* Logo Box */}
                     <div className="h-14 w-14 rounded-2xl border border-[#2A2A2A] bg-[#161616] flex items-center justify-center font-bold text-lg text-white shadow-xs select-none shrink-0">
                       <img src={exp.image} alt={exp.company} className="w-full h-full object-cover rounded-2xl" />
                     </div>
 
-                    {/* Details Column */}
                     <div className="flex-1 min-w-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
@@ -90,7 +96,6 @@ export default function Experiences() {
                         </p>
                       </div>
 
-                      {/* Right Side Info: Date */}
                       <div className="flex flex-col items-start sm:items-end text-left sm:text-right shrink-0">
                         <span className="text-sm font-semibold text-white">
                           {exp.period}
@@ -98,7 +103,6 @@ export default function Experiences() {
                       </div>
                     </div>
 
-                    {/* Dropdown Chevron */}
                     <div className="text-neutral-400 shrink-0 ml-1">
                       {isOpen ? (
                         <ChevronUp className="h-5 w-5 hover:text-white transition-colors" />
@@ -109,7 +113,6 @@ export default function Experiences() {
                   </div>
                 </button>
 
-                {/* Expanded Details Section */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
@@ -145,12 +148,11 @@ export default function Experiences() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* View All Button */}
         {hasHiddenItems && !showAll && (
           <div className="relative mt-8 flex justify-center pb-4">
             <button

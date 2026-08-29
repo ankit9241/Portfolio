@@ -5,7 +5,6 @@ import AllProjects from "./pages/AllProjects";
 import ProjectPage from "./pages/ProjectPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import Navbar from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { CommandPalette, useCommandPalette } from "./components/CommandPalette";
 import TechBackground from "./components/TechBackground";
@@ -21,7 +20,6 @@ function App() {
         <div className="relative min-h-screen">
           <TechBackground />
           <div className="relative overflow-x-hidden">
-            <Navbar />
             <Sidebar onOpenSearch={openSearch} />
             <CommandPalette isOpen={isSearchOpen} onClose={closeSearch} />
             <main>

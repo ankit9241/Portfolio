@@ -87,7 +87,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         `,
       }}
     >
-      {/* Noise/Grain Texture Overlay */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -103,7 +102,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         }}
       />
 
-      {/* Top-Left Label */}
       <motion.div
         className="absolute top-8 left-8 md:top-12 md:left-12"
         initial={{ opacity: 0, y: -20 }}
@@ -118,7 +116,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </span>
       </motion.div>
 
-      {/* Center Words */}
       <div className="absolute inset-0 flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -140,7 +137,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </AnimatePresence>
       </div>
 
-      {/* Counter (Bottom-Right) */}
       <motion.div
         className="absolute bottom-12 right-8 md:bottom-16 md:right-12"
         initial={{ opacity: 0, y: 20 }}
@@ -159,7 +155,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </div>
       </motion.div>
 
-      {/* Progress Bar (Bottom Edge) */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#1f1f1f]/50">
         <motion.div
           className="h-full origin-left"
@@ -170,7 +165,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           animate={{ scaleX: progress }}
           transition={{ duration: 0.1, ease: 'linear' }}
         >
-          {/* Animated Shine Overlay */}
           <motion.div
             className="absolute inset-0"
             style={{
@@ -182,7 +176,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </motion.div>
       </div>
 
-      {/* Vertical Progress Line (Left Edge) */}
       <div className="absolute top-0 left-0 w-[1px] bg-[#1f1f1f]">
         <motion.div
           className="w-full bg-[#4E85BF]"

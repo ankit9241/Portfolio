@@ -65,7 +65,6 @@ const RotatingTechStack: FC = () => {
   return (
     <section className="py-6 sm:py-10 w-full overflow-hidden px-4">
       <div className="relative w-full max-w-[90vw] sm:max-w-[480px] h-[250px] sm:h-[400px] md:h-[480px] mx-auto flex items-center justify-center">
-        {/* Rotating Icons Ring */}
         <motion.div
           className="absolute w-full h-full"
           style={{ rotate: rotation }}
@@ -95,7 +94,7 @@ const RotatingTechStack: FC = () => {
                   top: "50%",
                   x: x - iconSize / 2,
                   y: y - iconSize / 2,
-                  rotate: counterRotate, // FIXED
+                  rotate: counterRotate,
                   width: `${iconSize}px`,
                   height: `${iconSize}px`,
                   display: "flex",
@@ -117,7 +116,6 @@ const RotatingTechStack: FC = () => {
           })}
         </motion.div>
 
-        {/* Center Circle */}
         <motion.div
           className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full flex items-center justify-center relative overflow-hidden group"
           initial={{

@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Globe, Github, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
@@ -19,28 +20,45 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56" ref={ref}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #FFFFFF, #888888)",
-            }}
-          >
-            Featured Projects
+    <section id="projects" className="w-full relative py-24 px-6 md:px-12 bg-black overflow-hidden border-t border-white/5" ref={ref}>
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-35 z-0 pointer-events-none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src="/videos/project_bg.mp4"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none z-10" />
+
+      <div className="max-w-6xl mx-auto relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-4">
+            <span className="font-sans">Featured </span>
+            <span className="font-serif italic font-normal text-[#E1E0CC]">Projects</span>
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6 font-sans">
             Here are some of my recent projects that showcase my skills in
             full-stack development, UI/UX design, and problem-solving abilities.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.slice(0, 4).map((project) => (
-            <div
+          {projects.slice(0, 4).map((project, index) => (
+            <motion.div
               key={project.title}
-              className="group rounded-2xl overflow-hidden backdrop-blur-md bg-white/[0.02] border border-white/[0.08] hover:border-accent/40 shadow-lg hover:shadow-[0_12px_30px_rgba(58,134,255,0.08)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full cursor-pointer"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.06 }}
+              className="group rounded-2xl overflow-hidden backdrop-blur-md bg-white/[0.02] border border-white/[0.08] hover:border-[#E1E0CC]/40 shadow-lg hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)] transition-colors duration-300 flex flex-col h-full cursor-pointer will-change-transform"
               onClick={() => { playClickSound(); handleProjectClick(project); }}
             >
               <div className="relative overflow-hidden">
@@ -69,7 +87,6 @@ const Projects = () => {
                         onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                       >
                         <Globe className="w-5 h-5 peer" />
-                        {/* Custom Tooltip */}
                         <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
                           View Website
                           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
@@ -84,7 +101,6 @@ const Projects = () => {
                       onClick={(e) => { e.stopPropagation(); playClickSound(); }}
                     >
                       <Github className="w-5 h-5 peer" />
-                      {/* Custom Tooltip */}
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
                         View Code
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
@@ -114,7 +130,6 @@ const Projects = () => {
                             style={{ color: iconColor, opacity: 0.8 }}
                           />
                         </div>
-                        {/* Custom Tooltip */}
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
                           {tech.name}
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
@@ -138,15 +153,21 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {projects.length > 4 && (
-          <div className="flex justify-center mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex justify-center mt-12"
+          >
             <button
               onClick={() => { playClickSound(); handleShowMore(); }}
-              className="flex items-center space-x-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
+              className="flex items-center space-x-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #1a1a2a, #2d2a2a)",
                 color: "#FFFFFF",
@@ -155,7 +176,7 @@ const Projects = () => {
             >
               <span className="text-white">Show all Projects</span>
             </button>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

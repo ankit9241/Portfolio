@@ -33,14 +33,19 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
           }
 
           const toggleVisibility = () => {
-               if (window.scrollY > 120) {
+               const aboutEl = document.getElementById("about");
+               const threshold = aboutEl
+                    ? aboutEl.offsetTop - 100
+                    : window.innerHeight - 100;
+
+               if (window.scrollY >= threshold) {
                     setIsVisible(true);
                } else {
                     setIsVisible(false);
                }
           };
 
-          window.addEventListener("scroll", toggleVisibility);
+          window.addEventListener("scroll", toggleVisibility, { passive: true });
           toggleVisibility();
 
           return () => window.removeEventListener("scroll", toggleVisibility);
@@ -150,7 +155,6 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                          }}
                          aria-label="Page navigation"
                     >
-                         {/* Active background indicator */}
                          {activeIndex !== -1 && (
                               <motion.div
                                    className="absolute left-1.5 w-[38px] h-[38px] rounded-full z-0 pointer-events-none"
@@ -160,7 +164,7 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                                         top: "6px",
                                    }}
                                    animate={{
-                                        y: activeIndex * 42, // 38px height + 4px gap
+                                        y: activeIndex * 42,
                                    }}
                                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                               />
@@ -203,7 +207,6 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                                                   }
                                              }}
                                         />
-                                        {/* Tooltip */}
                                         <span
                                              className="absolute right-12 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 rounded-lg px-2.5 py-1.5 text-xs font-medium shadow-lg origin-right whitespace-nowrap pointer-events-none z-50"
                                              style={{
@@ -220,7 +223,6 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                               );
                          })}
 
-                         {/* Separator */}
                          <div
                               className="w-5 my-0.5 rounded-full"
                               style={{
@@ -229,7 +231,6 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                               }}
                          />
 
-                         {/* Search (⌘K) Button */}
                          <button
                               onClick={() => { playClickSound(); onOpenSearch?.(); }}
                               className="group relative p-2.5 rounded-full z-10 focus:outline-hidden cursor-pointer"
@@ -257,7 +258,6 @@ export function Sidebar({ onOpenSearch }: { onOpenSearch?: () => void }) {
                                         (e.currentTarget as SVGElement).style.color = iconDefault;
                                    }}
                               />
-                              {/* Tooltip */}
                               <span
                                    className="absolute right-12 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 rounded-lg px-2.5 py-1.5 text-xs font-medium shadow-lg origin-right whitespace-nowrap pointer-events-none z-50"
                                    style={{

@@ -20,12 +20,10 @@ const AllProjects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
+    <div className="min-h-screen w-full bg-black text-white px-6 md:px-12 py-12">
       
-      <div className="max-w-5xl mx-auto px-6 py-10">
-        {/* Header Section with Back Button on the same level */}
+      <div className="max-w-6xl mx-auto py-10">
         <div className="relative flex flex-col md:flex-row md:items-center md:justify-center mb-6" ref={ref}>
-          {/* Back Button */}
           <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 mb-4 md:mb-0">
             <button
               onClick={() => { playClickSound(); handleBack(); }}
@@ -36,27 +34,19 @@ const AllProjects = () => {
             </button>
           </div>
 
-          {/* Heading */}
           <div className="text-center">
-            <h1
-              className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, #FFFFFF, #888888)",
-              }}
-            >
-              All Projects
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white">
+              <span className="font-sans">All </span>
+              <span className="font-serif italic font-normal text-[#E1E0CC]">Projects</span>
             </h1>
           </div>
         </div>
 
-        {/* Subtitle */}
         <p className="text-center text-lg text-text-secondary max-w-2xl mx-auto mb-16">
           Explore my complete portfolio of projects showcasing full-stack development, 
           UI/UX design, and problem-solving abilities.
         </p>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <div
@@ -130,7 +120,6 @@ const AllProjects = () => {
                             style={{ color: iconColor, opacity: 0.8 }}
                           />
                         </div>
-                        {/* Custom Tooltip */}
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
                           {tech.name}
                           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>

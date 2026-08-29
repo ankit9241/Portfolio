@@ -46,7 +46,6 @@ const ProjectPage = () => {
     }
   };
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
@@ -72,8 +71,6 @@ const ProjectPage = () => {
   return (
     <div className="min-h-screen text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
       <div className="container mx-auto px-8 py-0 max-w-6xl">
-
-        {/* VISUAL SHOWCASE */}
         <section className="px-0 py-12 lg:px-8">
           <button
             onClick={() => navigate("/projects")}
@@ -84,9 +81,7 @@ const ProjectPage = () => {
           </button>
 
           <div className="space-y-6">
-            {/* Image Carousel */}
             <div className="relative">
-              {/* Main Image Container */}
               <div
                 ref={carouselRef}
                 className="relative rounded-2xl overflow-hidden border border-gray-900 max-w-4xl mx-auto aspect-video"
@@ -114,10 +109,8 @@ const ProjectPage = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Gradient Overlay */}
                 <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-[#111111] via-[#111111]/70 to-transparent pointer-events-none z-10"></div>
 
-                {/* Desktop Navigation Arrows */}
                 {projectImages.length > 1 && (
                   <>
                     <button
@@ -138,7 +131,6 @@ const ProjectPage = () => {
                 )}
               </div>
 
-              {/* Thumbnails Row */}
               {projectImages.length > 1 && (
                 <div className="flex items-center justify-center gap-3 mt-6 overflow-x-auto py-2 px-4 max-w-4xl mx-auto no-scrollbar">
                   {projectImages.map((imgSrc, index) => (
@@ -161,7 +153,6 @@ const ProjectPage = () => {
                 </div>
               )}
 
-              {/* Pagination Dots */}
               {projectImages.length > 1 && (
                 <div className="flex justify-center items-center gap-2 mt-4">
                   {projectImages.map((_, index) => (
@@ -181,10 +172,7 @@ const ProjectPage = () => {
           </div>
         </section>
 
-        {/* HERO SECTION */}
         <section className="px-0 py-0 lg:px-8">
-
-          {/* Title & Tagline */}
           <div className="mb-12">
             <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
               {project.title}
@@ -203,11 +191,9 @@ const ProjectPage = () => {
             )}
           </div>
 
-          {/* Meta Info & Actions */}
           <div
             className="space-y-8"
           >
-            {/* Compact Meta Row */}
             {project.meta && project.meta.length > 0 && (
               <div className="flex flex-wrap gap-6 text-sm">
                 {project.meta.map((item, index) => (
@@ -219,25 +205,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Tech Stack Pills */}
-            {/* {project.tech && project.tech.length > 0 && (
-              <div className="flex flex-wrap gap-3">
-                {project.tech.map((tech, index) => {
-                  const Icon = tech.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 px-4 py-2 border border-gray-800 rounded-full text-sm"
-                    >
-                      <Icon className="w-4 h-4" style={{ color: tech.textColor || "#E6F3FF" }} />
-                      <span>{tech.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            )} */}
-
-            {/* Action Buttons */}
             <div className="flex flex-row gap-3 md:gap-4 flex-wrap">
               {project.isPublished === true && project.live && project.live !== "#" && (
                 <a
@@ -272,11 +239,8 @@ const ProjectPage = () => {
           </div>
         </section>
 
-        {/* CONTENT SECTIONS */}
         <section className="px-0 py-0 lg:px-8">
           <div className="space-y-24">
-
-            {/* Overview */}
             {project.overview && project.overview.length > 0 && (
               <div
                 className="max-w-5xl pt-8"
@@ -290,7 +254,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Context */}
             {project.context && project.context.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -304,7 +267,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Why I Built This */}
             {project.whyBuilt && project.whyBuilt.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -318,7 +280,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Tech Stack */}
             {project.techStack && project.techStack.length > 0 && (
               <div
               >
@@ -343,7 +304,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Features */}
             {project.features && project.features.length > 0 && (
               <div
               >
@@ -354,12 +314,10 @@ const ProjectPage = () => {
                       key={index}
                       className="p-6 border border-gray-700 rounded-3xl space-y-3 relative overflow-hidden"
                     >
-                      {/* Background Number */}
                       <div className="absolute bottom-2 right-2 text-[140px] font-bold text-white/5 select-none z-0 leading-none">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
-                      {/* Content */}
                       <div className="relative z-10">
                         <h3 className="text-xl font-medium text-white">{feature.title}</h3>
                         <p className="text-gray-300 leading-relaxed">{feature.description}</p>
@@ -370,7 +328,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Technical Details */}
             {project.technicalDetails && project.technicalDetails.length > 0 && (
               <div
               >
@@ -381,12 +338,10 @@ const ProjectPage = () => {
                       key={index}
                       className="p-6 border border-gray-700 rounded-3xl space-y-3 relative overflow-hidden"
                     >
-                      {/* Background Number */}
                       <div className="absolute bottom-2 right-2 text-[140px] font-bold text-white/5 select-none z-0 leading-none">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
-                      {/* Content */}
                       <div className="relative z-10">
                         <h3 className="text-xl font-medium text-white">{detail.title}</h3>
                         <p className="text-gray-300 leading-relaxed">{detail.description}</p>
@@ -397,7 +352,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Challenges */}
             {project.challenges && project.challenges.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -423,7 +377,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Results */}
             {project.results && project.results.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -440,7 +393,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Learnings */}
             {project.learnings && project.learnings.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -457,7 +409,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Future Scope */}
             {project.futureScope && project.futureScope.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -474,7 +425,6 @@ const ProjectPage = () => {
               </div>
             )}
 
-            {/* Status Note */}
             {project.statusNote && project.statusNote.length > 0 && (
               <div
                 className="max-w-5xl"
@@ -490,7 +440,6 @@ const ProjectPage = () => {
           </div>
         </section>
 
-        {/* RELATED PROJECTS */}
         {project.relatedProjects && project.relatedProjects.length > 0 && (
           <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
             <div
@@ -521,7 +470,6 @@ const ProjectPage = () => {
           </section>
         )}
 
-        {/* NAVIGATION FOOTER */}
         <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
           <div
             className="grid md:grid-cols-2 gap-8 py-16"

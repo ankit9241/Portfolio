@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   SiHtml5,
   SiCss3,
@@ -136,29 +137,45 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-10 md:py-16 px-6 md:px-12 bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl text-center font-extrabold text-text-primary mb-10">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Stack</span>
-        </h2>
+    <section id="skills" className="relative py-16 md:py-24 px-6 md:px-12 bg-black overflow-hidden border-t border-white/5">
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-45 z-0 pointer-events-none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        src="/videos/tech_bg.mp4"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/35 to-black pointer-events-none z-10" />
+      <div
+        className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none z-10"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+      />
 
-        {/* <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+      <div className="max-w-6xl mx-auto relative z-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white text-center mb-12"
         >
-          <RotatingTechStack />
-        </motion.div> */}
+          <span className="font-sans">Tech </span>
+          <span className="font-serif italic font-normal text-[#E1E0CC]">Stack</span>
+        </motion.h2>
 
-        {/* Table Container */}
         <div className="border-t border-[#2A2A2A] w-full">
-          {stackCategories.map((category) => (
-            <div
+          {stackCategories.map((category, index) => (
+            <motion.div
               key={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
               className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-[#2a2a2a] py-4 items-center gap-4 md:gap-6"
             >
-              {/* Left Column: Number + Category Name */}
               <div className="flex items-center gap-3 text-base font-semibold">
                 <span className="text-[#666666] font-mono tracking-wider">
                   {category.id}
@@ -168,14 +185,13 @@ const Skills = () => {
                 </span>
               </div>
 
-              {/* Right Column: Skill Pills */}
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => {
                   const Icon = skill.icon;
                   return (
                     <div
                       key={skill.name}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#111111] border border-[#2A2A2A] hover:border-neutral-600 hover:text-white text-white text-xs md:text-sm font-medium transition-all duration-200"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/30 hover:bg-white/10 text-white text-xs md:text-sm font-medium transition-all duration-200"
                     >
                       <Icon
                         className="w-4 h-4 md:w-[18px] md:h-[18px] flex-shrink-0"
@@ -185,7 +201,7 @@ const Skills = () => {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
