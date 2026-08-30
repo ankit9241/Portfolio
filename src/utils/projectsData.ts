@@ -83,6 +83,147 @@ export interface Project {
 export const projects: Project[] = [
 
   {
+    title: "Basera",
+    slug: "basera",
+    tagline: "Student-Focused PG & Flat Discovery Platform",
+
+    shortDescription:
+      "A student-focused accommodation platform being built to make finding PGs and flats around Delhi University simpler, more transparent, and easier to verify.",
+
+    description:
+      "Basera is a student accommodation platform currently being built for students around Delhi University. It addresses the fragmented and often unreliable process of finding PGs and flats by bringing property discovery, listing information, saved properties, and visit scheduling into a single platform.",
+
+    coverImage: "/assets/projects/basera/basera.svg",
+
+    gallery: [
+      "/assets/projects/basera/basera.svg",
+    ],
+
+    github: "#",
+    live: "#",
+    isPublished: false,
+
+    tech: [
+      technologies.nextjs,
+      technologies.react,
+      technologies.typescript,
+      technologies.tailwind,
+      technologies.nodejs,
+      technologies.postgresql,
+      technologies.prisma,
+    ],
+
+    meta: [
+      { label: "Timeline", value: "Ongoing" },
+      { label: "Role", value: "Co-Founder & Full Stack Developer" },
+      { label: "Team", value: "Collaborative" },
+      { label: "Status", value: "Building" },
+      { label: "Project Type", value: "Student Accommodation Platform" },
+    ],
+
+    // links: [
+    //   {
+    //     label: "GitHub",
+    //     href: "#",
+    //   },
+    // ],
+
+    overview: [
+      "Basera is being built to simplify the process of finding student accommodation around Delhi University.",
+      "The platform brings PG and flat discovery into a student-focused experience where users can explore properties, save listings, view important property information, and schedule physical visits.",
+      "The goal is to make accommodation discovery more transparent and reduce the friction students face when searching through scattered listings and relying heavily on brokers.",
+    ],
+
+    context: [
+      "Finding a PG or flat as a student can involve searching across multiple platforms, dealing with incomplete or inconsistent property information, and contacting brokers repeatedly just to arrange a visit.",
+      "Students also have limited ways to compare options based on location, nearby colleges, property details, and availability before deciding which places are worth visiting.",
+      "Basera is designed around a simpler workflow: discover relevant properties, understand the listing, save the ones worth considering, and schedule a physical visit.",
+    ],
+
+    whyBuilt: [
+      "The idea originated from the firsthand struggles of close friends studying at Delhi University who faced endless hassles navigating unreliable listings, hidden brokerages, and scattered options.",
+      "Seeing the frustration they experienced while finding PGs and flats, we teamed up to build Basera together so other students wouldn't have to go through the same painful process.",
+      "Our mission is to create a transparent, student-centric accommodation ecosystem where discovery, verified details, and physical visits are smooth and straightforward.",
+    ],
+
+    techStack: [
+      {
+        category: "Frontend",
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Express"],
+      },
+      {
+        category: "Database",
+        items: ["PostgreSQL", "Prisma"],
+      },
+      {
+        category: "Authentication",
+        items: ["Email Authentication"],
+      },
+    ],
+
+    features: [
+      {
+        title: "Student-Focused Property Discovery",
+        description:
+          "Browse PGs and flats with information designed around the needs of students searching around Delhi University.",
+      },
+      {
+        title: "Property Details",
+        description:
+          "View important property information, photos, location context, and other details before deciding whether to visit.",
+      },
+      {
+        title: "Save Properties",
+        description:
+          "Bookmark properties students are interested in and keep potential accommodation options organized.",
+      },
+      {
+        title: "Schedule Physical Visits",
+        description:
+          "Schedule visits directly from a property listing instead of handling the entire process through scattered calls and messages.",
+      },
+      {
+        title: "College-Centric Discovery",
+        description:
+          "Help students discover accommodation based on their college and proximity to relevant university areas.",
+      },
+    ],
+
+    technicalDetails: [
+      {
+        title: "Full-Stack Architecture",
+        description:
+          "Built as a full-stack application with a Next.js frontend and Node.js/Express backend, keeping the product architecture flexible as the platform grows.",
+      },
+      {
+        title: "Persistent Data Layer",
+        description:
+          "PostgreSQL with Prisma provides structured storage for users, properties, saved listings, and visit scheduling workflows.",
+      },
+      {
+        title: "Student-Centered Workflow",
+        description:
+          "The product architecture is organized around the actual accommodation journey: discovering properties, evaluating listings, saving options, and arranging physical visits.",
+      },
+    ],
+
+    metrics: [
+      { label: "Status", value: "Under Active Development" },
+      { label: "Team", value: "Collaborative Project" },
+      { label: "Target Users", value: "Delhi University Students" },
+      { label: "Focus", value: "Student Accommodation Discovery" },
+    ],
+
+    statusNote: [
+      "Basera is currently under active development and is not yet officially deployed. The current build focuses on the core student accommodation discovery experience, property management, saved listings, and visit scheduling before expanding the platform further.",
+    ],
+  },
+
+  {
     title: "CVPilot",
     slug: "cvpilot",
     tagline: "AI-Powered Resume Intelligence Platform",
@@ -469,6 +610,207 @@ export const projects: Project[] = [
       "The core platform has been completed successfully. Deployment is currently in progress, and future versions will expand YouTube integration, improve clip generation capabilities, and introduce additional AI-powered content optimization features.",
     ],
   },
+
+  {
+    title: "STC IIT Patna",
+    slug: "stc-iit-patna",
+    tagline: "Official Student Technical Council Platform",
+
+    shortDescription:
+      "A production platform for IIT Patna’s Student Technical Council that centralizes clubs, events, announcements, OTP-based registrations, and admin workflows across multiple technical wings.",
+
+    description:
+      "STC IIT Patna is the official digital platform for the Student Technical Council of IIT Patna. It was built to centralize technical clubs, event discovery, announcements, and student registrations into one production-ready system used by real students and council teams.",
+
+    coverImage: [
+      "/assets/projects/stc/stc-1.svg",
+      "/assets/projects/stc/stc-2.svg",
+    ],
+
+    gallery: [
+      "/assets/projects/stc/stc-1.svg",
+      "/assets/projects/stc/stc-2.svg",
+    ],
+
+    github: "https://github.com/ankit9241/stc_website",
+    live: "https://stciitphybrid.in",
+    isPublished: true,
+
+    tech: [
+      technologies.nextjs,
+      technologies.react,
+      technologies.typescript,
+      technologies.tailwind,
+      technologies.mongodb,
+    ],
+
+    meta: [
+      { label: "Timeline", value: "~2 Months" },
+      { label: "Role", value: "Full Stack Developer" },
+      { label: "Team", value: "4 Developers" },
+      { label: "Status", value: "Completed" },
+      { label: "Project Type", value: "Production Platform" },
+      { label: "Organization", value: "IIT Patna Student Technical Council" },
+      { label: "Deployment", value: "Official Production Platform" },
+    ],
+
+    links: [
+      { label: "Live Demo", href: "https://stciitphybrid.in" },
+      {
+        label: "Source Code",
+        href: "https://github.com/ankit9241/stc_website",
+      },
+    ],
+
+    overview: [
+      "STC IIT Patna is the official digital hub for the Student Technical Council of IIT Patna. The platform brings together technical clubs, events, announcements, and student participation workflows in one place instead of scattering them across separate channels.",
+      "It serves three major technical wings and more than twenty-four sub-clubs, giving students a centralized way to explore activities, register for events, and stay updated with official notices.",
+      "Unlike a showcase project, this was a real production platform used by actual students and council teams. It handled real event traffic, registrations, and administrative workflows during live college activity.",
+    ],
+
+    context: [
+      "Managing multiple clubs and events becomes messy when information is spread across posters, chats, forms, and disconnected pages. Students miss updates, organizers struggle to track registrations, and administrative work becomes repetitive.",
+      "The platform was built to solve this by creating a single official system where clubs, events, forms, and announcements could all be managed in a structured way.",
+    ],
+
+    whyBuilt: [
+      "The goal was not just to make a better-looking student website, but to build a platform that could actually support real event operations.",
+      "It needed to work for both sides: students discovering and registering for events, and council/admin teams managing announcements, registrations, and event data without repeatedly changing code.",
+    ],
+
+    techStack: [
+      {
+        category: "Frontend",
+        items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      },
+      {
+        category: "Backend",
+        items: [
+          "Node.js-based backend",
+          "API integration",
+          "Nodemailer",
+          "Resend (Email Integration)",
+        ],
+      },
+      {
+        category: "Database",
+        items: ["MongoDB"],
+      },
+      {
+        category: "Authentication / Verification",
+        items: ["College Email OTP Verification"],
+      },
+      {
+        category: "Deployment",
+        items: ["Production Deployment (IIT Patna Official Platform)"],
+      },
+    ],
+
+    features: [
+      {
+        title: "Centralized Event Hub",
+        description:
+          "The platform aggregates activities across 3 technical wings and 24+ sub-clubs, making it easier for students to discover workshops, hackathons, technical sessions, and club initiatives from one unified system.",
+      },
+      {
+        title: "OTP-Based Secure Event Registration",
+        description:
+          "Students register for events through a structured flow where they first enter their college email, receive an OTP, verify it, and only then gain access to the registration form. This keeps participation limited to verified IIT Patna students.",
+      },
+      {
+        title: "Custom Registration Form Workflow",
+        description:
+          "Admins can manage registration forms dynamically instead of hardcoding them each time. This makes the system practical for running different events with different requirements.",
+      },
+      {
+        title: "Admin Panel for Event Operations",
+        description:
+          "The platform includes admin workflows for creating events, managing forms, posting announcements, handling registration-related actions, and monitoring participation data.",
+      },
+      {
+        title: "Notification & Banner System",
+        description:
+          "Important announcements are surfaced through a homepage notification panel and banner-style updates, making the platform useful not just for event discovery but also for official communication.",
+      },
+      {
+        title: "Dedicated Club Pages",
+        description:
+          "Each club has its own page with details such as club information, member data, and supporting content, allowing the site to function as both an event system and a structured club directory.",
+      },
+      {
+        title: "Form Response Integration",
+        description:
+          "The project also involved registration response handling and email-related workflows, helping the system move closer to a real operational platform instead of a static event showcase.",
+      },
+    ],
+
+    technicalDetails: [
+      {
+        title: "Student Registration Flow",
+        description:
+          "The registration flow follows a clean process: a student opens an event, clicks register, enters their IIT Patna email, verifies the OTP received on mail, fills the form, and submits the response. This reduces fake registrations and ensures only eligible students can proceed.",
+      },
+      {
+        title: "Hybrid Content Structure",
+        description:
+          "Most active data such as events, forms, and responses are managed dynamically, while some stable information such as club member details or static organization content remains code-managed. This hybrid structure made the system practical while the platform continued evolving.",
+      },
+      {
+        title: "Frontend Redesign Contribution",
+        description:
+          "A major part of my contribution started on the frontend side, where I redesigned and rebuilt several pages that previously lacked a strong user experience. This helped improve the visual quality and structure of the public-facing platform.",
+      },
+      {
+        title: "Backend & Admin Contribution",
+        description:
+          "Later, my work also extended into backend-related areas during the admin panel and live event workflow phase. I contributed to admin-side features, registration-related logic, Gmail/OTP integration support, and full-stack functionality required when real events were run through the website.",
+      },
+    ],
+
+    challenges: [
+      {
+        title: "Making OTP Verification Reliable",
+        problem:
+          "One practical issue during development was that OTP emails could land in junk folders, which weakens the registration experience for real users.",
+        solution:
+          "We worked on improving the email flow and registration handling so the system could be used more reliably during live event registrations.",
+      },
+      {
+        title: "Transitioning from a Static Site to a Real Workflow Platform",
+        problem:
+          "It is easy to build a college website that only displays information, but much harder to turn it into a usable event operations platform with forms, verification, and admin management.",
+        solution:
+          "The platform was gradually expanded from frontend-focused pages into a fuller system with admin workflows, registration handling, and live event support.",
+      },
+    ],
+
+    metrics: [
+      { label: "Technical Wings", value: "3" },
+      { label: "Sub-Clubs", value: "24+" },
+      { label: "Official Events Supported", value: "6–7" },
+      { label: "Student Registrations Processed", value: "250+" },
+    ],
+
+    results: [
+      "Officially deployed and used by the IIT Patna Student Technical Council.",
+      "Supported real student registrations during official events around late November and early December.",
+      "Handled more than 250 registrations across multiple events.",
+      "Helped centralize club visibility, event discovery, and registration workflows into one production system.",
+    ],
+
+    learnings: [
+      "Building a production platform is very different from building a demo site because real users immediately expose weak UX and broken flows.",
+      "Even small systems like OTP verification become tricky in real usage because deliverability and user trust matter as much as code correctness.",
+      "Frontend redesign work becomes much more meaningful when it is tied to real workflows instead of only visual polish.",
+      "Working on a live platform taught me how full-stack systems evolve gradually, not all at once.",
+    ],
+
+    statusNote: [
+      "Some platform content is still partly static, and the admin/user experience can be improved further.",
+      "The platform is actively being enhanced with broader redesign work and more structured role-based workflows for future administrative expansion.",
+    ],
+  },
+
   {
     title: "ExamifAI",
     slug: "examifai",
@@ -673,206 +1015,6 @@ export const projects: Project[] = [
       "The current system is designed for browser-based desktop use and is not intended for mobile devices.",
       "Face recognition accuracy depends on proper lighting and a clearly visible face during the exam.",
       "The platform has been deployed for demo and mock testing, with plans for broader exam usage in controlled student groups.",
-    ],
-  },
-
-  {
-    title: "STC IIT Patna",
-    slug: "stc-iit-patna",
-    tagline: "Official Student Technical Council Platform",
-
-    shortDescription:
-      "A production platform for IIT Patna’s Student Technical Council that centralizes clubs, events, announcements, OTP-based registrations, and admin workflows across multiple technical wings.",
-
-    description:
-      "STC IIT Patna is the official digital platform for the Student Technical Council of IIT Patna. It was built to centralize technical clubs, event discovery, announcements, and student registrations into one production-ready system used by real students and council teams.",
-
-    coverImage: [
-      "/assets/projects/stc/stc-1.svg",
-      "/assets/projects/stc/stc-2.svg",
-    ],
-
-    gallery: [
-      "/assets/projects/stc/stc-1.svg",
-      "/assets/projects/stc/stc-2.svg",
-    ],
-
-    github: "https://github.com/ankit9241/stc_website",
-    live: "https://stciitphybrid.in",
-    isPublished: true,
-
-    tech: [
-      technologies.nextjs,
-      technologies.react,
-      technologies.typescript,
-      technologies.tailwind,
-      technologies.mongodb,
-    ],
-
-    meta: [
-      { label: "Timeline", value: "~2 Months" },
-      { label: "Role", value: "Full Stack Developer" },
-      { label: "Team", value: "4 Developers" },
-      { label: "Status", value: "Completed" },
-      { label: "Project Type", value: "Production Platform" },
-      { label: "Organization", value: "IIT Patna Student Technical Council" },
-      { label: "Deployment", value: "Official Production Platform" },
-    ],
-
-    links: [
-      { label: "Live Demo", href: "https://stciitphybrid.in" },
-      {
-        label: "Source Code",
-        href: "https://github.com/ankit9241/stc_website",
-      },
-    ],
-
-    overview: [
-      "STC IIT Patna is the official digital hub for the Student Technical Council of IIT Patna. The platform brings together technical clubs, events, announcements, and student participation workflows in one place instead of scattering them across separate channels.",
-      "It serves three major technical wings and more than twenty-four sub-clubs, giving students a centralized way to explore activities, register for events, and stay updated with official notices.",
-      "Unlike a showcase project, this was a real production platform used by actual students and council teams. It handled real event traffic, registrations, and administrative workflows during live college activity.",
-    ],
-
-    context: [
-      "Managing multiple clubs and events becomes messy when information is spread across posters, chats, forms, and disconnected pages. Students miss updates, organizers struggle to track registrations, and administrative work becomes repetitive.",
-      "The platform was built to solve this by creating a single official system where clubs, events, forms, and announcements could all be managed in a structured way.",
-    ],
-
-    whyBuilt: [
-      "The goal was not just to make a better-looking student website, but to build a platform that could actually support real event operations.",
-      "It needed to work for both sides: students discovering and registering for events, and council/admin teams managing announcements, registrations, and event data without repeatedly changing code.",
-    ],
-
-    techStack: [
-      {
-        category: "Frontend",
-        items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      },
-      {
-        category: "Backend",
-        items: [
-          "Node.js-based backend",
-          "API integration",
-          "Nodemailer",
-          "Resend (Email Integration)",
-        ],
-      },
-      {
-        category: "Database",
-        items: ["MongoDB"],
-      },
-      {
-        category: "Authentication / Verification",
-        items: ["College Email OTP Verification"],
-      },
-      {
-        category: "Deployment",
-        items: ["Production Deployment (IIT Patna Official Platform)"],
-      },
-    ],
-
-    features: [
-      {
-        title: "Centralized Event Hub",
-        description:
-          "The platform aggregates activities across 3 technical wings and 24+ sub-clubs, making it easier for students to discover workshops, hackathons, technical sessions, and club initiatives from one unified system.",
-      },
-      {
-        title: "OTP-Based Secure Event Registration",
-        description:
-          "Students register for events through a structured flow where they first enter their college email, receive an OTP, verify it, and only then gain access to the registration form. This keeps participation limited to verified IIT Patna students.",
-      },
-      {
-        title: "Custom Registration Form Workflow",
-        description:
-          "Admins can manage registration forms dynamically instead of hardcoding them each time. This makes the system practical for running different events with different requirements.",
-      },
-      {
-        title: "Admin Panel for Event Operations",
-        description:
-          "The platform includes admin workflows for creating events, managing forms, posting announcements, handling registration-related actions, and monitoring participation data.",
-      },
-      {
-        title: "Notification & Banner System",
-        description:
-          "Important announcements are surfaced through a homepage notification panel and banner-style updates, making the platform useful not just for event discovery but also for official communication.",
-      },
-      {
-        title: "Dedicated Club Pages",
-        description:
-          "Each club has its own page with details such as club information, member data, and supporting content, allowing the site to function as both an event system and a structured club directory.",
-      },
-      {
-        title: "Form Response Integration",
-        description:
-          "The project also involved registration response handling and email-related workflows, helping the system move closer to a real operational platform instead of a static event showcase.",
-      },
-    ],
-
-    technicalDetails: [
-      {
-        title: "Student Registration Flow",
-        description:
-          "The registration flow follows a clean process: a student opens an event, clicks register, enters their IIT Patna email, verifies the OTP received on mail, fills the form, and submits the response. This reduces fake registrations and ensures only eligible students can proceed.",
-      },
-      {
-        title: "Hybrid Content Structure",
-        description:
-          "Most active data such as events, forms, and responses are managed dynamically, while some stable information such as club member details or static organization content remains code-managed. This hybrid structure made the system practical while the platform continued evolving.",
-      },
-      {
-        title: "Frontend Redesign Contribution",
-        description:
-          "A major part of my contribution started on the frontend side, where I redesigned and rebuilt several pages that previously lacked a strong user experience. This helped improve the visual quality and structure of the public-facing platform.",
-      },
-      {
-        title: "Backend & Admin Contribution",
-        description:
-          "Later, my work also extended into backend-related areas during the admin panel and live event workflow phase. I contributed to admin-side features, registration-related logic, Gmail/OTP integration support, and full-stack functionality required when real events were run through the website.",
-      },
-    ],
-
-    challenges: [
-      {
-        title: "Making OTP Verification Reliable",
-        problem:
-          "One practical issue during development was that OTP emails could land in junk folders, which weakens the registration experience for real users.",
-        solution:
-          "We worked on improving the email flow and registration handling so the system could be used more reliably during live event registrations.",
-      },
-      {
-        title: "Transitioning from a Static Site to a Real Workflow Platform",
-        problem:
-          "It is easy to build a college website that only displays information, but much harder to turn it into a usable event operations platform with forms, verification, and admin management.",
-        solution:
-          "The platform was gradually expanded from frontend-focused pages into a fuller system with admin workflows, registration handling, and live event support.",
-      },
-    ],
-
-    metrics: [
-      { label: "Technical Wings", value: "3" },
-      { label: "Sub-Clubs", value: "24+" },
-      { label: "Official Events Supported", value: "6–7" },
-      { label: "Student Registrations Processed", value: "250+" },
-    ],
-
-    results: [
-      "Officially deployed and used by the IIT Patna Student Technical Council.",
-      "Supported real student registrations during official events around late November and early December.",
-      "Handled more than 250 registrations across multiple events.",
-      "Helped centralize club visibility, event discovery, and registration workflows into one production system.",
-    ],
-
-    learnings: [
-      "Building a production platform is very different from building a demo site because real users immediately expose weak UX and broken flows.",
-      "Even small systems like OTP verification become tricky in real usage because deliverability and user trust matter as much as code correctness.",
-      "Frontend redesign work becomes much more meaningful when it is tied to real workflows instead of only visual polish.",
-      "Working on a live platform taught me how full-stack systems evolve gradually, not all at once.",
-    ],
-
-    statusNote: [
-      "Some platform content is still partly static, and the admin/user experience can be improved further.",
-      "The platform is actively being enhanced with broader redesign work and more structured role-based workflows for future administrative expansion.",
     ],
   },
 
