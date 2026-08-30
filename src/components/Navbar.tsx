@@ -33,16 +33,19 @@ export default function Navbar() {
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="fixed top-5 sm:top-6 left-5 sm:left-8 right-5 sm:right-8 z-50 pointer-events-none font-sans flex items-center justify-between"
         >
-          <div className="hidden sm:flex pointer-events-auto items-center gap-1.5 px-2.5 h-11 sm:h-12 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
+          <div className="hidden sm:flex pointer-events-auto items-center gap-2 px-3 h-11 sm:h-12 rounded-full bg-black/80 backdrop-blur-2xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
             <a
               href="https://github.com/ankit9241"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playClickSound()}
               aria-label="GitHub Profile"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all duration-200"
+              className="group/icon relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-[#E1E0CC] hover:bg-white/15 transition-all duration-200"
             >
               <Github size={17} />
+              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 -translate-y-1 group-hover/icon:opacity-100 group-hover/icon:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                GitHub
+              </span>
             </a>
             <a
               href="https://www.linkedin.com/in/ankitkumar1109/"
@@ -50,17 +53,23 @@ export default function Navbar() {
               rel="noopener noreferrer"
               onClick={() => playClickSound()}
               aria-label="LinkedIn Profile"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all duration-200"
+              className="group/icon relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-[#E1E0CC] hover:bg-white/15 transition-all duration-200"
             >
               <Linkedin size={17} />
+              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 -translate-y-1 group-hover/icon:opacity-100 group-hover/icon:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                LinkedIn
+              </span>
             </a>
             <a
               href="mailto:ankitkumar.iitp09@gmail.com"
               onClick={() => playClickSound()}
               aria-label="Email Ankit"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all duration-200"
+              className="group/icon relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-[#E1E0CC] hover:bg-white/15 transition-all duration-200"
             >
               <Mail size={17} />
+              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 -translate-y-1 group-hover/icon:opacity-100 group-hover/icon:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                Email
+              </span>
             </a>
           </div>
 

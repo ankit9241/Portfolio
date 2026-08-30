@@ -43,6 +43,11 @@ export default function Hero() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToProjects = () => {
+    playClickSound();
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="home"
@@ -55,7 +60,7 @@ export default function Hero() {
           src={HERO_VIDEO_SRC}
           poster={heroPoster}
           fade={0.8}
-          className="object-cover"
+          className="object-cover object-[90%_center] md:object-center"
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/85 z-10 pointer-events-none" />
@@ -105,97 +110,114 @@ export default function Hero() {
           transition={{
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
-            delay: 0.3,
+            delay: 0.25,
           }}
-          className="w-full md:w-5/12 lg:w-4/12 flex flex-col gap-4 sm:gap-5 pb-2 md:pb-6"
+          className="w-full md:w-5/12 lg:w-[410px] xl:w-[450px] flex flex-col gap-5 sm:gap-6 pb-2 md:pb-4 max-w-lg"
         >
-          <div className="flex items-center gap-2 border border-white/10 bg-white/5 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-white/90 font-semibold font-sans">
-              Available for Internships &amp; OSS
-            </span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 border-y border-white/10 py-4 my-1">
-            <div>
-              <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-sans">
-                273
-              </h4>
-              <p className="text-[8px] uppercase tracking-widest text-white/40 mt-1 font-mono">
-                PR Reviews
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-sans">
-                19
-              </h4>
-              <p className="text-[8px] uppercase tracking-widest text-white/40 mt-1 font-mono">
-                Repos
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-sans">
-                1842
-              </h4>
-              <p className="text-[8px] uppercase tracking-widest text-white/40 mt-1 font-mono">
-                Contributions
-              </p>
-            </div>
-          </div>
-
-          <p className="text-white/70 text-xs sm:text-sm md:text-[15px] leading-relaxed font-sans font-light">
-            Diving deep into Generative AI, Agentic systems, AI/ML, and NLP. I love
-            exploring new tools, experimenting with emerging tech, and building
-            things that make computers feel a little smarter.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 mt-1">
-            <button
-              onClick={scrollToConnect}
-              className="group bg-[#E1E0CC] hover:bg-white text-black rounded-full pl-6 pr-2 py-2 flex items-center justify-between gap-6 sm:gap-10 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)] cursor-pointer"
+          <div className="space-y-2.5">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+              className="text-[10px] sm:text-[11px] font-mono tracking-[0.22em] uppercase text-white/45 select-none"
             >
-              <span className="font-medium text-xs sm:text-sm tracking-wide font-sans">
-                Let&apos;s Connect
-              </span>
-              <div className="bg-black text-[#E1E0CC] rounded-full w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                <ArrowUpRight size={16} />
-              </div>
-            </button>
+              CURRENTLY BUILDING
+            </motion.p>
 
-            <div className="flex sm:hidden items-center gap-1 p-1 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
-              <a
-                href="https://github.com/ankit9241"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => playClickSound()}
-                aria-label="GitHub Profile"
-                className="w-9 h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all"
-              >
-                <Github size={17} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ankitkumar1109/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => playClickSound()}
-                aria-label="LinkedIn Profile"
-                className="w-9 h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all"
-              >
-                <Linkedin size={17} />
-              </a>
-              <a
-                href="mailto:ankitkumar.iitp09@gmail.com"
-                onClick={() => playClickSound()}
-                aria-label="Email Ankit"
-                className="w-9 h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-white hover:bg-white/10 transition-all"
-              >
-                <Mail size={17} />
-              </a>
-            </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
+              className="text-2xl sm:text-3xl lg:text-[2.1rem] xl:text-[2.4rem] font-medium tracking-[-0.025em] text-[#E1E0CC] font-sans leading-[1.15] [text-shadow:0_2px_16px_rgba(0,0,0,0.85)] max-w-sm sm:max-w-md"
+            >
+              <span className="block">AI-powered products</span>
+              <span className="block text-white/90">that solve real problems.</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
+              className="pt-1 text-xs sm:text-[13px] text-white/50 font-sans tracking-wide [text-shadow:0_1px_8px_rgba(0,0,0,0.8)]"
+            >
+              Full-stack development × Artificial Intelligence
+            </motion.p>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
+            className="flex flex-col gap-3 pt-2 sm:pt-3"
+          >
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                onClick={scrollToProjects}
+                className="group h-11 sm:h-12 bg-[#E1E0CC] text-black rounded-full pl-5 pr-1.5 sm:pl-6 sm:pr-2 flex items-center justify-between gap-3 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.35)] cursor-pointer select-none"
+              >
+                <span className="font-medium text-xs sm:text-sm tracking-wide font-sans">
+                  View Projects
+                </span>
+                <div className="bg-black text-[#E1E0CC] rounded-full w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <ArrowUpRight size={15} />
+                </div>
+              </button>
+
+              <button
+                onClick={scrollToConnect}
+                className="group h-11 sm:h-12 bg-black text-[#E1E0CC] border border-white/15 rounded-full pl-5 pr-1.5 sm:pl-6 sm:pr-2 flex items-center justify-between gap-3 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-pointer select-none"
+              >
+                <span className="font-medium text-xs sm:text-sm tracking-wide font-sans">
+                  Let&apos;s Connect
+                </span>
+                <div className="bg-[#E1E0CC] text-black rounded-full w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <ArrowUpRight size={15} />
+                </div>
+              </button>
+            </div>
+
+            <div className="flex sm:hidden justify-center pt-2">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.7)]">
+                <a
+                  href="https://github.com/ankit9241"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound()}
+                  aria-label="GitHub Profile"
+                  className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+                >
+                  <Github size={17} />
+                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 translate-y-1 group-hover/social:opacity-100 group-hover/social:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                    GitHub
+                  </span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ankitkumar1109/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound()}
+                  aria-label="LinkedIn Profile"
+                  className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+                >
+                  <Linkedin size={17} />
+                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 translate-y-1 group-hover/social:opacity-100 group-hover/social:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                    LinkedIn
+                  </span>
+                </a>
+                <a
+                  href="mailto:ankitkumar.iitp09@gmail.com"
+                  onClick={() => playClickSound()}
+                  aria-label="Email Ankit"
+                  className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
+                >
+                  <Mail size={17} />
+                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-md text-[11px] font-sans font-medium text-[#E1E0CC] bg-black/95 backdrop-blur-xl border border-white/15 shadow-lg opacity-0 translate-y-1 group-hover/social:opacity-100 group-hover/social:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                    Email
+                  </span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

@@ -92,20 +92,20 @@ const Certificates = () => {
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold text-text-primary mb-2">
+                <h3 className="text-xl font-semibold text-text-primary mb-2 min-h-[3.5rem] flex items-start">
                   {cert.title}
                 </h3>
 
-                <p className="text-text-secondary font-semibold mb-3">
+                <p className="text-text-secondary font-semibold mb-3 text-sm">
                   {cert.issuer}
                 </p>
 
-                <p className="text-text-secondary text-sm mb-4">
+                <p className="text-text-secondary text-sm mb-4 leading-relaxed min-h-[2.75rem]">
                   {cert.description}
                 </p>
 
                 <div className="mt-auto pt-4">
-                  <div className="mb-6 flex flex-wrap gap-2 min-h-[24px]">
+                  <div className="mb-6 flex flex-wrap items-center gap-2 min-h-[28px]">
                     {cert.skills.map((skill, skillIndex) => {
                       const Icon = getSkillIcon(skill);
                       return Icon ? (

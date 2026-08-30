@@ -14,7 +14,7 @@ export const certificates: Certificate[] = [
     issuer: "STC, IIT Patna",
     date: "Jan - June 2026",
     description:
-      "Awarded for contributing to development and maintenance of official website of Student Technical Council (STC), IIT Patna, recognizing technical expertise and impactful contribution during the tenure Jan - June 2026.",
+      "Contributed to the development and maintenance of the official Student Technical Council website at IIT Patna.",
     image: "/assets/certificates/tenure-certificate-2.jpeg",
     link: "/assets/certificates/tenure-certificate-2.jpeg",
     skills: ["Nextjs", "TypeScript", "React"],
@@ -24,7 +24,7 @@ export const certificates: Certificate[] = [
     issuer: "IIT Patna",
     date: "June 2026",
     description:
-      "Successfully participated in the Hack-N-Tech 3.0 Hackathon organized by IIT Patna, where we developed PodSnap-an AI-powered SaaS platform designed to automate long-form podcast repurposing into engaging vertical social media clips using active speaker tracking, Whisper speech-to-text, and dynamic styled subtitle rendering.",
+      "Participated in the Hack N Tech 3.0 Hackathon at IIT Patna, building full-stack software solutions under competition.",
     image: "/assets/certificates/Hack-N-Tech-3.0.jpeg",
     link: "/assets/certificates/Hack-N-Tech-3.0.jpeg",
     skills: [
@@ -33,12 +33,6 @@ export const certificates: Certificate[] = [
       "TypeScript",
       "Python",
       "FastAPI",
-      "PostgreSQL",
-      "Prisma",
-      "AWS",
-      "Stripe",
-      "Modal",
-      "Tailwind CSS",
     ],
   },
   {
@@ -46,7 +40,7 @@ export const certificates: Certificate[] = [
     issuer: "IIT Patna",
     date: "June 2026",
     description:
-      "Secured 2nd rank in the offline DSA (Data Structures and Algorithms) competition organized by Code Kshetra at the IIT Patna campus, solving 5 coding questions within a 90-minute window on HackerRank using Java.",
+      "Secured 2nd rank in the offline Data Structures and Algorithms competition organized by Code Kshetra at IIT Patna.",
     image: "/assets/certificates/code-kshetra.jpeg",
     link: "/assets/certificates/code-kshetra.jpeg",
     skills: ["Java", "Data Structures", "Algorithms", "Problem Solving"],
@@ -56,7 +50,7 @@ export const certificates: Certificate[] = [
     issuer: "STC, IIT Patna",
     date: "July - Dec 2025",
     description:
-      "Awarded during Xenith event for contributing to development and maintenance of official website of Student Technical Council (STC), IIT Patna, recognizing technical expertise and impactful contribution during the tenure July - Dec 2025.",
+      "Contributed to the development and maintenance of the official Student Technical Council website at IIT Patna.",
     image: "/assets/certificates/tenure-certificate-1.png",
     link: "/assets/certificates/tenure-certificate-1.png",
     skills: ["Nextjs", "TypeScript", "React"],
@@ -66,7 +60,7 @@ export const certificates: Certificate[] = [
     issuer: "IIT Patna",
     date: "Dec 2025",
     description:
-      "Successfully participated in Hack N Tech 2.0 Hackathon, organized by IIT Patna as part of the Xenith. Showcased problem-solving skills and technical abilities in a competitive environment.",
+      "Participated in the Hack N Tech 2.0 Hackathon at IIT Patna, demonstrating problem-solving in a competitive setting.",
     image: "/assets/certificates/Hack-N-Tech-2.0.jpeg",
     link: "/assets/certificates/Hack-N-Tech-2.0.jpeg",
     skills: ["React", "Node.js", "MongoDB"],
@@ -76,7 +70,7 @@ export const certificates: Certificate[] = [
     issuer: "IIT Patna",
     date: "May 2025",
     description:
-      "Successfully participated in Hack N Tech Hackathon organized by IIT Patna, showcasing problem-solving skills and technical abilities in a competitive environment.",
+      "Participated in the Hack N Tech 1.0 Hackathon at IIT Patna, demonstrating problem-solving in a competitive setting.",
     image: "/assets/certificates/Hack-N-Tech-1.0.png",
     link: "/assets/certificates/Hack-N-Tech-1.0.png",
     skills: ["React", "Node.js", "MongoDB"],
