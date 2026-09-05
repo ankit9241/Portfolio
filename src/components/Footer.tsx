@@ -1,5 +1,6 @@
 "use client";
 import { Mail, MapPin, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 import { useLocation, useNavigate } from "react-router-dom";
 import { playClickSound } from "../utils/audio";
 
@@ -72,6 +73,15 @@ const Footer = () => {
               className="p-2 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition text-text-secondary hover:text-white"
             >
               <Linkedin className="w-4.5 h-4.5" />
+            </a>
+            <a
+              href="https://leetcode.com/u/ankit9241/"
+              target="_blank"
+              rel="me noopener noreferrer"
+              onClick={() => playClickSound()}
+              className="p-2 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition text-text-secondary hover:text-white"
+            >
+              <SiLeetcode className="w-4.5 h-4.5" />
             </a>
             <a
               href="mailto:ankitkumar.iitp09@gmail.com"

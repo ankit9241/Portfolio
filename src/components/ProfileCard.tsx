@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 
 interface ProfileCardProps {
   avatarUrl: string;
@@ -174,9 +175,19 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 <a
                   href="https://www.linkedin.com/in/ankitkumar1109/"
                   target="_blank"
+                  rel="me noopener noreferrer"
                   className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-text-secondary hover:text-text-primary"
                 >
                   <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+
+                <a
+                  href="https://leetcode.com/u/ankit9241/"
+                  target="_blank"
+                  rel="me noopener noreferrer"
+                  className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-text-secondary hover:text-text-primary"
+                >
+                  <SiLeetcode className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
 
                 <a

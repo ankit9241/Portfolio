@@ -9,10 +9,10 @@
 - **Education / Institution**: Indian Institute of Technology Patna (IIT Patna)
 - **Location**: India (Available for Remote Work Worldwide)
 - **Email**: ankitkumar.iitp09@gmail.com
-- **Primary Website**: https://ankitiitp.tech/
-- **Secondary / Mirror**: https://ankitkumar1109.netlify.app/
+- **Website**: https://ankitiitp.tech/
 - **LinkedIn**: https://www.linkedin.com/in/ankitkumar1109/
-- **GitHub**: https://github.com/ankit9241
+- **GitHub**: https://github.com/ankit9241/
+- **LeetCode**: https://leetcode.com/u/ankit9241/
 
 ## Core Services & Capabilities
 - **Full-Stack Web Development**: End-to-end web application engineering from architecture to production deployment.

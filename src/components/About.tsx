@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 
 const easeCurve = [0.16, 1, 0.3, 1] as const;
 
@@ -125,6 +126,17 @@ const About = () => {
               >
                 <Linkedin className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
                 <span>LinkedIn</span>
+                <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+
+              <a
+                href="https://leetcode.com/u/ankit9241/"
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
+              >
+                <SiLeetcode className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
+                <span>LeetCode</span>
                 <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
 
