@@ -58,7 +58,7 @@ const Footer = () => {
             <a
               href="https://github.com/ankit9241"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => playClickSound()}
               className="p-2 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition text-text-secondary hover:text-white"
             >
@@ -67,7 +67,7 @@ const Footer = () => {
             <a
               href="https://www.linkedin.com/in/ankitkumar1109/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => playClickSound()}
               className="p-2 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition text-text-secondary hover:text-white"
             >

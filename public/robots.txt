@@ -1,0 +1,24 @@
+# robots.txt for Ankit Kumar Portfolio
+User-agent: *
+Allow: /
+
+# Allow AI Search Crawlers & Agents (ChatGPT, Perplexity, Claude, Google Gemini)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://ankitiitp.tech/sitemap.xml

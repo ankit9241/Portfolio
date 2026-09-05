@@ -109,7 +109,7 @@ const About = () => {
               <a
                 href="https://github.com/ankit9241"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
               >
                 <Github className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
@@ -120,7 +120,7 @@ const About = () => {
               <a
                 href="https://www.linkedin.com/in/ankitkumar1109/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
               >
                 <Linkedin className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />

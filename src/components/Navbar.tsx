@@ -37,7 +37,7 @@ export default function Navbar() {
             <a
               href="https://github.com/ankit9241"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => playClickSound()}
               aria-label="GitHub Profile"
               className="group/icon relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-[#E1E0CC] hover:bg-white/15 transition-all duration-200"
@@ -50,7 +50,7 @@ export default function Navbar() {
             <a
               href="https://www.linkedin.com/in/ankitkumar1109/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               onClick={() => playClickSound()}
               aria-label="LinkedIn Profile"
               className="group/icon relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#BDBDBD] hover:text-[#E1E0CC] hover:bg-white/15 transition-all duration-200"

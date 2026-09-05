@@ -150,28 +150,28 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
             className="flex flex-col gap-3 pt-2 sm:pt-3"
           >
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-nowrap">
               <button
                 onClick={scrollToProjects}
-                className="group h-11 sm:h-12 bg-[#E1E0CC] text-black rounded-full pl-5 pr-1.5 sm:pl-6 sm:pr-2 flex items-center justify-between gap-3 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.35)] cursor-pointer select-none"
+                className="group h-10 sm:h-12 bg-[#E1E0CC] text-black rounded-full pl-3.5 sm:pl-6 pr-1 sm:pr-2 flex items-center justify-between gap-2 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.35)] cursor-pointer select-none whitespace-nowrap"
               >
-                <span className="font-medium text-xs sm:text-sm tracking-wide font-sans">
+                <span className="font-medium text-[11px] sm:text-sm tracking-wide font-sans">
                   View Projects
                 </span>
-                <div className="bg-black text-[#E1E0CC] rounded-full w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                  <ArrowUpRight size={15} />
+                <div className="bg-black text-[#E1E0CC] rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shrink-0">
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px]" />
                 </div>
               </button>
 
               <button
                 onClick={scrollToConnect}
-                className="group h-11 sm:h-12 bg-black text-[#E1E0CC] border border-white/15 rounded-full pl-5 pr-1.5 sm:pl-6 sm:pr-2 flex items-center justify-between gap-3 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-pointer select-none"
+                className="group h-10 sm:h-12 bg-black text-[#E1E0CC] border border-white/15 rounded-full pl-3.5 sm:pl-6 pr-1 sm:pr-2 flex items-center justify-between gap-2 sm:gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-pointer select-none whitespace-nowrap"
               >
-                <span className="font-medium text-xs sm:text-sm tracking-wide font-sans">
+                <span className="font-medium text-[11px] sm:text-sm tracking-wide font-sans">
                   Let&apos;s Connect
                 </span>
-                <div className="bg-[#E1E0CC] text-black rounded-full w-8 h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                  <ArrowUpRight size={15} />
+                <div className="bg-[#E1E0CC] text-black rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shrink-0">
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-[15px] sm:h-[15px]" />
                 </div>
               </button>
             </div>
@@ -181,7 +181,7 @@ export default function Hero() {
                 <a
                   href="https://github.com/ankit9241"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   onClick={() => playClickSound()}
                   aria-label="GitHub Profile"
                   className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"
@@ -194,7 +194,7 @@ export default function Hero() {
                 <a
                   href="https://www.linkedin.com/in/ankitkumar1109/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   onClick={() => playClickSound()}
                   aria-label="LinkedIn Profile"
                   className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"

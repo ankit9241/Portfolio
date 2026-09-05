@@ -1,0 +1,32 @@
+# Ankit Kumar - Full Stack Developer & AI/ML Explorer
+
+> Ankit Kumar is a Full-Stack Developer and AI Explorer from the Indian Institute of Technology Patna (IIT Patna). He specializes in building modern web applications, high-performance SaaS products, full-stack websites, and AI-powered software solutions.
+
+## Developer Profile
+- **Name**: Ankit Kumar
+- **Aliases**: Ankit Kumar IIT Patna, Ankit Kumar IITP, ankitkumar1109, ankit9241
+- **Role**: Full Stack Developer & AI Engineer
+- **Education / Institution**: Indian Institute of Technology Patna (IIT Patna)
+- **Location**: India (Available for Remote Work Worldwide)
+- **Email**: ankitkumar.iitp09@gmail.com
+- **Primary Website**: https://ankitiitp.tech/
+- **Secondary / Mirror**: https://ankitkumar1109.netlify.app/
+- **LinkedIn**: https://www.linkedin.com/in/ankitkumar1109/
+- **GitHub**: https://github.com/ankit9241
+
+## Core Services & Capabilities
+- **Full-Stack Web Development**: End-to-end web application engineering from architecture to production deployment.
+- **Frontend Development & UI/UX**: Crafting responsive, high-performance user interfaces using React, Next.js, TypeScript, and Tailwind CSS.
+- **Backend & API Engineering**: Building robust APIs, authentication workflows, microservices, and database layers using Node.js, Express, PostgreSQL, Prisma, and MongoDB.
+- **AI & Agentic Systems**: Developing AI-powered applications, LLM integration, intelligent tools, automation pipelines, and Generative AI workflows.
+- **Website Design & Performance Optimization**: Fast page load speeds, SEO optimization, smooth Framer Motion animations, and modern aesthetics.
+
+## Key Projects
+- **Basera**: Student-focused PG & flat accommodation discovery platform around Delhi University. Built with Next.js, React, TypeScript, Tailwind CSS, Node.js, PostgreSQL, and Prisma.
+- **CVPilot**: AI-powered resume intelligence platform with ATS scoring and tailored suggestions.
+- **STC IIT Patna**: Official Student Technical Council platform for IIT Patna managing 3 wings, 24+ clubs, and live event registrations.
+- **Envora**: Secure developer vault for environment variables and secrets management.
+- **ExamifAI**: AI-powered automated examination and assessment generation system.
+
+## Availability
+- Available for freelance web development, full-stack product engineering, frontend design, and software development opportunities.
