@@ -4,6 +4,7 @@ import { Globe, Github, Undo2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/projectsData";
 import OptimizedImage from "../components/OptimizedImage";
+import SEO from "../components/SEO";
 
 const ProjectPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,9 +20,9 @@ const ProjectPage = () => {
   const prevProject = projects[projectIndex - 1];
   const nextProject = projects[projectIndex + 1];
 
-  const projectImages = project.gallery && project.gallery.length > 0
+  const projectImages = project?.gallery && project.gallery.length > 0
     ? project.gallery
-    : (Array.isArray(project.coverImage) ? project.coverImage : [project.coverImage]);
+    : (project ? (Array.isArray(project.coverImage) ? project.coverImage : [project.coverImage]) : []);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -63,13 +64,69 @@ const ProjectPage = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
+        <SEO
+          title="Project Not Found | Ankit Kumar Portfolio"
+          description="The requested project could not be found."
+          robots="noindex, nofollow"
+          canonical="https://ankitiitp.tech/404"
+        />
         <h1 className="text-white text-2xl">Project Not Found</h1>
       </div>
     );
   }
 
+  const coverImg = Array.isArray(project.coverImage) ? project.coverImage[0] : project.coverImage;
+  const projectImageUrl = coverImg
+    ? (coverImg.startsWith("http") ? coverImg : `https://ankitiitp.tech${coverImg.startsWith("/") ? coverImg : `/${coverImg}`}`)
+    : "https://ankitiitp.tech/assets/profile-ankit.png";
+
+  const projectTitle = `${project.title} - ${project.tagline || 'Project'} | Ankit Kumar`;
+  const projectDescription = project.shortDescription || project.description;
+  const projectCanonical = `https://ankitiitp.tech/projects/${project.slug}`;
+
+  const projectStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `https://ankitiitp.tech/projects/${project.slug}#project`,
+    "url": `https://ankitiitp.tech/projects/${project.slug}`,
+    "name": project.title,
+    "headline": project.tagline || project.title,
+    "description": projectDescription,
+    "image": projectImageUrl,
+    "author": {
+      "@type": "Person",
+      "@id": "https://ankitiitp.tech/#person",
+      "name": "Ankit Kumar",
+      "url": "https://ankitiitp.tech/"
+    },
+    "creator": {
+      "@type": "Person",
+      "@id": "https://ankitiitp.tech/#person",
+      "name": "Ankit Kumar"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://ankitiitp.tech/#website",
+      "url": "https://ankitiitp.tech/",
+      "name": "Ankit Kumar Portfolio"
+    }
+  };
+
   return (
     <div className="min-h-screen text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
+      <SEO
+        title={projectTitle}
+        description={projectDescription}
+        canonical={projectCanonical}
+        image={projectImageUrl}
+        ogType="article"
+        ogTitle={projectTitle}
+        ogDescription={projectDescription}
+        twitterTitle={projectTitle}
+        twitterDescription={projectDescription}
+        twitterImage={projectImageUrl}
+        structuredData={projectStructuredData}
+      />
       <div className="container mx-auto px-8 py-0 max-w-6xl">
         <section className="px-0 py-12 lg:px-8">
           <button

@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
@@ -11,6 +12,7 @@ import Contact from "../components/Contact";
 const Home = () => {
   return (
     <>
+      <SEO />
       <Hero />
       <About />
       <Skills />

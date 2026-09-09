@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <SEO
+        title="Page Not Found | Ankit Kumar Portfolio"
+        description="The requested page could not be found on Ankit Kumar's portfolio."
+        robots="noindex, nofollow"
+        canonical="https://ankitiitp.tech/404"
+      />
       <div
         className="absolute inset-0"
         style={{

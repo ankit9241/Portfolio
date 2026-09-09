@@ -6,6 +6,7 @@ import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "../components/StatusBadge";
 import OptimizedImage from "../components/OptimizedImage";
 import { playClickSound } from "../utils/audio";
+import SEO from "../components/SEO";
 
 const AllProjects = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -19,8 +20,39 @@ const AllProjects = () => {
     navigate(`/projects/${project.slug}`);
   };
 
+  const allProjectsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://ankitiitp.tech/projects#webpage",
+    "url": "https://ankitiitp.tech/projects",
+    "name": "Projects | Ankit Kumar",
+    "description": "Explore full-stack web applications, AI tools, and software engineering projects built by Ankit Kumar (IIT Patna).",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://ankitiitp.tech/#website",
+      "url": "https://ankitiitp.tech/",
+      "name": "Ankit Kumar Portfolio"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://ankitiitp.tech/#person",
+      "name": "Ankit Kumar"
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-black text-white px-6 md:px-12 py-12">
+      <SEO
+        title="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        description="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
+        canonical="https://ankitiitp.tech/projects"
+        ogType="website"
+        ogTitle="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        ogDescription="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
+        twitterTitle="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        twitterDescription="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
+        structuredData={allProjectsStructuredData}
+      />
       
       <div className="max-w-6xl mx-auto py-10">
         <div className="relative flex flex-col md:flex-row md:items-center md:justify-center mb-6" ref={ref}>
