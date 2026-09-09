@@ -19,12 +19,34 @@ export interface SEOProps {
 }
 
 export const SITE_URL = "https://ankitiitp.tech";
-export const DEFAULT_TITLE = "Ankit Kumar - Full Stack Developer | IIT Patna | Portfolio";
+export const DEFAULT_TITLE = "Ankit Kumar - Full Stack Developer | IIT Patna";
 export const DEFAULT_DESCRIPTION =
   "Ankit Kumar - Full-Stack Developer & AI Explorer from IIT Patna (Indian Institute of Technology Patna). Explore my portfolio featuring full-stack products, AI projects, and engineering experience.";
 export const DEFAULT_IMAGE = "https://ankitiitp.tech/assets/profile-ankit.png";
 export const DEFAULT_KEYWORDS =
   "Ankit Kumar, Ankit Kumar IIT Patna, Ankit Kumar IITP, ankitkumar1109, ankit9241, Full Stack Developer, AI Developer, Indian Institute of Technology Patna, IIT Patna, React, TypeScript, Next.js, Node.js, Portfolio";
+
+export const PROJECT_SEO_TITLES: Record<string, string> = {
+  basera: "Basera - Student PG & Flat Platform for DU Students | Ankit Kumar",
+  cvpilot: "CVPilot - AI Resume Builder & ATS Optimizer | Ankit Kumar",
+  podsnap: "PodSnap - AI Podcast Clipper | Ankit Kumar",
+  "stc-iit-patna": "STC IIT Patna - Student Technical Council Platform | Ankit Kumar",
+  examifai: "ExamifAI - AI-Proctored Online Examination System | Ankit Kumar",
+  envora: "Envora - Secure Secrets & Environment Variable Vault | Ankit Kumar",
+  trackflow: "TrackFlow - Habit Tracking & Productivity Analytics | Ankit Kumar",
+  "kiran-mentorship-v1": "KIRAN v1 - Mentorship & Doubt Resolution Platform | Ankit Kumar",
+  "kiran-advanced": "KIRAN v2 - Advanced Scalable Mentorship Platform | Ankit Kumar",
+  "crazyone-ecommerce": "CrazyOne - Modern Full-Stack E-Commerce Storefront | Ankit Kumar",
+  "planit-event-management": "PlanIT - Event Planning & Venue Booking Platform | Ankit Kumar",
+  "gokul-bhandar": "Gokul Bhandar - Online Grocery Store & Delivery Platform | Ankit Kumar",
+};
+
+export const getProjectSeoTitle = (project: { title: string; slug?: string; tagline?: string }): string => {
+  if (project.slug && PROJECT_SEO_TITLES[project.slug]) {
+    return PROJECT_SEO_TITLES[project.slug];
+  }
+  return `${project.title} - ${project.tagline || "Project"} | Ankit Kumar`;
+};
 
 export const getCanonicalUrl = (pathname: string): string => {
   const cleanPath = pathname.replace(/\/+$/, "");
@@ -41,7 +63,7 @@ export const HOME_SCHEMA_GRAPH = {
       "@type": "ProfilePage",
       "@id": "https://ankitiitp.tech/#profile",
       "url": "https://ankitiitp.tech/",
-      "name": "Ankit Kumar - Full Stack Developer | IIT Patna | Portfolio",
+      "name": "Ankit Kumar - Full Stack Developer | IIT Patna",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://ankitiitp.tech/#website",
@@ -257,8 +279,8 @@ const SEO: React.FC<SEOProps> = ({
       structuredData !== undefined
         ? structuredData
         : location.pathname === "/" || location.pathname === ""
-        ? HOME_SCHEMA_GRAPH
-        : null;
+          ? HOME_SCHEMA_GRAPH
+          : null;
 
     let scriptTag = document.getElementById("schema-graph") as HTMLScriptElement | null;
     if (!scriptTag) {

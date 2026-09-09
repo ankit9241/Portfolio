@@ -9,6 +9,28 @@ const rootDir = path.resolve(__dirname, "..");
 const distDir = path.resolve(rootDir, "dist");
 const SITE_URL = "https://ankitiitp.tech";
 
+const PROJECT_SEO_TITLES = {
+  basera: "Basera - Student PG & Flat Platform for DU Students | Ankit Kumar",
+  cvpilot: "CVPilot - AI Resume Builder & ATS Optimizer | Ankit Kumar",
+  podsnap: "PodSnap - AI Podcast Clipper | Ankit Kumar",
+  "stc-iit-patna": "STC IIT Patna - Student Technical Council Platform | Ankit Kumar",
+  examifai: "ExamifAI - AI-Proctored Online Examination System | Ankit Kumar",
+  envora: "Envora - Secure Secrets & Environment Variable Vault | Ankit Kumar",
+  trackflow: "TrackFlow - Habit Tracking & Productivity Analytics | Ankit Kumar",
+  "kiran-mentorship-v1": "KIRAN v1 - Mentorship & Doubt Resolution Platform | Ankit Kumar",
+  "kiran-advanced": "KIRAN v2 - Advanced Scalable Mentorship Platform | Ankit Kumar",
+  "crazyone-ecommerce": "CrazyOne - Modern Full-Stack E-Commerce Storefront | Ankit Kumar",
+  "planit-event-management": "PlanIT - Event Planning & Venue Booking Platform | Ankit Kumar",
+  "gokul-bhandar": "Gokul Bhandar - Online Grocery Store & Delivery Platform | Ankit Kumar",
+};
+
+function getProjectSeoTitle(project) {
+  if (project.slug && PROJECT_SEO_TITLES[project.slug]) {
+    return PROJECT_SEO_TITLES[project.slug];
+  }
+  return `${project.title} - ${project.tagline || "Project"} | Ankit Kumar`;
+}
+
 function escapeHtml(str) {
   if (!str) return "";
   return String(str)
@@ -131,16 +153,16 @@ async function prerender() {
 
   // 2. All Projects Overview (/projects)
   const projectsMeta = {
-    title: "Projects | Ankit Kumar - Full Stack Developer | IIT Patna",
+    title: "Projects - Ankit Kumar | Full Stack & AI Projects",
     description:
       "Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering.",
     canonical: `${SITE_URL}/projects`,
     image: `${SITE_URL}/assets/profile-ankit.png`,
     ogType: "website",
-    ogTitle: "Projects | Ankit Kumar - Full Stack Developer | IIT Patna",
+    ogTitle: "Projects - Ankit Kumar | Full Stack & AI Projects",
     ogDescription:
       "Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering.",
-    twitterTitle: "Projects | Ankit Kumar - Full Stack Developer | IIT Patna",
+    twitterTitle: "Projects - Ankit Kumar | Full Stack & AI Projects",
     twitterDescription:
       "Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering.",
     structuredData: {
@@ -148,7 +170,7 @@ async function prerender() {
       "@type": "CollectionPage",
       "@id": `${SITE_URL}/projects#webpage`,
       url: `${SITE_URL}/projects`,
-      name: "Projects | Ankit Kumar",
+      name: "Projects - Ankit Kumar | Full Stack & AI Projects",
       description:
         "Explore full-stack web applications, AI tools, and software engineering projects built by Ankit Kumar (IIT Patna).",
       isPartOf: {
@@ -184,7 +206,7 @@ async function prerender() {
         : `${SITE_URL}${coverImg.startsWith("/") ? coverImg : `/${coverImg}`}`
       : `${SITE_URL}/assets/profile-ankit.png`;
 
-    const projectTitle = `${project.title} - ${project.tagline || "Project"} | Ankit Kumar`;
+    const projectTitle = getProjectSeoTitle(project);
     const projectDescription = project.shortDescription || project.description;
     const projectCanonical = `${SITE_URL}/projects/${project.slug}`;
 

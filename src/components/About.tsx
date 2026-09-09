@@ -184,7 +184,7 @@ const About = () => {
                 building things that are both useful and reliable.&rdquo;
               </p>
               <p className="text-[#9D9D9D] text-xs font-mono tracking-wider uppercase mt-2">
-                — Ankit Kumar
+                - Ankit Kumar
               </p>
             </motion.div>
           </div>

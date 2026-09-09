@@ -4,7 +4,7 @@ import { Globe, Github, Undo2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/projectsData";
 import OptimizedImage from "../components/OptimizedImage";
-import SEO from "../components/SEO";
+import SEO, { getProjectSeoTitle } from "../components/SEO";
 
 const ProjectPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -80,7 +80,7 @@ const ProjectPage = () => {
     ? (coverImg.startsWith("http") ? coverImg : `https://ankitiitp.tech${coverImg.startsWith("/") ? coverImg : `/${coverImg}`}`)
     : "https://ankitiitp.tech/assets/profile-ankit.png";
 
-  const projectTitle = `${project.title} - ${project.tagline || 'Project'} | Ankit Kumar`;
+  const projectTitle = getProjectSeoTitle(project);
   const projectDescription = project.shortDescription || project.description;
   const projectCanonical = `https://ankitiitp.tech/projects/${project.slug}`;
 

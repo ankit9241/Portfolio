@@ -11,7 +11,7 @@ import SEO from "../components/SEO";
 const AllProjects = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
-  
+
   const handleBack = () => {
     navigate("/");
   };
@@ -25,7 +25,7 @@ const AllProjects = () => {
     "@type": "CollectionPage",
     "@id": "https://ankitiitp.tech/projects#webpage",
     "url": "https://ankitiitp.tech/projects",
-    "name": "Projects | Ankit Kumar",
+    "name": "Projects - Ankit Kumar | Full Stack & AI Projects",
     "description": "Explore full-stack web applications, AI tools, and software engineering projects built by Ankit Kumar (IIT Patna).",
     "isPartOf": {
       "@type": "WebSite",
@@ -43,17 +43,17 @@ const AllProjects = () => {
   return (
     <div className="min-h-screen w-full bg-black text-white px-6 md:px-12 py-12">
       <SEO
-        title="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        title="Projects - Ankit Kumar | Full Stack & AI Projects"
         description="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
         canonical="https://ankitiitp.tech/projects"
         ogType="website"
-        ogTitle="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        ogTitle="Projects - Ankit Kumar | Full Stack & AI Projects"
         ogDescription="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
-        twitterTitle="Projects | Ankit Kumar - Full Stack Developer | IIT Patna"
+        twitterTitle="Projects - Ankit Kumar | Full Stack & AI Projects"
         twitterDescription="Explore my complete portfolio of projects showcasing full-stack development, AI applications, UI/UX design, and software engineering."
         structuredData={allProjectsStructuredData}
       />
-      
+
       <div className="max-w-6xl mx-auto py-10">
         <div className="relative flex flex-col md:flex-row md:items-center md:justify-center mb-6" ref={ref}>
           <div className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 mb-4 md:mb-0">
@@ -75,7 +75,7 @@ const AllProjects = () => {
         </div>
 
         <p className="text-center text-lg text-text-secondary max-w-2xl mx-auto mb-16">
-          Explore my complete portfolio of projects showcasing full-stack development, 
+          Explore my complete portfolio of projects showcasing full-stack development,
           UI/UX design, and problem-solving abilities.
         </p>
 
@@ -166,7 +166,7 @@ const AllProjects = () => {
                     <StatusBadge status={project.meta.find(item => item.label === 'Status')?.value || ''} />
                   )}
                   <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
-                    <span 
+                    <span
                       className="text-sm text-gray-400 group-hover:text-white transition-colors"
                     >
                       View Details
