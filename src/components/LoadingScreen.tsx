@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { trackAllAssets } from "../utils/assetLoader";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -12,11 +13,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [counter, setCounter] = useState(0);
   const onCompleteRef = useRef(onComplete);
-  const animationRef = useRef<number>();
-  const startTimeRef = useRef<number>();
+  const realProgressRef = useRef<number>(0);
+  const displayProgressRef = useRef<number>(0);
+  const animationFrameRef = useRef<number>();
+  const isFinishedRef = useRef<boolean>(false);
 
   const words = ["Innovate", "Build", "Deploy"];
-  const totalDuration = 2700; // 2.7 seconds
+  const minDuration = 1200; // minimum duration (1.2s) for smooth visual pacing on fast/cached loads
 
   useEffect(() => {
     onCompleteRef.current = onComplete;
@@ -24,54 +27,71 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   useEffect(() => {
     const startTime = performance.now();
-    startTimeRef.current = startTime;
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progressRatio = Math.min(elapsed / totalDuration, 1);
-      
-      setProgress(progressRatio);
-      setCounter(Math.floor(progressRatio * 100));
-
-      if (progressRatio < 1) {
-        animationRef.current = requestAnimationFrame(animate);
-      } else {
-        // Call onComplete immediately when progress reaches 100%
-        // The exit animation will handle the smooth fade-out
-        onCompleteRef.current();
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const wordTimings = [0, 900, 1900]; // Exact timings for each word
-    
-    const timers: NodeJS.Timeout[] = [];
-    
-    words.forEach((_, index) => {
-      if (index > 0) {
-        const timer = setTimeout(() => {
-          setCurrentWordIndex(index);
-        }, wordTimings[index]);
-        timers.push(timer);
-      }
+    // Start real asset tracking
+    trackAllAssets((ratio) => {
+      realProgressRef.current = ratio;
     });
 
+    const updateLoop = (now: number) => {
+      if (isFinishedRef.current) return;
+
+      const elapsed = now - startTime;
+      const minPacingRatio = Math.min(elapsed / minDuration, 1);
+      
+      // Target progress is governed by both real network readiness and smooth pacing
+      const targetProgress = Math.min(minPacingRatio, realProgressRef.current);
+
+      // Smoothly advance display progress toward target
+      const current = displayProgressRef.current;
+      const diff = targetProgress - current;
+      
+      // Interpolate with dynamic step size for buttery smoothness
+      const nextProgress = current + diff * 0.15;
+      displayProgressRef.current = Math.min(Math.max(nextProgress, current), 1);
+
+      const disp = displayProgressRef.current;
+      setProgress(disp);
+      setCounter(Math.floor(disp * 100));
+
+      // Dynamic word update based on real progress thresholds
+      if (disp < 0.35) {
+        setCurrentWordIndex(0);
+      } else if (disp < 0.70) {
+        setCurrentWordIndex(1);
+      } else {
+        setCurrentWordIndex(2);
+      }
+
+      // Check if both real network assets are 100% ready AND display progress has reached 100%
+      if (realProgressRef.current >= 1 && (targetProgress >= 0.999 || disp >= 0.99)) {
+        isFinishedRef.current = true;
+        displayProgressRef.current = 1;
+        setProgress(1);
+        setCounter(100);
+        setCurrentWordIndex(2);
+
+        // Small delay to let the user perceive 100% before smooth fade-out
+        setTimeout(() => {
+          onCompleteRef.current();
+        }, 180);
+        return;
+      }
+
+      animationFrameRef.current = requestAnimationFrame(updateLoop);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(updateLoop);
+
     return () => {
-      timers.forEach(timer => clearTimeout(timer));
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, []);
 
   const formatCounter = (num: number): string => {
-    return num.toString().padStart(3, '0');
+    return num.toString().padStart(3, "0");
   };
 
   return (
@@ -110,7 +130,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       >
         <span 
           className="uppercase tracking-[0.3em] text-[#888888] text-xs md:text-sm"
-          style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+          style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
         >
           Ankit Kumar
         </span>
@@ -123,13 +143,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             className="text-5xl md:text-7xl lg:text-8xl"
             style={{
-              fontFamily: 'Instrument Serif, serif',
-              fontStyle: 'italic',
+              fontFamily: "Instrument Serif, serif",
+              fontStyle: "italic",
               fontWeight: 400,
-              color: '#f5f5f5',
+              color: "#f5f5f5",
             }}
           >
             {words[currentWordIndex]}
@@ -146,8 +166,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <div 
           className="text-2xl md:text-3xl font-mono"
           style={{
-            fontFamily: 'SF Mono, Monaco, monospace',
-            color: '#f5f5f5',
+            fontFamily: "SF Mono, Monaco, monospace",
+            color: "#f5f5f5",
             textShadow: `0 0 ${progress / 10}px rgba(137,170,204,0.3)`,
           }}
         >
@@ -159,19 +179,19 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <motion.div
           className="h-full origin-left"
           style={{
-            background: 'linear-gradient(90deg, #89AACC, #4E85BF)',
-            boxShadow: '0 0 8px rgba(137,170,204,0.35)',
+            background: "linear-gradient(90deg, #89AACC, #4E85BF)",
+            boxShadow: "0 0 8px rgba(137,170,204,0.35)",
           }}
           animate={{ scaleX: progress }}
-          transition={{ duration: 0.1, ease: 'linear' }}
+          transition={{ duration: 0.05, ease: "linear" }}
         >
           <motion.div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
             }}
-            animate={{ x: ['-100%', '200%'] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />
         </motion.div>
       </div>
@@ -181,7 +201,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           className="w-full bg-[#4E85BF]"
           style={{
             height: `${progress * 100}%`,
-            boxShadow: '0 0 4px rgba(78,133,191,0.5)',
+            boxShadow: "0 0 4px rgba(78,133,191,0.5)",
           }}
         />
       </div>
