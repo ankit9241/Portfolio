@@ -1,5 +1,7 @@
 export const CRITICAL_VIDEOS = [
-  "/videos/hero-cabin-living-v3.mp4",
+  "/videos/hero-countryside-01.mp4",
+  "/videos/hero-countryside-02.mp4",
+  "/videos/hero-countryside-03.mp4",
   "/videos/tech_bg.mp4",
   "/videos/project_bg.mp4",
   "/videos/footer_bg.mp4",

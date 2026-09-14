@@ -9,7 +9,20 @@ import heroPoster from "../assets/hero-frame.jpg";
 import { playClickSound } from "../utils/audio";
 import Navbar from "./Navbar";
 
-const HERO_VIDEO_SRC = "/videos/hero-cabin-living-v3.mp4";
+const HERO_CLIPS = [
+  {
+    mp4Src: "/videos/hero-countryside-01.mp4",
+    webmSrc: "/videos/hero-countryside-01.webm",
+  },
+  {
+    mp4Src: "/videos/hero-countryside-02.mp4",
+    webmSrc: "/videos/hero-countryside-02.webm",
+  },
+  {
+    mp4Src: "/videos/hero-countryside-03.mp4",
+    webmSrc: "/videos/hero-countryside-03.webm",
+  },
+];
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,13 +71,23 @@ export default function Hero() {
       <Navbar />
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <SeamlessLoopVideo
-          src={HERO_VIDEO_SRC}
+          clips={HERO_CLIPS}
           poster={heroPoster}
-          fade={0.8}
+          crossfadeSeconds={1}
+          playbackRate={1}
           className="object-cover object-[90%_center] md:object-center"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/85 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10 pointer-events-none" />
+
+        {/* Ultra-smooth progressive scrim shadow tapering seamlessly from high at bottom to low/zero upwards */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-28 sm:h-36 md:h-44 z-10 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.88) 12%, rgba(0,0,0,0.68) 25%, rgba(0,0,0,0.46) 40%, rgba(0,0,0,0.26) 58%, rgba(0,0,0,0.12) 74%, rgba(0,0,0,0.03) 88%, rgba(0,0,0,0) 100%)",
+          }}
+        />
 
         <div
           className="absolute inset-0 pointer-events-none z-10"
