@@ -55,7 +55,7 @@ export function SeamlessLoopVideo({
 
     if (videos.length === 1) {
       first.loop = true;
-      first.play().catch(() => {});
+      first.play().catch(() => { });
       return;
     }
 
@@ -99,7 +99,7 @@ export function SeamlessLoopVideo({
           const retry = () => {
             if (el.paused) {
               el.muted = true;
-              void el.play().catch(() => {});
+              void el.play().catch(() => { });
             }
           };
           window.addEventListener("click", retry, { once: true });

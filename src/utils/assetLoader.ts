@@ -1,7 +1,4 @@
 export const CRITICAL_VIDEOS = [
-  "/videos/hero-countryside-01.mp4",
-  "/videos/hero-countryside-02.mp4",
-  "/videos/hero-countryside-03.mp4",
   "/videos/tech_bg.mp4",
   "/videos/project_bg.mp4",
   "/videos/footer_bg.mp4",
@@ -34,6 +31,31 @@ export const CRITICAL_IMAGES = [
   "/assets/projects/planit/planit.svg",
   "/assets/projects/gokulbhandar/gokul-bhandar-1.svg",
 ];
+
+let vimeoHeroReadyResolvers: Array<(value: boolean) => void> = [];
+let isVimeoHeroReadyState = false;
+
+export function notifyVimeoHeroReady(): void {
+  if (isVimeoHeroReadyState) return;
+  isVimeoHeroReadyState = true;
+  vimeoHeroReadyResolvers.forEach((resolve) => resolve(true));
+  vimeoHeroReadyResolvers = [];
+}
+
+export function isVimeoHeroReady(): boolean {
+  return isVimeoHeroReadyState;
+}
+
+export function waitForVimeoHeroReady(): Promise<boolean> {
+  if (isVimeoHeroReadyState) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    vimeoHeroReadyResolvers.push(resolve);
+    // Timeout fallback (12s) so the loader never hangs indefinitely if Vimeo fails or is blocked
+    setTimeout(() => {
+      resolve(true);
+    }, 12000);
+  });
+}
 
 export function preloadImage(url: string): Promise<boolean> {
   return new Promise((resolve) => {
@@ -112,7 +134,7 @@ export function waitForDOM(): Promise<boolean> {
 export function trackAllAssets(onProgress: (ratio: number) => void): Promise<void> {
   return new Promise((resolve) => {
     const allTasks: Promise<any>[] = [];
-    const totalCount = CRITICAL_VIDEOS.length + CRITICAL_IMAGES.length + 2;
+    const totalCount = CRITICAL_VIDEOS.length + CRITICAL_IMAGES.length + 3;
     let completedCount = 0;
 
     const handleItemComplete = () => {
@@ -130,8 +152,9 @@ export function trackAllAssets(onProgress: (ratio: number) => void): Promise<voi
     });
 
     allTasks.push(waitForFonts().then(handleItemComplete));
-
     allTasks.push(waitForDOM().then(handleItemComplete));
+    allTasks.push(waitForVimeoHeroReady().then(handleItemComplete));
+
     Promise.allSettled(allTasks).then(() => {
       onProgress(1);
       resolve();
@@ -140,6 +163,6 @@ export function trackAllAssets(onProgress: (ratio: number) => void): Promise<voi
     setTimeout(() => {
       onProgress(1);
       resolve();
-    }, 12000);
+    }, 14000);
   });
 }

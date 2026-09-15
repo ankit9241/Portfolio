@@ -4,28 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
-import SeamlessLoopVideo from "./SeamlessLoopVideo";
+import Player from "@vimeo/player";
 import heroPoster from "../assets/hero-frame.jpg";
 import { playClickSound } from "../utils/audio";
+import { notifyVimeoHeroReady } from "../utils/assetLoader";
 import Navbar from "./Navbar";
-
-const HERO_CLIPS = [
-  {
-    mp4Src: "/videos/hero-countryside-01.mp4",
-    webmSrc: "/videos/hero-countryside-01.webm",
-  },
-  {
-    mp4Src: "/videos/hero-countryside-02.mp4",
-    webmSrc: "/videos/hero-countryside-02.webm",
-  },
-  {
-    mp4Src: "/videos/hero-countryside-03.mp4",
-    webmSrc: "/videos/hero-countryside-03.webm",
-  },
-];
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const vimeoContainerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<Player | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   // Subtle mouse parallax on content only (max 2-3px)
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
@@ -42,6 +31,104 @@ export default function Hero() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Initialize and synchronize Vimeo background video player via SDK
+  useEffect(() => {
+    if (!vimeoContainerRef.current) return;
+
+    let isDisposed = false;
+    vimeoContainerRef.current.innerHTML = "";
+
+    const player = new Player(vimeoContainerRef.current, {
+      id: 1226907010,
+      background: true,
+      autoplay: true,
+      muted: true,
+      loop: true,
+      controls: false,
+      playsinline: true,
+      dnt: true,
+      autopause: false,
+      transparent: false,
+    });
+    playerRef.current = player;
+
+    const handleVideoReadyAndPlaying = () => {
+      if (isDisposed) return;
+      setIsVideoPlaying(true);
+      notifyVimeoHeroReady();
+    };
+
+    player.on("play", handleVideoReadyAndPlaying);
+    player.on("playing", handleVideoReadyAndPlaying);
+    player.on("timeupdate", (data) => {
+      if (data.seconds > 0.05) {
+        handleVideoReadyAndPlaying();
+      }
+    });
+
+    const forcePlay = async () => {
+      try {
+        await player.setMuted(true);
+        await player.setVolume(0);
+        await player.setLoop(true);
+        await player.play();
+        handleVideoReadyAndPlaying();
+      } catch {
+        // Autoplay may wait for user gesture in some browser policies
+      }
+    };
+
+    player.ready().then(() => {
+      if (isDisposed) return;
+      forcePlay();
+    }).catch(() => {
+      handleVideoReadyAndPlaying();
+    });
+
+    // Fallback play triggers on user interaction to overcome strict autoplay policies
+    const handleInteraction = () => {
+      if (isDisposed) return;
+      player.getPaused().then((isPaused) => {
+        if (isPaused) {
+          forcePlay();
+        }
+      }).catch(() => {});
+    };
+
+    const handleVisibility = () => {
+      if (isDisposed) return;
+      if (!document.hidden) {
+        forcePlay();
+      }
+    };
+
+    window.addEventListener("pointerdown", handleInteraction, { passive: true });
+    window.addEventListener("touchstart", handleInteraction, { passive: true });
+    window.addEventListener("scroll", handleInteraction, { passive: true });
+    window.addEventListener("mousemove", handleInteraction, { once: true, passive: true });
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    // Timeout safety fallback so the site loader always unlocks even if Vimeo fails
+    const fallbackTimer = setTimeout(() => {
+      handleVideoReadyAndPlaying();
+    }, 10000);
+
+    return () => {
+      isDisposed = true;
+      clearTimeout(fallbackTimer);
+      window.removeEventListener("pointerdown", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("mousemove", handleInteraction);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      try {
+        player.destroy();
+      } catch {
+        // Ignore destroy error on unmount
+      }
+    };
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -69,14 +156,30 @@ export default function Hero() {
       className="relative h-screen w-full bg-black overflow-hidden select-none"
     >
       <Navbar />
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <SeamlessLoopVideo
-          clips={HERO_CLIPS}
-          poster={heroPoster}
-          crossfadeSeconds={1.2}
-          playbackRate={1}
-          className="object-cover object-[90%_center] md:object-center"
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+        {/* Poster image fallback: always present behind the video */}
+        <img
+          src={heroPoster}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[90%_center] md:object-center select-none"
         />
+
+        {/* Vimeo Fullscreen Chromeless Background Video Container */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
+          <div
+            ref={vimeoContainerRef}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none select-none transition-opacity duration-1000 ease-out [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0 [&>iframe]:pointer-events-none [&>div]:w-full [&>div]:h-full ${
+              isVideoPlaying ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              width: "100vw",
+              height: "56.25vw",
+              minHeight: "100vh",
+              minWidth: "177.78vh",
+            }}
+          />
+        </div>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10 pointer-events-none" />
 
