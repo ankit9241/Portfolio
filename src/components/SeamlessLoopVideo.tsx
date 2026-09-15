@@ -117,7 +117,7 @@ export function SeamlessLoopVideo({
         !transitioning &&
         Number.isFinite(active.duration) &&
         active.duration > 0 &&
-        active.duration - active.currentTime <= crossfadeSeconds
+        active.duration - active.currentTime <= crossfadeSeconds + 0.35
       ) {
         transitioning = true;
         const nextIndex = (activeIndex + 1) % videos.length;

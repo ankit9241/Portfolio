@@ -73,7 +73,7 @@ export default function Hero() {
         <SeamlessLoopVideo
           clips={HERO_CLIPS}
           poster={heroPoster}
-          crossfadeSeconds={1}
+          crossfadeSeconds={1.2}
           playbackRate={1}
           className="object-cover object-[90%_center] md:object-center"
         />
