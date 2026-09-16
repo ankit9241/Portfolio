@@ -19,15 +19,16 @@ export interface SEOProps {
 }
 
 export const SITE_URL = "https://ankitiitp.tech";
-export const DEFAULT_TITLE = "Ankit Kumar - Full Stack Developer | IIT Patna";
+export const DEFAULT_TITLE = "Ankit Kumar - Full Stack Developer & AI Builder | IIT Patna";
 export const DEFAULT_DESCRIPTION =
-  "Ankit Kumar - Full-Stack Developer & AI Explorer from IIT Patna (Indian Institute of Technology Patna). Explore my portfolio featuring full-stack products, AI projects, and engineering experience.";
+  "Ankit Kumar - Full-Stack Developer & AI Builder from IIT Patna (Indian Institute of Technology Patna). Building production-ready web applications and LLM-powered systems with modern full-stack technologies.";
 export const DEFAULT_IMAGE = "https://ankitiitp.tech/assets/profile-ankit.png";
 export const DEFAULT_KEYWORDS =
-  "Ankit Kumar, Ankit Kumar IIT Patna, Ankit Kumar IITP, ankitkumar1109, ankit9241, Full Stack Developer, AI Developer, Indian Institute of Technology Patna, IIT Patna, React, TypeScript, Next.js, Node.js, Portfolio";
+  "Ankit Kumar, Ankit Kumar IIT Patna, Ankit Kumar IITP, ankitkumar1109, ankit9241, Full Stack Developer, AI Builder, LLMs, LangGraph, Indian Institute of Technology Patna, IIT Patna, React, TypeScript, Next.js, Node.js, Portfolio";
 
 export const PROJECT_SEO_TITLES: Record<string, string> = {
   basera: "Basera - Student PG & Flat Platform for DU Students | Ankit Kumar",
+  "basera-outreach": "Basera Outreach - Offline-First PG Verification PWA | Ankit Kumar",
   cvpilot: "CVPilot - AI Resume Builder & ATS Optimizer | Ankit Kumar",
   podsnap: "PodSnap - AI Podcast Clipper | Ankit Kumar",
   "stc-iit-patna": "STC IIT Patna - Student Technical Council Platform | Ankit Kumar",
@@ -63,7 +64,7 @@ export const HOME_SCHEMA_GRAPH = {
       "@type": "ProfilePage",
       "@id": "https://ankitiitp.tech/#profile",
       "url": "https://ankitiitp.tech/",
-      "name": "Ankit Kumar - Full Stack Developer | IIT Patna",
+      "name": "Ankit Kumar - Full Stack Developer & AI Builder | IIT Patna",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://ankitiitp.tech/#website",
@@ -86,8 +87,8 @@ export const HOME_SCHEMA_GRAPH = {
       ],
       "url": "https://ankitiitp.tech/",
       "image": "https://ankitiitp.tech/assets/profile-ankit.png",
-      "jobTitle": "Full Stack Developer & AI Explorer",
-      "description": "Ankit Kumar is a Full-Stack Developer and AI Explorer from Indian Institute of Technology Patna (IIT Patna), specializing in building full-stack products, AI applications, and modern web platforms.",
+      "jobTitle": "Full Stack Developer & AI Builder",
+      "description": "Ankit Kumar is a Full-Stack Developer and AI Builder from Indian Institute of Technology Patna (IIT Patna), specializing in building production-ready web applications and LLM-powered systems.",
       "email": "mailto:ankitkumar.iitp09@gmail.com",
       "alumniOf": {
         "@type": "CollegeOrUniversity",

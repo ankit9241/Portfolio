@@ -84,7 +84,9 @@ const Footer = () => {
               <SiLeetcode className="w-4.5 h-4.5" />
             </a>
             <a
-              href="mailto:ankitkumar.iitp09@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ankitkumar.iitp09@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => playClickSound()}
               className="p-2 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-white/20 transition text-text-secondary hover:text-white"
             >

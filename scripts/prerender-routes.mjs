@@ -11,6 +11,7 @@ const SITE_URL = "https://ankitiitp.tech";
 
 const PROJECT_SEO_TITLES = {
   basera: "Basera - Student PG & Flat Platform for DU Students | Ankit Kumar",
+  "basera-outreach": "Basera Outreach - Offline-First PG Verification PWA | Ankit Kumar",
   cvpilot: "CVPilot - AI Resume Builder & ATS Optimizer | Ankit Kumar",
   podsnap: "PodSnap - AI Podcast Clipper | Ankit Kumar",
   "stc-iit-patna": "STC IIT Patna - Student Technical Council Platform | Ankit Kumar",

@@ -94,7 +94,7 @@ export default function Hero() {
         if (isPaused) {
           forcePlay();
         }
-      }).catch(() => {});
+      }).catch(() => { });
     };
 
     const handleVisibility = () => {
@@ -169,9 +169,8 @@ export default function Hero() {
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
           <div
             ref={vimeoContainerRef}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none select-none transition-opacity duration-1000 ease-out [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0 [&>iframe]:pointer-events-none [&>div]:w-full [&>div]:h-full ${
-              isVideoPlaying ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none select-none transition-opacity duration-1000 ease-out [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0 [&>iframe]:pointer-events-none [&>div]:w-full [&>div]:h-full ${isVideoPlaying ? "opacity-100" : "opacity-0"
+              }`}
             style={{
               width: "100vw",
               height: "56.25vw",
@@ -257,17 +256,17 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
               className="text-2xl sm:text-3xl lg:text-[2.1rem] xl:text-[2.4rem] font-medium tracking-[-0.025em] text-[#E1E0CC] font-sans leading-[1.15] [text-shadow:0_2px_16px_rgba(0,0,0,0.85)] max-w-sm sm:max-w-md"
             >
-              <span className="block">AI-powered products</span>
-              <span className="block text-white/90">that solve real problems.</span>
+              <span className="block">Full Stack Developer</span>
+              <span className="block text-white/90">& AI Builder</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
-              className="pt-1 text-xs sm:text-[13px] text-white/50 font-sans tracking-wide [text-shadow:0_1px_8px_rgba(0,0,0,0.8)]"
+              className="pt-1 text-xs sm:text-[13px] text-white/70 font-sans tracking-normal leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.8)]"
             >
-              Full-stack development × Artificial Intelligence
+              Building production-ready web applications and LLM-powered systems with modern full-stack technologies.
             </motion.p>
           </div>
 
@@ -345,7 +344,9 @@ export default function Hero() {
                   </span>
                 </a>
                 <a
-                  href="mailto:ankitkumar.iitp09@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=ankitkumar.iitp09@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => playClickSound()}
                   aria-label="Email Ankit"
                   className="group/social relative w-9 h-9 rounded-full flex items-center justify-center text-[#E1E0CC] hover:text-white hover:bg-white/10 transition-all duration-200 active:scale-95"

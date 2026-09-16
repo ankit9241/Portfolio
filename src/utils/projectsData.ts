@@ -105,12 +105,12 @@ export const projects: Project[] = [
 
     tech: [
       technologies.nextjs,
-      technologies.react,
-      technologies.typescript,
-      technologies.tailwind,
-      technologies.nodejs,
       technologies.postgresql,
       technologies.prisma,
+      technologies.awsS3,
+      technologies.typescript,
+      technologies.nodejs,
+      technologies.tailwind,
     ],
 
     meta: [
@@ -221,18 +221,212 @@ export const projects: Project[] = [
     statusNote: [
       "Basera is currently under active development and is not yet officially deployed. The current build focuses on the core student accommodation discovery experience, property management, saved listings, and visit scheduling before expanding the platform further.",
     ],
+
+    relatedProjects: ["basera-outreach"],
   },
+
+  // {
+  //   title: "Basera Outreach",
+  //   slug: "basera-outreach",
+  //   tagline: "Offline-First PG Verification PWA",
+
+  //   shortDescription:
+  //     "Built an offline-first PWA for Basera's outreach team to record and verify PG/flat properties during physical field visits, capture property information and photos, and synchronize collected data once connectivity is restored.",
+
+  //   description:
+  //     "An offline-first Progressive Web App built for Basera's field outreach team to record PG/flat verification data, capture property photos, and synchronize field operations when connectivity is restored.",
+
+  //   coverImage: "/assets/projects/basera-outreach/basera-outreach.svg",
+
+  //   gallery: [
+  //     "/assets/projects/basera-outreach/basera-outreach.svg",
+  //   ],
+
+  //   github: "#",
+  //   live: "#",
+  //   isPublished: false,
+
+  //   tech: [
+  //     technologies.offlineFirst,
+  //     technologies.pwa,
+  //     technologies.awsS3,
+  //     technologies.react,
+  //     technologies.typescript,
+  //     technologies.postgresql,
+  //     technologies.prisma,
+  //     technologies.nodejs,
+  //     technologies.express,
+  //   ],
+
+  //   meta: [
+  //     { label: "Role", value: "Full Stack Developer" },
+  //     { label: "Architecture", value: "Offline-First + Local Storage + Sync Queue" },
+  //     { label: "Target Users", value: "Basera Field Outreach Team" },
+  //     { label: "Status", value: "Completed" },
+  //     { label: "Project Type", value: "Internal Operations Tool" },
+  //   ],
+
+  //   overview: [
+  //     "Basera Outreach is a field verification PWA designed for situations where reliable internet connectivity cannot be assumed.",
+  //     "Field executives can record property details, room configurations, pricing, amenities, landlord information, and photos directly on their devices. Data is persisted locally first and synchronized with the backend when connectivity returns.",
+  //     "The system uses IndexedDB/Dexie.js for local storage, a persistent sync queue for offline mutations, and AWS S3 presigned URLs for direct image uploads.",
+  //   ],
+
+  //   context: [
+  //     "Physical PG verification often happens in areas with unstable or unavailable mobile connectivity.",
+  //     "A network-dependent application can cause lost form data during network failures, repeated work and duplicate submissions, failed uploads of large property images, and delays caused by waiting for server responses.",
+  //     "The application therefore treats local storage as the primary source of truth during field visits, rather than making the network a requirement for every action.",
+  //   ],
+
+  //   whyBuilt: [
+  //     "The application follows a local-first architecture: User Action → IndexedDB / Dexie.js → Persistent Sync Queue → Network Restored → Backend API → PostgreSQL.",
+  //     "Field agents can continue working normally while offline. Pending operations are automatically processed when connectivity becomes available.",
+  //     "This allows field operations to continue during connectivity loss while significantly reducing the risk of data loss during on-site visits.",
+  //   ],
+
+  //   techStack: [
+  //     {
+  //       category: "Frontend",
+  //       items: [
+  //         "React",
+  //         "TanStack Start",
+  //         "Vite",
+  //         "TypeScript",
+  //         "PWA",
+  //       ],
+  //     },
+  //     {
+  //       category: "Offline Architecture",
+  //       items: [
+  //         "IndexedDB",
+  //         "Dexie.js",
+  //         "Sync Queue",
+  //         "Network State Detection",
+  //       ],
+  //     },
+  //     {
+  //       category: "Backend",
+  //       items: [
+  //         "Node.js",
+  //         "Express",
+  //         "Prisma",
+  //         "PostgreSQL",
+  //       ],
+  //     },
+  //     {
+  //       category: "Cloud & Media",
+  //       items: [
+  //         "AWS S3",
+  //         "Presigned URLs",
+  //       ],
+  //     },
+  //   ],
+
+  //   features: [
+  //     {
+  //       title: "Offline-First Data Collection",
+  //       description:
+  //         "Create, edit, and review property records without an active internet connection.",
+  //     },
+  //     {
+  //       title: "Persistent Sync Queue",
+  //       description:
+  //         "Offline mutations are stored locally and processed sequentially after reconnection with retry handling.",
+  //     },
+  //     {
+  //       title: "PWA & Mobile Workflow",
+  //       description:
+  //         "Installable PWA with offline asset caching and an app-like mobile workflow for field teams.",
+  //     },
+  //     {
+  //       title: "Property Verification",
+  //       description:
+  //         "Records room types, rent, deposits, amenities, location details, landlord information, and verification data.",
+  //     },
+  //     {
+  //       title: "Direct S3 Image Uploads",
+  //       description:
+  //         "Property photos are uploaded directly from the device to AWS S3 using presigned URLs, keeping large media payloads away from the application server.",
+  //     },
+  //   ],
+
+  //   technicalDetails: [
+  //     {
+  //       title: "Local-First Mutation Pipeline",
+  //       description:
+  //         "User Action → IndexedDB / Dexie.js → Persistent Sync Queue → Network Restored → Backend API → PostgreSQL. Every field mutation is persisted locally before synchronization, preventing data loss during network interruptions.",
+  //     },
+  //     {
+  //       title: "Image Upload Architecture",
+  //       description:
+  //         "Camera / Gallery → Request Presigned URL → Backend → AWS S3 → Store Image Reference → PostgreSQL. This separates media transfer from the application API and makes large image uploads more reliable.",
+  //     },
+  //     {
+  //       title: "Structured Local Database",
+  //       description:
+  //         "Dexie.js provides a structured and transactional layer over IndexedDB for property records, drafts, cached data, and sync operations.",
+  //     },
+  //     {
+  //       title: "Persistent Synchronization",
+  //       description:
+  //         "Sync operations survive page reloads and are processed when connectivity returns, with network state detection and retry logic.",
+  //     },
+  //   ],
+
+  //   challenges: [
+  //     {
+  //       title: "Reliable Offline Synchronization",
+  //       problem:
+  //         "Offline edits can easily result in duplicate or out-of-order operations.",
+  //       solution:
+  //         "Persistent mutation records with local identifiers, timestamps, sequential processing, retry handling, and backend idempotency checks.",
+  //     },
+  //     {
+  //       title: "Large Image Uploads",
+  //       problem:
+  //         "Routing multiple high-resolution photos through the backend can create unnecessary server load and upload failures.",
+  //       solution:
+  //         "Direct client-to-S3 uploads using presigned PUT URLs.",
+  //     },
+  //   ],
+
+  //   metrics: [
+  //     { label: "Architecture", value: "Offline-First PWA" },
+  //     { label: "Local Database", value: "IndexedDB + Dexie.js" },
+  //     { label: "Sync Mechanism", value: "Persistent Sequential Queue" },
+  //     { label: "Media Pipeline", value: "AWS S3 Presigned Direct Uploads" },
+  //     { label: "Primary Database", value: "PostgreSQL + Prisma ORM" },
+  //   ],
+
+  //   results: [
+  //     "Enabled field teams to continue property verification without continuous connectivity.",
+  //     "Persisted field data locally before synchronization, reducing risk of data loss.",
+  //     "Moved large media uploads away from the application server using AWS S3.",
+  //     "Built an automatic synchronization flow that resumes pending operations after reconnection.",
+  //   ],
+
+  //   learnings: [
+  //     "Building an offline-first application requires treating the client-side database and synchronization layer as core parts of the system—not as an optional fallback.",
+  //     "The project also gave me practical experience with PWA architecture, IndexedDB, synchronization strategies, presigned cloud uploads, and resilient client-server workflows.",
+  //   ],
+
+  //   statusNote: [
+  //     "Basera Outreach is an internal operational tool supporting Basera's on-ground property verification workflow.",
+  //   ],
+
+  //   relatedProjects: ["basera"],
+  // },
 
   {
     title: "CVPilot",
     slug: "cvpilot",
-    tagline: "AI-Powered Resume Intelligence Platform",
+    tagline: "LLM-Powered Resume Intelligence & 9-Node LangGraph Platform",
 
     shortDescription:
-      "An AI-powered platform currently being built to help users create, optimize, and manage resumes tailored to specific job descriptions.",
+      "An AI-powered resume intelligence platform featuring a 9-node LangGraph workflow orchestrating LLM-driven job description analysis, content selection, rewriting, and structured resume generation.",
 
     description:
-      "CVPilot is an AI-first resume platform currently under development. The goal is to simplify the resume-building process by combining AI-assisted content generation, ATS optimization, resume management, and intelligent job-specific customization into a single platform.",
+      "CVPilot is an AI-first resume platform powered by a 9-node LangGraph workflow. It orchestrates LLM-driven job description analysis, intelligent candidate experience selection, targeted bullet point rewriting, and structured ATS resume generation into an automated, multi-step pipeline.",
 
     coverImage: "/assets/projects/cvpilot/cvpilot-1.png",
 
@@ -243,13 +437,12 @@ export const projects: Project[] = [
     isPublished: false,
 
     tech: [
-      technologies.nextjs,
-      technologies.react,
+      technologies.llm,
+      technologies.langgraph,
+      technologies.aiWorkflow,
       technologies.typescript,
-      technologies.tailwind,
       technologies.postgresql,
       technologies.prisma,
-      technologies.aws,
     ],
 
     meta: [
@@ -268,82 +461,78 @@ export const projects: Project[] = [
     ],
 
     overview: [
-      "CVPilot is an AI-powered resume platform being built to streamline the resume creation process.",
-      "Instead of manually editing resumes for every application, users will be able to maintain a structured profile while AI generates resumes tailored to different job descriptions.",
-      "The platform is focused on combining resume generation, ATS optimization, and resume management into a single workflow.",
+      "CVPilot is an AI/LLM-powered resume intelligence platform that automates the end-to-end process of tailoring resumes to specific job descriptions.",
+      "At its core is a 9-node LangGraph workflow that orchestrates LLM-powered job description analysis, intelligent content selection, targeted bullet point rewriting, and structured ATS resume generation.",
+      "Instead of generic prompt generation, the platform maintains structured candidate profile data in PostgreSQL and executes deterministic multi-step LLM chains to ensure high quality and accurate alignment.",
     ],
 
     context: [
-      "Job seekers often spend hours customizing resumes for different applications while trying to improve ATS compatibility.",
-      "CVPilot aims to reduce this repetitive work by using AI to automate resume generation and optimization.",
+      "Job seekers often spend hours customizing resumes for different applications while trying to maintain strong ATS compatibility.",
+      "CVPilot eliminates this repetitive friction by deploying a structured 9-node LangGraph workflow to coordinate LLM analysis, selection, and generation.",
     ],
 
     whyBuilt: [
-      "I started building CVPilot to solve the repetitive process of tailoring resumes for different job applications.",
-      "The vision is to build an AI assistant that helps users create stronger resumes with significantly less manual effort.",
+      "I started building CVPilot to replace manual resume tailoring with structured, reliable AI workflows.",
+      "The goal is to move beyond basic single-prompt chatbots into robust graph-orchestrated LLM applications with deterministic execution states.",
     ],
 
     techStack: [
+      {
+        category: "AI & Orchestration",
+        items: ["LLMs", "LangGraph", "AI Workflows", "Gemini / OpenAI"],
+      },
       {
         category: "Frontend",
         items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       },
       {
-        category: "Backend",
-        items: ["Node.js", "Server Actions"],
+        category: "Backend & Data",
+        items: ["Node.js", "TypeScript", "PostgreSQL", "Prisma"],
       },
       {
-        category: "Database",
-        items: ["PostgreSQL", "Prisma"],
-      },
-      {
-        category: "Storage",
+        category: "Cloud & Storage",
         items: ["AWS S3"],
-      },
-      {
-        category: "AI",
-        items: ["OpenAI", "LangGraph"],
       },
     ],
 
     features: [
       {
-        title: "AI Resume Generation",
+        title: "9-Node LangGraph Orchestration",
         description:
-          "Generate professional resumes tailored to specific job descriptions.",
+          "Executes a multi-stage graph pipeline for JD parsing, candidate profile matching, bullet point rewriting, and ATS validation.",
       },
       {
-        title: "Resume Vault",
+        title: "LLM-Powered Content Rewriting",
         description:
-          "Manage multiple resumes from a centralized dashboard.",
+          "Intelligently refines bullet points and highlights experiences specifically targeted to the employer's requirements.",
       },
       {
-        title: "ATS Optimization",
+        title: "Structured ATS Resume Generation",
         description:
-          "Analyze resumes and suggest improvements for better ATS compatibility.",
+          "Generates cleanly formatted, ATS-compliant resumes backed by structured schema validation.",
       },
       {
-        title: "Job-Specific Customization",
+        title: "Centralized Resume Vault",
         description:
-          "Select the most relevant skills, projects, and experiences for each application.",
+          "Store and manage multiple resume iterations and candidate profiles in a unified dashboard.",
       },
     ],
 
     technicalDetails: [
       {
-        title: "AI Workflow",
+        title: "9-Node LangGraph Architecture",
         description:
-          "Building a modular AI workflow that analyzes user profiles and job descriptions before generating customized resumes.",
+          "Coordinates stateful graph nodes to isolate LLM sub-tasks, ensuring high reliability, fallback handling, and predictable structured output.",
       },
       {
-        title: "Structured Resume Data",
+        title: "Relational Structured Data Layer",
         description:
-          "Resume information is stored as structured data instead of static documents, enabling AI-powered customization.",
+          "Candidate profiles and generated resumes are stored as strongly-typed relational models in PostgreSQL via Prisma, avoiding unstructured document chaos.",
       },
       {
-        title: "Scalable Architecture",
+        title: "Modular AI Pipeline Design",
         description:
-          "Designed with a modular architecture to support future AI features as the platform evolves.",
+          "Decoupled graph structure makes it seamless to swap LLM providers and expand node capabilities as the platform evolves.",
       },
     ],
 
@@ -381,13 +570,13 @@ export const projects: Project[] = [
   {
     title: "PodSnap",
     slug: "podsnap",
-    tagline: "AI-Powered Podcast Repurposing Platform",
+    tagline: "AI Podcast Repurposing Platform Powered by Gemini & WhisperX",
 
     shortDescription:
-      "An AI-powered platform that transforms long-form podcasts into engaging short-form vertical clips with intelligent moment detection, active speaker tracking, and dynamic subtitles.",
+      "An AI podcast repurposing platform using WhisperX for transcription and Google Gemini for LLM-powered highlight extraction, speaker tracking, and automated short-form video generation.",
 
     description:
-      "PodSnap is an AI-powered SaaS platform that automates the process of converting long-form podcasts into social media-ready short clips. By combining speech recognition, LLM-powered highlight detection, active speaker tracking, dynamic video cropping, and subtitle generation, the platform eliminates hours of manual editing and produces ready-to-publish vertical videos in minutes.",
+      "PodSnap is an AI podcast repurposing platform that automates transforming long-form podcast recordings into social media-ready short clips. It pairs WhisperX for accelerated speech transcription with Google Gemini for LLM-driven highlight detection and content repurposing, orchestrated into an automated pipeline with active speaker tracking and dynamic subtitle rendering.",
 
     coverImage: "/assets/projects/podsnap/podsnap-1.png",
 
@@ -401,20 +590,13 @@ export const projects: Project[] = [
     isPublished: true,
 
     tech: [
+      technologies.gemini,
+      technologies.llm,
+      technologies.whisperx,
+      technologies.aiPipeline,
       technologies.nextjs,
-      technologies.react,
-      technologies.typescript,
-      technologies.tailwind,
-      technologies.python,
       technologies.fastapi,
       technologies.postgresql,
-      technologies.prisma,
-      technologies.aws,
-      technologies.stripe,
-      technologies.modal,
-      technologies.inngest,
-      technologies.ffmpeg,
-      technologies.whisper,
     ],
 
     meta: [
@@ -814,13 +996,13 @@ export const projects: Project[] = [
   {
     title: "ExamifAI",
     slug: "examifai",
-    tagline: "AI-Based Secure Online Examination System",
+    tagline: "AI Examination & Computer Vision Automated Proctoring Platform",
 
     shortDescription:
-      "A full-stack AI-powered exam platform built to conduct secure online assessments with face verification, browser monitoring, automated violation handling, and instructor analytics.",
+      "A full-stack AI examination platform powered by computer vision and face-api.js for real-time candidate verification, automated proctoring, and violation tracking.",
 
     description:
-      "ExamifAI is a full-stack AI-powered online examination platform developed as a Capstone Project during my second semester. It was designed to reduce cheating in remote exams by combining face recognition, browser behavior monitoring, and automated exam enforcement into a single proctored workflow.",
+      "ExamifAI is a full-stack AI-powered examination and automated proctoring platform. Built with computer vision and face-api.js facial recognition, it secures remote assessments through real-time webcam identity verification, browser violation tracking, and automated proctoring workflows.",
 
     coverImage: "/assets/projects/examifai/examifai.svg",
 
@@ -831,10 +1013,11 @@ export const projects: Project[] = [
     isPublished: true,
 
     tech: [
+      technologies.computerVision,
+      technologies.faceRecognition,
+      technologies.faceApi,
       technologies.react,
-      technologies.vite,
-      technologies.javascript,
-      technologies.bootstrap,
+      technologies.nodejs,
       technologies.mongodb,
     ],
 
@@ -1045,12 +1228,11 @@ export const projects: Project[] = [
 
     tech: [
       technologies.react,
-      technologies.vite,
-      technologies.typescript,
-      technologies.tailwind,
       technologies.nodejs,
       technologies.express,
       technologies.mongodb,
+      technologies.jwt,
+      technologies.security,
     ],
 
     meta: [

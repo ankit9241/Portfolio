@@ -44,8 +44,8 @@ const Projects = () => {
             <span className="font-serif italic font-normal text-[#E1E0CC]">Projects</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto mt-6 font-sans">
-            Here are some of my recent projects that showcase my skills in
-            full-stack development, UI/UX design, and problem-solving abilities.
+            Here are some of my recent projects that showcase my work in
+            production full-stack applications, AI/LLM workflows, and system architecture.
           </p>
         </motion.div>
 

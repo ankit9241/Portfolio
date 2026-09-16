@@ -191,8 +191,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 </a>
 
                 <a
-                  href="mailto:ankitkumar.iitp09@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=ankitkumar.iitp09@gmail.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-card-bg border border-accent hover:border-accent transition text-text-secondary hover:text-text-primary"
                 >
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5" />

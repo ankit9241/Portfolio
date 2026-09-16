@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
-import { SiLeetcode } from "react-icons/si";
+import SocialPill from "./SocialPill";
 
 const easeCurve = [0.16, 1, 0.3, 1] as const;
 
@@ -102,52 +101,12 @@ const About = () => {
                 <span className="font-serif italic text-[#E1E0CC]">Kumar</span>
               </h3>
               <p className="text-xs uppercase font-mono tracking-widest text-[#888888] mt-1">
-                Full Stack Developer
+                Full Stack Developer & AI Builder
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2.5 mt-4 justify-center w-full">
-              <a
-                href="https://github.com/ankit9241"
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
-              >
-                <Github className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
-                <span>GitHub</span>
-                <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/ankitkumar1109/"
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
-              >
-                <Linkedin className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
-                <span>LinkedIn</span>
-                <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
-
-              <a
-                href="https://leetcode.com/u/ankit9241/"
-                target="_blank"
-                rel="me noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
-              >
-                <SiLeetcode className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
-                <span>LeetCode</span>
-                <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
-
-              <a
-                href="mailto:ankitkumar.iitp09@gmail.com"
-                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/10 text-xs font-medium text-[#C0C0C0] hover:text-white transition-all duration-200"
-              >
-                <Mail className="w-3.5 h-3.5 text-[#BDBDBD] group-hover:text-white transition-colors" />
-                <span>Email</span>
-                <ArrowUpRight className="w-3 h-3 text-[#666666] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
+            <div className="mt-5 flex justify-center w-full">
+              <SocialPill />
             </div>
           </motion.div>
 
@@ -160,14 +119,11 @@ const About = () => {
               className="text-[#E5E5E5] text-lg sm:text-xl leading-relaxed font-sans text-center"
             >
               Hello! I&apos;m <strong className="text-white font-semibold">Ankit Kumar</strong>, a third-year BS (CSDA)
-              student at <strong className="text-white font-semibold">IIT Patna</strong>. I&apos;m a developer who enjoys building clean,
-              practical full-stack applications using React, JavaScript,
-              Tailwind CSS, and Node.js. I like working on products that look
-              good, feel smooth, and solve real problems.
+              student at <strong className="text-white font-semibold">IIT Patna</strong>, focused on building production-ready web applications and LLM-powered systems.
             </motion.p>
 
             <RevealWords
-              text="My work mixes academic problem-solving with hands-on development. I enjoy taking projects from concept to deployment and improving user experience through clean design and reliable functionality."
+              text="I work across the stack with React, Next.js, Node.js, TypeScript, and PostgreSQL, while also building LLM-powered applications and structured AI workflows using Gemini and LangGraph. I also have hands-on experience with AWS S3 and cloud-based application infrastructure."
               className="text-[#D5D5D5] text-lg sm:text-xl leading-relaxed font-sans text-center"
               delay={0.12}
             />
@@ -181,7 +137,7 @@ const About = () => {
             >
               <p className="text-[#ADADAD] italic text-base font-sans">
                 &ldquo;I believe in writing clean code, learning continuously, and
-                building things that are both useful and reliable.&rdquo;
+                building reliable full-stack and AI-driven products that solve real problems.&rdquo;
               </p>
               <p className="text-[#9D9D9D] text-xs font-mono tracking-wider uppercase mt-2">
                 - Ankit Kumar

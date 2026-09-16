@@ -7,6 +7,7 @@ import {
   SiJavascript,
   SiTypescript,
   SiReact,
+  SiReactquery,
   SiTailwindcss,
   SiBootstrap,
   SiNodedotjs,
@@ -25,6 +26,7 @@ import {
   SiFigma,
   SiGit,
   SiGooglegemini,
+  SiOpenai,
   SiMysql,
   SiRadixui,
   SiFramer,
@@ -36,9 +38,8 @@ import {
   SiScipy,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
-import { LuWorkflow } from "react-icons/lu";
+import { LuWorkflow, LuBrain, LuSparkles, LuCpu } from "react-icons/lu";
 import { MdAnimation } from "react-icons/md";
-// import RotatingTechStack from "./RotatingTechStack";
 
 const CursorIcon = (props: any) => (
   <img
@@ -49,12 +50,6 @@ const CursorIcon = (props: any) => (
 );
 
 const Skills = () => {
-  // Animation variants
-  // const fadeUp = {
-  //   hidden: { opacity: 0, y: 30 },
-  //   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  // };
-
   const stackCategories = [
     {
       id: "01",
@@ -73,12 +68,13 @@ const Skills = () => {
       skills: [
         { name: "React", icon: SiReact },
         { name: "Next.js", icon: SiNextdotjs },
+        { name: "TanStack Start", icon: SiReactquery },
+        { name: "Vite", icon: SiVite },
         { name: "Tailwind CSS", icon: SiTailwindcss },
         { name: "Bootstrap CSS", icon: SiBootstrap },
         { name: "Radix UI", icon: SiRadixui },
         { name: "Framer Motion", icon: SiFramer },
         { name: "Lottie", icon: MdAnimation },
-        { name: "Vite", icon: SiVite },
       ],
     },
     {
@@ -117,7 +113,12 @@ const Skills = () => {
       id: "06",
       name: "AI & Data Science",
       skills: [
+        { name: "LLMs", icon: LuBrain },
+        { name: "Generative AI", icon: LuSparkles },
         { name: "Gemini", icon: SiGooglegemini },
+        { name: "LangGraph", icon: LuWorkflow },
+        { name: "AI Workflows", icon: LuCpu },
+        { name: "WhisperX", icon: SiOpenai },
         { name: "Pandas", icon: SiPandas },
         { name: "NumPy", icon: SiNumpy },
         { name: "Matplotlib", icon: SiPlotly },

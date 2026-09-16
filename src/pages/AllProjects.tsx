@@ -75,8 +75,8 @@ const AllProjects = () => {
         </div>
 
         <p className="text-center text-lg text-text-secondary max-w-2xl mx-auto mb-16">
-          Explore my complete portfolio of projects showcasing full-stack development,
-          UI/UX design, and problem-solving abilities.
+          Explore my complete portfolio of projects showcasing production full-stack development,
+          AI/LLM-powered systems, and engineering problem-solving.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
