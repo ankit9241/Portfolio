@@ -1,35 +1,8 @@
-export const CRITICAL_VIDEOS = [
-  "/videos/tech_bg.mp4",
-  "/videos/project_bg.mp4",
-  "/videos/footer_bg.mp4",
-];
+export const CRITICAL_VIDEOS: string[] = [];
 
 export const CRITICAL_IMAGES = [
-  "/assets/profile-ankit.png",
   "/assets/hero-frame.jpg",
-  "/assets/tech_frame.jpg",
-  "/assets/footer_frame.jpg",
-  "/experience/thrive-wellness.png",
-  "/experience/stc-logo.png",
-  "/experience/iitp-logo.png",
-  "/assets/certificates/tenure-certificate-2.jpeg",
-  "/assets/certificates/Hack-N-Tech-3.0.jpeg",
-  "/assets/certificates/code-kshetra.jpeg",
-  "/assets/certificates/tenure-certificate-1.png",
-  "/assets/certificates/Hack-N-Tech-2.0.jpeg",
-  "/assets/certificates/Hack-N-Tech-1.0.png",
-  "/assets/projects/basera/basera.svg",
-  "/assets/projects/cvpilot/cvpilot-1.png",
-  "/assets/projects/podsnap/podsnap-1.png",
-  "/assets/projects/stc/stc-1.svg",
-  "/assets/projects/examifai/examifai.svg",
-  "/assets/projects/envora/envora-1.png",
-  "/assets/projects/trackflow/trackflow-1.svg",
-  "/assets/projects/kiran/kiran-v1.svg",
-  "/assets/projects/kiran/kiran-v2.svg",
-  "/assets/projects/crazyone/crazy-one.svg",
-  "/assets/projects/planit/planit.svg",
-  "/assets/projects/gokulbhandar/gokul-bhandar-1.svg",
+  "/assets/profile-ankit.png",
 ];
 
 let vimeoHeroReadyResolvers: Array<(value: boolean) => void> = [];

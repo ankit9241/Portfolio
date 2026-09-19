@@ -40,12 +40,15 @@ import {
 import { VscVscode } from "react-icons/vsc";
 import { LuWorkflow, LuBrain, LuSparkles, LuCpu } from "react-icons/lu";
 import { MdAnimation } from "react-icons/md";
+import Image from "./OptimizedImage";
 
 const CursorIcon = (props: any) => (
-  <img
+  <Image
     src="https://img.icons8.com/?size=512&id=DiGZkjCzyZXn&format=png&color=FFFFFF"
     alt="Cursor AI"
     className={props.className}
+    imageClassName="w-full h-full object-contain"
+    priority
   />
 );
 

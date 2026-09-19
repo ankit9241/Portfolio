@@ -1,41 +1,65 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 
-interface OptimizedImageProps {
+export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
-  alt: string;
+  alt?: string;
   className?: string;
+  imageClassName?: string;
   priority?: boolean;
-  placeholder?: "blur" | "empty";
+  placeholder?: "skeleton" | "blur" | "empty";
   sizes?: string;
   aspectRatio?: string;
   blurDataURL?: string;
-  onLoad?: () => void;
+  skeletonClassName?: string;
+  onLoad?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
+  onError?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
   style?: React.CSSProperties;
 }
 
-const OptimizedImage: React.FC<OptimizedImageProps> = ({
+export const Image: React.FC<ImageProps> = ({
   src,
-  alt,
+  alt = "",
   className = "",
+  imageClassName = "",
   priority = false,
-  placeholder = "blur",
+  placeholder = "skeleton",
   sizes = "100vw",
   aspectRatio,
   blurDataURL,
+  skeletonClassName = "",
   onLoad,
+  onError,
   style,
+  ...rest
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(priority);
+  const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(() => {
+    if (priority) return true;
+    if (typeof window === "undefined") return true;
+    return false;
+  });
+
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Check if image is already cached/complete in DOM
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+      setIsLoaded(true);
+    }
+  }, [src]);
+
   // Intersection Observer for lazy loading
   useEffect(() => {
-    if (priority) return;
+    if (priority || isInView) return;
+
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      setIsInView(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -44,7 +68,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "50px" }
+      { threshold: 0.01, rootMargin: "250px" }
     );
 
     if (containerRef.current) {
@@ -52,35 +76,21 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [priority]);
+  }, [priority, isInView]);
 
-  const handleImageLoad = () => {
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     setIsLoaded(true);
-    onLoad?.();
+    onLoad?.(e);
+  };
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setHasError(true);
+    onError?.(e);
   };
 
   const containerStyle: React.CSSProperties = {
     ...style,
     ...(aspectRatio && { aspectRatio }),
-  };
-
-  const imageStyle: React.CSSProperties = {
-    opacity: isLoaded ? 1 : 0,
-    transition: "opacity 0.3s ease-in-out",
-  };
-
-  const placeholderStyle: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    background: blurDataURL 
-      ? `url(${blurDataURL}) center/cover blur(20px)` 
-      : placeholder === "blur" 
-        ? "linear-gradient(135deg, #1a1a1a, #2a2a2a)" 
-        : "transparent",
-    filter: blurDataURL ? "blur(20px)" : placeholder === "blur" ? "none" : "none",
-    transform: blurDataURL ? "scale(1.1)" : "scale(1)",
-    transition: "opacity 0.3s ease-in-out",
-    opacity: isLoaded ? 0 : 1,
   };
 
   return (
@@ -89,10 +99,35 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       className={`relative overflow-hidden ${className}`}
       style={containerStyle}
     >
-      <div style={placeholderStyle} />
-      
+      {/* Loading Skeleton */}
+      {!isLoaded && !hasError && placeholder !== "empty" && (
+        <div
+          className={`absolute inset-0 z-0 bg-[#141416] flex items-center justify-center overflow-hidden border border-white/[0.04] ${skeletonClassName}`}
+          style={
+            blurDataURL
+              ? {
+                  backgroundImage: `url(${blurDataURL})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "blur(20px)",
+                }
+              : undefined
+          }
+        >
+          {/* Shimmer Wave Effect */}
+          <div
+            className="absolute inset-0 pointer-events-none animate-image-shimmer"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%)",
+            }}
+          />
+        </div>
+      )}
+
+      {/* Image Element */}
       {isInView && (
-        <motion.img
+        <img
           ref={imgRef}
           src={src}
           alt={alt}
@@ -100,16 +135,17 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           decoding="async"
           sizes={sizes}
           onLoad={handleImageLoad}
-          style={imageStyle}
-          className="w-full h-full object-cover"
-          initial={{ scale: 0.95 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          whileHover={{ scale: 1.02 }}
+          onError={handleImageError}
+          className={`w-full h-full ${imageClassName} transition-opacity duration-300 ease-in-out ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          {...rest}
         />
       )}
     </div>
   );
 };
 
-export default OptimizedImage;
+export const OptimizedImage = Image;
+export default Image;
+

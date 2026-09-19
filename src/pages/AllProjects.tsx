@@ -4,7 +4,7 @@ import { Globe, Github, Undo2, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "../components/StatusBadge";
-import OptimizedImage from "../components/OptimizedImage";
+import Image from "../components/OptimizedImage";
 import { playClickSound } from "../utils/audio";
 import SEO from "../components/SEO";
 
@@ -87,7 +87,7 @@ const AllProjects = () => {
               onClick={() => { playClickSound(); handleProjectClick(project); }}
             >
               <div className="relative overflow-hidden aspect-[16/10]">
-                <OptimizedImage
+                <Image
                   src={
                     Array.isArray(project.coverImage)
                       ? project.coverImage[0]
@@ -95,8 +95,8 @@ const AllProjects = () => {
                   }
                   alt={project.title}
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%231a1a1a'/%3E%3C/svg%3E"
+                  className="w-full h-full"
+                  imageClassName="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
               </div>
               <div className="p-6 flex flex-col flex-1">

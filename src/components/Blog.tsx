@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { HiCalendar, HiClock, HiArrowRight } from "react-icons/hi";
+import Image from "./OptimizedImage";
 
 const Blog = () => {
   const ref = useRef(null);
@@ -80,13 +81,12 @@ const Blog = () => {
               className="group bg-[#071026] rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(30,30,60,0.25)] transition-all duration-300 border"
               style={{ borderColor: "rgba(95,141,255,0.08)" }}
             >
-              <div className="relative overflow-hidden">
-                <motion.img
-                  whileHover={{ scale: 1.06 }}
-                  transition={{ duration: 0.45 }}
+              <div className="relative overflow-hidden aspect-[16/10] sm:h-48 w-full">
+                <Image
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-48 object-cover object-top"
+                  className="w-full h-full"
+                  imageClassName="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                      style={{

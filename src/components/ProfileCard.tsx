@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
+import Image from "./OptimizedImage";
 
 interface ProfileCardProps {
   avatarUrl: string;
@@ -102,10 +103,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl overflow-hidden flex-shrink-0 mx-auto sm:mx-0"
                 style={{ border: "1px solid #2A2A2A" }}
               >
-                <img
+                <Image
                   src={avatarUrl}
                   alt={name}
-                  className="w-full h-full object-cover"
+                  priority
+                  className="w-full h-full"
+                  imageClassName="object-cover"
                 />
               </div>
 

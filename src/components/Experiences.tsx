@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { experiences } from "../utils/experiencesData";
 import { playClickSound, playCopySound } from "../utils/audio";
+import Image from "./OptimizedImage";
 
 const INITIAL_VISIBLE = 3;
 
@@ -80,8 +81,8 @@ export default function Experiences() {
                   aria-expanded={isOpen}
                 >
                   <div className="flex flex-row items-center gap-4 sm:gap-5 w-full">
-                    <div className="h-14 w-14 rounded-2xl border border-[#2A2A2A] bg-[#161616] flex items-center justify-center font-bold text-lg text-white shadow-xs select-none shrink-0">
-                      <img src={exp.image} alt={exp.company} className="w-full h-full object-cover rounded-2xl" />
+                    <div className="h-14 w-14 rounded-2xl border border-[#2A2A2A] bg-[#161616] flex items-center justify-center font-bold text-lg text-white shadow-xs select-none shrink-0 overflow-hidden">
+                      <Image src={exp.image} alt={exp.company} className="w-full h-full" imageClassName="object-cover rounded-2xl" />
                     </div>
 
                     <div className="flex-1 min-w-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">

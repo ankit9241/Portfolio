@@ -9,6 +9,7 @@ import heroPoster from "../assets/hero-frame.jpg";
 import { playClickSound } from "../utils/audio";
 import { notifyVimeoHeroReady } from "../utils/assetLoader";
 import Navbar from "./Navbar";
+import Image from "./OptimizedImage";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -158,11 +159,13 @@ export default function Hero() {
       <Navbar />
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         {/* Poster image fallback: always present behind the video */}
-        <img
+        <Image
           src={heroPoster}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-[90%_center] md:object-center select-none"
+          priority
+          className="absolute inset-0 h-full w-full select-none"
+          imageClassName="object-cover object-[90%_center] md:object-center select-none"
         />
 
         {/* Vimeo Fullscreen Chromeless Background Video Container */}

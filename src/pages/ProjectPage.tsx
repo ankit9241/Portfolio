@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Globe, Github, Undo2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../utils/projectsData";
-import OptimizedImage from "../components/OptimizedImage";
+import Image from "../components/OptimizedImage";
 import SEO, { getProjectSeoTitle } from "../components/SEO";
 
 const ProjectPage = () => {
@@ -155,7 +155,7 @@ const ProjectPage = () => {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="w-full h-full"
                   >
-                    <OptimizedImage
+                    <Image
                       src={projectImages[currentImageIndex]}
                       alt={`${project.title} - Image ${currentImageIndex + 1}`}
                       sizes="(max-width: 768px) 100vw, 80vw"
@@ -200,10 +200,11 @@ const ProjectPage = () => {
                         }`}
                       aria-label={`Go to image ${index + 1}`}
                     >
-                      <img
+                      <Image
                         src={imgSrc}
                         alt={`Thumbnail ${index + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full"
+                        imageClassName="object-cover"
                       />
                     </button>
                   ))}

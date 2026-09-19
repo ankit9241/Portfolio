@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SocialPill from "./SocialPill";
+import Image from "./OptimizedImage";
 
 const easeCurve = [0.16, 1, 0.3, 1] as const;
 
@@ -83,16 +84,18 @@ const About = () => {
             transition={{ duration: 0.6, ease: easeCurve }}
             className="flex flex-col items-center"
           >
-            <div className="relative w-full max-w-sm sm:max-w-md mx-auto select-none overflow-hidden">
-              <img
+            <div className="relative w-full max-w-sm sm:max-w-md mx-auto select-none overflow-hidden aspect-[4/5] rounded-2xl">
+              <Image
                 src="/assets/profile-ankit.png"
                 alt="Ankit Kumar"
-                className="w-full h-auto object-cover object-top"
+                priority
+                className="w-full h-full"
+                imageClassName="object-cover object-top"
               />
 
-              <div className="absolute inset-x-0 bottom-0 h-20 sm:h-24 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-black/35 to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-black/35 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-20 sm:h-24 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-black/35 to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-black/35 to-transparent pointer-events-none z-10" />
             </div>
 
             <div className="mt-5 text-center w-full">

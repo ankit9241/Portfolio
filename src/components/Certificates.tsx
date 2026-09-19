@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaPython, FaAws, FaJava } from "react-icons/fa";
 import { SiMongodb, SiTypescript, SiNextdotjs, SiCplusplus, SiTailwindcss, SiPostgresql, SiFastapi, SiPrisma, SiStripe, SiModal } from "react-icons/si";
 import { certificates } from "../utils/certificatesData";
+import Image from "./OptimizedImage";
 
 const Certificates = () => {
   const ref = useRef(null);
@@ -63,11 +64,12 @@ const Certificates = () => {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.06 }}
               className="group rounded-3xl overflow-hidden flex flex-col h-full bg-white/[0.02] border border-white/10 hover:border-[#E1E0CC]/40 shadow-lg hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)] transition-colors duration-300 will-change-transform"
             >
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative overflow-hidden aspect-[16/10] sm:h-48 w-full">
+                <Image
                   src={cert.image}
                   alt={cert.title}
-                  className="w-full h-48 object-cover object-top"
+                  className="w-full h-full"
+                  imageClassName="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
 
                 <div

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { projects, Project } from "../utils/projectsData";
 import StatusBadge from "./StatusBadge";
 import { playClickSound } from "../utils/audio";
+import Image from "./OptimizedImage";
 
 const Projects = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,15 +62,17 @@ const Projects = () => {
               className="group rounded-2xl overflow-hidden backdrop-blur-md bg-white/[0.02] border border-white/[0.08] hover:border-[#E1E0CC]/40 shadow-lg hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)] transition-colors duration-300 flex flex-col h-full cursor-pointer will-change-transform"
               onClick={() => { playClickSound(); handleProjectClick(project); }}
             >
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative overflow-hidden aspect-[16/10]">
+                <Image
                   src={
                     Array.isArray(project.coverImage)
                       ? project.coverImage[0]
                       : project.coverImage
                   }
                   alt={project.title}
-                  className="w-full h-auto object-cover object-top"
+                  className="w-full h-full"
+                  imageClassName="object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
               <div className="p-6 flex flex-col flex-1">

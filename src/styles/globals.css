@@ -17,6 +17,19 @@
   }
 }
 
+@keyframes image-skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-image-shimmer {
+  animation: image-skeleton-shimmer 1.8s infinite linear;
+}
+
 /* Image loading states */
 img {
   transition: opacity 0.3s ease-in-out;
@@ -58,3 +71,4 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
