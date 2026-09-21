@@ -81,7 +81,7 @@ const Projects = () => {
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-2">
-                    {project.isPublished && (
+                    {project.isPublished && project.live && project.live !== "#" && (
                       <a
                         href={project.live}
                         target="_blank"
@@ -96,19 +96,21 @@ const Projects = () => {
                         </div>
                       </a>
                     )}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors relative"
-                      onClick={(e) => { e.stopPropagation(); playClickSound(); }}
-                    >
-                      <Github className="w-5 h-5 peer" />
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
-                        View Code
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
-                      </div>
-                    </a>
+                    {project.github && project.github !== "#" && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors relative"
+                        onClick={(e) => { e.stopPropagation(); playClickSound(); }}
+                      >
+                        <Github className="w-5 h-5 peer" />
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mb-2 px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-0 pointer-events-none whitespace-nowrap z-50">
+                          View Code
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-100"></div>
+                        </div>
+                      </a>
+                    )}
                   </div>
                 </div>
 

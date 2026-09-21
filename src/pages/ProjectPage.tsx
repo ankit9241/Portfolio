@@ -232,28 +232,75 @@ const ProjectPage = () => {
 
         <section className="px-0 py-0 lg:px-8">
           <div className="mb-12">
-            <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-              {project.title}
-            </h1>
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white">
+                {project.title}
+              </h1>
+
+              {((project.isPublished === true && project.live && project.live !== "#") ||
+                (project.isPublished === false && project.live && project.live !== "#") ||
+                (project.github && project.github !== "#")) && (
+                <div className="flex items-center gap-3 shrink-0">
+                  {project.isPublished === true && project.live && project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative text-gray-400 hover:text-white transition-colors p-1"
+                      aria-label="Go Live"
+                    >
+                      <Globe className="w-5 h-5" />
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                        Go Live
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                      </div>
+                    </a>
+                  )}
+                  {project.isPublished === false && project.live && project.live !== "#" && (
+                    <div
+                      className="group/btn relative text-gray-600 cursor-not-allowed p-1"
+                      aria-label="Coming Soon"
+                    >
+                      <Globe className="w-5 h-5" />
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-gray-400 text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                        Coming Soon
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                      </div>
+                    </div>
+                  )}
+                  {project.github && project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative text-gray-400 hover:text-white transition-colors p-1"
+                      aria-label="Source Code"
+                    >
+                      <Github className="w-5 h-5" />
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                        Source Code
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                      </div>
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
 
             {project.tagline && (
-              <p className="text-lg lg:text-xl text-gray-400 mb-8 leading-relaxed">
+              <p className="text-lg lg:text-xl text-gray-400 mb-6 leading-relaxed">
                 {project.tagline}
               </p>
             )}
 
             {project.shortDescription && (
-              <p className="text-lg text-gray-300 leading-relaxed max-w-4xl">
+              <p className="text-lg text-gray-300 leading-relaxed max-w-4xl mb-8">
                 {project.shortDescription}
               </p>
             )}
-          </div>
 
-          <div
-            className="space-y-8"
-          >
             {project.meta && project.meta.length > 0 && (
-              <div className="flex flex-wrap gap-6 text-sm">
+              <div className="flex flex-wrap gap-6 text-sm pt-2">
                 {project.meta.map((item, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <span className="text-gray-500">{item.label}:</span>
@@ -262,38 +309,6 @@ const ProjectPage = () => {
                 ))}
               </div>
             )}
-
-            <div className="flex flex-row gap-3 md:gap-4 flex-wrap">
-              {project.isPublished === true && project.live && project.live !== "#" && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 bg-white text-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-medium hover:bg-gray-200 transition-colors text-sm sm:text-base w-auto"
-                >
-                  <Globe className="w-4 h-4" />
-                  Live Demo
-                </a>
-              )}
-              {project.isPublished === false && (
-                <button
-                  disabled
-                  className="inline-flex items-center gap-2 bg-gray-900 text-gray-500 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-medium cursor-not-allowed border border-gray-800 text-sm sm:text-base w-auto"
-                >
-                  <Globe className="w-4 h-4" />
-                  Coming Soon
-                </button>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 border border-gray-800 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-medium hover:border-gray-600 transition-colors text-sm sm:text-base w-auto"
-                >
-                  <Github className="w-4 h-4" />
-                  Source Code
-                </a>
-              )}
-            </div>
           </div>
         </section>
 
@@ -363,21 +378,20 @@ const ProjectPage = () => {
             )}
 
             {project.features && project.features.length > 0 && (
-              <div
-              >
+              <div>
                 <h2 className="text-3xl font-bold mb-8">Key Features</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.features.map((feature, index) => (
                     <div
                       key={index}
-                      className="p-6 border border-gray-700 rounded-3xl space-y-3 relative overflow-hidden"
+                      className="p-6 border border-gray-800 bg-white/[0.01] hover:border-gray-700 transition-colors rounded-3xl space-y-3 relative overflow-hidden"
                     >
-                      <div className="absolute bottom-2 right-2 text-[140px] font-bold text-white/5 select-none z-0 leading-none">
+                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.035] select-none z-0 leading-none pointer-events-none tracking-tighter">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
                       <div className="relative z-10">
-                        <h3 className="text-xl font-medium text-white">{feature.title}</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">{feature.title}</h3>
                         <p className="text-gray-300 leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
@@ -387,23 +401,43 @@ const ProjectPage = () => {
             )}
 
             {project.technicalDetails && project.technicalDetails.length > 0 && (
-              <div
-              >
+              <div>
                 <h2 className="text-3xl font-bold mb-8">Technical Details</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.technicalDetails.map((detail, index) => (
                     <div
                       key={index}
-                      className="p-6 border border-gray-700 rounded-3xl space-y-3 relative overflow-hidden"
+                      className="p-6 border border-gray-800 bg-white/[0.01] hover:border-gray-700 transition-colors rounded-3xl space-y-3 relative overflow-hidden"
                     >
-                      <div className="absolute bottom-2 right-2 text-[140px] font-bold text-white/5 select-none z-0 leading-none">
+                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.035] select-none z-0 leading-none pointer-events-none tracking-tighter">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
                       <div className="relative z-10">
-                        <h3 className="text-xl font-medium text-white">{detail.title}</h3>
+                        <h3 className="text-xl font-medium text-white mb-2">{detail.title}</h3>
                         <p className="text-gray-300 leading-relaxed">{detail.description}</p>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {project.metrics && project.metrics.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Key Metrics & Highlights</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {project.metrics.map((metric, index) => (
+                    <div
+                      key={index}
+                      className="p-5 border border-gray-800 bg-white/[0.02] rounded-2xl space-y-1.5"
+                    >
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-mono">
+                        {metric.label}
+                      </p>
+                      <p className="text-base sm:text-lg font-semibold text-white">
+                        {metric.value}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -482,51 +516,8 @@ const ProjectPage = () => {
                 </div>
               </div>
             )}
-
-            {project.statusNote && project.statusNote.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Status Note</h2>
-                <div className="space-y-3">
-                  {project.statusNote.map((note, index) => (
-                    <p key={index} className="text-gray-500 text-sm leading-relaxed">{note}</p>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </section>
-
-        {project.relatedProjects && project.relatedProjects.length > 0 && (
-          <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
-            <div
-            >
-              <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {project.relatedProjects.map((relatedSlug, index) => {
-                  const relatedProject = projects.find(p => p.slug === relatedSlug);
-                  if (!relatedProject) return null;
-
-                  return (
-                    <button
-                      key={index}
-                      onClick={() => navigate(`/projects/${relatedProject.slug}`)}
-                      className="text-left p-6 border border-gray-900 rounded-2xl hover:border-gray-700 transition-colors group"
-                    >
-                      <h3 className="text-lg font-medium text-white mb-2 group-hover:text-gray-300 transition-colors">
-                        {relatedProject.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm line-clamp-2">
-                        {relatedProject.shortDescription}
-                      </p>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        )}
 
         <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
           <div

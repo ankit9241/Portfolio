@@ -105,7 +105,7 @@ const AllProjects = () => {
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-2">
-                    {project.isPublished && (
+                    {project.isPublished && project.live && project.live !== "#" && (
                       <a
                         href={project.live}
                         target="_blank"
@@ -116,15 +116,17 @@ const AllProjects = () => {
                         <Globe className="w-5 h-5" />
                       </a>
                     )}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
-                      onClick={(e) => { e.stopPropagation(); playClickSound(); }}
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
+                    {project.github && project.github !== "#" && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                        onClick={(e) => { e.stopPropagation(); playClickSound(); }}
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
