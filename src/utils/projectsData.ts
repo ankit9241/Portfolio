@@ -334,8 +334,8 @@ export const projects: Project[] = [
       { label: "Source Code", href: "https://github.com/ankit9241/stc_website" },
     ],
     overview: [
-      "Centralizes 3 technical wings and 24+ sub-clubs instead of scattering events and updates across separate channels.",
-      "Unlike a showcase site, it handles real registrations, forms, announcements, email workflows, and admin operations on the official production platform.",
+      "The official website of the Student Technical Council (STC), IIT Patna, built as a central platform for the institute’s technical community. It brings together STC’s technical wings, 24+ student clubs, events, announcements, registrations, and club activities in one place.",
+      "The platform goes beyond a traditional college website with real-time registrations, dynamic forms, college-email OTP verification, email workflows, and admin operations used to manage student participation and technical events.",
     ],
     techStack: [
       { category: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS"] },
@@ -355,16 +355,16 @@ export const projects: Project[] = [
       { title: "Full-Stack Contribution", description: "Work expanded from frontend redesign into admin workflows, registration logic, OTP/email integration, and live event functionality." },
       { title: "Production Workflow", description: "The system supports actual student registrations and council operations rather than only static content." },
     ],
-    metrics: [
-      { label: "Technical Wings", value: "3" },
-      { label: "Sub-Clubs", value: "24+" },
-      { label: "Events Supported", value: "6–7" },
-      { label: "Registrations", value: "250+" },
-    ],
-    results: [
-      "Officially deployed and used by the IIT Patna Student Technical Council.",
-      "Handled 250+ registrations across multiple official events.",
-    ],
+    // metrics: [
+    //   { label: "Technical Wings", value: "3" },
+    //   { label: "Sub-Clubs", value: "24+" },
+    //   { label: "Events Supported", value: "6–7" },
+    //   { label: "Registrations", value: "250+" },
+    // ],
+    // results: [
+    //   "Officially deployed and used by the IIT Patna Student Technical Council.",
+    //   "Handled 250+ registrations across multiple official events.",
+    // ],
   },
 
   {
