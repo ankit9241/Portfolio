@@ -37,8 +37,7 @@ const Contact = () => {
     }
     setIsSubmitting(true);
     try {
-      // Keep your EmailJS values or replace with real ones
-      const serviceId = "service_c4bz07r";
+      const serviceId = "service_dx784ms";
       const templateId = "template_yr9gqb3";
       const publicKey = "GAyorinfHSZ0EIyrB";
       await emailjs.send(
@@ -174,11 +173,10 @@ const Contact = () => {
               {submitStatus && (
                 <div
                   role="status"
-                  className={`mt-3 rounded-xl px-4 py-2.5 text-sm backdrop-blur-md ${
-                    submitStatus === "success"
+                  className={`mt-3 rounded-xl px-4 py-2.5 text-sm backdrop-blur-md ${submitStatus === "success"
                       ? "text-emerald-300 bg-emerald-950/40 border border-emerald-500/30"
                       : "text-rose-300 bg-rose-950/40 border border-rose-500/30"
-                  }`}
+                    }`}
                 >
                   {submitStatus === "success" ? (
                     <div className="flex items-center gap-2">
