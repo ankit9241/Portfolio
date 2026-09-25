@@ -113,7 +113,12 @@ const ProjectPage = () => {
   };
 
   return (
-    <div className="min-h-screen text-white bg-[#101011] mx-4 md:mx-16 lg:mx-36 xl:mx-56">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className="min-h-screen text-white bg-transparent mx-4 md:mx-16 lg:mx-36 xl:mx-56"
+    >
       <SEO
         title={projectTitle}
         description={projectDescription}
@@ -131,17 +136,17 @@ const ProjectPage = () => {
         <section className="px-0 py-12 lg:px-8">
           <button
             onClick={() => navigate("/projects")}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 text-sm text-zinc-300 hover:text-white backdrop-blur-md shadow-sm transition-all duration-200 mb-10"
           >
-            <Undo2 size={18} />
-            Back to Projects
+            <Undo2 size={16} />
+            <span>Back to Projects</span>
           </button>
 
           <div className="space-y-6">
             <div className="relative">
               <div
                 ref={carouselRef}
-                className="relative rounded-2xl overflow-hidden border border-gray-900 max-w-4xl mx-auto aspect-video"
+                className="relative rounded-3xl overflow-hidden border border-white/[0.1] shadow-[0_20px_60px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.08)_inset] bg-white/[0.02] backdrop-blur-2xl max-w-4xl mx-auto aspect-video"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -166,20 +171,20 @@ const ProjectPage = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-[#111111] via-[#111111]/70 to-transparent pointer-events-none z-10"></div>
+                <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none z-10"></div>
 
                 {projectImages.length > 1 && (
                   <>
                     <button
                       onClick={() => setCurrentImageIndex((currentImageIndex - 1 + projectImages.length) % projectImages.length)}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-full hover:bg-black/80 transition-colors hidden md:block z-20"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-md border border-white/10 text-white p-3 rounded-full hover:bg-black/80 hover:border-white/20 transition-all hidden md:block z-20 shadow-lg"
                       aria-label="Previous image"
                     >
                       <Undo2 size={20} className="rotate-180" />
                     </button>
                     <button
                       onClick={() => setCurrentImageIndex((currentImageIndex + 1) % projectImages.length)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/70 text-white p-3 rounded-full hover:bg-black/80 transition-colors hidden md:block z-20"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-md border border-white/10 text-white p-3 rounded-full hover:bg-black/80 hover:border-white/20 transition-all hidden md:block z-20 shadow-lg"
                       aria-label="Next image"
                     >
                       <Undo2 size={20} />
@@ -194,9 +199,9 @@ const ProjectPage = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`relative aspect-video w-16 sm:w-20 md:w-24 rounded-lg overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${index === currentImageIndex
-                        ? "border-white scale-105 shadow-lg shadow-white/10 opacity-100"
-                        : "border-transparent opacity-50 hover:opacity-80"
+                      className={`relative aspect-video w-16 sm:w-20 md:w-24 rounded-xl overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${index === currentImageIndex
+                        ? "border-white scale-105 shadow-[0_0_20px_rgba(255,255,255,0.25)] opacity-100"
+                        : "border-white/10 opacity-50 hover:opacity-80"
                         }`}
                       aria-label={`Go to image ${index + 1}`}
                     >
@@ -218,8 +223,8 @@ const ProjectPage = () => {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`transition-all duration-300 ${index === currentImageIndex
-                        ? "w-8 h-2 bg-white"
-                        : "w-1.5 h-1.5 bg-gray-600 hover:bg-gray-400"
+                        ? "w-8 h-2 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                        : "w-1.5 h-1.5 bg-zinc-600 hover:bg-zinc-400"
                         } rounded-full`}
                       aria-label={`Go to image ${index + 1}`}
                     />
@@ -231,9 +236,9 @@ const ProjectPage = () => {
         </section>
 
         <section className="px-0 py-0 lg:px-8">
-          <div className="mb-12">
+          <div className="mb-14">
             <div className="flex items-center justify-between gap-4 mb-4">
-              <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-white tracking-tight">
                 {project.title}
               </h1>
 
@@ -246,25 +251,25 @@ const ProjectPage = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn relative text-gray-400 hover:text-white transition-colors p-1"
+                      className="group/btn relative p-2.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 text-zinc-300 hover:text-white transition-all duration-200 shadow-sm"
                       aria-label="Go Live"
                     >
                       <Globe className="w-5 h-5" />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-zinc-900 border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
                         Go Live
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-zinc-900"></div>
                       </div>
                     </a>
                   )}
                   {project.isPublished === false && project.live && project.live !== "#" && (
                     <div
-                      className="group/btn relative text-gray-600 cursor-not-allowed p-1"
+                      className="group/btn relative p-2.5 rounded-full bg-white/[0.02] border border-white/[0.05] text-zinc-600 cursor-not-allowed shadow-sm"
                       aria-label="Coming Soon"
                     >
                       <Globe className="w-5 h-5" />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-gray-400 text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-zinc-900 border border-white/10 text-zinc-400 text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
                         Coming Soon
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-zinc-900"></div>
                       </div>
                     </div>
                   )}
@@ -273,13 +278,13 @@ const ProjectPage = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn relative text-gray-400 hover:text-white transition-colors p-1"
+                      className="group/btn relative p-2.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/20 text-zinc-300 hover:text-white transition-all duration-200 shadow-sm"
                       aria-label="Source Code"
                     >
                       <Github className="w-5 h-5" />
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-[#1a1a1e] border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-zinc-900 border border-white/10 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-150 pointer-events-none whitespace-nowrap z-50 shadow-xl">
                         Source Code
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#1a1a1e]"></div>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-zinc-900"></div>
                       </div>
                     </a>
                   )}
@@ -288,23 +293,26 @@ const ProjectPage = () => {
             </div>
 
             {project.tagline && (
-              <p className="text-lg lg:text-xl text-gray-400 mb-6 leading-relaxed">
-                {project.tagline}
+              <p className="font-serif italic text-xl lg:text-2xl text-zinc-300/90 mb-6 leading-relaxed font-normal">
+                "{project.tagline}"
               </p>
             )}
 
             {project.shortDescription && (
-              <p className="text-lg text-gray-300 leading-relaxed max-w-4xl mb-8">
+              <p className="text-lg text-zinc-300/90 leading-relaxed max-w-4xl mb-8">
                 {project.shortDescription}
               </p>
             )}
 
             {project.meta && project.meta.length > 0 && (
-              <div className="flex flex-wrap gap-6 text-sm pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 {project.meta.map((item, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <span className="text-gray-500">{item.label}:</span>
-                    <span className="text-white font-medium">{item.value}</span>
+                  <div
+                    key={index}
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md text-xs shadow-sm"
+                  >
+                    <span className="text-zinc-400 font-mono uppercase tracking-wider">{item.label}:</span>
+                    <span className="text-zinc-100 font-medium">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -315,11 +323,9 @@ const ProjectPage = () => {
         <section className="px-0 py-0 lg:px-8">
           <div className="space-y-24">
             {project.overview && project.overview.length > 0 && (
-              <div
-                className="max-w-5xl pt-8"
-              >
-                <h2 className="text-3xl font-bold mb-8">Overview</h2>
-                <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className="max-w-5xl pt-4">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Overview</h2>
+                <div className="space-y-6 text-zinc-300 leading-relaxed text-base sm:text-lg">
                   {project.overview.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
@@ -328,11 +334,9 @@ const ProjectPage = () => {
             )}
 
             {project.context && project.context.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Context</h2>
-                <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Context</h2>
+                <div className="space-y-6 text-zinc-300 leading-relaxed text-base sm:text-lg">
                   {project.context.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
@@ -341,11 +345,9 @@ const ProjectPage = () => {
             )}
 
             {project.whyBuilt && project.whyBuilt.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Why I Built This</h2>
-                <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Why I Built This</h2>
+                <div className="space-y-6 text-zinc-300 leading-relaxed text-base sm:text-lg">
                   {project.whyBuilt.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
@@ -354,18 +356,28 @@ const ProjectPage = () => {
             )}
 
             {project.techStack && project.techStack.length > 0 && (
-              <div
-              >
-                <h2 className="text-3xl font-bold mb-8">Tech Stack</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="w-full">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-8 text-white tracking-tight">Tech Stack</h2>
+                <div className="border-t border-white/10 w-full">
                   {project.techStack.map((group, index) => (
-                    <div key={index} className="space-y-3">
-                      <h3 className="text-lg font-medium text-white">{group.category}</h3>
-                      <div className="flex flex-wrap gap-2">
+                    <div
+                      key={index}
+                      className="grid grid-cols-1 md:grid-cols-[200px_1fr] border-b border-white/10 py-5 items-center gap-4 md:gap-8"
+                    >
+                      <div className="flex items-center gap-3 text-base font-semibold">
+                        <span className="text-zinc-500 font-mono tracking-wider text-sm">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-zinc-300 font-medium tracking-tight">
+                          {group.category}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2.5">
                         {group.items.map((item, itemIndex) => (
                           <span
                             key={itemIndex}
-                            className="px-3 py-1 border border-gray-800 rounded-lg text-sm text-gray-300"
+                            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md border border-white/[0.08] hover:border-white/20 text-zinc-200 text-xs md:text-sm font-medium transition-all duration-200 shadow-sm"
                           >
                             {item}
                           </span>
@@ -379,20 +391,21 @@ const ProjectPage = () => {
 
             {project.features && project.features.length > 0 && (
               <div>
-                <h2 className="text-3xl font-bold mb-8">Key Features</h2>
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-8 text-white tracking-tight">Key Features</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.features.map((feature, index) => (
                     <div
                       key={index}
-                      className="p-6 border border-gray-800 bg-white/[0.01] hover:border-gray-700 transition-colors rounded-3xl space-y-3 relative overflow-hidden"
+                      className="relative group p-7 rounded-3xl bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-2xl border border-white/[0.08] hover:border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.08)_inset] hover:-translate-y-1 transition-all duration-300 space-y-3 overflow-hidden"
                     >
-                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.035] select-none z-0 leading-none pointer-events-none tracking-tighter">
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.04] group-hover:text-white/[0.07] select-none z-0 leading-none pointer-events-none tracking-tighter transition-colors">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
                       <div className="relative z-10">
-                        <h3 className="text-xl font-medium text-white mb-2">{feature.title}</h3>
-                        <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                        <h3 className="font-sans font-semibold text-lg sm:text-xl text-white mb-2 tracking-tight">{feature.title}</h3>
+                        <p className="text-zinc-300/90 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                       </div>
                     </div>
                   ))}
@@ -402,20 +415,21 @@ const ProjectPage = () => {
 
             {project.technicalDetails && project.technicalDetails.length > 0 && (
               <div>
-                <h2 className="text-3xl font-bold mb-8">Technical Details</h2>
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-8 text-white tracking-tight">Technical Details</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {project.technicalDetails.map((detail, index) => (
                     <div
                       key={index}
-                      className="p-6 border border-gray-800 bg-white/[0.01] hover:border-gray-700 transition-colors rounded-3xl space-y-3 relative overflow-hidden"
+                      className="relative group p-7 rounded-3xl bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-2xl border border-white/[0.08] hover:border-white/20 shadow-[0_12px_40px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.08)_inset] hover:-translate-y-1 transition-all duration-300 space-y-3 overflow-hidden"
                     >
-                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.035] select-none z-0 leading-none pointer-events-none tracking-tighter">
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                      <div className="absolute -bottom-2 sm:-bottom-3 right-4 sm:right-6 text-[90px] sm:text-[110px] font-black text-white/[0.04] group-hover:text-white/[0.07] select-none z-0 leading-none pointer-events-none tracking-tighter transition-colors">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
                       <div className="relative z-10">
-                        <h3 className="text-xl font-medium text-white mb-2">{detail.title}</h3>
-                        <p className="text-gray-300 leading-relaxed">{detail.description}</p>
+                        <h3 className="font-sans font-semibold text-lg sm:text-xl text-white mb-2 tracking-tight">{detail.title}</h3>
+                        <p className="text-zinc-300/90 leading-relaxed text-sm sm:text-base">{detail.description}</p>
                       </div>
                     </div>
                   ))}
@@ -424,43 +438,62 @@ const ProjectPage = () => {
             )}
 
             {project.metrics && project.metrics.length > 0 && (
-              <div>
-                <h2 className="text-3xl font-bold mb-8">Key Metrics & Highlights</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {project.metrics.map((metric, index) => (
-                    <div
-                      key={index}
-                      className="p-5 border border-gray-800 bg-white/[0.02] rounded-2xl space-y-1.5"
-                    >
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-mono">
-                        {metric.label}
-                      </p>
-                      <p className="text-base sm:text-lg font-semibold text-white">
-                        {metric.value}
-                      </p>
-                    </div>
-                  ))}
+              <div className="w-full">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Key Metrics & Highlights</h2>
+                <div className="relative rounded-2xl bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-white/[0.01] backdrop-blur-2xl border border-white/[0.08] shadow-[0_10px_32px_rgba(0,0,0,0.35),0_1px_0_rgba(255,255,255,0.08)_inset] overflow-hidden">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+
+                  <div
+                    className={`grid grid-cols-1 ${
+                      project.metrics.length === 1
+                        ? "grid-cols-1"
+                        : project.metrics.length === 2
+                        ? "sm:grid-cols-2"
+                        : project.metrics.length === 3
+                        ? "sm:grid-cols-3"
+                        : "sm:grid-cols-2 lg:grid-cols-4"
+                    } divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]`}
+                  >
+                    {project.metrics.map((metric, index) => (
+                      <div
+                        key={index}
+                        className="p-5 sm:p-6 flex flex-col justify-center space-y-2 hover:bg-white/[0.02] transition-colors"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-zinc-500 font-mono text-xs font-semibold tracking-wider">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-[11px] uppercase tracking-widest text-zinc-400 font-mono font-medium">
+                            {metric.label}
+                          </span>
+                        </div>
+                        <p className="text-sm sm:text-base font-semibold text-white tracking-tight">
+                          {metric.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
 
             {project.challenges && project.challenges.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Challenges</h2>
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-8 text-white tracking-tight">Challenges</h2>
                 <div className="space-y-12">
                   {project.challenges.map((challenge, index) => (
                     <div key={index} className="space-y-6">
-                      <h3 className="text-2xl font-medium text-white">{challenge.title}</h3>
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div className="space-y-3">
-                          <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wider">Problem</h4>
-                          <p className="text-gray-300 leading-relaxed">{challenge.problem}</p>
+                      <h3 className="font-sans font-semibold text-lg sm:text-xl text-white tracking-tight">{challenge.title}</h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="relative group p-6 rounded-2xl bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-white/[0.01] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.3),0_1px_0_rgba(255,255,255,0.06)_inset] space-y-2.5 overflow-hidden">
+                          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+                          <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest font-mono">Problem</h4>
+                          <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">{challenge.problem}</p>
                         </div>
-                        <div className="space-y-3">
-                          <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wider">Solution</h4>
-                          <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
+                        <div className="relative group p-6 rounded-2xl bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-white/[0.01] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.3),0_1px_0_rgba(255,255,255,0.06)_inset] space-y-2.5 overflow-hidden">
+                          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent pointer-events-none" />
+                          <h4 className="text-xs font-semibold text-emerald-300/90 uppercase tracking-widest font-mono">Solution</h4>
+                          <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">{challenge.solution}</p>
                         </div>
                       </div>
                     </div>
@@ -470,15 +503,17 @@ const ProjectPage = () => {
             )}
 
             {project.results && project.results.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Results</h2>
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Results</h2>
                 <div className="space-y-4">
                   {project.results.map((result, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <span className="text-white mt-1">•</span>
-                      <p className="text-gray-300 leading-relaxed">{result}</p>
+                    <div
+                      key={index}
+                      className="relative p-5 rounded-2xl bg-gradient-to-b from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.07] shadow-[0_6px_24px_rgba(0,0,0,0.25),0_1px_0_rgba(255,255,255,0.05)_inset] flex items-start gap-3.5 overflow-hidden"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/25 to-transparent pointer-events-none" />
+                      <span className="text-emerald-400 mt-0.5 font-bold">✓</span>
+                      <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">{result}</p>
                     </div>
                   ))}
                 </div>
@@ -486,15 +521,17 @@ const ProjectPage = () => {
             )}
 
             {project.learnings && project.learnings.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">What I Learned</h2>
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">What I Learned</h2>
                 <div className="space-y-4">
                   {project.learnings.map((learning, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <span className="text-white mt-1">•</span>
-                      <p className="text-gray-300 leading-relaxed">{learning}</p>
+                    <div
+                      key={index}
+                      className="relative p-5 rounded-2xl bg-gradient-to-b from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.07] shadow-[0_6px_24px_rgba(0,0,0,0.25),0_1px_0_rgba(255,255,255,0.05)_inset] flex items-start gap-3.5 overflow-hidden"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+                      <span className="text-zinc-300 mt-0.5 font-bold">✦</span>
+                      <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">{learning}</p>
                     </div>
                   ))}
                 </div>
@@ -502,15 +539,17 @@ const ProjectPage = () => {
             )}
 
             {project.futureScope && project.futureScope.length > 0 && (
-              <div
-                className="max-w-5xl"
-              >
-                <h2 className="text-3xl font-bold mb-8">Future Scope</h2>
+              <div className="max-w-5xl">
+                <h2 className="font-serif text-2xl lg:text-3xl font-normal mb-6 text-white tracking-tight">Future Scope</h2>
                 <div className="space-y-4">
                   {project.futureScope.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <span className="text-white mt-1">•</span>
-                      <p className="text-gray-300 leading-relaxed">{item}</p>
+                    <div
+                      key={index}
+                      className="relative p-5 rounded-2xl bg-gradient-to-b from-white/[0.05] to-white/[0.01] backdrop-blur-xl border border-white/[0.07] shadow-[0_6px_24px_rgba(0,0,0,0.25),0_1px_0_rgba(255,255,255,0.05)_inset] flex items-start gap-3.5 overflow-hidden"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/25 to-transparent pointer-events-none" />
+                      <span className="text-sky-400 mt-0.5 font-bold">→</span>
+                      <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -519,46 +558,82 @@ const ProjectPage = () => {
           </div>
         </section>
 
-        <section className="px-0 py-0 lg:px-8 border-t border-gray-900">
-          <div
-            className="grid md:grid-cols-2 gap-8 py-16"
-          >
-            {prevProject && (
+        <section className="px-0 py-0 lg:px-8">
+          {prevProject && nextProject ? (
+            <div className="grid md:grid-cols-2 gap-8 py-16">
               <button
                 onClick={() => navigate(`/projects/${prevProject.slug}`)}
-                className="group flex items-center gap-4 p-6 border border-gray-900 rounded-2xl hover:border-gray-700 transition-colors text-left bg-gray-900/50 hover:bg-gray-800/50"
+                className="group relative flex items-center gap-4 p-5 sm:p-6 rounded-2xl transition-all duration-300 text-left bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-2xl hover:from-white/[0.12] hover:via-white/[0.06] hover:to-white/[0.03] border border-white/[0.08] hover:border-white/25 shadow-[0_10px_32px_rgba(0,0,0,0.35),0_1px_0_rgba(255,255,255,0.08)_inset] hover:-translate-y-0.5 overflow-hidden"
               >
-                <div className="w-12 h-12 flex items-center justify-center border border-gray-800 rounded-full group-hover:border-gray-600 transition-colors">
-                  <Undo2 size={20} className="rotate-180" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                <div className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-xl group-hover:border-white/25 group-hover:bg-white/10 transition-all bg-white/[0.03] shrink-0">
+                  <Undo2 size={18} className="rotate-180 text-zinc-300 group-hover:text-white transition-colors" />
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm mb-1">Previous Project</p>
-                  <p className="text-white font-medium group-hover:text-gray-300 transition-colors">
+                  <p className="text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-0.5">Previous Project</p>
+                  <p className="font-sans font-semibold text-zinc-200 text-base sm:text-lg group-hover:text-white transition-colors">
                     {prevProject.title}
                   </p>
                 </div>
               </button>
-            )}
-            {nextProject && (
+
               <button
                 onClick={() => navigate(`/projects/${nextProject.slug}`)}
-                className="group flex items-center gap-4 p-6 border border-gray-900 rounded-2xl hover:border-gray-700 transition-colors text-right justify-end bg-gray-900/50 hover:bg-gray-800/50"
+                className="group relative flex items-center gap-4 p-5 sm:p-6 rounded-2xl transition-all duration-300 text-right justify-end bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-2xl hover:from-white/[0.12] hover:via-white/[0.06] hover:to-white/[0.03] border border-white/[0.08] hover:border-white/25 shadow-[0_10px_32px_rgba(0,0,0,0.35),0_1px_0_rgba(255,255,255,0.08)_inset] hover:-translate-y-0.5 overflow-hidden"
               >
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
                 <div>
-                  <p className="text-gray-500 text-sm mb-1">Next Project</p>
-                  <p className="text-white font-medium group-hover:text-gray-300 transition-colors">
+                  <p className="text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-0.5">Next Project</p>
+                  <p className="font-sans font-semibold text-zinc-200 text-base sm:text-lg group-hover:text-white transition-colors">
                     {nextProject.title}
                   </p>
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center border border-gray-800 rounded-full group-hover:border-gray-600 transition-colors">
-                  <Undo2 size={20} />
+                <div className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-xl group-hover:border-white/25 group-hover:bg-white/10 transition-all bg-white/[0.03] shrink-0">
+                  <Undo2 size={18} className="text-zinc-300 group-hover:text-white transition-colors" />
                 </div>
               </button>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className="flex justify-center py-16">
+              {prevProject && (
+                <button
+                  onClick={() => navigate(`/projects/${prevProject.slug}`)}
+                  className="group relative inline-flex items-center gap-4 p-5 sm:p-6 rounded-2xl transition-all duration-300 text-left bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.01] backdrop-blur-2xl hover:from-white/[0.13] hover:via-white/[0.07] hover:to-white/[0.03] border border-white/[0.09] hover:border-white/30 shadow-[0_12px_36px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.09)_inset] hover:-translate-y-0.5 min-w-[280px] sm:min-w-[340px] overflow-hidden"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                  <div className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-xl group-hover:border-white/25 group-hover:bg-white/10 transition-all bg-white/[0.03] shrink-0">
+                    <Undo2 size={18} className="rotate-180 text-zinc-300 group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-0.5">Previous Project</p>
+                    <p className="font-sans font-semibold text-zinc-200 text-base sm:text-lg group-hover:text-white transition-colors">
+                      {prevProject.title}
+                    </p>
+                  </div>
+                </button>
+              )}
+              {nextProject && (
+                <button
+                  onClick={() => navigate(`/projects/${nextProject.slug}`)}
+                  className="group relative inline-flex items-center gap-4 p-5 sm:p-6 rounded-2xl transition-all duration-300 text-right justify-between sm:justify-end bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.01] backdrop-blur-2xl hover:from-white/[0.13] hover:via-white/[0.07] hover:to-white/[0.03] border border-white/[0.09] hover:border-white/30 shadow-[0_12px_36px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.09)_inset] hover:-translate-y-0.5 min-w-[280px] sm:min-w-[340px] overflow-hidden"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                  <div>
+                    <p className="text-zinc-400 text-xs font-mono font-medium uppercase tracking-wider mb-0.5">Next Project</p>
+                    <p className="font-sans font-semibold text-zinc-200 text-base sm:text-lg group-hover:text-white transition-colors">
+                      {nextProject.title}
+                    </p>
+                  </div>
+                  <div className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-xl group-hover:border-white/25 group-hover:bg-white/10 transition-all bg-white/[0.03] shrink-0">
+                    <Undo2 size={18} className="text-zinc-300 group-hover:text-white transition-colors" />
+                  </div>
+                </button>
+              )}
+            </div>
+          )}
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -295,11 +295,10 @@ export const projects: Project[] = [
       { title: "Scalable Data Layer", description: "PostgreSQL/Prisma tracks users, videos, clips, processing state, credits, and Stripe customers." },
     ],
     metrics: [
-      { label: "Processing", value: "~9–10 min for a 90-min podcast" },
+      { label: "Processing", value: "~ 9-10 min for a 90-min podcast" },
       { label: "Output", value: "~5 clips per podcast" },
       { label: "Upload", value: "Up to 500 MB" },
-      { label: "Languages Tested", value: "English + Hindi" },
-      { label: "Billing", value: "5 credits = 1 generated clip" },
+      { label: "Billing", value: "1 credits = 1 generated clip" },
     ],
   },
 

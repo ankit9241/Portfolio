@@ -12,7 +12,11 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/fiber": "^8.17.14",
+    "@shadergradient/react": "^2.4.20",
     "@types/react-router-dom": "^5.3.3",
+    "@types/three": "^0.186.0",
     "@types/vimeo__player": "^2.18.3",
     "@vimeo/player": "^2.30.4",
     "framer-motion": "^11.18.2",
@@ -26,6 +30,7 @@
     "react-router-dom": "^7.13.1",
     "react-tooltip": "^6.0.8",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.186.1",
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {

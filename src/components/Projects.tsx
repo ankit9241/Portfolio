@@ -77,7 +77,7 @@ const Projects = () => {
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-semibold text-text-primary">
+                  <h3 className="font-sans font-semibold text-xl text-text-primary">
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-2">
