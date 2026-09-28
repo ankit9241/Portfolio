@@ -38,7 +38,7 @@ export default function Navbar() {
 
           <div className="pointer-events-auto ml-auto">
             <a
-              href="/resume/Ankit_Kumar_Resume.pdf"
+              href="/resume/Ankit_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playClickSound()}

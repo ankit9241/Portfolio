@@ -28,7 +28,7 @@ const Footer = () => {
 
   const handleResumeOpen = () => {
     playClickSound();
-    window.open("/resume/Ankit_Kumar_Resume.pdf", "_blank");
+    window.open("/resume/Ankit_Resume.pdf", "_blank");
   };
 
   return (

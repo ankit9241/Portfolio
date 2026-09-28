@@ -18,16 +18,14 @@ const DynamicBackground = () => {
   return (
     <div className="fixed inset-0 pointer-events-none select-none z-[-1]">
       <div
-        className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-          isProjectsRoute ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`absolute inset-0 transition-opacity duration-700 ease-out ${isProjectsRoute ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
       >
         <ShaderBackground />
       </div>
       <div
-        className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-          !isProjectsRoute ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`absolute inset-0 transition-opacity duration-700 ease-out ${!isProjectsRoute ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
       >
         <TechBackground />
       </div>

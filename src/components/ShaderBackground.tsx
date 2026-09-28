@@ -27,9 +27,8 @@ const ShaderBackground: React.FC = () => {
       }}
     >
       <div
-        className={`w-full h-full transition-opacity duration-1000 ease-out ${
-          canvasReady ? "opacity-35" : "opacity-0"
-        }`}
+        className={`w-full h-full transition-opacity duration-1000 ease-out ${canvasReady ? "opacity-35" : "opacity-0"
+          }`}
       >
         <ShaderGradientCanvas
           style={{
